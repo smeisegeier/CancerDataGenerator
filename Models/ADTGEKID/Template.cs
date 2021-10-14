@@ -5,40 +5,11 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
 {
     public partial class ADT_GEKID
     {
-        public ADT_GEKIDPatient[] Menge_Patient { get; set; }
+        public Patient[] Menge_Patient { get; set; }
 
         public Melder_Typ[] Menge_Melder { get; set; }
 
-        public ADT_GEKIDSchema_Version Schema_Version { get; set; }
-    }
-
-    public partial class ADT_GEKIDAbsender
-    {
-       
-        public string Absender_Bezeichnung { get; set; }
-
-        
-        public string Absender_Ansprechpartner { get; set; }
-
-
-        public string Absender_Anschrift { get; set; }
-
-
-        public string Absender_Telefon { get; set; }
-
-
-        public string Absender_EMail { get; set; }
-
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string Absender_ID { get; set; }
-
-
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string Software_ID { get; set; }
-
-
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string Installations_ID { get; set; }
+        public Schema_Version Schema_Version { get; set; }
     }
 
     public partial class Melder_Typ
@@ -993,20 +964,20 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         T,
     }
 
-    public partial class ADT_GEKIDPatient
+    public partial class Patient
     {
         
-        public ADT_GEKIDPatientPatienten_Stammdaten Patienten_Stammdaten { get; set; }
+        public PatientPatienten_Stammdaten Patienten_Stammdaten { get; set; }
 
         
         [System.Xml.Serialization.XmlArrayItemAttribute("Meldung", IsNullable = false)]
-        public ADT_GEKIDPatientMeldung[] Menge_Meldung { get; set; }
+        public PatientMeldung[] Menge_Meldung { get; set; }
 
         
         public string Anmerkung { get; set; }
     }
 
-    public partial class ADT_GEKIDPatientPatienten_Stammdaten
+    public partial class PatientPatienten_Stammdaten
     {
         public string KrankenversichertenNr { get; set; }
 
@@ -1036,7 +1007,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         public string[] Menge_Frueherer_Name { get; set; }
 
         
-        public ADT_GEKIDPatientPatienten_StammdatenPatienten_Geschlecht Patienten_Geschlecht { get; set; }
+        public PatientPatienten_StammdatenPatienten_Geschlecht Patienten_Geschlecht { get; set; }
 
         
         [System.Xml.Serialization.XmlIgnoreAttribute()]
@@ -1047,14 +1018,14 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
 
         
         [System.Xml.Serialization.XmlArrayItemAttribute("Adresse", IsNullable = false)]
-        public ADT_GEKIDPatientPatienten_StammdatenAdresse[] Menge_Adresse { get; set; }
+        public PatientPatienten_StammdatenAdresse[] Menge_Adresse { get; set; }
 
         
         [System.Xml.Serialization.XmlAttributeAttribute()]
         public string Patient_ID { get; set; }
     }
 
-    public enum ADT_GEKIDPatientPatienten_StammdatenPatienten_Geschlecht
+    public enum PatientPatienten_StammdatenPatienten_Geschlecht
     {
 
         
@@ -1070,7 +1041,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         U,
     }
 
-    public partial class ADT_GEKIDPatientPatienten_StammdatenAdresse
+    public partial class PatientPatienten_StammdatenAdresse
     {
 
         
@@ -1095,53 +1066,53 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         public string Gueltig_bis { get; set; }
     }
 
-    public partial class ADT_GEKIDPatientMeldung
+    public partial class PatientMeldung
     {
         public string Meldedatum { get; set; }
 
         
-        public ADT_GEKIDPatientMeldungMeldebegruendung Meldebegruendung { get; set; }
+        public PatientMeldungMeldebegruendung Meldebegruendung { get; set; }
 
         
         [System.Xml.Serialization.XmlIgnoreAttribute()]
         public bool MeldebegruendungSpecified { get; set; }
 
         
-        public ADT_GEKIDPatientMeldungMeldeanlass Meldeanlass { get; set; }
+        public PatientMeldungMeldeanlass Meldeanlass { get; set; }
 
         
         [System.Xml.Serialization.XmlIgnoreAttribute()]
         public bool MeldeanlassSpecified { get; set; }
 
         
-        public ADT_GEKIDPatientMeldungTumorzuordnung Tumorzuordnung { get; set; }
+        public PatientMeldungTumorzuordnung Tumorzuordnung { get; set; }
 
         
-        public ADT_GEKIDPatientMeldungDiagnose Diagnose { get; set; }
+        public PatientMeldungDiagnose Diagnose { get; set; }
 
         
         [System.Xml.Serialization.XmlArrayItemAttribute("OP", IsNullable = false)]
-        public ADT_GEKIDPatientMeldungOP[] Menge_OP { get; set; }
+        public PatientMeldungOP[] Menge_OP { get; set; }
 
         
         [System.Xml.Serialization.XmlArrayItemAttribute("ST", IsNullable = false)]
-        public ADT_GEKIDPatientMeldungST[] Menge_ST { get; set; }
+        public PatientMeldungST[] Menge_ST { get; set; }
 
         
         [System.Xml.Serialization.XmlArrayItemAttribute("SYST", IsNullable = false)]
-        public ADT_GEKIDPatientMeldungSYST[] Menge_SYST { get; set; }
+        public PatientMeldungSYST[] Menge_SYST { get; set; }
 
         
         [System.Xml.Serialization.XmlArrayItemAttribute("Verlauf", IsNullable = false)]
-        public ADT_GEKIDPatientMeldungVerlauf[] Menge_Verlauf { get; set; }
+        public PatientMeldungVerlauf[] Menge_Verlauf { get; set; }
 
         
         [System.Xml.Serialization.XmlArrayItemAttribute("Tumorkonferenz", IsNullable = false)]
-        public ADT_GEKIDPatientMeldungTumorkonferenz[] Menge_Tumorkonferenz { get; set; }
+        public PatientMeldungTumorkonferenz[] Menge_Tumorkonferenz { get; set; }
 
         
         [System.Xml.Serialization.XmlArrayItemAttribute("Zusatzitem", IsNullable = false)]
-        public ADT_GEKIDPatientMeldungZusatzitem[] Menge_Zusatzitem { get; set; }
+        public PatientMeldungZusatzitem[] Menge_Zusatzitem { get; set; }
 
         
         public string Anmerkung { get; set; }
@@ -1155,7 +1126,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         public string Melder_ID { get; set; }
     }
 
-    public enum ADT_GEKIDPatientMeldungMeldebegruendung
+    public enum PatientMeldungMeldebegruendung
     {
 
         
@@ -1174,7 +1145,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         V,
     }
 
-    public enum ADT_GEKIDPatientMeldungMeldeanlass
+    public enum PatientMeldungMeldeanlass
     {
 
         
@@ -1199,7 +1170,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         histologie_zytologie,
     }
 
-    public partial class ADT_GEKIDPatientMeldungTumorzuordnung
+    public partial class PatientMeldungTumorzuordnung
     {
         
         public string Primaertumor_ICD_Code { get; set; }
@@ -1335,7 +1306,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         T,
     }
 
-    public partial class ADT_GEKIDPatientMeldungDiagnose
+    public partial class PatientMeldungDiagnose
     {
 
         
@@ -1354,7 +1325,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         public string Primaertumor_Topographie_ICD_O { get; set; }
 
         
-        public ADT_GEKIDPatientMeldungDiagnosePrimaertumor_Topographie_ICD_O_Version Primaertumor_Topographie_ICD_O_Version { get; set; }
+        public PatientMeldungDiagnosePrimaertumor_Topographie_ICD_O_Version Primaertumor_Topographie_ICD_O_Version { get; set; }
 
         
         [System.Xml.Serialization.XmlIgnoreAttribute()]
@@ -1367,7 +1338,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         public string Diagnosedatum { get; set; }
 
         
-        public ADT_GEKIDPatientMeldungDiagnoseDiagnosesicherung Diagnosesicherung { get; set; }
+        public PatientMeldungDiagnoseDiagnosesicherung Diagnosesicherung { get; set; }
 
         
         [System.Xml.Serialization.XmlIgnoreAttribute()]
@@ -1382,7 +1353,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
 
         
         [System.Xml.Serialization.XmlArrayItemAttribute("Fruehere_Tumorerkrankung", IsNullable = false)]
-        public ADT_GEKIDPatientMeldungDiagnoseFruehere_Tumorerkrankung[] Menge_Fruehere_Tumorerkrankung { get; set; }
+        public PatientMeldungDiagnoseFruehere_Tumorerkrankung[] Menge_Fruehere_Tumorerkrankung { get; set; }
 
         
         [System.Xml.Serialization.XmlArrayItemAttribute("Histologie", IsNullable = false)]
@@ -1430,7 +1401,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         public string Tumor_ID { get; set; }
     }
 
-    public enum ADT_GEKIDPatientMeldungDiagnosePrimaertumor_Topographie_ICD_O_Version
+    public enum PatientMeldungDiagnosePrimaertumor_Topographie_ICD_O_Version
     {
 
         
@@ -1445,7 +1416,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         [System.Xml.Serialization.XmlEnumAttribute("33")]
         Item33,
     }
-    public enum ADT_GEKIDPatientMeldungDiagnoseDiagnosesicherung
+    public enum PatientMeldungDiagnoseDiagnosesicherung
     {
 
         
@@ -1477,7 +1448,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         Item9,
     }
 
-    public partial class ADT_GEKIDPatientMeldungDiagnoseFruehere_Tumorerkrankung
+    public partial class PatientMeldungDiagnoseFruehere_Tumorerkrankung
     {
         
         public string Freitext { get; set; }
@@ -1628,11 +1599,11 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         Item100,
     }
 
-    public partial class ADT_GEKIDPatientMeldungOP
+    public partial class PatientMeldungOP
     {
 
         
-        public ADT_GEKIDPatientMeldungOPOP_Intention OP_Intention { get; set; }
+        public PatientMeldungOPOP_Intention OP_Intention { get; set; }
 
         
         [System.Xml.Serialization.XmlIgnoreAttribute()]
@@ -1646,7 +1617,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         public string[] Menge_OPS { get; set; }
 
         
-        public ADT_GEKIDPatientMeldungOPOP_OPS_Version OP_OPS_Version { get; set; }
+        public PatientMeldungOPOP_OPS_Version OP_OPS_Version { get; set; }
 
         
         [System.Xml.Serialization.XmlIgnoreAttribute()]
@@ -1663,7 +1634,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
 
         
         [System.Xml.Serialization.XmlArrayItemAttribute("OP_Komplikation", IsNullable = false)]
-        public ADT_GEKIDPatientMeldungOPOP_Komplikation[] Menge_Komplikation { get; set; }
+        public PatientMeldungOPOP_Komplikation[] Menge_Komplikation { get; set; }
 
         
         public Modul_Mamma_Typ Modul_Mamma { get; set; }
@@ -1690,7 +1661,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         public string OP_ID { get; set; }
     }
 
-    public enum ADT_GEKIDPatientMeldungOPOP_Intention
+    public enum PatientMeldungOPOP_Intention
     {
 
         
@@ -1712,7 +1683,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         X,
     }
 
-    public enum ADT_GEKIDPatientMeldungOPOP_OPS_Version
+    public enum PatientMeldungOPOP_OPS_Version
     {
 
         
@@ -1791,7 +1762,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         [System.Xml.Serialization.XmlEnumAttribute("2022")]
         Item2022,
     }
-    public enum ADT_GEKIDPatientMeldungOPOP_Komplikation
+    public enum PatientMeldungOPOP_Komplikation
     {
 
         
@@ -2035,17 +2006,17 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         WSS,
     }
 
-    public partial class ADT_GEKIDPatientMeldungST
+    public partial class PatientMeldungST
     {
         
-        public ADT_GEKIDPatientMeldungSTST_Intention ST_Intention { get; set; }
+        public PatientMeldungSTST_Intention ST_Intention { get; set; }
 
         
         [System.Xml.Serialization.XmlIgnoreAttribute()]
         public bool ST_IntentionSpecified { get; set; }
 
         
-        public ADT_GEKIDPatientMeldungSTST_Stellung_OP ST_Stellung_OP { get; set; }
+        public PatientMeldungSTST_Stellung_OP ST_Stellung_OP { get; set; }
 
         
         [System.Xml.Serialization.XmlIgnoreAttribute()]
@@ -2053,10 +2024,10 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
 
         
         [System.Xml.Serialization.XmlArrayItemAttribute("Bestrahlung", IsNullable = false)]
-        public ADT_GEKIDPatientMeldungSTBestrahlung[] Menge_Bestrahlung { get; set; }
+        public PatientMeldungSTBestrahlung[] Menge_Bestrahlung { get; set; }
 
         
-        public ADT_GEKIDPatientMeldungSTST_Ende_Grund ST_Ende_Grund { get; set; }
+        public PatientMeldungSTST_Ende_Grund ST_Ende_Grund { get; set; }
 
         
         [System.Xml.Serialization.XmlIgnoreAttribute()]
@@ -2080,7 +2051,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         public string ST_ID { get; set; }
     }
 
-    public enum ADT_GEKIDPatientMeldungSTST_Intention
+    public enum PatientMeldungSTST_Intention
     {
 
         
@@ -2096,7 +2067,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         X,
     }
 
-    public enum ADT_GEKIDPatientMeldungSTST_Stellung_OP
+    public enum PatientMeldungSTST_Stellung_OP
     {
 
         
@@ -2115,16 +2086,16 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         S,
     }
 
-    public partial class ADT_GEKIDPatientMeldungSTBestrahlung
+    public partial class PatientMeldungSTBestrahlung
     {
         
-        public ADT_GEKIDPatientMeldungSTBestrahlungST_Zielgebiet ST_Zielgebiet { get; set; }
+        public PatientMeldungSTBestrahlungST_Zielgebiet ST_Zielgebiet { get; set; }
 
         
         [System.Xml.Serialization.XmlIgnoreAttribute()]
         public bool ST_ZielgebietSpecified { get; set; }
         
-        public ADT_GEKIDPatientMeldungSTBestrahlungST_Seite_Zielgebiet ST_Seite_Zielgebiet { get; set; }
+        public PatientMeldungSTBestrahlungST_Seite_Zielgebiet ST_Seite_Zielgebiet { get; set; }
 
         
         [System.Xml.Serialization.XmlIgnoreAttribute()]
@@ -2137,7 +2108,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         public string ST_Ende_Datum { get; set; }
 
         
-        public ADT_GEKIDPatientMeldungSTBestrahlungST_Applikationsart ST_Applikationsart { get; set; }
+        public PatientMeldungSTBestrahlungST_Applikationsart ST_Applikationsart { get; set; }
 
         
         [System.Xml.Serialization.XmlIgnoreAttribute()]
@@ -2150,7 +2121,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         public Strahlendosis_Typ ST_Einzeldosis { get; set; }
     }
 
-    public enum ADT_GEKIDPatientMeldungSTBestrahlungST_Zielgebiet
+    public enum PatientMeldungSTBestrahlungST_Zielgebiet
     {
 
         
@@ -2754,7 +2725,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         Item82,
     }
 
-    public enum ADT_GEKIDPatientMeldungSTBestrahlungST_Seite_Zielgebiet
+    public enum PatientMeldungSTBestrahlungST_Seite_Zielgebiet
     {
 
         
@@ -2773,7 +2744,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         U,
     }
 
-    public enum ADT_GEKIDPatientMeldungSTBestrahlungST_Applikationsart
+    public enum PatientMeldungSTBestrahlungST_Applikationsart
     {
 
         
@@ -2822,7 +2793,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         S,
     }
 
-    public enum ADT_GEKIDPatientMeldungSTST_Ende_Grund
+    public enum PatientMeldungSTST_Ende_Grund
     {
 
         
@@ -2844,16 +2815,16 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         U,
     }
 
-    public partial class ADT_GEKIDPatientMeldungSYST
+    public partial class PatientMeldungSYST
     {
-        public ADT_GEKIDPatientMeldungSYSTSYST_Intention SYST_Intention { get; set; }
+        public PatientMeldungSYSTSYST_Intention SYST_Intention { get; set; }
 
         
         [System.Xml.Serialization.XmlIgnoreAttribute()]
         public bool SYST_IntentionSpecified { get; set; }
 
         
-        public ADT_GEKIDPatientMeldungSYSTSYST_Stellung_OP SYST_Stellung_OP { get; set; }
+        public PatientMeldungSYSTSYST_Stellung_OP SYST_Stellung_OP { get; set; }
 
         
         [System.Xml.Serialization.XmlIgnoreAttribute()]
@@ -2861,7 +2832,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
 
         
         [System.Xml.Serialization.XmlArrayItemAttribute("SYST_Therapieart", IsNullable = false)]
-        public ADT_GEKIDPatientMeldungSYSTSYST_Therapieart[] Menge_Therapieart { get; set; }
+        public PatientMeldungSYSTSYST_Therapieart[] Menge_Therapieart { get; set; }
 
         
         public string SYST_Therapieart_Anmerkung { get; set; }
@@ -2877,7 +2848,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         public string[] Menge_Substanz { get; set; }
 
         
-        public ADT_GEKIDPatientMeldungSYSTSYST_Ende_Grund SYST_Ende_Grund { get; set; }
+        public PatientMeldungSYSTSYST_Ende_Grund SYST_Ende_Grund { get; set; }
 
         
         [System.Xml.Serialization.XmlIgnoreAttribute()]
@@ -2904,7 +2875,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         public string SYST_ID { get; set; }
     }
 
-    public enum ADT_GEKIDPatientMeldungSYSTSYST_Intention
+    public enum PatientMeldungSYSTSYST_Intention
     {
         
         K,
@@ -2919,7 +2890,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         X,
     }
 
-    public enum ADT_GEKIDPatientMeldungSYSTSYST_Stellung_OP
+    public enum PatientMeldungSYSTSYST_Stellung_OP
     {
 
         
@@ -2938,7 +2909,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         S,
     }
 
-    public enum ADT_GEKIDPatientMeldungSYSTSYST_Therapieart
+    public enum PatientMeldungSYSTSYST_Therapieart
     {
 
         
@@ -2966,7 +2937,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         SO,
     }
 
-    public enum ADT_GEKIDPatientMeldungSYSTSYST_Ende_Grund
+    public enum PatientMeldungSYSTSYST_Ende_Grund
     {
         
         A,
@@ -2990,7 +2961,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         U,
     }
 
-    public partial class ADT_GEKIDPatientMeldungVerlauf
+    public partial class PatientMeldungVerlauf
     {
 
         
@@ -3007,28 +2978,28 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         public string Untersuchungsdatum_Verlauf { get; set; }
 
         
-        public ADT_GEKIDPatientMeldungVerlaufGesamtbeurteilung_Tumorstatus Gesamtbeurteilung_Tumorstatus { get; set; }
+        public PatientMeldungVerlaufGesamtbeurteilung_Tumorstatus Gesamtbeurteilung_Tumorstatus { get; set; }
 
         
         [System.Xml.Serialization.XmlIgnoreAttribute()]
         public bool Gesamtbeurteilung_TumorstatusSpecified { get; set; }
 
         
-        public ADT_GEKIDPatientMeldungVerlaufVerlauf_Lokaler_Tumorstatus Verlauf_Lokaler_Tumorstatus { get; set; }
+        public PatientMeldungVerlaufVerlauf_Lokaler_Tumorstatus Verlauf_Lokaler_Tumorstatus { get; set; }
 
         
         [System.Xml.Serialization.XmlIgnoreAttribute()]
         public bool Verlauf_Lokaler_TumorstatusSpecified { get; set; }
 
         
-        public ADT_GEKIDPatientMeldungVerlaufVerlauf_Tumorstatus_Lymphknoten Verlauf_Tumorstatus_Lymphknoten { get; set; }
+        public PatientMeldungVerlaufVerlauf_Tumorstatus_Lymphknoten Verlauf_Tumorstatus_Lymphknoten { get; set; }
 
         
         [System.Xml.Serialization.XmlIgnoreAttribute()]
         public bool Verlauf_Tumorstatus_LymphknotenSpecified { get; set; }
 
         
-        public ADT_GEKIDPatientMeldungVerlaufVerlauf_Tumorstatus_Fernmetastasen Verlauf_Tumorstatus_Fernmetastasen { get; set; }
+        public PatientMeldungVerlaufVerlauf_Tumorstatus_Fernmetastasen Verlauf_Tumorstatus_Fernmetastasen { get; set; }
 
         
         [System.Xml.Serialization.XmlIgnoreAttribute()]
@@ -3056,7 +3027,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         public Modul_Allgemein_Typ Modul_Allgemein { get; set; }
 
 
-        public ADT_GEKIDPatientMeldungVerlaufTod Tod { get; set; }
+        public PatientMeldungVerlaufTod Tod { get; set; }
 
 
         public string Anmerkung { get; set; }
@@ -3067,7 +3038,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
     }
 
     
-    public enum ADT_GEKIDPatientMeldungVerlaufGesamtbeurteilung_Tumorstatus
+    public enum PatientMeldungVerlaufGesamtbeurteilung_Tumorstatus
     {
         
         V,
@@ -3097,7 +3068,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         X,
     }
 
-    public enum ADT_GEKIDPatientMeldungVerlaufVerlauf_Lokaler_Tumorstatus
+    public enum PatientMeldungVerlaufVerlauf_Lokaler_Tumorstatus
     {
 
         
@@ -3126,7 +3097,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
     }
 
     
-    public enum ADT_GEKIDPatientMeldungVerlaufVerlauf_Tumorstatus_Lymphknoten
+    public enum PatientMeldungVerlaufVerlauf_Tumorstatus_Lymphknoten
     {
 
         
@@ -3155,7 +3126,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
     }
 
     
-    public enum ADT_GEKIDPatientMeldungVerlaufVerlauf_Tumorstatus_Fernmetastasen
+    public enum PatientMeldungVerlaufVerlauf_Tumorstatus_Fernmetastasen
     {
 
         
@@ -3187,7 +3158,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
     }
 
     
-    public partial class ADT_GEKIDPatientMeldungVerlaufTod
+    public partial class PatientMeldungVerlaufTod
     {
         
         public string Sterbedatum { get; set; }
@@ -3200,11 +3171,11 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         public bool Tod_tumorbedingtSpecified { get; set; }
 
 
-        public ADT_GEKIDPatientMeldungVerlaufTodMenge_Todesursache Menge_Todesursache { get; set; }
+        public PatientMeldungVerlaufTodMenge_Todesursache Menge_Todesursache { get; set; }
     }
 
     
-    public partial class ADT_GEKIDPatientMeldungVerlaufTodMenge_Todesursache
+    public partial class PatientMeldungVerlaufTodMenge_Todesursache
     {
         
         [System.Xml.Serialization.XmlElementAttribute("Todesursache_ICD")]
@@ -3218,12 +3189,12 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
     }
 
     
-    public partial class ADT_GEKIDPatientMeldungTumorkonferenz
+    public partial class PatientMeldungTumorkonferenz
     {
      
         public string Tumorkonferenz_Datum { get; set; }
 
-        public ADT_GEKIDPatientMeldungTumorkonferenzTumorkonferenz_Typ Tumorkonferenz_Typ { get; set; }
+        public PatientMeldungTumorkonferenzTumorkonferenz_Typ Tumorkonferenz_Typ { get; set; }
 
 
         [System.Xml.Serialization.XmlIgnoreAttribute()]
@@ -3238,7 +3209,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
     }
 
     
-    public enum ADT_GEKIDPatientMeldungTumorkonferenzTumorkonferenz_Typ
+    public enum PatientMeldungTumorkonferenzTumorkonferenz_Typ
     {
        
         praeth,
@@ -3251,7 +3222,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
     }
 
     
-    public partial class ADT_GEKIDPatientMeldungZusatzitem
+    public partial class PatientMeldungZusatzitem
     {
 
         
@@ -3267,7 +3238,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         public string Bemerkung { get; set; }
     }
 
-    public enum ADT_GEKIDSchema_Version
+    public enum Schema_Version
     {
         
         [System.Xml.Serialization.XmlEnumAttribute("2.0.0")]
