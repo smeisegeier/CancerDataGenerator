@@ -1,0 +1,274 @@
+[
+  {
+    "Id": 1,
+    "uicc_id": "0",
+    "uicc_name": "0",
+    "uicc_group": "0",
+    "uicc_description_english": "Stage 0",
+    "uicc_description_german": "Stadium 0"
+  },
+  {
+    "Id": 2,
+    "uicc_id": "0a",
+    "uicc_name": "0a",
+    "uicc_group": "0",
+    "uicc_description_english": "Stage 0",
+    "uicc_description_german": "Stadium 0"
+  },
+  {
+    "Id": 3,
+    "uicc_id": "0is",
+    "uicc_name": "0is",
+    "uicc_group": "0",
+    "uicc_description_english": "Stage 0",
+    "uicc_description_german": "Stadium 0"
+  },
+  {
+    "Id": 4,
+    "uicc_id": "I",
+    "uicc_name": "I",
+    "uicc_group": "I",
+    "uicc_description_english": "Stage I",
+    "uicc_description_german": "Stadium I"
+  },
+  {
+    "Id": 5,
+    "uicc_id": "IA",
+    "uicc_name": "IA",
+    "uicc_group": "I",
+    "uicc_description_english": "Stage I",
+    "uicc_description_german": "Stadium I"
+  },
+  {
+    "Id": 6,
+    "uicc_id": "IA1",
+    "uicc_name": "IA1",
+    "uicc_group": "I",
+    "uicc_description_english": "Stage I",
+    "uicc_description_german": "Stadium I"
+  },
+  {
+    "Id": 7,
+    "uicc_id": "IA2",
+    "uicc_name": "IA2",
+    "uicc_group": "I",
+    "uicc_description_english": "Stage I",
+    "uicc_description_german": "Stadium I"
+  },
+  {
+    "Id": 8,
+    "uicc_id": "IA3",
+    "uicc_name": "IA3",
+    "uicc_group": "I",
+    "uicc_description_english": "Stage I",
+    "uicc_description_german": "Stadium I"
+  },
+  {
+    "Id": 9,
+    "uicc_id": "IB",
+    "uicc_name": "IB",
+    "uicc_group": "I",
+    "uicc_description_english": "Stage I",
+    "uicc_description_german": "Stadium I"
+  },
+  {
+    "Id": 10,
+    "uicc_id": "IB1",
+    "uicc_name": "IB1",
+    "uicc_group": "I",
+    "uicc_description_english": "Stage I",
+    "uicc_description_german": "Stadium I"
+  },
+  {
+    "Id": 11,
+    "uicc_id": "IB2",
+    "uicc_name": "IB2",
+    "uicc_group": "I",
+    "uicc_description_english": "Stage I",
+    "uicc_description_german": "Stadium I"
+  },
+  {
+    "Id": 12,
+    "uicc_id": "IB3",
+    "uicc_name": "IB3",
+    "uicc_group": "I",
+    "uicc_description_english": "Stage I",
+    "uicc_description_german": "Stadium I"
+  },
+  {
+    "Id": 13,
+    "uicc_id": "IC",
+    "uicc_name": "IC",
+    "uicc_group": "I",
+    "uicc_description_english": "Stage I",
+    "uicc_description_german": "Stadium I"
+  },
+  {
+    "Id": 14,
+    "uicc_id": "II",
+    "uicc_name": "II",
+    "uicc_group": "II",
+    "uicc_description_english": "Stage II",
+    "uicc_description_german": "Stadium II"
+  },
+  {
+    "Id": 15,
+    "uicc_id": "IIA",
+    "uicc_name": "IIA",
+    "uicc_group": "II",
+    "uicc_description_english": "Stage II",
+    "uicc_description_german": "Stadium II"
+  },
+  {
+    "Id": 16,
+    "uicc_id": "IIA1",
+    "uicc_name": "IIA1",
+    "uicc_group": "II",
+    "uicc_description_english": "Stage II",
+    "uicc_description_german": "Stadium II"
+  },
+  {
+    "Id": 17,
+    "uicc_id": "IIA2",
+    "uicc_name": "IIA2",
+    "uicc_group": "II",
+    "uicc_description_english": "Stage II",
+    "uicc_description_german": "Stadium II"
+  },
+  {
+    "Id": 18,
+    "uicc_id": "IIB",
+    "uicc_name": "IIB",
+    "uicc_group": "II",
+    "uicc_description_english": "Stage II",
+    "uicc_description_german": "Stadium II"
+  },
+  {
+    "Id": 19,
+    "uicc_id": "IIC",
+    "uicc_name": "IIC",
+    "uicc_group": "II",
+    "uicc_description_english": "Stage II",
+    "uicc_description_german": "Stadium II"
+  },
+  {
+    "Id": 20,
+    "uicc_id": "III",
+    "uicc_name": "III",
+    "uicc_group": "III",
+    "uicc_description_english": "Stage III",
+    "uicc_description_german": "Stadium III"
+  },
+  {
+    "Id": 21,
+    "uicc_id": "IIIA",
+    "uicc_name": "IIIA",
+    "uicc_group": "III",
+    "uicc_description_english": "Stage III",
+    "uicc_description_german": "Stadium III"
+  },
+  {
+    "Id": 22,
+    "uicc_id": "IIIA1",
+    "uicc_name": "IIIA1",
+    "uicc_group": "III",
+    "uicc_description_english": "Stage III",
+    "uicc_description_german": "Stadium III"
+  },
+  {
+    "Id": 23,
+    "uicc_id": "IIIA2",
+    "uicc_name": "IIIA2",
+    "uicc_group": "III",
+    "uicc_description_english": "Stage III",
+    "uicc_description_german": "Stadium III"
+  },
+  {
+    "Id": 24,
+    "uicc_id": "IIIB",
+    "uicc_name": "IIIB",
+    "uicc_group": "III",
+    "uicc_description_english": "Stage III",
+    "uicc_description_german": "Stadium III"
+  },
+  {
+    "Id": 25,
+    "uicc_id": "IIIC",
+    "uicc_name": "IIIC",
+    "uicc_group": "III",
+    "uicc_description_english": "Stage III",
+    "uicc_description_german": "Stadium III"
+  },
+  {
+    "Id": 26,
+    "uicc_id": "IIIC1",
+    "uicc_name": "IIIC1",
+    "uicc_group": "III",
+    "uicc_description_english": "Stage III",
+    "uicc_description_german": "Stadium III"
+  },
+  {
+    "Id": 27,
+    "uicc_id": "IIIC2",
+    "uicc_name": "IIIC2",
+    "uicc_group": "III",
+    "uicc_description_english": "Stage III",
+    "uicc_description_german": "Stadium III"
+  },
+  {
+    "Id": 28,
+    "uicc_id": "IS",
+    "uicc_name": "IS",
+    "uicc_group": "I",
+    "uicc_description_english": "Stage I",
+    "uicc_description_german": "Stadium I"
+  },
+  {
+    "Id": 29,
+    "uicc_id": "IV",
+    "uicc_name": "IV",
+    "uicc_group": "IV",
+    "uicc_description_english": "Stage IV",
+    "uicc_description_german": "Stadium IV"
+  },
+  {
+    "Id": 30,
+    "uicc_id": "IVA",
+    "uicc_name": "IVA",
+    "uicc_group": "IV",
+    "uicc_description_english": "Stage IV",
+    "uicc_description_german": "Stadium IV"
+  },
+  {
+    "Id": 31,
+    "uicc_id": "IVB",
+    "uicc_name": "IVB",
+    "uicc_group": "IV",
+    "uicc_description_english": "Stage IV",
+    "uicc_description_german": "Stadium IV"
+  },
+  {
+    "Id": 32,
+    "uicc_id": "IVC",
+    "uicc_name": "IVC",
+    "uicc_group": "IV",
+    "uicc_description_english": "Stage IV",
+    "uicc_description_german": "Stadium IV"
+  },
+  {
+    "Id": 33,
+    "uicc_id": "OCA",
+    "uicc_name": "OCA",
+    "uicc_group": "OCA",
+    "uicc_description_english": "Occult carcinoma",
+    "uicc_description_german": "Okkultes Karzinom"
+  },
+  {
+    "Id": 34,
+    "uicc_id": "X",
+    "uicc_name": "X",
+    "uicc_group": "X",
+    "uicc_description_english": "Unknown",
+    "uicc_description_german": "Unbekannt"
+  }
+]

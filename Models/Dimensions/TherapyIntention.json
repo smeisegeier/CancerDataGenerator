@@ -1,0 +1,32 @@
+[
+  {
+    "therapy_intention_id": "K",
+    "therapy_intention_shortname": "K",
+    "therapy_intention_longname_english": "Curative",
+    "therapy_intention_longname_german": "Kurativ"
+  },
+  {
+    "therapy_intention_id": "P",
+    "therapy_intention_shortname": "P",
+    "therapy_intention_longname_english": "Palliative",
+    "therapy_intention_longname_german": "Palliativ"
+  },
+  {
+    "therapy_intention_id": "S",
+    "therapy_intention_shortname": "S",
+    "therapy_intention_longname_english": "Miscellaneous",
+    "therapy_intention_longname_german": "Sonstiges"
+  },
+  {
+    "therapy_intention_id": "X",
+    "therapy_intention_shortname": "X",
+    "therapy_intention_longname_english": "No information",
+    "therapy_intention_longname_german": "Keine Angabe"
+  },
+  {
+    "therapy_intention_id": "Y",
+    "therapy_intention_shortname": "Y",
+    "therapy_intention_longname_english": "No therapy",
+    "therapy_intention_longname_german": "Keine Therapie"
+  }
+]

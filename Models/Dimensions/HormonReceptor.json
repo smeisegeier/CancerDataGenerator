@@ -1,0 +1,30 @@
+[
+  {
+    "Id": 1,
+    "receptor_status_id": "N",
+    "receptor_status_shortname": "N",
+    "receptor_status_longname_english": "Negative",
+    "receptor_status_longname_german": "Negativ"
+  },
+  {
+    "Id": 2,
+    "receptor_status_id": "P",
+    "receptor_status_shortname": "P",
+    "receptor_status_longname_english": "Positive (Immunoreactive Score (IRS) = 1",
+    "receptor_status_longname_german": "Positiv (Immunreaktiver Score (IRS) = 1)"
+  },
+  {
+    "Id": 3,
+    "receptor_status_id": "U",
+    "receptor_status_shortname": "U",
+    "receptor_status_longname_english": "Unknown",
+    "receptor_status_longname_german": "Unbekannt"
+  },
+  {
+    "Id": 4,
+    "receptor_status_id": "Y",
+    "receptor_status_shortname": "Y",
+    "receptor_status_longname_english": "Not applicable",
+    "receptor_status_longname_german": "Nicht anwendbar"
+  }
+]

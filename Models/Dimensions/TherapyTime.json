@@ -1,0 +1,146 @@
+[
+  {
+    "Id": 1,
+    "therapy_time_relation_id": "12M",
+    "therapy_time_relation_shortname": "12M",
+    "therapy_time_relation_longname_english": "6-12 months afterwards",
+    "therapy_time_relation_longname_german": "Andere Therapie 6-12 Monate danach",
+    "therapy_time_relation_ordinal": 13
+  },
+  {
+    "Id": 2,
+    "therapy_time_relation_id": "-12M",
+    "therapy_time_relation_shortname": "-12M",
+    "therapy_time_relation_longname_english": "6-12 months beforehand",
+    "therapy_time_relation_longname_german": "Andere Therapie 6-12 Monate zuvor",
+    "therapy_time_relation_ordinal": 1
+  },
+  {
+    "Id": 3,
+    "therapy_time_relation_id": "12M+",
+    "therapy_time_relation_shortname": "12M+",
+    "therapy_time_relation_longname_english": "More than 12 months afterwards",
+    "therapy_time_relation_longname_german": "Andere Therapie mehr als 12 Monate später",
+    "therapy_time_relation_ordinal": 14
+  },
+  {
+    "Id": 4,
+    "therapy_time_relation_id": "-12M+",
+    "therapy_time_relation_shortname": "-12M+",
+    "therapy_time_relation_longname_english": "More than 12 months beforehand",
+    "therapy_time_relation_longname_german": "Andere Therapie vor mehr als 12 Monaten",
+    "therapy_time_relation_ordinal": 0
+  },
+  {
+    "Id": 5,
+    "therapy_time_relation_id": "1M",
+    "therapy_time_relation_shortname": "1M",
+    "therapy_time_relation_longname_english": "3-4 weeks afterwards",
+    "therapy_time_relation_longname_german": "Andere Therapie 3-4 Wochen danach",
+    "therapy_time_relation_ordinal": 10
+  },
+  {
+    "Id": 6,
+    "therapy_time_relation_id": "-1M",
+    "therapy_time_relation_shortname": "-1M",
+    "therapy_time_relation_longname_english": "3-4 weeks beforehand",
+    "therapy_time_relation_longname_german": "Andere Therapie 3-4 Wochen vorher",
+    "therapy_time_relation_ordinal": 4
+  },
+  {
+    "Id": 7,
+    "therapy_time_relation_id": "1W",
+    "therapy_time_relation_shortname": "1W",
+    "therapy_time_relation_longname_english": "0-7 days afterwards",
+    "therapy_time_relation_longname_german": "Andere Therapie 0-7 Tage danach",
+    "therapy_time_relation_ordinal": 8
+  },
+  {
+    "Id": 8,
+    "therapy_time_relation_id": "-1W",
+    "therapy_time_relation_shortname": "-1W",
+    "therapy_time_relation_longname_english": "0-7 days beforehand",
+    "therapy_time_relation_longname_german": "Andere Therapie 0-7 Tage vorher",
+    "therapy_time_relation_ordinal": 6
+  },
+  {
+    "Id": 9,
+    "therapy_time_relation_id": "3M",
+    "therapy_time_relation_shortname": "3M",
+    "therapy_time_relation_longname_english": "1-3 months afterwards",
+    "therapy_time_relation_longname_german": "Andere Therapie 1-3 Monate danach",
+    "therapy_time_relation_ordinal": 11
+  },
+  {
+    "Id": 10,
+    "therapy_time_relation_id": "-3M",
+    "therapy_time_relation_shortname": "-3M",
+    "therapy_time_relation_longname_english": "1-3 months beforehand",
+    "therapy_time_relation_longname_german": "Andere Therapie 1-3 Monate zuvor",
+    "therapy_time_relation_ordinal": 3
+  },
+  {
+    "Id": 11,
+    "therapy_time_relation_id": "3W",
+    "therapy_time_relation_shortname": "3W",
+    "therapy_time_relation_longname_english": "1-3 weeks afterwards",
+    "therapy_time_relation_longname_german": "Andere Therapie 1-3 Wochen danach",
+    "therapy_time_relation_ordinal": 9
+  },
+  {
+    "Id": 12,
+    "therapy_time_relation_id": "-3W",
+    "therapy_time_relation_shortname": "-3W",
+    "therapy_time_relation_longname_english": "1-3 weeks beforehand",
+    "therapy_time_relation_longname_german": "Andere Therapie 1-3 Wochen vorher",
+    "therapy_time_relation_ordinal": 5
+  },
+  {
+    "Id": 13,
+    "therapy_time_relation_id": "6M",
+    "therapy_time_relation_shortname": "6M",
+    "therapy_time_relation_longname_english": "3-6 months afterwards",
+    "therapy_time_relation_longname_german": "Andere Therapie 3-6 Monate danach",
+    "therapy_time_relation_ordinal": 12
+  },
+  {
+    "Id": 14,
+    "therapy_time_relation_id": "-6M",
+    "therapy_time_relation_shortname": "-6M",
+    "therapy_time_relation_longname_english": "3-6 months beforehand",
+    "therapy_time_relation_longname_german": "Andere Therapie 3-6 Monate zuvor",
+    "therapy_time_relation_ordinal": 2
+  },
+  {
+    "Id": 15,
+    "therapy_time_relation_id": "I",
+    "therapy_time_relation_shortname": "I",
+    "therapy_time_relation_longname_english": "Insufficient data",
+    "therapy_time_relation_longname_german": "Fehlende Daten zur Berechnung der Therapierelation",
+    "therapy_time_relation_ordinal": 16
+  },
+  {
+    "Id": 16,
+    "therapy_time_relation_id": "N",
+    "therapy_time_relation_shortname": "N",
+    "therapy_time_relation_longname_english": "No second therapy",
+    "therapy_time_relation_longname_german": "Keine weitere Therapie",
+    "therapy_time_relation_ordinal": 15
+  },
+  {
+    "Id": 17,
+    "therapy_time_relation_id": "O",
+    "therapy_time_relation_shortname": "O",
+    "therapy_time_relation_longname_english": "Overlapping",
+    "therapy_time_relation_longname_german": "Therapien überlappend",
+    "therapy_time_relation_ordinal": 7
+  },
+  {
+    "Id": 18,
+    "therapy_time_relation_id": "Y",
+    "therapy_time_relation_shortname": "Y",
+    "therapy_time_relation_longname_english": "No therapy",
+    "therapy_time_relation_longname_german": "Keine Therapie",
+    "therapy_time_relation_ordinal": 17
+  }
+]

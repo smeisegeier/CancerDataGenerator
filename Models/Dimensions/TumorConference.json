@@ -1,0 +1,37 @@
+[
+  {
+    "Id": 1,
+    "tumor_conference_id": "N",
+    "tumor_conference_shortname": "N",
+    "tumor_conference_longname_english": "Tumor conference",
+    "tumor_conference_longname_german": "Tumorkonferenz n.n.b."
+  },
+  {
+    "Id": 2,
+    "tumor_conference_id": "postop",
+    "tumor_conference_shortname": "postop",
+    "tumor_conference_longname_english": "Postoperative (planning of postoperative therapy, for example on the question of adjuvant therapy)",
+    "tumor_conference_longname_german": "Postoperativ (Planung der postoperativen Therapie, zum Beispiel zur Frage adjuvante Therapie)"
+  },
+  {
+    "Id": 3,
+    "tumor_conference_id": "postth",
+    "tumor_conference_shortname": "postth",
+    "tumor_conference_longname_english": "Posttherapeutic (some tumors are not operated on)",
+    "tumor_conference_longname_german": "Posttherapeutisch (manche Tumoren werden nicht operiert)"
+  },
+  {
+    "Id": 4,
+    "tumor_conference_id": "preath",
+    "tumor_conference_shortname": "preath",
+    "tumor_conference_longname_english": "Pretreative (definition of the overall therapy strategy, for example neoadjuvant or direct surgery)",
+    "tumor_conference_longname_german": "Prätherapeutisch (Festlegung der Gesamttherapiestrategie, zum Beispiel neoadjuvant oder direkte Operation)"
+  },
+  {
+    "Id": 5,
+    "tumor_conference_id": "Y",
+    "tumor_conference_shortname": "Y",
+    "tumor_conference_longname_english": "No tumor conference",
+    "tumor_conference_longname_german": "Keine Tumorkonferenz"
+  }
+]

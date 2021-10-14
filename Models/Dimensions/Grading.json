@@ -1,0 +1,86 @@
+[
+  {
+    "Id": 1,
+    "grading_id": "0",
+    "grading_shortname": "0",
+    "grading_longname_english": "Malignant melanoma of the conjunctiva",
+    "grading_longname_german": "Malignes Melanom der Konjunktiva"
+  },
+  {
+    "Id": 2,
+    "grading_id": "1",
+    "grading_shortname": "1",
+    "grading_longname_english": "Well differentiated",
+    "grading_longname_german": "Gut differenziert"
+  },
+  {
+    "Id": 3,
+    "grading_id": "2",
+    "grading_shortname": "2",
+    "grading_longname_english": "Moderately differentiated",
+    "grading_longname_german": "Mäßig differenziert"
+  },
+  {
+    "Id": 4,
+    "grading_id": "3",
+    "grading_shortname": "3",
+    "grading_longname_english": "Badly differentiated",
+    "grading_longname_german": "Schlecht differenziert"
+  },
+  {
+    "Id": 5,
+    "grading_id": "4",
+    "grading_shortname": "4",
+    "grading_longname_english": "Undifferentiated",
+    "grading_longname_german": "Undifferenzierbar"
+  },
+  {
+    "Id": 6,
+    "grading_id": "B",
+    "grading_shortname": "B",
+    "grading_longname_english": "Borderline",
+    "grading_longname_german": "Borderline"
+  },
+  {
+    "Id": 7,
+    "grading_id": "H",
+    "grading_shortname": "H",
+    "grading_longname_english": "High grade (G3 or G4)",
+    "grading_longname_german": "High grade (G3 oder G4)"
+  },
+  {
+    "Id": 8,
+    "grading_id": "L",
+    "grading_shortname": "L",
+    "grading_longname_english": "Low grade (G1 or G2)",
+    "grading_longname_german": "Low grade (G1 oder G2)"
+  },
+  {
+    "Id": 9,
+    "grading_id": "M",
+    "grading_shortname": "M",
+    "grading_longname_english": "Intermediate (G2 or G3)",
+    "grading_longname_german": "Intermediate (G2 oder G3)"
+  },
+  {
+    "Id": 10,
+    "grading_id": "T",
+    "grading_shortname": "T",
+    "grading_longname_english": "Does not apply",
+    "grading_longname_german": "Trifft nicht zu"
+  },
+  {
+    "Id": 11,
+    "grading_id": "U",
+    "grading_shortname": "U",
+    "grading_longname_english": "Unknown",
+    "grading_longname_german": "Unbekannt"
+  },
+  {
+    "Id": 12,
+    "grading_id": "X",
+    "grading_shortname": "X",
+    "grading_longname_english": "Not definable",
+    "grading_longname_german": "Nicht bestimmbar"
+  }
+]

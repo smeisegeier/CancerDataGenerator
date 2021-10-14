@@ -1,0 +1,44 @@
+[
+  {
+    "Id": 1,
+    "side_id": "B",
+    "side_shortname": "B",
+    "side_longname_english": "Both sides",
+    "side_longname_german": "Beidseitig"
+  },
+  {
+    "Id": 2,
+    "side_id": "L",
+    "side_shortname": "L",
+    "side_longname_english": "Left",
+    "side_longname_german": "Links"
+  },
+  {
+    "Id": 3,
+    "side_id": "M",
+    "side_shortname": "M",
+    "side_longname_english": "Center line/center",
+    "side_longname_german": "Mittellinie/mittig"
+  },
+  {
+    "Id": 4,
+    "side_id": "R",
+    "side_shortname": "R",
+    "side_longname_english": "Right",
+    "side_longname_german": "Rechts"
+  },
+  {
+    "Id": 5,
+    "side_id": "T",
+    "side_shortname": "T",
+    "side_longname_english": "Does not apply (Side not meaningful, including systemic diseases)",
+    "side_longname_german": "Trifft nicht zu (Seitenangabe nicht sinnvoll, einschließlich Systemerkrankungen)"
+  },
+  {
+    "Id": 6,
+    "side_id": "U",
+    "side_shortname": "U",
+    "side_longname_english": "Unknown",
+    "side_longname_german": "Unbekannt"
+  }
+]

@@ -1,0 +1,1522 @@
+[
+  {
+    "Id": 1,
+    "radiotherapy_id": "1.",
+    "radiotherapy_target_area_rough": "1",
+    "radiotherapy_target_area_fine": "1.-.",
+    "radiotherapy_target_area_finest": "1.-.-.",
+    "radiotherapy_lymph_nodes": null,
+    "radiotherapy_description_english": "Central nervesystem",
+    "radiotherapy_description_german": "Zentrales Nervensystem (ZNS)"
+  },
+  {
+    "Id": 2,
+    "radiotherapy_id": "1.1.",
+    "radiotherapy_target_area_rough": "1",
+    "radiotherapy_target_area_fine": "1.1.",
+    "radiotherapy_target_area_finest": "1.1.-.",
+    "radiotherapy_lymph_nodes": null,
+    "radiotherapy_description_english": "Whole Brain",
+    "radiotherapy_description_german": "Ganzhirn"
+  },
+  {
+    "Id": 3,
+    "radiotherapy_id": "1.2.",
+    "radiotherapy_target_area_rough": "1",
+    "radiotherapy_target_area_fine": "1.2.",
+    "radiotherapy_target_area_finest": "1.2.-.",
+    "radiotherapy_lymph_nodes": null,
+    "radiotherapy_description_english": "Part Brain",
+    "radiotherapy_description_german": "Teilhirn"
+  },
+  {
+    "Id": 4,
+    "radiotherapy_id": "1.3.",
+    "radiotherapy_target_area_rough": "1",
+    "radiotherapy_target_area_fine": "1.3.",
+    "radiotherapy_target_area_finest": "1.3.-.",
+    "radiotherapy_lymph_nodes": null,
+    "radiotherapy_description_english": "Neuro axis",
+    "radiotherapy_description_german": "Neuroachse"
+  },
+  {
+    "Id": 5,
+    "radiotherapy_id": "2.",
+    "radiotherapy_target_area_rough": "2",
+    "radiotherapy_target_area_fine": "2.-.",
+    "radiotherapy_target_area_finest": "2.-.-.",
+    "radiotherapy_lymph_nodes": null,
+    "radiotherapy_description_english": "Head - Neck",
+    "radiotherapy_description_german": "Kopf - Hals"
+  },
+  {
+    "Id": 6,
+    "radiotherapy_id": "2.-",
+    "radiotherapy_target_area_rough": "2",
+    "radiotherapy_target_area_fine": "2.-.",
+    "radiotherapy_target_area_finest": "2.-.-.",
+    "radiotherapy_lymph_nodes": "0",
+    "radiotherapy_description_english": "Head - Neck without lymph nodes",
+    "radiotherapy_description_german": "Kopf - Hals ohne Lymphknoten"
+  },
+  {
+    "Id": 7,
+    "radiotherapy_id": "2.+",
+    "radiotherapy_target_area_rough": "2",
+    "radiotherapy_target_area_fine": "2.-.",
+    "radiotherapy_target_area_finest": "2.-.-.",
+    "radiotherapy_lymph_nodes": "1",
+    "radiotherapy_description_english": "Head - Neck with lymph nodes",
+    "radiotherapy_description_german": "Kopf - Hals mit Lymphknoten"
+  },
+  {
+    "Id": 8,
+    "radiotherapy_id": "2.1.",
+    "radiotherapy_target_area_rough": "2",
+    "radiotherapy_target_area_fine": "2.1.",
+    "radiotherapy_target_area_finest": "2.1.-.",
+    "radiotherapy_lymph_nodes": null,
+    "radiotherapy_description_english": "Orbita",
+    "radiotherapy_description_german": "Orbita"
+  },
+  {
+    "Id": 9,
+    "radiotherapy_id": "2.1.-",
+    "radiotherapy_target_area_rough": "2",
+    "radiotherapy_target_area_fine": "2.1.",
+    "radiotherapy_target_area_finest": "2.1.-.",
+    "radiotherapy_lymph_nodes": "0",
+    "radiotherapy_description_english": "Orbita without lymph nodes",
+    "radiotherapy_description_german": "Orbita ohne Lymphknoten"
+  },
+  {
+    "Id": 10,
+    "radiotherapy_id": "2.1.+",
+    "radiotherapy_target_area_rough": "2",
+    "radiotherapy_target_area_fine": "2.1.",
+    "radiotherapy_target_area_finest": "2.1.-.",
+    "radiotherapy_lymph_nodes": "1",
+    "radiotherapy_description_english": "Orbita with lymph nodes",
+    "radiotherapy_description_german": "Orbita mit Lymphknoten"
+  },
+  {
+    "Id": 11,
+    "radiotherapy_id": "2.2.",
+    "radiotherapy_target_area_rough": "2",
+    "radiotherapy_target_area_fine": "2.2.",
+    "radiotherapy_target_area_finest": "2.2.-.",
+    "radiotherapy_lymph_nodes": null,
+    "radiotherapy_description_english": "Nose / sinus",
+    "radiotherapy_description_german": "Nase / Nasennebenhöhle"
+  },
+  {
+    "Id": 12,
+    "radiotherapy_id": "2.2.-",
+    "radiotherapy_target_area_rough": "2",
+    "radiotherapy_target_area_fine": "2.2.",
+    "radiotherapy_target_area_finest": "2.2.-.",
+    "radiotherapy_lymph_nodes": "0",
+    "radiotherapy_description_english": "Nose / sinus without lymph nodes",
+    "radiotherapy_description_german": "Nase / Nasennebenhöhle ohne Lymphknoten"
+  },
+  {
+    "Id": 13,
+    "radiotherapy_id": "2.2.+",
+    "radiotherapy_target_area_rough": "2",
+    "radiotherapy_target_area_fine": "2.2.",
+    "radiotherapy_target_area_finest": "2.2.-.",
+    "radiotherapy_lymph_nodes": "1",
+    "radiotherapy_description_english": "Nose / sinus with lymph nodes",
+    "radiotherapy_description_german": "Nase / Nasennebenhöhle mit Lymphknoten"
+  },
+  {
+    "Id": 14,
+    "radiotherapy_id": "2.3.",
+    "radiotherapy_target_area_rough": "2",
+    "radiotherapy_target_area_fine": "2.3.",
+    "radiotherapy_target_area_finest": "2.3.-.",
+    "radiotherapy_lymph_nodes": null,
+    "radiotherapy_description_english": "Oral cavity",
+    "radiotherapy_description_german": "Mundhöhle"
+  },
+  {
+    "Id": 15,
+    "radiotherapy_id": "2.3.-",
+    "radiotherapy_target_area_rough": "2",
+    "radiotherapy_target_area_fine": "2.3.",
+    "radiotherapy_target_area_finest": "2.3.-.",
+    "radiotherapy_lymph_nodes": "0",
+    "radiotherapy_description_english": "Oral cavity without lymph nodes",
+    "radiotherapy_description_german": "Mundhöhle ohne Lymphknoten"
+  },
+  {
+    "Id": 16,
+    "radiotherapy_id": "2.3.+",
+    "radiotherapy_target_area_rough": "2",
+    "radiotherapy_target_area_fine": "2.3.",
+    "radiotherapy_target_area_finest": "2.3.-.",
+    "radiotherapy_lymph_nodes": "1",
+    "radiotherapy_description_english": "Oral cavity with lymph nodes",
+    "radiotherapy_description_german": "Mundhöhle mit Lymphknoten"
+  },
+  {
+    "Id": 17,
+    "radiotherapy_id": "2.4.",
+    "radiotherapy_target_area_rough": "2",
+    "radiotherapy_target_area_fine": "2.4.",
+    "radiotherapy_target_area_finest": "2.4.-.",
+    "radiotherapy_lymph_nodes": null,
+    "radiotherapy_description_english": "Ear",
+    "radiotherapy_description_german": "Ohr"
+  },
+  {
+    "Id": 18,
+    "radiotherapy_id": "2.4.-",
+    "radiotherapy_target_area_rough": "2",
+    "radiotherapy_target_area_fine": "2.4.",
+    "radiotherapy_target_area_finest": "2.4.-.",
+    "radiotherapy_lymph_nodes": "0",
+    "radiotherapy_description_english": "Ear without lymph nodes",
+    "radiotherapy_description_german": "Ohr ohne Lymphknoten"
+  },
+  {
+    "Id": 19,
+    "radiotherapy_id": "2.4.+",
+    "radiotherapy_target_area_rough": "2",
+    "radiotherapy_target_area_fine": "2.4.",
+    "radiotherapy_target_area_finest": "2.4.-.",
+    "radiotherapy_lymph_nodes": "1",
+    "radiotherapy_description_english": "Ear with lymph nodes",
+    "radiotherapy_description_german": "Ohr mit Lymphknoten"
+  },
+  {
+    "Id": 20,
+    "radiotherapy_id": "2.5.",
+    "radiotherapy_target_area_rough": "2",
+    "radiotherapy_target_area_fine": "2.5.",
+    "radiotherapy_target_area_finest": "2.5.-.",
+    "radiotherapy_lymph_nodes": null,
+    "radiotherapy_description_english": "Salivary gland",
+    "radiotherapy_description_german": "Speicheldrüse"
+  },
+  {
+    "Id": 21,
+    "radiotherapy_id": "2.5.-",
+    "radiotherapy_target_area_rough": "2",
+    "radiotherapy_target_area_fine": "2.5.",
+    "radiotherapy_target_area_finest": "2.5.-.",
+    "radiotherapy_lymph_nodes": "0",
+    "radiotherapy_description_english": "Salivary gland without lymph nodes",
+    "radiotherapy_description_german": "Speicheldrüse ohne Lymphknoten"
+  },
+  {
+    "Id": 22,
+    "radiotherapy_id": "2.5.+",
+    "radiotherapy_target_area_rough": "2",
+    "radiotherapy_target_area_fine": "2.5.",
+    "radiotherapy_target_area_finest": "2.5.-.",
+    "radiotherapy_lymph_nodes": "1",
+    "radiotherapy_description_english": "Salivary gland with lymph nodes",
+    "radiotherapy_description_german": "Speicheldrüse mit Lymphknoten"
+  },
+  {
+    "Id": 23,
+    "radiotherapy_id": "2.6.",
+    "radiotherapy_target_area_rough": "2",
+    "radiotherapy_target_area_fine": "2.6.",
+    "radiotherapy_target_area_finest": "2.6.-.",
+    "radiotherapy_lymph_nodes": null,
+    "radiotherapy_description_english": "Pharynx",
+    "radiotherapy_description_german": "Pharynx"
+  },
+  {
+    "Id": 24,
+    "radiotherapy_id": "2.6.-",
+    "radiotherapy_target_area_rough": "2",
+    "radiotherapy_target_area_fine": "2.6.",
+    "radiotherapy_target_area_finest": "2.6.-.",
+    "radiotherapy_lymph_nodes": "0",
+    "radiotherapy_description_english": "Pharynx without lymph nodes",
+    "radiotherapy_description_german": "Pharynx ohne Lymphknoten"
+  },
+  {
+    "Id": 25,
+    "radiotherapy_id": "2.6.+",
+    "radiotherapy_target_area_rough": "2",
+    "radiotherapy_target_area_fine": "2.6.",
+    "radiotherapy_target_area_finest": "2.6.-.",
+    "radiotherapy_lymph_nodes": "1",
+    "radiotherapy_description_english": "Pharynx with lymph nodes",
+    "radiotherapy_description_german": "Pharynx mit Lymphknoten"
+  },
+  {
+    "Id": 26,
+    "radiotherapy_id": "2.7.",
+    "radiotherapy_target_area_rough": "2",
+    "radiotherapy_target_area_fine": "2.7.",
+    "radiotherapy_target_area_finest": "2.7.-.",
+    "radiotherapy_lymph_nodes": null,
+    "radiotherapy_description_english": "Larynx",
+    "radiotherapy_description_german": "Larynx"
+  },
+  {
+    "Id": 27,
+    "radiotherapy_id": "2.7.-",
+    "radiotherapy_target_area_rough": "2",
+    "radiotherapy_target_area_fine": "2.7.",
+    "radiotherapy_target_area_finest": "2.7.-.",
+    "radiotherapy_lymph_nodes": "0",
+    "radiotherapy_description_english": "Larynx without lymph nodes",
+    "radiotherapy_description_german": "Larynx ohne Lymphknoten"
+  },
+  {
+    "Id": 28,
+    "radiotherapy_id": "2.7.+",
+    "radiotherapy_target_area_rough": "2",
+    "radiotherapy_target_area_fine": "2.7.",
+    "radiotherapy_target_area_finest": "2.7.-.",
+    "radiotherapy_lymph_nodes": "1",
+    "radiotherapy_description_english": "Larynx with lymph nodes",
+    "radiotherapy_description_german": "Larynx mit Lymphknoten"
+  },
+  {
+    "Id": 29,
+    "radiotherapy_id": "2.8.",
+    "radiotherapy_target_area_rough": "2",
+    "radiotherapy_target_area_fine": "2.8.",
+    "radiotherapy_target_area_finest": "2.8.-.",
+    "radiotherapy_lymph_nodes": null,
+    "radiotherapy_description_english": "Thyroid",
+    "radiotherapy_description_german": "Schilddrüse"
+  },
+  {
+    "Id": 30,
+    "radiotherapy_id": "2.8.-",
+    "radiotherapy_target_area_rough": "2",
+    "radiotherapy_target_area_fine": "2.8.",
+    "radiotherapy_target_area_finest": "2.8.-.",
+    "radiotherapy_lymph_nodes": "0",
+    "radiotherapy_description_english": "Thyroid without lymph nodes",
+    "radiotherapy_description_german": "Schilddrüse ohne Lymphknoten"
+  },
+  {
+    "Id": 31,
+    "radiotherapy_id": "2.8.+",
+    "radiotherapy_target_area_rough": "2",
+    "radiotherapy_target_area_fine": "2.8.",
+    "radiotherapy_target_area_finest": "2.8.-.",
+    "radiotherapy_lymph_nodes": "1",
+    "radiotherapy_description_english": "Thyroid with lymph nodes",
+    "radiotherapy_description_german": "Schilddrüse mit Lymphknoten"
+  },
+  {
+    "Id": 32,
+    "radiotherapy_id": "2.9.",
+    "radiotherapy_target_area_rough": "2",
+    "radiotherapy_target_area_fine": "2.9.",
+    "radiotherapy_target_area_finest": "2.9.-.",
+    "radiotherapy_lymph_nodes": null,
+    "radiotherapy_description_english": "Cervical lymph nodes (without primary tumor)",
+    "radiotherapy_description_german": "Halslymphknoten (ohne Primärtumor)"
+  },
+  {
+    "Id": 33,
+    "radiotherapy_id": "3.",
+    "radiotherapy_target_area_rough": "3",
+    "radiotherapy_target_area_fine": "3.-.",
+    "radiotherapy_target_area_finest": "3.-.-.",
+    "radiotherapy_lymph_nodes": null,
+    "radiotherapy_description_english": "Thorax",
+    "radiotherapy_description_german": "Thorax"
+  },
+  {
+    "Id": 34,
+    "radiotherapy_id": "3.-",
+    "radiotherapy_target_area_rough": "3",
+    "radiotherapy_target_area_fine": "3.-.",
+    "radiotherapy_target_area_finest": "3.-.-.",
+    "radiotherapy_lymph_nodes": "0",
+    "radiotherapy_description_english": "Thorax without lymph nodes",
+    "radiotherapy_description_german": "Thorax ohne Lymphknoten"
+  },
+  {
+    "Id": 35,
+    "radiotherapy_id": "3.+",
+    "radiotherapy_target_area_rough": "3",
+    "radiotherapy_target_area_fine": "3.-.",
+    "radiotherapy_target_area_finest": "3.-.-.",
+    "radiotherapy_lymph_nodes": "1",
+    "radiotherapy_description_english": "Thorax with lymph nodes",
+    "radiotherapy_description_german": "Thorax mit Lymphknoten"
+  },
+  {
+    "Id": 36,
+    "radiotherapy_id": "3.1.",
+    "radiotherapy_target_area_rough": "3",
+    "radiotherapy_target_area_fine": "3.1.",
+    "radiotherapy_target_area_finest": "3.1.-.",
+    "radiotherapy_lymph_nodes": null,
+    "radiotherapy_description_english": "Mamma as a whole",
+    "radiotherapy_description_german": "Mamma als Ganzbrust"
+  },
+  {
+    "Id": 37,
+    "radiotherapy_id": "3.1.-",
+    "radiotherapy_target_area_rough": "3",
+    "radiotherapy_target_area_fine": "3.1.",
+    "radiotherapy_target_area_finest": "3.1.-.",
+    "radiotherapy_lymph_nodes": "0",
+    "radiotherapy_description_english": "Mamma as a whole without lymph nodes",
+    "radiotherapy_description_german": "Mamma als Ganzbrust ohne Lymphknoten"
+  },
+  {
+    "Id": 38,
+    "radiotherapy_id": "3.1.+",
+    "radiotherapy_target_area_rough": "3",
+    "radiotherapy_target_area_fine": "3.1.",
+    "radiotherapy_target_area_finest": "3.1.-.",
+    "radiotherapy_lymph_nodes": "1",
+    "radiotherapy_description_english": "Mamma as a whole with lymph nodes",
+    "radiotherapy_description_german": "Mamma als Ganzbrust mit Lymphknoten"
+  },
+  {
+    "Id": 39,
+    "radiotherapy_id": "3.2.",
+    "radiotherapy_target_area_rough": "3",
+    "radiotherapy_target_area_fine": "3.2.",
+    "radiotherapy_target_area_finest": "3.2.-.",
+    "radiotherapy_lymph_nodes": null,
+    "radiotherapy_description_english": "Mamma as a part",
+    "radiotherapy_description_german": "Mamma als Teilbrust"
+  },
+  {
+    "Id": 40,
+    "radiotherapy_id": "3.2.-",
+    "radiotherapy_target_area_rough": "3",
+    "radiotherapy_target_area_fine": "3.2.",
+    "radiotherapy_target_area_finest": "3.2.-.",
+    "radiotherapy_lymph_nodes": "0",
+    "radiotherapy_description_english": "Mamma as a part without lymph nodes",
+    "radiotherapy_description_german": "Mamma als Teilbrust ohne Lymphknoten"
+  },
+  {
+    "Id": 41,
+    "radiotherapy_id": "3.2.+",
+    "radiotherapy_target_area_rough": "3",
+    "radiotherapy_target_area_fine": "3.2.",
+    "radiotherapy_target_area_finest": "3.2.-.",
+    "radiotherapy_lymph_nodes": "1",
+    "radiotherapy_description_english": "Mamma as a part with lymph nodes",
+    "radiotherapy_description_german": "Mamma als Teilbrust mit Lymphknoten"
+  },
+  {
+    "Id": 42,
+    "radiotherapy_id": "3.3.",
+    "radiotherapy_target_area_rough": "3",
+    "radiotherapy_target_area_fine": "3.3.",
+    "radiotherapy_target_area_finest": "3.3.-.",
+    "radiotherapy_lymph_nodes": null,
+    "radiotherapy_description_english": "Chest wall (for example relapse after ablation sarcoma)",
+    "radiotherapy_description_german": "Brustwand (zum Beispiel Rezidiven nach Ablatio Sarkome)"
+  },
+  {
+    "Id": 43,
+    "radiotherapy_id": "3.3.-",
+    "radiotherapy_target_area_rough": "3",
+    "radiotherapy_target_area_fine": "3.3.",
+    "radiotherapy_target_area_finest": "3.3.-.",
+    "radiotherapy_lymph_nodes": "0",
+    "radiotherapy_description_english": "Chest wall (for example relapse after ablation sarcoma) without lymph nodes",
+    "radiotherapy_description_german": "Brustwand (zum Beispiel Rezidiven nach Ablatio Sarkome) ohne Lymphknoten"
+  },
+  {
+    "Id": 44,
+    "radiotherapy_id": "3.3.+",
+    "radiotherapy_target_area_rough": "3",
+    "radiotherapy_target_area_fine": "3.3.",
+    "radiotherapy_target_area_finest": "3.3.-.",
+    "radiotherapy_lymph_nodes": "1",
+    "radiotherapy_description_english": "Chest wall (for example relapse after ablation sarcoma) with lymph nodes",
+    "radiotherapy_description_german": "Brustwand (zum Beispiel Rezidiven nach Ablatio Sarkome) mit Lymphknoten"
+  },
+  {
+    "Id": 45,
+    "radiotherapy_id": "3.4.",
+    "radiotherapy_target_area_rough": "3",
+    "radiotherapy_target_area_fine": "3.4.",
+    "radiotherapy_target_area_finest": "3.4.-.",
+    "radiotherapy_lymph_nodes": null,
+    "radiotherapy_description_english": "Lung",
+    "radiotherapy_description_german": "Lunge"
+  },
+  {
+    "Id": 46,
+    "radiotherapy_id": "3.4.-",
+    "radiotherapy_target_area_rough": "3",
+    "radiotherapy_target_area_fine": "3.4.",
+    "radiotherapy_target_area_finest": "3.4.-.",
+    "radiotherapy_lymph_nodes": "0",
+    "radiotherapy_description_english": "Lung without lymph nodes",
+    "radiotherapy_description_german": "Lunge ohne Lymphknoten"
+  },
+  {
+    "Id": 47,
+    "radiotherapy_id": "3.4.+",
+    "radiotherapy_target_area_rough": "3",
+    "radiotherapy_target_area_fine": "3.4.",
+    "radiotherapy_target_area_finest": "3.4.-.",
+    "radiotherapy_lymph_nodes": "1",
+    "radiotherapy_description_english": "Lung with lymph nodes",
+    "radiotherapy_description_german": "Lunge mit Lymphknoten"
+  },
+  {
+    "Id": 48,
+    "radiotherapy_id": "3.5.",
+    "radiotherapy_target_area_rough": "3",
+    "radiotherapy_target_area_fine": "3.5.",
+    "radiotherapy_target_area_finest": "3.5.-.",
+    "radiotherapy_lymph_nodes": null,
+    "radiotherapy_description_english": "Esophagus",
+    "radiotherapy_description_german": "Ösophagus"
+  },
+  {
+    "Id": 49,
+    "radiotherapy_id": "3.5.-",
+    "radiotherapy_target_area_rough": "3",
+    "radiotherapy_target_area_fine": "3.5.",
+    "radiotherapy_target_area_finest": "3.5.-.",
+    "radiotherapy_lymph_nodes": "0",
+    "radiotherapy_description_english": "Esophagus without lymph nodes",
+    "radiotherapy_description_german": "Ösophagus ohne Lymphknoten"
+  },
+  {
+    "Id": 50,
+    "radiotherapy_id": "3.5.+",
+    "radiotherapy_target_area_rough": "3",
+    "radiotherapy_target_area_fine": "3.5.",
+    "radiotherapy_target_area_finest": "3.5.-.",
+    "radiotherapy_lymph_nodes": "1",
+    "radiotherapy_description_english": "Esophagus with lymph nodes",
+    "radiotherapy_description_german": "Ösophagus mit Lymphknoten"
+  },
+  {
+    "Id": 51,
+    "radiotherapy_id": "3.6.",
+    "radiotherapy_target_area_rough": "3",
+    "radiotherapy_target_area_fine": "3.6.",
+    "radiotherapy_target_area_finest": "3.6.-.",
+    "radiotherapy_lymph_nodes": null,
+    "radiotherapy_description_english": "Thymus",
+    "radiotherapy_description_german": "Thymus"
+  },
+  {
+    "Id": 52,
+    "radiotherapy_id": "3.6.-",
+    "radiotherapy_target_area_rough": "3",
+    "radiotherapy_target_area_fine": "3.6.",
+    "radiotherapy_target_area_finest": "3.6.-.",
+    "radiotherapy_lymph_nodes": "0",
+    "radiotherapy_description_english": "Thymus without lymph nodes",
+    "radiotherapy_description_german": "Thymus ohne Lymphknoten"
+  },
+  {
+    "Id": 53,
+    "radiotherapy_id": "3.6.+",
+    "radiotherapy_target_area_rough": "3",
+    "radiotherapy_target_area_fine": "3.6.",
+    "radiotherapy_target_area_finest": "3.6.-.",
+    "radiotherapy_lymph_nodes": "1",
+    "radiotherapy_description_english": "Thymus with lymph nodes",
+    "radiotherapy_description_german": "Thymus mit Lymphknoten"
+  },
+  {
+    "Id": 54,
+    "radiotherapy_id": "3.7.",
+    "radiotherapy_target_area_rough": "3",
+    "radiotherapy_target_area_fine": "3.7.",
+    "radiotherapy_target_area_finest": "3.7.-.",
+    "radiotherapy_lymph_nodes": null,
+    "radiotherapy_description_english": "Mediastinal lymph nodes (without primary tumor)",
+    "radiotherapy_description_german": "Mediastinale Lymphknoten (ohne Primärtumor)"
+  },
+  {
+    "Id": 55,
+    "radiotherapy_id": "4.",
+    "radiotherapy_target_area_rough": "4",
+    "radiotherapy_target_area_fine": "4.-.",
+    "radiotherapy_target_area_finest": "4.-.-.",
+    "radiotherapy_lymph_nodes": null,
+    "radiotherapy_description_english": "Abdomen (without pelvis)",
+    "radiotherapy_description_german": "Abdomen (ohne Becken)"
+  },
+  {
+    "Id": 56,
+    "radiotherapy_id": "4.-",
+    "radiotherapy_target_area_rough": "4",
+    "radiotherapy_target_area_fine": "4.-.",
+    "radiotherapy_target_area_finest": "4.-.-.",
+    "radiotherapy_lymph_nodes": "0",
+    "radiotherapy_description_english": "Abdomen (without pelvis) without lymph nodes",
+    "radiotherapy_description_german": "Abdomen (ohne Becken) ohne Lymphknoten"
+  },
+  {
+    "Id": 57,
+    "radiotherapy_id": "4.+",
+    "radiotherapy_target_area_rough": "4",
+    "radiotherapy_target_area_fine": "4.-.",
+    "radiotherapy_target_area_finest": "4.-.-.",
+    "radiotherapy_lymph_nodes": "1",
+    "radiotherapy_description_english": "Abdomen (without pelvis) with lymph nodes",
+    "radiotherapy_description_german": "Abdomen (ohne Becken) mit Lymphknoten"
+  },
+  {
+    "Id": 58,
+    "radiotherapy_id": "4.1.",
+    "radiotherapy_target_area_rough": "4",
+    "radiotherapy_target_area_fine": "4.1.",
+    "radiotherapy_target_area_finest": "4.1.-.",
+    "radiotherapy_lymph_nodes": null,
+    "radiotherapy_description_english": "Stomach",
+    "radiotherapy_description_german": "Magen"
+  },
+  {
+    "Id": 59,
+    "radiotherapy_id": "4.1.-",
+    "radiotherapy_target_area_rough": "4",
+    "radiotherapy_target_area_fine": "4.1.",
+    "radiotherapy_target_area_finest": "4.1.-.",
+    "radiotherapy_lymph_nodes": "0",
+    "radiotherapy_description_english": "Stomach without lymph nodes",
+    "radiotherapy_description_german": "Magen ohne Lymphknoten"
+  },
+  {
+    "Id": 60,
+    "radiotherapy_id": "4.1.+",
+    "radiotherapy_target_area_rough": "4",
+    "radiotherapy_target_area_fine": "4.1.",
+    "radiotherapy_target_area_finest": "4.1.-.",
+    "radiotherapy_lymph_nodes": "1",
+    "radiotherapy_description_english": "Stomach with lymph nodes",
+    "radiotherapy_description_german": "Magen mit Lymphknoten"
+  },
+  {
+    "Id": 61,
+    "radiotherapy_id": "4.2.",
+    "radiotherapy_target_area_rough": "4",
+    "radiotherapy_target_area_fine": "4.2.",
+    "radiotherapy_target_area_finest": "4.2.-.",
+    "radiotherapy_lymph_nodes": null,
+    "radiotherapy_description_english": "Pancreas",
+    "radiotherapy_description_german": "Pankreas"
+  },
+  {
+    "Id": 62,
+    "radiotherapy_id": "4.2.-",
+    "radiotherapy_target_area_rough": "4",
+    "radiotherapy_target_area_fine": "4.2.",
+    "radiotherapy_target_area_finest": "4.2.-.",
+    "radiotherapy_lymph_nodes": "0",
+    "radiotherapy_description_english": "Pancreas without lymph nodes",
+    "radiotherapy_description_german": "Pankreas ohne Lymphknoten"
+  },
+  {
+    "Id": 63,
+    "radiotherapy_id": "4.2.+",
+    "radiotherapy_target_area_rough": "4",
+    "radiotherapy_target_area_fine": "4.2.",
+    "radiotherapy_target_area_finest": "4.2.-.",
+    "radiotherapy_lymph_nodes": "1",
+    "radiotherapy_description_english": "Pancreas with lymph nodes",
+    "radiotherapy_description_german": "Pankreas mit Lymphknoten"
+  },
+  {
+    "Id": 64,
+    "radiotherapy_id": "4.3.",
+    "radiotherapy_target_area_rough": "4",
+    "radiotherapy_target_area_fine": "4.3.",
+    "radiotherapy_target_area_finest": "4.3.-.",
+    "radiotherapy_lymph_nodes": null,
+    "radiotherapy_description_english": "Liver",
+    "radiotherapy_description_german": "Leber"
+  },
+  {
+    "Id": 65,
+    "radiotherapy_id": "4.3.-",
+    "radiotherapy_target_area_rough": "4",
+    "radiotherapy_target_area_fine": "4.3.",
+    "radiotherapy_target_area_finest": "4.3.-.",
+    "radiotherapy_lymph_nodes": "0",
+    "radiotherapy_description_english": "Liver without lymph nodes",
+    "radiotherapy_description_german": "Leber ohne Lymphknoten"
+  },
+  {
+    "Id": 66,
+    "radiotherapy_id": "4.3.+",
+    "radiotherapy_target_area_rough": "4",
+    "radiotherapy_target_area_fine": "4.3.",
+    "radiotherapy_target_area_finest": "4.3.-.",
+    "radiotherapy_lymph_nodes": "1",
+    "radiotherapy_description_english": "Liver with lymph nodes",
+    "radiotherapy_description_german": "Leber mit Lymphknoten"
+  },
+  {
+    "Id": 67,
+    "radiotherapy_id": "4.4.",
+    "radiotherapy_target_area_rough": "4",
+    "radiotherapy_target_area_fine": "4.4.",
+    "radiotherapy_target_area_finest": "4.4.-.",
+    "radiotherapy_lymph_nodes": null,
+    "radiotherapy_description_english": "Spleen",
+    "radiotherapy_description_german": "Milz"
+  },
+  {
+    "Id": 68,
+    "radiotherapy_id": "4.4.-",
+    "radiotherapy_target_area_rough": "4",
+    "radiotherapy_target_area_fine": "4.4.",
+    "radiotherapy_target_area_finest": "4.4.-.",
+    "radiotherapy_lymph_nodes": "0",
+    "radiotherapy_description_english": "Spleen without lymph nodes",
+    "radiotherapy_description_german": "Milz ohne Lymphknoten"
+  },
+  {
+    "Id": 69,
+    "radiotherapy_id": "4.4.+",
+    "radiotherapy_target_area_rough": "4",
+    "radiotherapy_target_area_fine": "4.4.",
+    "radiotherapy_target_area_finest": "4.4.-.",
+    "radiotherapy_lymph_nodes": "1",
+    "radiotherapy_description_english": "Spleen with lymph nodes",
+    "radiotherapy_description_german": "Milz mit Lymphknoten"
+  },
+  {
+    "Id": 70,
+    "radiotherapy_id": "4.5.",
+    "radiotherapy_target_area_rough": "4",
+    "radiotherapy_target_area_fine": "4.5.",
+    "radiotherapy_target_area_finest": "4.5.-.",
+    "radiotherapy_lymph_nodes": null,
+    "radiotherapy_description_english": "Kidney",
+    "radiotherapy_description_german": "Niere"
+  },
+  {
+    "Id": 71,
+    "radiotherapy_id": "4.5.-",
+    "radiotherapy_target_area_rough": "4",
+    "radiotherapy_target_area_fine": "4.5.",
+    "radiotherapy_target_area_finest": "4.5.-.",
+    "radiotherapy_lymph_nodes": "0",
+    "radiotherapy_description_english": "Kidney without lymph nodes",
+    "radiotherapy_description_german": "Niere ohne Lymphknoten"
+  },
+  {
+    "Id": 72,
+    "radiotherapy_id": "4.5.+",
+    "radiotherapy_target_area_rough": "4",
+    "radiotherapy_target_area_fine": "4.5.",
+    "radiotherapy_target_area_finest": "4.5.-.",
+    "radiotherapy_lymph_nodes": "1",
+    "radiotherapy_description_english": "Kidney with lymph nodes",
+    "radiotherapy_description_german": "Niere mit Lymphknoten"
+  },
+  {
+    "Id": 73,
+    "radiotherapy_id": "4.6.",
+    "radiotherapy_target_area_rough": "4",
+    "radiotherapy_target_area_fine": "4.6.",
+    "radiotherapy_target_area_finest": "4.6.-.",
+    "radiotherapy_lymph_nodes": null,
+    "radiotherapy_description_english": "Adrenal",
+    "radiotherapy_description_german": "Nebenniere"
+  },
+  {
+    "Id": 74,
+    "radiotherapy_id": "4.6.-",
+    "radiotherapy_target_area_rough": "4",
+    "radiotherapy_target_area_fine": "4.6.",
+    "radiotherapy_target_area_finest": "4.6.-.",
+    "radiotherapy_lymph_nodes": "0",
+    "radiotherapy_description_english": "Adrenal without lymph nodes",
+    "radiotherapy_description_german": "Nebenniere ohne Lymphknoten"
+  },
+  {
+    "Id": 75,
+    "radiotherapy_id": "4.6.+",
+    "radiotherapy_target_area_rough": "4",
+    "radiotherapy_target_area_fine": "4.6.",
+    "radiotherapy_target_area_finest": "4.6.-.",
+    "radiotherapy_lymph_nodes": "1",
+    "radiotherapy_description_english": "Adrenal with lymph nodes",
+    "radiotherapy_description_german": "Nebenniere mit Lymphknoten"
+  },
+  {
+    "Id": 76,
+    "radiotherapy_id": "4.7.",
+    "radiotherapy_target_area_rough": "4",
+    "radiotherapy_target_area_fine": "4.7.",
+    "radiotherapy_target_area_finest": "4.7.-.",
+    "radiotherapy_lymph_nodes": null,
+    "radiotherapy_description_english": "Retroperitoneal lymph nodes (without primary tumor)",
+    "radiotherapy_description_german": "Retroperitoneale Lymphknoten (ohne Primärtumor)"
+  },
+  {
+    "Id": 77,
+    "radiotherapy_id": "4.8.",
+    "radiotherapy_target_area_rough": "4",
+    "radiotherapy_target_area_fine": "4.8.",
+    "radiotherapy_target_area_finest": "4.8.-.",
+    "radiotherapy_lymph_nodes": null,
+    "radiotherapy_description_english": "Retroperitoneum (for example sarcoma)",
+    "radiotherapy_description_german": "Retroperitoneum (zum Beispiel Sarkome)"
+  },
+  {
+    "Id": 78,
+    "radiotherapy_id": "4.8.-",
+    "radiotherapy_target_area_rough": "4",
+    "radiotherapy_target_area_fine": "4.8.",
+    "radiotherapy_target_area_finest": "4.8.-.",
+    "radiotherapy_lymph_nodes": "0",
+    "radiotherapy_description_english": "Retroperitoneum (for example sarcoma) without lymph nodes",
+    "radiotherapy_description_german": "Retroperitoneum (zum Beispiel Sarkome) ohne Lymphknoten"
+  },
+  {
+    "Id": 79,
+    "radiotherapy_id": "4.8.+",
+    "radiotherapy_target_area_rough": "4",
+    "radiotherapy_target_area_fine": "4.8.",
+    "radiotherapy_target_area_finest": "4.8.-.",
+    "radiotherapy_lymph_nodes": "1",
+    "radiotherapy_description_english": "Retroperitoneum (for example sarcoma) with lymph nodes",
+    "radiotherapy_description_german": "Retroperitoneum (zum Beispiel Sarkome) mit Lymphknoten"
+  },
+  {
+    "Id": 80,
+    "radiotherapy_id": "4.9.",
+    "radiotherapy_target_area_rough": "4",
+    "radiotherapy_target_area_fine": "4.9.",
+    "radiotherapy_target_area_finest": "4.9.-.",
+    "radiotherapy_lymph_nodes": null,
+    "radiotherapy_description_english": "Abdominal wall (for example sarcoma)",
+    "radiotherapy_description_german": "Bauchwand (zum Beispiel Sarkome)"
+  },
+  {
+    "Id": 81,
+    "radiotherapy_id": "4.9.-",
+    "radiotherapy_target_area_rough": "4",
+    "radiotherapy_target_area_fine": "4.9.",
+    "radiotherapy_target_area_finest": "4.9.-.",
+    "radiotherapy_lymph_nodes": "0",
+    "radiotherapy_description_english": "Abdominal wall (for example sarcoma) without lymph nodes",
+    "radiotherapy_description_german": "Bauchwand (zum Beispiel Sarkome) ohne Lymphknoten"
+  },
+  {
+    "Id": 82,
+    "radiotherapy_id": "4.9.+",
+    "radiotherapy_target_area_rough": "4",
+    "radiotherapy_target_area_fine": "4.9.",
+    "radiotherapy_target_area_finest": "4.9.-.",
+    "radiotherapy_lymph_nodes": "1",
+    "radiotherapy_description_english": "Abdominal wall (for example sarcoma) with lymph nodes",
+    "radiotherapy_description_german": "Bauchwand (zum Beispiel Sarkome) mit Lymphknoten"
+  },
+  {
+    "Id": 83,
+    "radiotherapy_id": "5.",
+    "radiotherapy_target_area_rough": "5",
+    "radiotherapy_target_area_fine": "5.-.",
+    "radiotherapy_target_area_finest": "5.-.-.",
+    "radiotherapy_lymph_nodes": null,
+    "radiotherapy_description_english": "Pelvis",
+    "radiotherapy_description_german": "Becken"
+  },
+  {
+    "Id": 84,
+    "radiotherapy_id": "5.-",
+    "radiotherapy_target_area_rough": "5",
+    "radiotherapy_target_area_fine": "5.-.",
+    "radiotherapy_target_area_finest": "5.-.-.",
+    "radiotherapy_lymph_nodes": "0",
+    "radiotherapy_description_english": "Pelvis without lymph nodes",
+    "radiotherapy_description_german": "Becken ohne Lymphknoten"
+  },
+  {
+    "Id": 85,
+    "radiotherapy_id": "5.+",
+    "radiotherapy_target_area_rough": "5",
+    "radiotherapy_target_area_fine": "5.-.",
+    "radiotherapy_target_area_finest": "5.-.-.",
+    "radiotherapy_lymph_nodes": "1",
+    "radiotherapy_description_english": "Pelvis with lymph nodes",
+    "radiotherapy_description_german": "Becken mit Lymphknoten"
+  },
+  {
+    "Id": 86,
+    "radiotherapy_id": "5.1.",
+    "radiotherapy_target_area_rough": "5",
+    "radiotherapy_target_area_fine": "5.1.",
+    "radiotherapy_target_area_finest": "5.1.-.",
+    "radiotherapy_lymph_nodes": null,
+    "radiotherapy_description_english": "Rectum",
+    "radiotherapy_description_german": "Rektum"
+  },
+  {
+    "Id": 87,
+    "radiotherapy_id": "5.1.-",
+    "radiotherapy_target_area_rough": "5",
+    "radiotherapy_target_area_fine": "5.1.",
+    "radiotherapy_target_area_finest": "5.1.-.",
+    "radiotherapy_lymph_nodes": "0",
+    "radiotherapy_description_english": "Rectum without lymph nodes",
+    "radiotherapy_description_german": "Rektum ohne Lymphknoten"
+  },
+  {
+    "Id": 88,
+    "radiotherapy_id": "5.1.+",
+    "radiotherapy_target_area_rough": "5",
+    "radiotherapy_target_area_fine": "5.1.",
+    "radiotherapy_target_area_finest": "5.1.-.",
+    "radiotherapy_lymph_nodes": "1",
+    "radiotherapy_description_english": "Rectum with lymph nodes",
+    "radiotherapy_description_german": "Rektum mit Lymphknoten"
+  },
+  {
+    "Id": 89,
+    "radiotherapy_id": "5.10.",
+    "radiotherapy_target_area_rough": "5",
+    "radiotherapy_target_area_fine": "5.10.",
+    "radiotherapy_target_area_finest": "5.10.-.",
+    "radiotherapy_lymph_nodes": null,
+    "radiotherapy_description_english": "Vagina",
+    "radiotherapy_description_german": "Vagina"
+  },
+  {
+    "Id": 90,
+    "radiotherapy_id": "5.10.-",
+    "radiotherapy_target_area_rough": "5",
+    "radiotherapy_target_area_fine": "5.10.",
+    "radiotherapy_target_area_finest": "5.10.-.",
+    "radiotherapy_lymph_nodes": "0",
+    "radiotherapy_description_english": "Vagina without lymph nodes",
+    "radiotherapy_description_german": "Vagina ohne Lymphknoten"
+  },
+  {
+    "Id": 91,
+    "radiotherapy_id": "5.10.+",
+    "radiotherapy_target_area_rough": "5",
+    "radiotherapy_target_area_fine": "5.10.",
+    "radiotherapy_target_area_finest": "5.10.-.",
+    "radiotherapy_lymph_nodes": "1",
+    "radiotherapy_description_english": "Vagina with lymph nodes",
+    "radiotherapy_description_german": "Vagina mit Lymphknoten"
+  },
+  {
+    "Id": 92,
+    "radiotherapy_id": "5.11.",
+    "radiotherapy_target_area_rough": "5",
+    "radiotherapy_target_area_fine": "5.11.",
+    "radiotherapy_target_area_finest": "5.11.-.",
+    "radiotherapy_lymph_nodes": null,
+    "radiotherapy_description_english": "Pelvic wall",
+    "radiotherapy_description_german": "Beckenwand"
+  },
+  {
+    "Id": 93,
+    "radiotherapy_id": "5.11.-",
+    "radiotherapy_target_area_rough": "5",
+    "radiotherapy_target_area_fine": "5.11.",
+    "radiotherapy_target_area_finest": "5.11.-.",
+    "radiotherapy_lymph_nodes": "0",
+    "radiotherapy_description_english": "Pelvic wall without lymph nodes",
+    "radiotherapy_description_german": "Beckenwand ohne Lymphknoten"
+  },
+  {
+    "Id": 94,
+    "radiotherapy_id": "5.11.+",
+    "radiotherapy_target_area_rough": "5",
+    "radiotherapy_target_area_fine": "5.11.",
+    "radiotherapy_target_area_finest": "5.11.-.",
+    "radiotherapy_lymph_nodes": "1",
+    "radiotherapy_description_english": "Pelvic wall with lymph nodes",
+    "radiotherapy_description_german": "Beckenwand mit Lymphknoten"
+  },
+  {
+    "Id": 95,
+    "radiotherapy_id": "5.12.",
+    "radiotherapy_target_area_rough": "5",
+    "radiotherapy_target_area_fine": "5.12.",
+    "radiotherapy_target_area_finest": "5.12.-.",
+    "radiotherapy_lymph_nodes": null,
+    "radiotherapy_description_english": "Pelvic lymph nodes (without primary tumor)",
+    "radiotherapy_description_german": "Beckenlymphknoten (ohne Primärtumor)"
+  },
+  {
+    "Id": 96,
+    "radiotherapy_id": "5.2.",
+    "radiotherapy_target_area_rough": "5",
+    "radiotherapy_target_area_fine": "5.2.",
+    "radiotherapy_target_area_finest": "5.2.-.",
+    "radiotherapy_lymph_nodes": null,
+    "radiotherapy_description_english": "Anal",
+    "radiotherapy_description_german": "Analbereich"
+  },
+  {
+    "Id": 97,
+    "radiotherapy_id": "5.2.-",
+    "radiotherapy_target_area_rough": "5",
+    "radiotherapy_target_area_fine": "5.2.",
+    "radiotherapy_target_area_finest": "5.2.-.",
+    "radiotherapy_lymph_nodes": "0",
+    "radiotherapy_description_english": "Anal without lymph nodes",
+    "radiotherapy_description_german": "Analbereich ohne Lymphknoten"
+  },
+  {
+    "Id": 98,
+    "radiotherapy_id": "5.2.+",
+    "radiotherapy_target_area_rough": "5",
+    "radiotherapy_target_area_fine": "5.2.",
+    "radiotherapy_target_area_finest": "5.2.-.",
+    "radiotherapy_lymph_nodes": "1",
+    "radiotherapy_description_english": "Anal with lymph nodes",
+    "radiotherapy_description_german": "Analbereich mit Lymphknoten"
+  },
+  {
+    "Id": 99,
+    "radiotherapy_id": "5.3.",
+    "radiotherapy_target_area_rough": "5",
+    "radiotherapy_target_area_fine": "5.3.",
+    "radiotherapy_target_area_finest": "5.3.-.",
+    "radiotherapy_lymph_nodes": null,
+    "radiotherapy_description_english": "Bladder",
+    "radiotherapy_description_german": "Harnblase"
+  },
+  {
+    "Id": 100,
+    "radiotherapy_id": "5.3.-",
+    "radiotherapy_target_area_rough": "5",
+    "radiotherapy_target_area_fine": "5.3.",
+    "radiotherapy_target_area_finest": "5.3.-.",
+    "radiotherapy_lymph_nodes": "0",
+    "radiotherapy_description_english": "Bladder without lymph nodes",
+    "radiotherapy_description_german": "Harnblase ohne Lymphknoten"
+  },
+  {
+    "Id": 101,
+    "radiotherapy_id": "5.3.+",
+    "radiotherapy_target_area_rough": "5",
+    "radiotherapy_target_area_fine": "5.3.",
+    "radiotherapy_target_area_finest": "5.3.-.",
+    "radiotherapy_lymph_nodes": "1",
+    "radiotherapy_description_english": "Bladder with lymph nodes",
+    "radiotherapy_description_german": "Harnblase mit Lymphknoten"
+  },
+  {
+    "Id": 102,
+    "radiotherapy_id": "5.4.",
+    "radiotherapy_target_area_rough": "5",
+    "radiotherapy_target_area_fine": "5.4.",
+    "radiotherapy_target_area_finest": "5.4.-.",
+    "radiotherapy_lymph_nodes": null,
+    "radiotherapy_description_english": "Prostate",
+    "radiotherapy_description_german": "Prostata"
+  },
+  {
+    "Id": 103,
+    "radiotherapy_id": "5.4.-",
+    "radiotherapy_target_area_rough": "5",
+    "radiotherapy_target_area_fine": "5.4.",
+    "radiotherapy_target_area_finest": "5.4.-.",
+    "radiotherapy_lymph_nodes": "0",
+    "radiotherapy_description_english": "Prostate without lymph nodes",
+    "radiotherapy_description_german": "Prostata ohne Lymphknoten"
+  },
+  {
+    "Id": 104,
+    "radiotherapy_id": "5.4.+",
+    "radiotherapy_target_area_rough": "5",
+    "radiotherapy_target_area_fine": "5.4.",
+    "radiotherapy_target_area_finest": "5.4.-.",
+    "radiotherapy_lymph_nodes": "1",
+    "radiotherapy_description_english": "Prostate with lymph nodes",
+    "radiotherapy_description_german": "Prostata mit Lymphknoten"
+  },
+  {
+    "Id": 105,
+    "radiotherapy_id": "5.5.",
+    "radiotherapy_target_area_rough": "5",
+    "radiotherapy_target_area_fine": "5.5.",
+    "radiotherapy_target_area_finest": "5.5.-.",
+    "radiotherapy_lymph_nodes": null,
+    "radiotherapy_description_english": "Testicle",
+    "radiotherapy_description_german": "Hoden"
+  },
+  {
+    "Id": 106,
+    "radiotherapy_id": "5.5.-",
+    "radiotherapy_target_area_rough": "5",
+    "radiotherapy_target_area_fine": "5.5.",
+    "radiotherapy_target_area_finest": "5.5.-.",
+    "radiotherapy_lymph_nodes": "0",
+    "radiotherapy_description_english": "Testicle without lymph nodes",
+    "radiotherapy_description_german": "Hoden ohne Lymphknoten"
+  },
+  {
+    "Id": 107,
+    "radiotherapy_id": "5.5.+",
+    "radiotherapy_target_area_rough": "5",
+    "radiotherapy_target_area_fine": "5.5.",
+    "radiotherapy_target_area_finest": "5.5.-.",
+    "radiotherapy_lymph_nodes": "1",
+    "radiotherapy_description_english": "Testicle with lymph nodes",
+    "radiotherapy_description_german": "Hoden mit Lymphknoten"
+  },
+  {
+    "Id": 108,
+    "radiotherapy_id": "5.6.",
+    "radiotherapy_target_area_rough": "5",
+    "radiotherapy_target_area_fine": "5.6.",
+    "radiotherapy_target_area_finest": "5.6.-.",
+    "radiotherapy_lymph_nodes": null,
+    "radiotherapy_description_english": "Penis",
+    "radiotherapy_description_german": "Penis"
+  },
+  {
+    "Id": 109,
+    "radiotherapy_id": "5.6.-",
+    "radiotherapy_target_area_rough": "5",
+    "radiotherapy_target_area_fine": "5.6.",
+    "radiotherapy_target_area_finest": "5.6.-.",
+    "radiotherapy_lymph_nodes": "0",
+    "radiotherapy_description_english": "Penis without lymph nodes",
+    "radiotherapy_description_german": "Penis ohne Lymphknoten"
+  },
+  {
+    "Id": 110,
+    "radiotherapy_id": "5.6.+",
+    "radiotherapy_target_area_rough": "5",
+    "radiotherapy_target_area_fine": "5.6.",
+    "radiotherapy_target_area_finest": "5.6.-.",
+    "radiotherapy_lymph_nodes": "1",
+    "radiotherapy_description_english": "Penis with lymph nodes",
+    "radiotherapy_description_german": "Penis mit Lymphknoten"
+  },
+  {
+    "Id": 111,
+    "radiotherapy_id": "5.7.",
+    "radiotherapy_target_area_rough": "5",
+    "radiotherapy_target_area_fine": "5.7.",
+    "radiotherapy_target_area_finest": "5.7.-.",
+    "radiotherapy_lymph_nodes": null,
+    "radiotherapy_description_english": "Uterus / cervix",
+    "radiotherapy_description_german": "Uterus / Zervix"
+  },
+  {
+    "Id": 112,
+    "radiotherapy_id": "5.7.-",
+    "radiotherapy_target_area_rough": "5",
+    "radiotherapy_target_area_fine": "5.7.",
+    "radiotherapy_target_area_finest": "5.7.-.",
+    "radiotherapy_lymph_nodes": "0",
+    "radiotherapy_description_english": "Uterus / cervix without lymph nodes",
+    "radiotherapy_description_german": "Uterus / Zervix ohne Lymphknoten"
+  },
+  {
+    "Id": 113,
+    "radiotherapy_id": "5.7.+",
+    "radiotherapy_target_area_rough": "5",
+    "radiotherapy_target_area_fine": "5.7.",
+    "radiotherapy_target_area_finest": "5.7.-.",
+    "radiotherapy_lymph_nodes": "1",
+    "radiotherapy_description_english": "Uterus / cervix with lymph nodes",
+    "radiotherapy_description_german": "Uterus / Zervix mit Lymphknoten"
+  },
+  {
+    "Id": 114,
+    "radiotherapy_id": "5.7.1.",
+    "radiotherapy_target_area_rough": "5",
+    "radiotherapy_target_area_fine": "5.7.",
+    "radiotherapy_target_area_finest": "5.7.1.",
+    "radiotherapy_lymph_nodes": null,
+    "radiotherapy_description_english": "Uterus",
+    "radiotherapy_description_german": "Uterus"
+  },
+  {
+    "Id": 115,
+    "radiotherapy_id": "5.7.1.-",
+    "radiotherapy_target_area_rough": "5",
+    "radiotherapy_target_area_fine": "5.7.",
+    "radiotherapy_target_area_finest": "5.7.1.",
+    "radiotherapy_lymph_nodes": "0",
+    "radiotherapy_description_english": "Uterus without lymph nodes",
+    "radiotherapy_description_german": "Uterus ohne Lymphknoten"
+  },
+  {
+    "Id": 116,
+    "radiotherapy_id": "5.7.1.+",
+    "radiotherapy_target_area_rough": "5",
+    "radiotherapy_target_area_fine": "5.7.",
+    "radiotherapy_target_area_finest": "5.7.1.",
+    "radiotherapy_lymph_nodes": "1",
+    "radiotherapy_description_english": "Uterus with lymph nodes",
+    "radiotherapy_description_german": "Uterus mit Lymphknoten"
+  },
+  {
+    "Id": 117,
+    "radiotherapy_id": "5.7.2.",
+    "radiotherapy_target_area_rough": "5",
+    "radiotherapy_target_area_fine": "5.7.",
+    "radiotherapy_target_area_finest": "5.7.2.",
+    "radiotherapy_lymph_nodes": null,
+    "radiotherapy_description_english": "Cervix",
+    "radiotherapy_description_german": "Zervix"
+  },
+  {
+    "Id": 118,
+    "radiotherapy_id": "5.7.2.-",
+    "radiotherapy_target_area_rough": "5",
+    "radiotherapy_target_area_fine": "5.7.",
+    "radiotherapy_target_area_finest": "5.7.2.",
+    "radiotherapy_lymph_nodes": "0",
+    "radiotherapy_description_english": "Cervix without lymph nodes",
+    "radiotherapy_description_german": "Zervix ohne Lymphknoten"
+  },
+  {
+    "Id": 119,
+    "radiotherapy_id": "5.7.2.+",
+    "radiotherapy_target_area_rough": "5",
+    "radiotherapy_target_area_fine": "5.7.",
+    "radiotherapy_target_area_finest": "5.7.2.",
+    "radiotherapy_lymph_nodes": "1",
+    "radiotherapy_description_english": "Cervix with lymph nodes",
+    "radiotherapy_description_german": "Zervix mit Lymphknoten"
+  },
+  {
+    "Id": 120,
+    "radiotherapy_id": "5.8.",
+    "radiotherapy_target_area_rough": "5",
+    "radiotherapy_target_area_fine": "5.8.",
+    "radiotherapy_target_area_finest": "5.8.-.",
+    "radiotherapy_lymph_nodes": null,
+    "radiotherapy_description_english": "Ovary",
+    "radiotherapy_description_german": "Ovar"
+  },
+  {
+    "Id": 121,
+    "radiotherapy_id": "5.8.-",
+    "radiotherapy_target_area_rough": "5",
+    "radiotherapy_target_area_fine": "5.8.",
+    "radiotherapy_target_area_finest": "5.8.-.",
+    "radiotherapy_lymph_nodes": "0",
+    "radiotherapy_description_english": "Ovary without lymph nodes",
+    "radiotherapy_description_german": "Ovar ohne Lymphknoten"
+  },
+  {
+    "Id": 122,
+    "radiotherapy_id": "5.8.+",
+    "radiotherapy_target_area_rough": "5",
+    "radiotherapy_target_area_fine": "5.8.",
+    "radiotherapy_target_area_finest": "5.8.-.",
+    "radiotherapy_lymph_nodes": "1",
+    "radiotherapy_description_english": "Ovary with lymph nodes",
+    "radiotherapy_description_german": "Ovar mit Lymphknoten"
+  },
+  {
+    "Id": 123,
+    "radiotherapy_id": "5.9.",
+    "radiotherapy_target_area_rough": "5",
+    "radiotherapy_target_area_fine": "5.9.",
+    "radiotherapy_target_area_finest": "5.9.-.",
+    "radiotherapy_lymph_nodes": null,
+    "radiotherapy_description_english": "Vulva",
+    "radiotherapy_description_german": "Vulva"
+  },
+  {
+    "Id": 124,
+    "radiotherapy_id": "5.9.-",
+    "radiotherapy_target_area_rough": "5",
+    "radiotherapy_target_area_fine": "5.9.",
+    "radiotherapy_target_area_finest": "5.9.-.",
+    "radiotherapy_lymph_nodes": "0",
+    "radiotherapy_description_english": "Vulva without lymph nodes",
+    "radiotherapy_description_german": "Vulva ohne Lymphknoten"
+  },
+  {
+    "Id": 125,
+    "radiotherapy_id": "5.9.+",
+    "radiotherapy_target_area_rough": "5",
+    "radiotherapy_target_area_fine": "5.9.",
+    "radiotherapy_target_area_finest": "5.9.-.",
+    "radiotherapy_lymph_nodes": "1",
+    "radiotherapy_description_english": "Vulva with lymph nodes",
+    "radiotherapy_description_german": "Vulva mit Lymphknoten"
+  },
+  {
+    "Id": 126,
+    "radiotherapy_id": "6.",
+    "radiotherapy_target_area_rough": "6",
+    "radiotherapy_target_area_fine": "6.-.",
+    "radiotherapy_target_area_finest": "6.-.-.",
+    "radiotherapy_lymph_nodes": null,
+    "radiotherapy_description_english": "Support / musculoskeletal system",
+    "radiotherapy_description_german": "Stütz- / Bewegungsapparat"
+  },
+  {
+    "Id": 127,
+    "radiotherapy_id": "6.1.",
+    "radiotherapy_target_area_rough": "6",
+    "radiotherapy_target_area_fine": "6.1.",
+    "radiotherapy_target_area_finest": "6.1.-.",
+    "radiotherapy_lymph_nodes": null,
+    "radiotherapy_description_english": "Skull",
+    "radiotherapy_description_german": "Schädelknochen"
+  },
+  {
+    "Id": 128,
+    "radiotherapy_id": "6.10.",
+    "radiotherapy_target_area_rough": "6",
+    "radiotherapy_target_area_fine": "6.10.",
+    "radiotherapy_target_area_finest": "6.10.-.",
+    "radiotherapy_lymph_nodes": null,
+    "radiotherapy_description_english": "Upper arm",
+    "radiotherapy_description_german": "Oberarm"
+  },
+  {
+    "Id": 129,
+    "radiotherapy_id": "6.11.",
+    "radiotherapy_target_area_rough": "6",
+    "radiotherapy_target_area_fine": "6.11.",
+    "radiotherapy_target_area_finest": "6.11.-.",
+    "radiotherapy_lymph_nodes": null,
+    "radiotherapy_description_english": "Forearm",
+    "radiotherapy_description_german": "Unterarm"
+  },
+  {
+    "Id": 130,
+    "radiotherapy_id": "6.12.",
+    "radiotherapy_target_area_rough": "6",
+    "radiotherapy_target_area_fine": "6.12.",
+    "radiotherapy_target_area_finest": "6.12.-.",
+    "radiotherapy_lymph_nodes": null,
+    "radiotherapy_description_english": "Hand",
+    "radiotherapy_description_german": "Hand"
+  },
+  {
+    "Id": 131,
+    "radiotherapy_id": "6.13.",
+    "radiotherapy_target_area_rough": "6",
+    "radiotherapy_target_area_fine": "6.13.",
+    "radiotherapy_target_area_finest": "6.13.-.",
+    "radiotherapy_lymph_nodes": null,
+    "radiotherapy_description_english": "Groin",
+    "radiotherapy_description_german": "Leiste"
+  },
+  {
+    "Id": 132,
+    "radiotherapy_id": "6.14.",
+    "radiotherapy_target_area_rough": "6",
+    "radiotherapy_target_area_fine": "6.14.",
+    "radiotherapy_target_area_finest": "6.14.-.",
+    "radiotherapy_lymph_nodes": null,
+    "radiotherapy_description_english": "Thigh",
+    "radiotherapy_description_german": "Oberschenkel"
+  },
+  {
+    "Id": 133,
+    "radiotherapy_id": "6.15.",
+    "radiotherapy_target_area_rough": "6",
+    "radiotherapy_target_area_fine": "6.15.",
+    "radiotherapy_target_area_finest": "6.15.-.",
+    "radiotherapy_lymph_nodes": null,
+    "radiotherapy_description_english": "Lower leg",
+    "radiotherapy_description_german": "Unterschenkel"
+  },
+  {
+    "Id": 134,
+    "radiotherapy_id": "6.16.",
+    "radiotherapy_target_area_rough": "6",
+    "radiotherapy_target_area_fine": "6.16.",
+    "radiotherapy_target_area_finest": "6.16.-.",
+    "radiotherapy_lymph_nodes": null,
+    "radiotherapy_description_english": "Fuß",
+    "radiotherapy_description_german": "Foot"
+  },
+  {
+    "Id": 135,
+    "radiotherapy_id": "6.2.",
+    "radiotherapy_target_area_rough": "6",
+    "radiotherapy_target_area_fine": "6.2.",
+    "radiotherapy_target_area_finest": "6.2.-.",
+    "radiotherapy_lymph_nodes": null,
+    "radiotherapy_description_english": "Ribs",
+    "radiotherapy_description_german": "Rippen"
+  },
+  {
+    "Id": 136,
+    "radiotherapy_id": "6.3.",
+    "radiotherapy_target_area_rough": "6",
+    "radiotherapy_target_area_fine": "6.3.",
+    "radiotherapy_target_area_finest": "6.3.-.",
+    "radiotherapy_lymph_nodes": null,
+    "radiotherapy_description_english": "Sternum",
+    "radiotherapy_description_german": "Sternum"
+  },
+  {
+    "Id": 137,
+    "radiotherapy_id": "6.4.",
+    "radiotherapy_target_area_rough": "6",
+    "radiotherapy_target_area_fine": "6.4.",
+    "radiotherapy_target_area_finest": "6.4.-.",
+    "radiotherapy_lymph_nodes": null,
+    "radiotherapy_description_english": "Cervical spine",
+    "radiotherapy_description_german": "Halswirbelsäule (HWS)"
+  },
+  {
+    "Id": 138,
+    "radiotherapy_id": "6.5.",
+    "radiotherapy_target_area_rough": "6",
+    "radiotherapy_target_area_fine": "6.5.",
+    "radiotherapy_target_area_finest": "6.5.-.",
+    "radiotherapy_lymph_nodes": null,
+    "radiotherapy_description_english": "Thoracic spine",
+    "radiotherapy_description_german": "Brustwirbelsäule (BWS)"
+  },
+  {
+    "Id": 139,
+    "radiotherapy_id": "6.6.",
+    "radiotherapy_target_area_rough": "6",
+    "radiotherapy_target_area_fine": "6.6.",
+    "radiotherapy_target_area_finest": "6.6.-.",
+    "radiotherapy_lymph_nodes": null,
+    "radiotherapy_description_english": "lumbar spine",
+    "radiotherapy_description_german": "Lendenwirbelsäule (LWS)"
+  },
+  {
+    "Id": 140,
+    "radiotherapy_id": "6.7.",
+    "radiotherapy_target_area_rough": "6",
+    "radiotherapy_target_area_fine": "6.7.",
+    "radiotherapy_target_area_finest": "6.7.-.",
+    "radiotherapy_lymph_nodes": null,
+    "radiotherapy_description_english": "Bony pelvis",
+    "radiotherapy_description_german": "Knöchernes Becken"
+  },
+  {
+    "Id": 141,
+    "radiotherapy_id": "6.8.",
+    "radiotherapy_target_area_rough": "6",
+    "radiotherapy_target_area_fine": "6.8.",
+    "radiotherapy_target_area_finest": "6.8.-.",
+    "radiotherapy_lymph_nodes": null,
+    "radiotherapy_description_english": "Hip",
+    "radiotherapy_description_german": "Hüfte"
+  },
+  {
+    "Id": 142,
+    "radiotherapy_id": "6.9.",
+    "radiotherapy_target_area_rough": "6",
+    "radiotherapy_target_area_fine": "6.9.",
+    "radiotherapy_target_area_finest": "6.9.-.",
+    "radiotherapy_lymph_nodes": null,
+    "radiotherapy_description_english": "Armpit",
+    "radiotherapy_description_german": "Achsel"
+  },
+  {
+    "Id": 143,
+    "radiotherapy_id": "7.",
+    "radiotherapy_target_area_rough": "7",
+    "radiotherapy_target_area_fine": "7.-.",
+    "radiotherapy_target_area_finest": "7.-.-.",
+    "radiotherapy_lymph_nodes": null,
+    "radiotherapy_description_english": "Skin",
+    "radiotherapy_description_german": "Haut"
+  },
+  {
+    "Id": 144,
+    "radiotherapy_id": "7.-",
+    "radiotherapy_target_area_rough": "7",
+    "radiotherapy_target_area_fine": "7.-.",
+    "radiotherapy_target_area_finest": "7.-.-.",
+    "radiotherapy_lymph_nodes": "0",
+    "radiotherapy_description_english": "Skin without lymph nodes",
+    "radiotherapy_description_german": "Haut ohne Lymphknoten"
+  },
+  {
+    "Id": 145,
+    "radiotherapy_id": "7.+",
+    "radiotherapy_target_area_rough": "7",
+    "radiotherapy_target_area_fine": "7.-.",
+    "radiotherapy_target_area_finest": "7.-.-.",
+    "radiotherapy_lymph_nodes": "1",
+    "radiotherapy_description_english": "Skin with lymph nodes",
+    "radiotherapy_description_german": "Haut mit Lymphknoten"
+  },
+  {
+    "Id": 146,
+    "radiotherapy_id": "7.1.",
+    "radiotherapy_target_area_rough": "7",
+    "radiotherapy_target_area_fine": "7.1.",
+    "radiotherapy_target_area_finest": "7.1.-.",
+    "radiotherapy_lymph_nodes": null,
+    "radiotherapy_description_english": "Primary skin tumor (also cutaneous lymphoma)",
+    "radiotherapy_description_german": "Primärer Hauttumor (auch kutane Lymphome)"
+  },
+  {
+    "Id": 147,
+    "radiotherapy_id": "7.2.",
+    "radiotherapy_target_area_rough": "7",
+    "radiotherapy_target_area_fine": "7.2.",
+    "radiotherapy_target_area_finest": "7.2.-.",
+    "radiotherapy_lymph_nodes": null,
+    "radiotherapy_description_english": "Skin metastases",
+    "radiotherapy_description_german": "Hautmetastasen"
+  },
+  {
+    "Id": 148,
+    "radiotherapy_id": "8.",
+    "radiotherapy_target_area_rough": "8",
+    "radiotherapy_target_area_fine": "8.-.",
+    "radiotherapy_target_area_finest": "8.-.-.",
+    "radiotherapy_lymph_nodes": null,
+    "radiotherapy_description_english": "Miscellaneous",
+    "radiotherapy_description_german": "Sonstiges"
+  },
+  {
+    "Id": 149,
+    "radiotherapy_id": "8.1.",
+    "radiotherapy_target_area_rough": "8",
+    "radiotherapy_target_area_fine": "8.1.",
+    "radiotherapy_target_area_finest": "8.1.-.",
+    "radiotherapy_lymph_nodes": null,
+    "radiotherapy_description_english": "Total body irradiation",
+    "radiotherapy_description_german": "Ganzkörperbestrahlung"
+  },
+  {
+    "Id": 150,
+    "radiotherapy_id": "8.2.",
+    "radiotherapy_target_area_rough": "8",
+    "radiotherapy_target_area_fine": "8.2.",
+    "radiotherapy_target_area_finest": "8.2.-.",
+    "radiotherapy_lymph_nodes": null,
+    "radiotherapy_description_english": "Mantle field irradiation",
+    "radiotherapy_description_german": "Mantelfeldbestrahlung"
+  },
+  {
+    "Id": 151,
+    "radiotherapy_id": "U",
+    "radiotherapy_target_area_rough": "U",
+    "radiotherapy_target_area_fine": "U.U.",
+    "radiotherapy_target_area_finest": "U.U.U.",
+    "radiotherapy_lymph_nodes": null,
+    "radiotherapy_description_english": "Unknown",
+    "radiotherapy_description_german": "Unbekannt"
+  },
+  {
+    "Id": 152,
+    "radiotherapy_id": "Y",
+    "radiotherapy_target_area_rough": "Y",
+    "radiotherapy_target_area_fine": "Y.Y.",
+    "radiotherapy_target_area_finest": "Y.Y.Y.",
+    "radiotherapy_lymph_nodes": null,
+    "radiotherapy_description_english": "No radiotherapy",
+    "radiotherapy_description_german": "Keine Strahlentherapie"
+  }
+]

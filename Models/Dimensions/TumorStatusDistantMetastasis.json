@@ -1,0 +1,65 @@
+[
+  {
+    "Id": 1,
+    "tumor_status_distant_metastases_id": "F",
+    "tumor_status_distant_metastases_shortname": "F",
+    "tumor_status_distant_metastases_longname_english": "Questionable findings",
+    "tumor_status_distant_metastases_longname_german": "Fraglicher Befund"
+  },
+  {
+    "Id": 2,
+    "tumor_status_distant_metastases_id": "K",
+    "tumor_status_distant_metastases_shortname": "K",
+    "tumor_status_distant_metastases_longname_english": "No distant metastases detectable",
+    "tumor_status_distant_metastases_longname_german": "Keine Fernmetastasen nachweisbar"
+  },
+  {
+    "Id": 3,
+    "tumor_status_distant_metastases_id": "M",
+    "tumor_status_distant_metastases_shortname": "M",
+    "tumor_status_distant_metastases_longname_english": "Remaining remote metastasis",
+    "tumor_status_distant_metastases_longname_german": "Verbliebene Fernmetastase(n)"
+  },
+  {
+    "Id": 4,
+    "tumor_status_distant_metastases_id": "N",
+    "tumor_status_distant_metastases_shortname": "N",
+    "tumor_status_distant_metastases_longname_english": "Distant Metastases No Change",
+    "tumor_status_distant_metastases_longname_german": "Fernmetastasen No Change"
+  },
+  {
+    "Id": 5,
+    "tumor_status_distant_metastases_id": "P",
+    "tumor_status_distant_metastases_shortname": "P",
+    "tumor_status_distant_metastases_longname_english": "Distant Metastases Progress",
+    "tumor_status_distant_metastases_longname_german": "Fernmetastasen Progress"
+  },
+  {
+    "Id": 6,
+    "tumor_status_distant_metastases_id": "R",
+    "tumor_status_distant_metastases_shortname": "R",
+    "tumor_status_distant_metastases_longname_english": "Newly occurring distant metastasis or recurrence of metastases",
+    "tumor_status_distant_metastases_longname_german": "Neu aufgetretene Fernmetastase(n) oder Metastasenrezidiv"
+  },
+  {
+    "Id": 7,
+    "tumor_status_distant_metastases_id": "T",
+    "tumor_status_distant_metastases_shortname": "T",
+    "tumor_status_distant_metastases_longname_english": "Distant metastases Residuals",
+    "tumor_status_distant_metastases_longname_german": "Fernmetastasen Residuen"
+  },
+  {
+    "Id": 8,
+    "tumor_status_distant_metastases_id": "U",
+    "tumor_status_distant_metastases_shortname": "U",
+    "tumor_status_distant_metastases_longname_english": "Unknown",
+    "tumor_status_distant_metastases_longname_german": "Unbekannt"
+  },
+  {
+    "Id": 9,
+    "tumor_status_distant_metastases_id": "X",
+    "tumor_status_distant_metastases_shortname": "X",
+    "tumor_status_distant_metastases_longname_english": "Missing information",
+    "tumor_status_distant_metastases_longname_german": "Fehlende Angabe"
+  }
+]

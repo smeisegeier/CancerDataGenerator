@@ -1,0 +1,92 @@
+[
+  {
+    "Id": 1,
+    "location_id": "00",
+    "location_state": "Ausland"
+  },
+  {
+    "Id": 2,
+    "location_id": "01",
+    "location_state": "Schleswig-Holstein"
+  },
+  {
+    "Id": 3,
+    "location_id": "02",
+    "location_state": "Hamburg"
+  },
+  {
+    "Id": 4,
+    "location_id": "03",
+    "location_state": "Niedersachsen"
+  },
+  {
+    "Id": 5,
+    "location_id": "04",
+    "location_state": "Bremen"
+  },
+  {
+    "Id": 6,
+    "location_id": "05",
+    "location_state": "Nordrhein-Westfalen"
+  },
+  {
+    "Id": 7,
+    "location_id": "06",
+    "location_state": "Hessen"
+  },
+  {
+    "Id": 8,
+    "location_id": "07",
+    "location_state": "Rheinland-Pfalz"
+  },
+  {
+    "Id": 9,
+    "location_id": "08",
+    "location_state": "Baden-Württemberg"
+  },
+  {
+    "Id": 10,
+    "location_id": "09",
+    "location_state": "Bayern"
+  },
+  {
+    "Id": 11,
+    "location_id": "-1",
+    "location_state": " Unbekannt"
+  },
+  {
+    "Id": 12,
+    "location_id": "10",
+    "location_state": "Saarland"
+  },
+  {
+    "Id": 13,
+    "location_id": "11",
+    "location_state": "Berlin"
+  },
+  {
+    "Id": 14,
+    "location_id": "12",
+    "location_state": "Brandenburg"
+  },
+  {
+    "Id": 15,
+    "location_id": "13",
+    "location_state": "Mecklenburg-Vorpommern"
+  },
+  {
+    "Id": 16,
+    "location_id": "14",
+    "location_state": "Sachsen"
+  },
+  {
+    "Id": 17,
+    "location_id": "15",
+    "location_state": "Sachsen-Anhalt"
+  },
+  {
+    "Id": 18,
+    "location_id": "16",
+    "location_state": "Thüringen"
+  }
+]

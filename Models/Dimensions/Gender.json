@@ -1,0 +1,30 @@
+[
+  {
+    "Id": 1,
+    "gender_id": "m",
+    "gender_shortname": "M",
+    "gender_longname_english": "Men",
+    "gender_longname_german": "Männlich"
+  },
+  {
+    "Id": 2,
+    "gender_id": "s",
+    "gender_shortname": "S",
+    "gender_longname_english": "Miscellaneous",
+    "gender_longname_german": "Sonstiges"
+  },
+  {
+    "Id": 3,
+    "gender_id": "u",
+    "gender_shortname": "U",
+    "gender_longname_english": "Unknown",
+    "gender_longname_german": "Unbekannt"
+  },
+  {
+    "Id": 4,
+    "gender_id": "w",
+    "gender_shortname": "W",
+    "gender_longname_english": "Women",
+    "gender_longname_german": "Weiblich"
+  }
+]

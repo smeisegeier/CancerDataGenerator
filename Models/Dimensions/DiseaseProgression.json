@@ -1,0 +1,30 @@
+[
+  {
+    "Id": 1,
+    "disease_progression_id": "0",
+    "disease_progression_shortname": "0",
+    "disease_progression_longname_english": "Primary disease",
+    "disease_progression_longname_german": "Primärerkrankung"
+  },
+  {
+    "Id": 2,
+    "disease_progression_id": "1",
+    "disease_progression_shortname": "1",
+    "disease_progression_longname_english": "Recurrence",
+    "disease_progression_longname_german": "Rezidiv"
+  },
+  {
+    "Id": 3,
+    "disease_progression_id": "2",
+    "disease_progression_shortname": "2",
+    "disease_progression_longname_english": "Progress",
+    "disease_progression_longname_german": "Progress"
+  },
+  {
+    "Id": 4,
+    "disease_progression_id": "U",
+    "disease_progression_shortname": "U",
+    "disease_progression_longname_english": "Unknown",
+    "disease_progression_longname_german": "Unbekannt"
+  }
+]

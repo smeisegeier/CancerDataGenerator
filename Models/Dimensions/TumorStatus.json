@@ -1,0 +1,58 @@
+[
+  {
+    "Id": 1,
+    "tumor_status_id": "F",
+    "tumor_status_shortname": "F",
+    "tumor_status_longname_english": "Questionable finding",
+    "tumor_status_longname_german": "Fraglicher Befund"
+  },
+  {
+    "Id": 2,
+    "tumor_status_id": "K",
+    "tumor_status_shortname": "K",
+    "tumor_status_longname_english": "No tumor detectable",
+    "tumor_status_longname_german": "Kein Tumor nachweisbar"
+  },
+  {
+    "Id": 3,
+    "tumor_status_id": "N",
+    "tumor_status_shortname": "N",
+    "tumor_status_longname_english": "Residual tumor no change",
+    "tumor_status_longname_german": "Tumorreste Residualtumor No Change"
+  },
+  {
+    "Id": 4,
+    "tumor_status_id": "P",
+    "tumor_status_shortname": "P",
+    "tumor_status_longname_english": "Residual tumor Progress",
+    "tumor_status_longname_german": "Tumorreste Residualtumor Progress"
+  },
+  {
+    "Id": 5,
+    "tumor_status_id": "R",
+    "tumor_status_shortname": "R",
+    "tumor_status_longname_english": "Local recurrence",
+    "tumor_status_longname_german": "Lokalrezidiv"
+  },
+  {
+    "Id": 6,
+    "tumor_status_id": "T",
+    "tumor_status_shortname": "T",
+    "tumor_status_longname_english": "Tumor residues (residual tumor)",
+    "tumor_status_longname_german": "Tumorreste (Residualtumor)"
+  },
+  {
+    "Id": 7,
+    "tumor_status_id": "U",
+    "tumor_status_shortname": "U",
+    "tumor_status_longname_english": "Unknown",
+    "tumor_status_longname_german": "Unbekannt"
+  },
+  {
+    "Id": 8,
+    "tumor_status_id": "X",
+    "tumor_status_shortname": "X",
+    "tumor_status_longname_english": "Missing indication",
+    "tumor_status_longname_german": "Fehlende Angabe"
+  }
+]

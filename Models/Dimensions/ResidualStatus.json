@@ -1,0 +1,51 @@
+[
+  {
+    "Id": 1,
+    "residual_status_id": "R0",
+    "residual_status_shortname": "R0",
+    "residual_status_longname_english": "No residual tumor",
+    "residual_status_longname_german": "Kein Residualtumor"
+  },
+  {
+    "Id": 2,
+    "residual_status_id": "R1",
+    "residual_status_shortname": "R1",
+    "residual_status_longname_english": "Microscopic residual tumor",
+    "residual_status_longname_german": "Mikroskopischer Residualtumor"
+  },
+  {
+    "Id": 3,
+    "residual_status_id": "R1 (cy+)",
+    "residual_status_shortname": "R1 (cy+)",
+    "residual_status_longname_english": "Cytological remainder",
+    "residual_status_longname_german": "Zytologischer Rest"
+  },
+  {
+    "Id": 4,
+    "residual_status_id": "R1 (is)",
+    "residual_status_shortname": "R1 (is)",
+    "residual_status_longname_english": "In-situ remainder",
+    "residual_status_longname_german": "In-Situ-Rest"
+  },
+  {
+    "Id": 5,
+    "residual_status_id": "R2",
+    "residual_status_shortname": "R2",
+    "residual_status_longname_english": "Macroscopic residual tumor",
+    "residual_status_longname_german": "Makroskopischer Residualtumor"
+  },
+  {
+    "Id": 6,
+    "residual_status_id": "RX",
+    "residual_status_shortname": "RX",
+    "residual_status_longname_english": "Presence of residual tumor can not be assessed",
+    "residual_status_longname_german": "Vorhandensein von Residualtumor kann nicht beurteilt werden"
+  },
+  {
+    "Id": 7,
+    "residual_status_id": "Y",
+    "residual_status_shortname": "Y",
+    "residual_status_longname_english": "No operation happened",
+    "residual_status_longname_german": "Keine Operation fand statt"
+  }
+]

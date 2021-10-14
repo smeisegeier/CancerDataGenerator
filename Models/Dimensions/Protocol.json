@@ -1,0 +1,436 @@
+[
+  {
+    "Id": 1,
+    "protocol_id": "ABVD",
+    "protocol_shortname": "ABVD",
+    "protocol_longname_english": "ABVD",
+    "protocol_longname_german": "ABVD"
+  },
+  {
+    "Id": 2,
+    "protocol_id": "AC",
+    "protocol_shortname": "AC",
+    "protocol_longname_english": "AC",
+    "protocol_longname_german": "AC"
+  },
+  {
+    "Id": 3,
+    "protocol_id": "AIO",
+    "protocol_shortname": "AIO",
+    "protocol_longname_english": "AIO",
+    "protocol_longname_german": "AIO"
+  },
+  {
+    "Id": 4,
+    "protocol_id": "AIO irinotecan",
+    "protocol_shortname": "AIO irinotecan",
+    "protocol_longname_english": "AIO irinotecan",
+    "protocol_longname_german": "AIO-Irinotecan"
+  },
+  {
+    "Id": 5,
+    "protocol_id": "BEACOPP base",
+    "protocol_shortname": "BEACOPP base",
+    "protocol_longname_english": "BEACOPP base",
+    "protocol_longname_german": "BEACOPP basis"
+  },
+  {
+    "Id": 6,
+    "protocol_id": "BEACOPP escalates",
+    "protocol_shortname": "BEACOPP escalates",
+    "protocol_longname_english": "BEACOPP escalates",
+    "protocol_longname_german": "BEACOPP eskaliert"
+  },
+  {
+    "Id": 7,
+    "protocol_id": "BOLD",
+    "protocol_shortname": "BOLD",
+    "protocol_longname_english": "BOLD",
+    "protocol_longname_german": "BOLD"
+  },
+  {
+    "Id": 8,
+    "protocol_id": "CapeOx",
+    "protocol_shortname": "CapeOx",
+    "protocol_longname_english": "CapeOx",
+    "protocol_longname_german": "CapeOx"
+  },
+  {
+    "Id": 9,
+    "protocol_id": "CarboTax",
+    "protocol_shortname": "CarboTax",
+    "protocol_longname_english": "CarboTax",
+    "protocol_longname_german": "CarboTax"
+  },
+  {
+    "Id": 10,
+    "protocol_id": "CEV",
+    "protocol_shortname": "CEV",
+    "protocol_longname_english": "CEV",
+    "protocol_longname_german": "CEV"
+  },
+  {
+    "Id": 11,
+    "protocol_id": "CHOEP",
+    "protocol_shortname": "CHOEP",
+    "protocol_longname_english": "CHOEP",
+    "protocol_longname_german": "CHOEP"
+  },
+  {
+    "Id": 12,
+    "protocol_id": "CHOP",
+    "protocol_shortname": "CHOP",
+    "protocol_longname_english": "CHOP",
+    "protocol_longname_german": "CHOP"
+  },
+  {
+    "Id": 13,
+    "protocol_id": "COPP",
+    "protocol_shortname": "COPP",
+    "protocol_longname_english": "COPP",
+    "protocol_longname_german": "COPP"
+  },
+  {
+    "Id": 14,
+    "protocol_id": "CV",
+    "protocol_shortname": "CV",
+    "protocol_longname_english": "CV",
+    "protocol_longname_german": "CV"
+  },
+  {
+    "Id": 15,
+    "protocol_id": "DA",
+    "protocol_shortname": "DA",
+    "protocol_longname_english": "DA",
+    "protocol_longname_german": "DA"
+  },
+  {
+    "Id": 16,
+    "protocol_id": "DAC",
+    "protocol_shortname": "DAC",
+    "protocol_longname_english": "DAC",
+    "protocol_longname_german": "DAC"
+  },
+  {
+    "Id": 17,
+    "protocol_id": "DC (Doce / Carbo)",
+    "protocol_shortname": "DC (Doce / Carbo)",
+    "protocol_longname_english": "DC (Doce / Carbo)",
+    "protocol_longname_german": "DC (Doce/Carbo)"
+  },
+  {
+    "Id": 18,
+    "protocol_id": "DC (Doce / Cyclo)",
+    "protocol_shortname": "DC (Doce / Cyclo)",
+    "protocol_longname_english": "DC (Doce / Cyclo)",
+    "protocol_longname_german": "DC (Doce/Cyclo)"
+  },
+  {
+    "Id": 19,
+    "protocol_id": "Dexa-BEAM",
+    "protocol_shortname": "Dexa-BEAM",
+    "protocol_longname_english": "Dexa-BEAM",
+    "protocol_longname_german": "Dexa-BEAM"
+  },
+  {
+    "Id": 20,
+    "protocol_id": "DHAP",
+    "protocol_shortname": "DHAP",
+    "protocol_longname_english": "DHAP",
+    "protocol_longname_german": "DHAP"
+  },
+  {
+    "Id": 21,
+    "protocol_id": "DVP",
+    "protocol_shortname": "DVP",
+    "protocol_longname_english": "DVP",
+    "protocol_longname_german": "DVP"
+  },
+  {
+    "Id": 22,
+    "protocol_id": "EC",
+    "protocol_shortname": "EC",
+    "protocol_longname_english": "EC",
+    "protocol_longname_german": "EC"
+  },
+  {
+    "Id": 23,
+    "protocol_id": "EC-D",
+    "protocol_shortname": "EC-D",
+    "protocol_longname_english": "EC-D",
+    "protocol_longname_german": "EC-D"
+  },
+  {
+    "Id": 24,
+    "protocol_id": "ECF",
+    "protocol_shortname": "ECF",
+    "protocol_longname_english": "ECF",
+    "protocol_longname_german": "ECF"
+  },
+  {
+    "Id": 25,
+    "protocol_id": "EC-P",
+    "protocol_shortname": "EC-P",
+    "protocol_longname_english": "EC-P",
+    "protocol_longname_german": "EC-P"
+  },
+  {
+    "Id": 26,
+    "protocol_id": "EOX",
+    "protocol_shortname": "EOX",
+    "protocol_longname_english": "EOX",
+    "protocol_longname_german": "EOX"
+  },
+  {
+    "Id": 27,
+    "protocol_id": "FAC",
+    "protocol_shortname": "FAC",
+    "protocol_longname_english": "FAC",
+    "protocol_longname_german": "FAC"
+  },
+  {
+    "Id": 28,
+    "protocol_id": "FC",
+    "protocol_shortname": "FC",
+    "protocol_longname_english": "FC",
+    "protocol_longname_german": "FC"
+  },
+  {
+    "Id": 29,
+    "protocol_id": "FEC",
+    "protocol_shortname": "FEC",
+    "protocol_longname_english": "FEC",
+    "protocol_longname_german": "FEC"
+  },
+  {
+    "Id": 30,
+    "protocol_id": "FEC-Doc",
+    "protocol_shortname": "FEC-Doc",
+    "protocol_longname_english": "FEC-Doc",
+    "protocol_longname_german": "FEC-Doc"
+  },
+  {
+    "Id": 31,
+    "protocol_id": "FLAG-Ida",
+    "protocol_shortname": "FLAG-Ida",
+    "protocol_longname_english": "FLAG-Ida",
+    "protocol_longname_german": "FLAG-Ida"
+  },
+  {
+    "Id": 32,
+    "protocol_id": "FLO",
+    "protocol_shortname": "FLO",
+    "protocol_longname_english": "FLO",
+    "protocol_longname_german": "FLO"
+  },
+  {
+    "Id": 33,
+    "protocol_id": "FLOT",
+    "protocol_shortname": "FLOT",
+    "protocol_longname_english": "FLOT",
+    "protocol_longname_german": "FLOT"
+  },
+  {
+    "Id": 34,
+    "protocol_id": "FOLFIRI",
+    "protocol_shortname": "FOLFIRI",
+    "protocol_longname_english": "FOLFIRI",
+    "protocol_longname_german": "FOLFIRI"
+  },
+  {
+    "Id": 35,
+    "protocol_id": "FOLFOX4",
+    "protocol_shortname": "FOLFOX4",
+    "protocol_longname_english": "FOLFOX4",
+    "protocol_longname_german": "FOLFOX4"
+  },
+  {
+    "Id": 36,
+    "protocol_id": "FOLFOXIRI",
+    "protocol_shortname": "FOLFOXIRI",
+    "protocol_longname_english": "FOLFOXIRI",
+    "protocol_longname_german": "FOLFOXIRI"
+  },
+  {
+    "Id": 37,
+    "protocol_id": "Gem-Carbo",
+    "protocol_shortname": "Gem-Carbo",
+    "protocol_longname_english": "Gem-Carbo",
+    "protocol_longname_german": "Gem-Carbo"
+  },
+  {
+    "Id": 38,
+    "protocol_id": "Gem-Cis",
+    "protocol_shortname": "Gem-Cis",
+    "protocol_longname_english": "Gem-Cis",
+    "protocol_longname_german": "Gem-Cis"
+  },
+  {
+    "Id": 39,
+    "protocol_id": "GemTreo",
+    "protocol_shortname": "GemTreo",
+    "protocol_longname_english": "GemTreo",
+    "protocol_longname_german": "GemTreo"
+  },
+  {
+    "Id": 40,
+    "protocol_id": "GOP",
+    "protocol_shortname": "GOP",
+    "protocol_longname_english": "GOP",
+    "protocol_longname_german": "GOP"
+  },
+  {
+    "Id": 41,
+    "protocol_id": "ICE",
+    "protocol_shortname": "ICE",
+    "protocol_longname_english": "ICE",
+    "protocol_longname_german": "ICE"
+  },
+  {
+    "Id": 42,
+    "protocol_id": "MAMAC",
+    "protocol_shortname": "MAMAC",
+    "protocol_longname_english": "MAMAC",
+    "protocol_longname_german": "MAMAC"
+  },
+  {
+    "Id": 43,
+    "protocol_id": "MAV",
+    "protocol_shortname": "MAV",
+    "protocol_longname_english": "MAV",
+    "protocol_longname_german": "MAV"
+  },
+  {
+    "Id": 44,
+    "protocol_id": "M-Cavi",
+    "protocol_shortname": "M-Cavi",
+    "protocol_longname_english": "M-Cavi",
+    "protocol_longname_german": "M-Cavi"
+  },
+  {
+    "Id": 45,
+    "protocol_id": "M-VAC",
+    "protocol_shortname": "M-VAC",
+    "protocol_longname_english": "M-VAC",
+    "protocol_longname_german": "M-VAC"
+  },
+  {
+    "Id": 46,
+    "protocol_id": "PC",
+    "protocol_shortname": "PC",
+    "protocol_longname_english": "PC",
+    "protocol_longname_german": "PC"
+  },
+  {
+    "Id": 47,
+    "protocol_id": "PCV",
+    "protocol_shortname": "PCV",
+    "protocol_longname_english": "PCV",
+    "protocol_longname_german": "PCV"
+  },
+  {
+    "Id": 48,
+    "protocol_id": "PE",
+    "protocol_shortname": "PE",
+    "protocol_longname_english": "PE",
+    "protocol_longname_german": "PE"
+  },
+  {
+    "Id": 49,
+    "protocol_id": "PEB",
+    "protocol_shortname": "PEB",
+    "protocol_longname_english": "PEB",
+    "protocol_longname_german": "PEB"
+  },
+  {
+    "Id": 50,
+    "protocol_id": "PEI",
+    "protocol_shortname": "PEI",
+    "protocol_longname_english": "PEI",
+    "protocol_longname_german": "PEI"
+  },
+  {
+    "Id": 51,
+    "protocol_id": "PLF",
+    "protocol_shortname": "PLF",
+    "protocol_longname_english": "PLF",
+    "protocol_longname_german": "PLF"
+  },
+  {
+    "Id": 52,
+    "protocol_id": "PVBI",
+    "protocol_shortname": "PVBI",
+    "protocol_longname_english": "PVBI",
+    "protocol_longname_german": "PVBI"
+  },
+  {
+    "Id": 53,
+    "protocol_id": "R-CHOP",
+    "protocol_shortname": "R-CHOP",
+    "protocol_longname_english": "R-CHOP",
+    "protocol_longname_german": "R-CHOP"
+  },
+  {
+    "Id": 54,
+    "protocol_id": "S-HAI",
+    "protocol_shortname": "S-HAI",
+    "protocol_longname_english": "S-HAI",
+    "protocol_longname_german": "S-HAI"
+  },
+  {
+    "Id": 55,
+    "protocol_id": "S-HAM",
+    "protocol_shortname": "S-HAM",
+    "protocol_longname_english": "S-HAM",
+    "protocol_longname_german": "S-HAM"
+  },
+  {
+    "Id": 56,
+    "protocol_id": "TAC",
+    "protocol_shortname": "TAC",
+    "protocol_longname_english": "TAC",
+    "protocol_longname_german": "TAC"
+  },
+  {
+    "Id": 57,
+    "protocol_id": "TIP",
+    "protocol_shortname": "TIP",
+    "protocol_longname_english": "TIP",
+    "protocol_longname_german": "TIP"
+  },
+  {
+    "Id": 58,
+    "protocol_id": "TPF",
+    "protocol_shortname": "TPF",
+    "protocol_longname_english": "TPF",
+    "protocol_longname_german": "TPF"
+  },
+  {
+    "Id": 59,
+    "protocol_id": "U",
+    "protocol_shortname": "U",
+    "protocol_longname_english": "Unknown",
+    "protocol_longname_german": "Unbekannt"
+  },
+  {
+    "Id": 60,
+    "protocol_id": "XELOX",
+    "protocol_shortname": "XELOX",
+    "protocol_longname_english": "XELOX",
+    "protocol_longname_german": "XELOX"
+  },
+  {
+    "Id": 61,
+    "protocol_id": "XP",
+    "protocol_shortname": "XP",
+    "protocol_longname_english": "XP",
+    "protocol_longname_german": "XP"
+  },
+  {
+    "Id": 62,
+    "protocol_id": "Y",
+    "protocol_shortname": "Y",
+    "protocol_longname_english": "No therapy",
+    "protocol_longname_german": "Keine Therapie"
+  }
+]

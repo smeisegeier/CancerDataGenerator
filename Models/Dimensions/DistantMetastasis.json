@@ -1,0 +1,100 @@
+[
+  {
+    "Id": 1,
+    "distant_metastases_id": "ADR",
+    "distant_metastases_shortname": "ADR",
+    "distant_metastases_longname_english": "Adrenal",
+    "distant_metastases_longname_german": "Nebennieren"
+  },
+  {
+    "Id": 2,
+    "distant_metastases_id": "BRA",
+    "distant_metastases_shortname": "BRA",
+    "distant_metastases_longname_english": "Brain",
+    "distant_metastases_longname_german": "Hirn"
+  },
+  {
+    "Id": 3,
+    "distant_metastases_id": "GEN",
+    "distant_metastases_shortname": "GEN",
+    "distant_metastases_longname_english": "Generalized metastases",
+    "distant_metastases_longname_german": "Generalisierte Metastasierung"
+  },
+  {
+    "Id": 4,
+    "distant_metastases_id": "HEP",
+    "distant_metastases_shortname": "HEP",
+    "distant_metastases_longname_english": "Liver",
+    "distant_metastases_longname_german": "Leber"
+  },
+  {
+    "Id": 5,
+    "distant_metastases_id": "LYM",
+    "distant_metastases_shortname": "LYM",
+    "distant_metastases_longname_english": "Lymph nodes",
+    "distant_metastases_longname_german": "Lymphknoten"
+  },
+  {
+    "Id": 6,
+    "distant_metastases_id": "MAR",
+    "distant_metastases_shortname": "MAR",
+    "distant_metastases_longname_english": "Marrow",
+    "distant_metastases_longname_german": "Knochenmark"
+  },
+  {
+    "Id": 7,
+    "distant_metastases_id": "OSS",
+    "distant_metastases_shortname": "OSS",
+    "distant_metastases_longname_english": "Bones",
+    "distant_metastases_longname_german": "Knochen"
+  },
+  {
+    "Id": 8,
+    "distant_metastases_id": "OTH",
+    "distant_metastases_shortname": "OTH",
+    "distant_metastases_longname_english": "Other organs",
+    "distant_metastases_longname_german": "Andere Organe"
+  },
+  {
+    "Id": 9,
+    "distant_metastases_id": "PER",
+    "distant_metastases_shortname": "PER",
+    "distant_metastases_longname_english": "Peritoneum",
+    "distant_metastases_longname_german": "Peritoneum"
+  },
+  {
+    "Id": 10,
+    "distant_metastases_id": "PLE",
+    "distant_metastases_shortname": "PLE",
+    "distant_metastases_longname_english": "Pleura",
+    "distant_metastases_longname_german": "Pleura"
+  },
+  {
+    "Id": 11,
+    "distant_metastases_id": "PUL",
+    "distant_metastases_shortname": "PUL",
+    "distant_metastases_longname_english": "Lung",
+    "distant_metastases_longname_german": "Lunge"
+  },
+  {
+    "Id": 12,
+    "distant_metastases_id": "SKI",
+    "distant_metastases_shortname": "SKI",
+    "distant_metastases_longname_english": "Skin",
+    "distant_metastases_longname_german": "Haut"
+  },
+  {
+    "Id": 13,
+    "distant_metastases_id": "UNK",
+    "distant_metastases_shortname": "UNK",
+    "distant_metastases_longname_english": "Unknown",
+    "distant_metastases_longname_german": "Unbekannt"
+  },
+  {
+    "Id": 14,
+    "distant_metastases_id": "Y",
+    "distant_metastases_shortname": "Y",
+    "distant_metastases_longname_english": "No distant metastases",
+    "distant_metastases_longname_german": "Keine Fernmetastasen angegeben"
+  }
+]

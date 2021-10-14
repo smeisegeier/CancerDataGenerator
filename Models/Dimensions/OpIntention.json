@@ -1,0 +1,51 @@
+[
+  {
+    "Id": 1,
+    "op_intention_id": "D",
+    "op_intention_shortname": "D",
+    "op_intention_longname_english": "Diagnostic",
+    "op_intention_longname_german": "Diagnostisch"
+  },
+  {
+    "Id": 2,
+    "op_intention_id": "K",
+    "op_intention_shortname": "K",
+    "op_intention_longname_english": "Curative",
+    "op_intention_longname_german": "Kurativ"
+  },
+  {
+    "Id": 3,
+    "op_intention_id": "P",
+    "op_intention_shortname": "P",
+    "op_intention_longname_english": "Palliative",
+    "op_intention_longname_german": "Palliativ"
+  },
+  {
+    "Id": 4,
+    "op_intention_id": "R",
+    "op_intention_shortname": "R",
+    "op_intention_longname_english": "Audit / complication",
+    "op_intention_longname_german": "Revision / Komplikation"
+  },
+  {
+    "Id": 5,
+    "op_intention_id": "S",
+    "op_intention_shortname": "S",
+    "op_intention_longname_english": "Miscellaneous",
+    "op_intention_longname_german": "Sonstiges"
+  },
+  {
+    "Id": 6,
+    "op_intention_id": "X",
+    "op_intention_shortname": "X",
+    "op_intention_longname_english": "Missing indication",
+    "op_intention_longname_german": "Fehlende Angabe"
+  },
+  {
+    "Id": 7,
+    "op_intention_id": "Y",
+    "op_intention_shortname": "Y",
+    "op_intention_longname_english": "No operation happened",
+    "op_intention_longname_german": "Keine Operation fand statt"
+  }
+]

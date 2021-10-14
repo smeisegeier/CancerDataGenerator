@@ -1,0 +1,282 @@
+[
+  {
+    "Id": 1,
+    "condensed_receptor_status_id": "NNN",
+    "condensed_receptor_status_shortname": "NNN",
+    "her_2_status": "N",
+    "estrogen_status": "N",
+    "progesterone_status": "N",
+    "condensed_receptor_status_longname_english": "Triple Negative",
+    "condensed_receptor_status_longname_german": "Triple Negative"
+  },
+  {
+    "Id": 2,
+    "condensed_receptor_status_id": "NNP",
+    "condensed_receptor_status_shortname": "NNP",
+    "her_2_status": "N",
+    "estrogen_status": "N",
+    "progesterone_status": "P",
+    "condensed_receptor_status_longname_english": "HER2 Negative, Estrogen Negative, Status Positive",
+    "condensed_receptor_status_longname_german": "HER2 Negativ, Östrogen Negativ, Progesteron Positiv"
+  },
+  {
+    "Id": 3,
+    "condensed_receptor_status_id": "NNU",
+    "condensed_receptor_status_shortname": "NNU",
+    "her_2_status": "N",
+    "estrogen_status": "N",
+    "progesterone_status": "U",
+    "condensed_receptor_status_longname_english": "HER2 Negative, Estrogen Negative, Status Unknown",
+    "condensed_receptor_status_longname_german": "HER2 Negativ, Östrogen Negativ, Progesteron Unbekannt"
+  },
+  {
+    "Id": 4,
+    "condensed_receptor_status_id": "NPN",
+    "condensed_receptor_status_shortname": "NPN",
+    "her_2_status": "N",
+    "estrogen_status": "P",
+    "progesterone_status": "N",
+    "condensed_receptor_status_longname_english": "HER2 Negative, Estrogen Positive, Status Negative",
+    "condensed_receptor_status_longname_german": "HER2 Negativ, Östrogen Positiv, Progesteron Negativ"
+  },
+  {
+    "Id": 5,
+    "condensed_receptor_status_id": "NPP",
+    "condensed_receptor_status_shortname": "NPP",
+    "her_2_status": "N",
+    "estrogen_status": "P",
+    "progesterone_status": "P",
+    "condensed_receptor_status_longname_english": "HER2 Negative, Estrogen Positive, Status Positive",
+    "condensed_receptor_status_longname_german": "HER2 Negativ, Östrogen Positiv, Progesteron Positiv"
+  },
+  {
+    "Id": 6,
+    "condensed_receptor_status_id": "NPU",
+    "condensed_receptor_status_shortname": "NPU",
+    "her_2_status": "N",
+    "estrogen_status": "P",
+    "progesterone_status": "U",
+    "condensed_receptor_status_longname_english": "HER2 Negative, Estrogen Positive, Status Unknown",
+    "condensed_receptor_status_longname_german": "HER2 Negativ, Östrogen Positiv, Progesteron Unbekannt"
+  },
+  {
+    "Id": 7,
+    "condensed_receptor_status_id": "NUN",
+    "condensed_receptor_status_shortname": "NUN",
+    "her_2_status": "N",
+    "estrogen_status": "U",
+    "progesterone_status": "N",
+    "condensed_receptor_status_longname_english": "HER2 Negative, Estrogen Unknown, Status Negative",
+    "condensed_receptor_status_longname_german": "HER2 Negativ, Östrogen Unbekannt, Progesteron Negativ"
+  },
+  {
+    "Id": 8,
+    "condensed_receptor_status_id": "NUP",
+    "condensed_receptor_status_shortname": "NUP",
+    "her_2_status": "N",
+    "estrogen_status": "U",
+    "progesterone_status": "P",
+    "condensed_receptor_status_longname_english": "HER2 Negative, Estrogen Unknown, Status Positive",
+    "condensed_receptor_status_longname_german": "HER2 Negativ, Östrogen Unbekannt, Progesteron Positiv"
+  },
+  {
+    "Id": 9,
+    "condensed_receptor_status_id": "NUU",
+    "condensed_receptor_status_shortname": "NUU",
+    "her_2_status": "N",
+    "estrogen_status": "U",
+    "progesterone_status": "U",
+    "condensed_receptor_status_longname_english": "HER2 Negative, Estrogen Unknown, Status Unknown",
+    "condensed_receptor_status_longname_german": "HER2 Negativ, Östrogen Unbekannt, Progesteron Unbekannt"
+  },
+  {
+    "Id": 10,
+    "condensed_receptor_status_id": "PNN",
+    "condensed_receptor_status_shortname": "PNN",
+    "her_2_status": "P",
+    "estrogen_status": "N",
+    "progesterone_status": "N",
+    "condensed_receptor_status_longname_english": "HER2 Positive, Estrogen Negative, Status Negative",
+    "condensed_receptor_status_longname_german": "HER2 Positiv, Östrogen Negativ, Progesteron Negativ"
+  },
+  {
+    "Id": 11,
+    "condensed_receptor_status_id": "PNP",
+    "condensed_receptor_status_shortname": "PNP",
+    "her_2_status": "P",
+    "estrogen_status": "N",
+    "progesterone_status": "P",
+    "condensed_receptor_status_longname_english": "HER2 Positive, Estrogen Negative, Status Positive",
+    "condensed_receptor_status_longname_german": "HER2 Positiv, Östrogen Negativ, Progesteron Positiv"
+  },
+  {
+    "Id": 12,
+    "condensed_receptor_status_id": "PNU",
+    "condensed_receptor_status_shortname": "PNU",
+    "her_2_status": "P",
+    "estrogen_status": "N",
+    "progesterone_status": "U",
+    "condensed_receptor_status_longname_english": "HER2 Positive, Estrogen Negative, Status Unknown",
+    "condensed_receptor_status_longname_german": "HER2 Positiv, Östrogen Negativ, Progesteron Unbekannt"
+  },
+  {
+    "Id": 13,
+    "condensed_receptor_status_id": "PPN",
+    "condensed_receptor_status_shortname": "PPN",
+    "her_2_status": "P",
+    "estrogen_status": "P",
+    "progesterone_status": "N",
+    "condensed_receptor_status_longname_english": "HER2 Positive, Estrogen Positive, Status Negative",
+    "condensed_receptor_status_longname_german": "HER2 Positiv, Östrogen Positiv, Progesteron Negativ"
+  },
+  {
+    "Id": 14,
+    "condensed_receptor_status_id": "PPP",
+    "condensed_receptor_status_shortname": "PPP",
+    "her_2_status": "P",
+    "estrogen_status": "P",
+    "progesterone_status": "P",
+    "condensed_receptor_status_longname_english": "Triple Positive",
+    "condensed_receptor_status_longname_german": "Triple Positive"
+  },
+  {
+    "Id": 15,
+    "condensed_receptor_status_id": "PPU",
+    "condensed_receptor_status_shortname": "PPU",
+    "her_2_status": "P",
+    "estrogen_status": "P",
+    "progesterone_status": "U",
+    "condensed_receptor_status_longname_english": "HER2 Positive, Estrogen Positive, Status Unknown",
+    "condensed_receptor_status_longname_german": "HER2 Positiv, Östrogen Positiv, Progesteron Unbekannt"
+  },
+  {
+    "Id": 16,
+    "condensed_receptor_status_id": "PUN",
+    "condensed_receptor_status_shortname": "PUN",
+    "her_2_status": "P",
+    "estrogen_status": "U",
+    "progesterone_status": "N",
+    "condensed_receptor_status_longname_english": "HER2 Positive, Estrogen Unknown, Status Negative",
+    "condensed_receptor_status_longname_german": "HER2 Positiv, Östrogen Unbekannt, Progesteron Negativ"
+  },
+  {
+    "Id": 17,
+    "condensed_receptor_status_id": "PUP",
+    "condensed_receptor_status_shortname": "PUP",
+    "her_2_status": "P",
+    "estrogen_status": "U",
+    "progesterone_status": "P",
+    "condensed_receptor_status_longname_english": "HER2 Positive, Estrogen Unknown, Status Positive",
+    "condensed_receptor_status_longname_german": "HER2 Positiv, Östrogen Unbekannt, Progesteron Positiv"
+  },
+  {
+    "Id": 18,
+    "condensed_receptor_status_id": "PUU",
+    "condensed_receptor_status_shortname": "PUU",
+    "her_2_status": "P",
+    "estrogen_status": "U",
+    "progesterone_status": "U",
+    "condensed_receptor_status_longname_english": "HER2 Positive, Estrogen Unknown, Status Unknown",
+    "condensed_receptor_status_longname_german": "HER2 Positiv, Östrogen Unbekannt, Progesteron Unbekannt"
+  },
+  {
+    "Id": 19,
+    "condensed_receptor_status_id": "UNN",
+    "condensed_receptor_status_shortname": "UNN",
+    "her_2_status": "U",
+    "estrogen_status": "N",
+    "progesterone_status": "N",
+    "condensed_receptor_status_longname_english": "HER2 Unknown, Estrogen Negative, Status Negative",
+    "condensed_receptor_status_longname_german": "HER2 Unbekannt, Östrogen Negativ, Progesteron Negativ"
+  },
+  {
+    "Id": 20,
+    "condensed_receptor_status_id": "UNP",
+    "condensed_receptor_status_shortname": "UNP",
+    "her_2_status": "U",
+    "estrogen_status": "N",
+    "progesterone_status": "P",
+    "condensed_receptor_status_longname_english": "HER2 Unknown, Estrogen Negative, Status Positive",
+    "condensed_receptor_status_longname_german": "HER2 Unbekannt, Östrogen Negativ, Progesteron Positiv"
+  },
+  {
+    "Id": 21,
+    "condensed_receptor_status_id": "UNU",
+    "condensed_receptor_status_shortname": "UNU",
+    "her_2_status": "U",
+    "estrogen_status": "N",
+    "progesterone_status": "U",
+    "condensed_receptor_status_longname_english": "HER2 Unknown, Estrogen Negative, Status Unknown",
+    "condensed_receptor_status_longname_german": "HER2 Unbekannt, Östrogen Negativ, Progesteron Unbekannt"
+  },
+  {
+    "Id": 22,
+    "condensed_receptor_status_id": "UPN",
+    "condensed_receptor_status_shortname": "UPN",
+    "her_2_status": "U",
+    "estrogen_status": "P",
+    "progesterone_status": "N",
+    "condensed_receptor_status_longname_english": "HER2 Unknown, Estrogen Positive, Status Negative",
+    "condensed_receptor_status_longname_german": "HER2 Unbekannt, Östrogen Positiv, Progesteron Negativ"
+  },
+  {
+    "Id": 23,
+    "condensed_receptor_status_id": "UPP",
+    "condensed_receptor_status_shortname": "UPP",
+    "her_2_status": "U",
+    "estrogen_status": "P",
+    "progesterone_status": "P",
+    "condensed_receptor_status_longname_english": "HER2 Unknown, Estrogen Positive, Status Positive",
+    "condensed_receptor_status_longname_german": "HER2 Unbekannt, Östrogen Positiv, Progesteron Positiv"
+  },
+  {
+    "Id": 24,
+    "condensed_receptor_status_id": "UPU",
+    "condensed_receptor_status_shortname": "UPU",
+    "her_2_status": "U",
+    "estrogen_status": "P",
+    "progesterone_status": "U",
+    "condensed_receptor_status_longname_english": "HER2 Unknown, Estrogen Positive, Status Unknown",
+    "condensed_receptor_status_longname_german": "HER2 Unbekannt, Östrogen Positiv, Progesteron Unbekannt"
+  },
+  {
+    "Id": 25,
+    "condensed_receptor_status_id": "UUN",
+    "condensed_receptor_status_shortname": "UUN",
+    "her_2_status": "U",
+    "estrogen_status": "U",
+    "progesterone_status": "N",
+    "condensed_receptor_status_longname_english": "HER2 Unknown, Estrogen Unknown, Status Negative",
+    "condensed_receptor_status_longname_german": "HER2 Unbekannt, Östrogen Unbekannt, Progesteron Negativ"
+  },
+  {
+    "Id": 26,
+    "condensed_receptor_status_id": "UUP",
+    "condensed_receptor_status_shortname": "UUP",
+    "her_2_status": "U",
+    "estrogen_status": "U",
+    "progesterone_status": "P",
+    "condensed_receptor_status_longname_english": "HER2 Unknown, Estrogen Unknown, Status Positive",
+    "condensed_receptor_status_longname_german": "HER2 Unbekannt, Östrogen Unbekannt, Progesteron Positiv"
+  },
+  {
+    "Id": 27,
+    "condensed_receptor_status_id": "UUU",
+    "condensed_receptor_status_shortname": "UUU",
+    "her_2_status": "U",
+    "estrogen_status": "U",
+    "progesterone_status": "U",
+    "condensed_receptor_status_longname_english": "Unknown",
+    "condensed_receptor_status_longname_german": "Unbekannt"
+  },
+  {
+    "Id": 28,
+    "condensed_receptor_status_id": "Y",
+    "condensed_receptor_status_shortname": "Y",
+    "her_2_status": "Y",
+    "estrogen_status": "Y",
+    "progesterone_status": "Y",
+    "condensed_receptor_status_longname_english": "Not applicable",
+    "condensed_receptor_status_longname_german": "Nicht anwendbar"
+  }
+]

@@ -1,0 +1,65 @@
+[
+  {
+    "Id": 1,
+    "therapy_duration_id": 1,
+    "therapy_duration_shortname": "1",
+    "therapy_duration_longname_english": "Less than or equal to 1 Week",
+    "therapy_duration_longname_german": "Weniger oder genau eine Woche"
+  },
+  {
+    "Id": 2,
+    "therapy_duration_id": 3,
+    "therapy_duration_shortname": "3",
+    "therapy_duration_longname_english": "1-3 Weeks",
+    "therapy_duration_longname_german": "1-3 Wochen"
+  },
+  {
+    "Id": 3,
+    "therapy_duration_id": 4,
+    "therapy_duration_shortname": "4",
+    "therapy_duration_longname_english": "3-4 Weeks",
+    "therapy_duration_longname_german": "3-4 Wochen"
+  },
+  {
+    "Id": 4,
+    "therapy_duration_id": 12,
+    "therapy_duration_shortname": "12",
+    "therapy_duration_longname_english": "1-3 months",
+    "therapy_duration_longname_german": "1-3 Monate"
+  },
+  {
+    "Id": 5,
+    "therapy_duration_id": 24,
+    "therapy_duration_shortname": "24",
+    "therapy_duration_longname_english": "3-6 months",
+    "therapy_duration_longname_german": "3-6 Monate"
+  },
+  {
+    "Id": 6,
+    "therapy_duration_id": 48,
+    "therapy_duration_shortname": "48",
+    "therapy_duration_longname_english": "6-12 months",
+    "therapy_duration_longname_german": "6-12 Monate"
+  },
+  {
+    "Id": 7,
+    "therapy_duration_id": 997,
+    "therapy_duration_shortname": "997",
+    "therapy_duration_longname_english": "12+ months",
+    "therapy_duration_longname_german": "12+ Monate"
+  },
+  {
+    "Id": 8,
+    "therapy_duration_id": 998,
+    "therapy_duration_shortname": "998",
+    "therapy_duration_longname_english": "Ongoing or missing information",
+    "therapy_duration_longname_german": "Laufend oder fehlende Information"
+  },
+  {
+    "Id": 9,
+    "therapy_duration_id": 999,
+    "therapy_duration_shortname": "Y",
+    "therapy_duration_longname_english": "No therapy",
+    "therapy_duration_longname_german": "Keine Therapie durchgeführt"
+  }
+]

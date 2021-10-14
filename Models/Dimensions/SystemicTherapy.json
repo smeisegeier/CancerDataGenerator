@@ -1,0 +1,72 @@
+[
+  {
+    "Id": 1,
+    "systemic_therapy_id": "AS",
+    "systemic_therapy_shortname": "AS",
+    "systemic_therapy_longname_english": "Active surveillance",
+    "systemic_therapy_longname_german": "Active Surveillance"
+  },
+  {
+    "Id": 2,
+    "systemic_therapy_id": "CH",
+    "systemic_therapy_shortname": "CH",
+    "systemic_therapy_longname_english": "Chemotherapy",
+    "systemic_therapy_longname_german": "Chemotherapie"
+  },
+  {
+    "Id": 3,
+    "systemic_therapy_id": "HO",
+    "systemic_therapy_shortname": "HO",
+    "systemic_therapy_longname_english": "Hormone therapy",
+    "systemic_therapy_longname_german": "Hormontherapie"
+  },
+  {
+    "Id": 4,
+    "systemic_therapy_id": "IM",
+    "systemic_therapy_shortname": "IM",
+    "systemic_therapy_longname_english": "Immunotherapy and antibody therapy",
+    "systemic_therapy_longname_german": "Immuntherapie und Antikörpertherapie"
+  },
+  {
+    "Id": 5,
+    "systemic_therapy_id": "KM",
+    "systemic_therapy_shortname": "KM",
+    "systemic_therapy_longname_english": "Bone marrow transplant",
+    "systemic_therapy_longname_german": "Knochenmarktransplantation"
+  },
+  {
+    "Id": 6,
+    "systemic_therapy_id": "SO",
+    "systemic_therapy_shortname": "SO",
+    "systemic_therapy_longname_english": "Miscellaneous",
+    "systemic_therapy_longname_german": "Sonstiges"
+  },
+  {
+    "Id": 7,
+    "systemic_therapy_id": "U",
+    "systemic_therapy_shortname": "U",
+    "systemic_therapy_longname_english": "Unknown",
+    "systemic_therapy_longname_german": "Unbekannt"
+  },
+  {
+    "Id": 8,
+    "systemic_therapy_id": "WS",
+    "systemic_therapy_shortname": "WS",
+    "systemic_therapy_longname_english": "Wait and see",
+    "systemic_therapy_longname_german": "Wait and see"
+  },
+  {
+    "Id": 9,
+    "systemic_therapy_id": "Y",
+    "systemic_therapy_shortname": "Y",
+    "systemic_therapy_longname_english": "No systemic therapy",
+    "systemic_therapy_longname_german": "Keine systemische Therapie"
+  },
+  {
+    "Id": 10,
+    "systemic_therapy_id": "ZS",
+    "systemic_therapy_shortname": "ZS",
+    "systemic_therapy_longname_english": "Targeted substances",
+    "systemic_therapy_longname_german": "Zielgerichtete Substanzen"
+  }
+]

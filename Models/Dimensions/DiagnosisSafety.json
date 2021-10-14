@@ -1,0 +1,44 @@
+[
+  {
+    "Id": 1,
+    "diagnosis_safety_id": 1,
+    "diagnosis_safety_longname_english": "Clinically without tumor-specific diagnosis (physical examination only)",
+    "diagnosis_safety_longname_german": "Klinisch ohne tumorspezifische Diagnostik (nur körperliche Untersuchung)"
+  },
+  {
+    "Id": 2,
+    "diagnosis_safety_id": 2,
+    "diagnosis_safety_longname_english": "Clinical: clinical diagnosis performed before the date of death; includes diagnostic techniques, including X-ray, endoscopy, other imaging techniques, ultrasound, exploratory surgery (laparotomy, etc.), and autopsy, without microscopic tissue diagnosis.",
+    "diagnosis_safety_longname_german": "Klinisch: klinische Diagnose vor dem Sterbedatum durchgeführt; schließt diagnostische Techniken, inklusive Röntgen, Endoskopie, weitere bildgebende Verfahren, Ultraschall, exploratorische Chirurgie (Laparotomie etc.) und Autopsie, ohne mikroskopische Gewebediagnose, ein."
+  },
+  {
+    "Id": 3,
+    "diagnosis_safety_id": 4,
+    "diagnosis_safety_longname_english": "Specific tumor markers",
+    "diagnosis_safety_longname_german": "Spezifische Tumormarker"
+  },
+  {
+    "Id": 4,
+    "diagnosis_safety_id": 5,
+    "diagnosis_safety_longname_english": "Cytological: Examination of cells from primary sites including fluid aspiration using endoscopy or needles. Includes microscopic examinations of peripheral blood smears and smears of iliac crest aspiration.",
+    "diagnosis_safety_longname_german": "Zytologisch: Untersuchung von Zellen aus primären Lokalisationen inklusive Flüssigkeitsaspirationen mittels Endoskopien oder Nadeln. Schließt mikroskopische Untersuchungen von peripheren Blutausstrichen und Ausstrichen von Beckenkammaspirationen ein."
+  },
+  {
+    "Id": 5,
+    "diagnosis_safety_id": 6,
+    "diagnosis_safety_longname_english": "Histology of a metastasis",
+    "diagnosis_safety_longname_german": "Histologie einer Metastase"
+  },
+  {
+    "Id": 6,
+    "diagnosis_safety_id": 7,
+    "diagnosis_safety_longname_english": "Histological: Histology of the primary tumor: Histological examination of tissue of the primary tumor including all cutting techniques and bone marrow biopsies. This includes samples from the primary tumor from autopsies. Histological examination of the tissue from a metastasis, including autopsy.",
+    "diagnosis_safety_longname_german": "Histologisch: Histologie des Primärtumors: Histologische Untersuchung von Gewebe des Primärtumors einschließlich aller Schnitttechniken und Knochenmarksbiopsien. Dies schließt Proben des Primärtumors aus Autopsien ein. Histologische Untersuchung des Gewebes aus einer Metastase, einschließlich Autopsie."
+  },
+  {
+    "Id": 7,
+    "diagnosis_safety_id": 9,
+    "diagnosis_safety_longname_english": "Unknown",
+    "diagnosis_safety_longname_german": "Unbekannt"
+  }
+]

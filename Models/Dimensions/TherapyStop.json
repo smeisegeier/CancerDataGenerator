@@ -1,0 +1,58 @@
+[
+  {
+    "Id": 1,
+    "therapy_stop_id": "A",
+    "therapy_stop_shortname": "A",
+    "therapy_stop_longname_english": "Canceled because of side effects",
+    "therapy_stop_longname_german": "Abbruch wegen Nebenwirkungen"
+  },
+  {
+    "Id": 2,
+    "therapy_stop_id": "E",
+    "therapy_stop_shortname": "E",
+    "therapy_stop_longname_english": "Regular End",
+    "therapy_stop_longname_german": "Reguläres Ende"
+  },
+  {
+    "Id": 3,
+    "therapy_stop_id": "O",
+    "therapy_stop_shortname": "O",
+    "therapy_stop_longname_english": "Ongoing",
+    "therapy_stop_longname_german": "Laufend"
+  },
+  {
+    "Id": 4,
+    "therapy_stop_id": "P",
+    "therapy_stop_shortname": "P",
+    "therapy_stop_longname_english": "Canceled due to progress",
+    "therapy_stop_longname_german": "Abbruch wegen Progress"
+  },
+  {
+    "Id": 5,
+    "therapy_stop_id": "S",
+    "therapy_stop_shortname": "S",
+    "therapy_stop_longname_english": "Cancellation for other reasons",
+    "therapy_stop_longname_german": "Abbruch aus sonstigen Gründen"
+  },
+  {
+    "Id": 6,
+    "therapy_stop_id": "U",
+    "therapy_stop_shortname": "U",
+    "therapy_stop_longname_english": "Unknown",
+    "therapy_stop_longname_german": "Unbekannt"
+  },
+  {
+    "Id": 7,
+    "therapy_stop_id": "V",
+    "therapy_stop_shortname": "V",
+    "therapy_stop_longname_english": "Patient refuses further therapy",
+    "therapy_stop_longname_german": "Patientin / Patient verweigert weitere Therapie"
+  },
+  {
+    "Id": 8,
+    "therapy_stop_id": "Y",
+    "therapy_stop_shortname": "Y",
+    "therapy_stop_longname_english": "No therapy",
+    "therapy_stop_longname_german": "Keine Therapie"
+  }
+]

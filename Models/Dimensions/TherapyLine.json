@@ -1,0 +1,44 @@
+[
+  {
+    "Id": 1,
+    "therapy_line_id": 1,
+    "therapy_line_shortname": "1",
+    "therapy_line_longname_english": "First-Line Therapy",
+    "therapy_line_longname_german": "Erstlinientherapie"
+  },
+  {
+    "Id": 2,
+    "therapy_line_id": 2,
+    "therapy_line_shortname": "2",
+    "therapy_line_longname_english": "Second-Line Therapy",
+    "therapy_line_longname_german": "Zweitlinientherapie"
+  },
+  {
+    "Id": 3,
+    "therapy_line_id": 3,
+    "therapy_line_shortname": "3",
+    "therapy_line_longname_english": "Third-Line Therapy",
+    "therapy_line_longname_german": "Drittlinientherapie"
+  },
+  {
+    "Id": 4,
+    "therapy_line_id": 4,
+    "therapy_line_shortname": "4",
+    "therapy_line_longname_english": "Forth-Line Therapy",
+    "therapy_line_longname_german": "Viertlinientherapie"
+  },
+  {
+    "Id": 5,
+    "therapy_line_id": 98,
+    "therapy_line_shortname": "U",
+    "therapy_line_longname_english": "Unknown therapy line",
+    "therapy_line_longname_german": "Unbekannte Therapielinie"
+  },
+  {
+    "Id": 6,
+    "therapy_line_id": 99,
+    "therapy_line_shortname": "Y",
+    "therapy_line_longname_english": "Therapy/Operation did not happen",
+    "therapy_line_longname_german": "Therapie/Operation fand nicht statt"
+  }
+]

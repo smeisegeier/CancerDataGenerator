@@ -1,0 +1,65 @@
+[
+  {
+    "Id": 1,
+    "report_type_id": "D",
+    "report_type_shortname": "D",
+    "report_type_longname_english": "Diagnosis Report",
+    "report_type_longname_german": "Diagnosemeldung"
+  },
+  {
+    "Id": 2,
+    "report_type_id": "O",
+    "report_type_shortname": "O",
+    "report_type_longname_english": "Other Reports",
+    "report_type_longname_german": "Sonstige Meldungen"
+  },
+  {
+    "Id": 3,
+    "report_type_id": "OP",
+    "report_type_shortname": "OP",
+    "report_type_longname_english": "Operation Report",
+    "report_type_longname_german": "Operationsmeldung"
+  },
+  {
+    "Id": 4,
+    "report_type_id": "P",
+    "report_type_shortname": "P",
+    "report_type_longname_english": "Progress Report",
+    "report_type_longname_german": "Verlaufsmeldung"
+  },
+  {
+    "Id": 5,
+    "report_type_id": "PA",
+    "report_type_shortname": "PA",
+    "report_type_longname_english": "Pathology Findings",
+    "report_type_longname_german": "Pathologiebefunde"
+  },
+  {
+    "Id": 6,
+    "report_type_id": "ST",
+    "report_type_shortname": "ST",
+    "report_type_longname_english": "Radiotherapy Report",
+    "report_type_longname_german": "Strahlentherapiemeldung"
+  },
+  {
+    "Id": 7,
+    "report_type_id": "SYST",
+    "report_type_shortname": "SYST",
+    "report_type_longname_english": "Systemic Therapy Report",
+    "report_type_longname_german": "Systemische Therapie Meldung"
+  },
+  {
+    "Id": 8,
+    "report_type_id": "U",
+    "report_type_shortname": "U",
+    "report_type_longname_english": "Unknown Report",
+    "report_type_longname_german": "Unbekannte Meldung"
+  },
+  {
+    "Id": 9,
+    "report_type_id": "Y",
+    "report_type_shortname": "Y",
+    "report_type_longname_english": "No report",
+    "report_type_longname_german": "Keine Meldung"
+  }
+]

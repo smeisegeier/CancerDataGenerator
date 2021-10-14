@@ -1,0 +1,44 @@
+[
+  {
+    "Id": 1,
+    "ecog_id": "0",
+    "ecog_shortname": "0",
+    "ecog_longname_english": "Normal, unrestricted activity as before the disease (90% - 100% Karnofsky score)",
+    "ecog_longname_german": "Normale, uneingeschränkte Aktivität wie vor der Erkrankung (90% - 100% nach Karnofsky)"
+  },
+  {
+    "Id": 2,
+    "ecog_id": "1",
+    "ecog_shortname": "1",
+    "ecog_longname_english": "Restrictions on physical effort, but able to walk; easy physical work or sitting work (for example light housework or office work) possible (70% - 80% Karnofsky score)",
+    "ecog_longname_german": "Einschränkungen bei körperlicher Anstrengung, aber gehfähig; leichte körperliche Arbeit bzw. Arbeit im Sitzen (z.B. leichte Hausarbeit oder Büroarbeit) möglich (70% - 80% nach Karnofsky)"
+  },
+  {
+    "Id": 3,
+    "ecog_id": "2",
+    "ecog_shortname": "2",
+    "ecog_longname_english": "Able to walk, self-sufficiency possible, but not able to work; can get up more than 50% of the awake time (50% - 60% Karnofsky score)",
+    "ecog_longname_german": "Gehfähig, Selbstversorgung möglich, aber nicht arbeitsfähig; kann mehr als 50% der Wachzeit aufstehen (50% - 60% nach Karnofsky)"
+  },
+  {
+    "Id": 4,
+    "ecog_id": "3",
+    "ecog_shortname": "3",
+    "ecog_longname_english": "Only limited self-sufficiency possible; 50% or more of the awake time is tied to bed or chair (30% - 40% Karnofsky score)",
+    "ecog_longname_german": "Nur beschränkte Selbstversorgung möglich; ist 50% oder mehr der Wachzeit an Bett oder Stuhl gebunden (30% - 40% nach Karnofsky)"
+  },
+  {
+    "Id": 5,
+    "ecog_id": "4",
+    "ecog_shortname": "4",
+    "ecog_longname_english": "Completely in need of care, no self-sufficiency possible; completely tied to bed or chair (10% - 20% Karnofsky score)",
+    "ecog_longname_german": "Völlig pflegebedürftig, keinerlei Selbstversorgung möglich; völlig an Bett oder Stuhl gebunden (10% - 20% nach Karnofsky)"
+  },
+  {
+    "Id": 6,
+    "ecog_id": "U",
+    "ecog_shortname": "U",
+    "ecog_longname_english": "Unknown",
+    "ecog_longname_german": "Unbekannt"
+  }
+]
