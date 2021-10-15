@@ -7,13 +7,13 @@ using Rki.CancerDataGenerator.Models.KKrModel;
 
 namespace Rki.CancerDataGenerator.DAL
 {
-    public partial class KKrModelContext : DbContext
+    public partial class KKrModelDbContext : DbContext
     {
-        public KKrModelContext()
+        public KKrModelDbContext()
         {
         }
 
-        public KKrModelContext(DbContextOptions<KKrModelContext> options)
+        public KKrModelDbContext(DbContextOptions<KKrModelDbContext> options)
             : base(options)
         {
         }

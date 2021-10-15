@@ -8,6 +8,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Rki.CancerDataGenerator.DAL;
+using Microsoft.EntityFrameworkCore;
 
 namespace Rki.CancerDataGenerator
 {
@@ -24,14 +26,18 @@ namespace Rki.CancerDataGenerator
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddDbContext<AdtGekidDbContext>(options => options
+                .UseLazyLoadingProxies()
+                .UseInMemoryDatabase("CancerDataGenerator"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, AdtGekidDbContext context)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                context.Database.EnsureCreated();
             }
             else
             {
