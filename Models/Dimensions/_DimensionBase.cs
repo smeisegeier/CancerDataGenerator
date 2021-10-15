@@ -4,6 +4,11 @@ using System.IO;
 
 namespace Rki.CancerDataGenerator.Models.Dimensions
 {
+
+    /// <summary>
+    /// Base for Dimension classes.
+    /// Naming patterns are disregarded here :o
+    /// </summary>
     public class _DimensionBase
     {
         public int Id { get; set; }

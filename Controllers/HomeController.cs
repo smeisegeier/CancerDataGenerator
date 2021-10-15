@@ -8,6 +8,8 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Rki.CancerDataGenerator.DAL;
+using Rki.CancerDataGenerator.Models.ADTGEKID;
+using DextersLabor;
 
 namespace Rki.CancerDataGenerator.Controllers
 {
@@ -29,7 +31,21 @@ namespace Rki.CancerDataGenerator.Controllers
 
         public IActionResult Details()
         {
-            return Json(_context.DiagnosisSafeties.ToList());
+            var a = new ADT_GEKID();
+            a.Menge_Patient = new List<Patient>();
+            a.Schema_Version = Schema_Version.Item221;
+            var pat = new Patient();
+            pat.Anmerkung = "lol";
+
+            var meld = new Meldung();
+            pat.Menge_Meldung = new List<Meldung>();
+            pat.Menge_Meldung.Add(meld);
+            a.Menge_Patient.Add(pat);
+
+
+            return Content(SerializeHelper.GetXmlStringFromObject(a, "AdtGekid"));
+
+            //return Json(a);
         }
 
 

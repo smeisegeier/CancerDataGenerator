@@ -1,6 +1,6 @@
 ﻿namespace Rki.CancerDataGenerator.Models.ADTGEKID
 {
-    public partial class PatientPatienten_Stammdaten
+    public partial class Patienten_Stammdaten
     {
         public string KrankenversichertenNr { get; set; }
 

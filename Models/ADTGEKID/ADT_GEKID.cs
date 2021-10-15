@@ -1,13 +1,14 @@
 ﻿
+using System.Collections.Generic;
 using System.Xml.Serialization;
 
 namespace Rki.CancerDataGenerator.Models.ADTGEKID
 {
     public partial class ADT_GEKID
     {
-        public Patient[] Menge_Patient { get; set; }
+        public List<Patient> Menge_Patient { get; set; }
 
-        public Melder_Typ[] Menge_Melder { get; set; }
+        public List<Melder_Typ> Menge_Melder { get; set; }
 
         public Schema_Version Schema_Version { get; set; }
     }

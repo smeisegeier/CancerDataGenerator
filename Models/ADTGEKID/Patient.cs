@@ -1,13 +1,15 @@
-﻿namespace Rki.CancerDataGenerator.Models.ADTGEKID
+﻿using System.Collections.Generic;
+
+namespace Rki.CancerDataGenerator.Models.ADTGEKID
 {
     public partial class Patient
     {
         
-        public PatientPatienten_Stammdaten Patienten_Stammdaten { get; set; }
+        public Patienten_Stammdaten Patienten_Stammdaten { get; set; }
 
         
         [System.Xml.Serialization.XmlArrayItemAttribute("Meldung", IsNullable = false)]
-        public PatientMeldung[] Menge_Meldung { get; set; }
+        public List<Meldung> Menge_Meldung { get; set; }
 
         
         public string Anmerkung { get; set; }

@@ -1,6 +1,6 @@
 ﻿namespace Rki.CancerDataGenerator.Models.ADTGEKID
 {
-    public partial class PatientMeldung
+    public partial class Meldung
     {
         public string Meldedatum { get; set; }
 
