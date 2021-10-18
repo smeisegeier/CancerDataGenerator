@@ -10,6 +10,9 @@ using System.Threading.Tasks;
 using Rki.CancerDataGenerator.DAL;
 using Rki.CancerDataGenerator.Models.ADTGEKID;
 using DextersLabor;
+using System.Xml.Linq;
+using System.Xml.Schema;
+using System.Xml;
 
 namespace Rki.CancerDataGenerator.Controllers
 {
@@ -24,30 +27,68 @@ namespace Rki.CancerDataGenerator.Controllers
             _context = context;
         }
 
-        public IActionResult Index()
-        {
-            return RedirectToAction(nameof(Details));
-        }
+        public IActionResult Index() => View();
 
         public IActionResult Details()
         {
-            var a = new ADT_GEKID();
-            a.Menge_Patient = new List<Patient>();
-            a.Schema_Version = Schema_Version.Item221;
-            var pat = new Patient();
-            pat.Anmerkung = "lol";
+            ADT_GEKID a = getNewRootObject();
 
-            var meld = new Meldung();
-            pat.Menge_Meldung = new List<Meldung>();
-            pat.Menge_Meldung.Add(meld);
-            a.Menge_Patient.Add(pat);
-
-
+            //return Content("lol");
             return Content(SerializeHelper.GetXmlStringFromObject(a, "AdtGekid"));
 
             //return Json(a);
         }
 
+        public IActionResult Validate()
+        {
+            ADT_GEKID a = getNewRootObject();
+            var serial = SerializeHelper.GetXmlStringFromObject(a,"ADT_GEKID");
+
+            var xsdPath = "Models/ADT_GEKID_v2.2.1.xsd";
+            XDocument xml = XDocument.Parse(serial);
+            XmlSchemaSet schemaSet = new XmlSchemaSet();
+            schemaSet.Add("http://www.gekid.de/namespace", xsdPath);
+            // override default (deviant) core behaviour and allow resolving
+            schemaSet.XmlResolver = new XmlUrlResolver();
+            // compile all schemas
+            schemaSet.Compile();
+
+            string message = "";
+            xml.Validate(schemaSet, (o, e) =>
+                {
+                    message += ($"Severity: {e.Severity.ToString()} | Message: {e.Message}");
+                }
+            );
+            return Content(message);
+
+            /*
+            ValidationEventHandler eventHandler = new ValidationEventHandler(ValidationEventHandler);
+            xml.Validate(schemaSet, eventHandler);
+            return Content("lul");
+            */
+        }
+
+        //public static void ValidationEventHandler(object sender, ValidationEventArgs e)
+        //{
+        //    string message = "";
+        //    message += ($"Severity: {e.Severity.ToString()} | Message: {e.Message}");
+        //}
+
+        private static ADT_GEKID getNewRootObject()
+        {
+            var a = new ADT_GEKID();
+            //a.Menge_Patient = new List<Patient>();
+            a.Schema_Version = Schema_Version.ItemLUL;
+            //var pat = new Patient();
+            //pat.Anmerkung = "lol";
+            //pat.Patienten_Stammdaten = new Patienten_Stammdaten();
+            //pat.Patienten_Stammdaten.Patienten_Geburtsdatum = "hahahah lol xde";
+            //var meld = new Meldung();
+            //pat.Menge_Meldung = new List<Meldung>();
+            //pat.Menge_Meldung.Add(meld);
+            //a.Menge_Patient.Add(pat);
+            return a;
+        }
 
         public IActionResult Privacy()
         {

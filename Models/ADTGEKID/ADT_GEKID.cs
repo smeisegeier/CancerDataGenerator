@@ -2193,5 +2193,8 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         
         [System.Xml.Serialization.XmlEnumAttribute("2.2.1")]
         Item221,
+
+        // TODO remove
+        ItemLUL
     }
 }
