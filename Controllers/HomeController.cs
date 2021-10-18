@@ -9,7 +9,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Rki.CancerDataGenerator.DAL;
 using Rki.CancerDataGenerator.Models.ADTGEKID;
-using DextersLabor;
 using System.Xml.Linq;
 using System.Xml.Schema;
 using System.Xml;
@@ -34,7 +33,7 @@ namespace Rki.CancerDataGenerator.Controllers
             ADT_GEKID a = getNewRootObject();
 
             //return Content("lol");
-            return Content(SerializeHelper.GetXmlStringFromObject(a, "AdtGekid"));
+            return Content(Globals.GetXmlStringFromObject(a));
 
             //return Json(a);
         }
@@ -42,23 +41,36 @@ namespace Rki.CancerDataGenerator.Controllers
         public IActionResult Validate()
         {
             ADT_GEKID a = getNewRootObject();
-            var serial = SerializeHelper.GetXmlStringFromObject(a,"ADT_GEKID");
+            var serial = Globals.GetXmlStringFromObject(a);
 
             var xsdPath = "Models/ADT_GEKID_v2.2.1.xsd";
             XDocument xml = XDocument.Parse(serial);
+            //xml.Document.Root.SetAttributeValue("xmlns", "http://www.gekid.de/namespace");
             XmlSchemaSet schemaSet = new XmlSchemaSet();
             schemaSet.Add("http://www.gekid.de/namespace", xsdPath);
-            // override default (deviant) core behaviour and allow resolving
-            schemaSet.XmlResolver = new XmlUrlResolver();
-            // compile all schemas
-            schemaSet.Compile();
 
+            XmlReaderSettings xmlReaderSettings = new XmlReaderSettings();
+            xmlReaderSettings.ValidationType = ValidationType.Schema;
+            xmlReaderSettings.ValidationFlags |= XmlSchemaValidationFlags.ReportValidationWarnings;
             string message = "";
-            xml.Validate(schemaSet, (o, e) =>
-                {
-                    message += ($"Severity: {e.Severity.ToString()} | Message: {e.Message}");
-                }
-            );
+            xmlReaderSettings.ValidationEventHandler += (o, e) =>
+            {
+                message += ($"Severity: {e.Severity.ToString()} | Message: {e.Message}\n");
+            };
+            xmlReaderSettings.Schemas = schemaSet;
+            XmlReader xmlReader = XmlReader.Create(xml.CreateReader(), xmlReaderSettings);
+            while (xmlReader.Read());
+
+            //// override default (deviant) core behaviour and allow resolving
+            //schemaSet.XmlResolver = new XmlUrlResolver();
+            //// compile all schemas
+            //schemaSet.Compile();
+
+            //xml.Validate(schemaSet, (o, e) =>
+            //    {
+            //        message += ($"Severity: {e.Severity.ToString()} | Message: {e.Message}");
+            //    }
+            //);
             return Content(message);
 
             /*
@@ -77,16 +89,18 @@ namespace Rki.CancerDataGenerator.Controllers
         private static ADT_GEKID getNewRootObject()
         {
             var a = new ADT_GEKID();
-            //a.Menge_Patient = new List<Patient>();
-            a.Schema_Version = Schema_Version.ItemLUL;
-            //var pat = new Patient();
-            //pat.Anmerkung = "lol";
-            //pat.Patienten_Stammdaten = new Patienten_Stammdaten();
-            //pat.Patienten_Stammdaten.Patienten_Geburtsdatum = "hahahah lol xde";
-            //var meld = new Meldung();
-            //pat.Menge_Meldung = new List<Meldung>();
-            //pat.Menge_Meldung.Add(meld);
-            //a.Menge_Patient.Add(pat);
+            a.Menge_Patient = new List<Patient>();
+            a.Schema_Version = Schema_Version.Item211;
+            var pat = new Patient();
+            pat.Anmerkung = "lol";
+            pat.Patienten_Stammdaten = new Patienten_Stammdaten();
+            pat.Patienten_Stammdaten.Patienten_Geburtsdatum = "12.07.1980";
+            //pat.Patienten_Stammdaten.Patienten_Nachname = "Doe";
+            pat.Patienten_Stammdaten.Patienten_Vornamen = "John James";
+            var meld = new Meldung();
+            pat.Menge_Meldung = new List<Meldung>();
+            pat.Menge_Meldung.Add(meld);
+            a.Menge_Patient.Add(pat);
             return a;
         }
 

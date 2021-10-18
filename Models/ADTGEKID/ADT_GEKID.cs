@@ -4,13 +4,17 @@ using System.Xml.Serialization;
 
 namespace Rki.CancerDataGenerator.Models.ADTGEKID
 {
+    [XmlRootAttribute(Namespace = "http://www.gekid.de/namespace",IsNullable = false)]
     public partial class ADT_GEKID
     {
         public List<Patient> Menge_Patient { get; set; }
 
         public List<Melder_Typ> Menge_Melder { get; set; }
 
+        [XmlAttribute]
         public Schema_Version Schema_Version { get; set; }
+
+        public Absender Absender { get; set; }
     }
 
     public enum Nebenwirkung_TypNebenwirkung_Grad
