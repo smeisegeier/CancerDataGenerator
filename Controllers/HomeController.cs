@@ -32,59 +32,64 @@ namespace Rki.CancerDataGenerator.Controllers
         {
             ADT_GEKID a = getNewRootObject();
 
-            //return Content("lol");
             return Content(Globals.GetXmlStringFromObject(a));
 
             //return Json(a);
         }
 
+        // TODO -> module
         public IActionResult Validate()
         {
             ADT_GEKID a = getNewRootObject();
             var serial = Globals.GetXmlStringFromObject(a);
 
-            var xsdPath = "Models/ADT_GEKID_v2.2.1.xsd";
             XDocument xml = XDocument.Parse(serial);
-            //xml.Document.Root.SetAttributeValue("xmlns", "http://www.gekid.de/namespace");
             XmlSchemaSet schemaSet = new XmlSchemaSet();
-            schemaSet.Add("http://www.gekid.de/namespace", xsdPath);
+            schemaSet.Add(Globals.XSDNAMESPACE, Globals.XSDPATHRELATIVE);
 
             XmlReaderSettings xmlReaderSettings = new XmlReaderSettings();
             xmlReaderSettings.ValidationType = ValidationType.Schema;
             xmlReaderSettings.ValidationFlags |= XmlSchemaValidationFlags.ReportValidationWarnings;
-            string message = "";
-            xmlReaderSettings.ValidationEventHandler += (o, e) =>
-            {
-                message += ($"Severity: {e.Severity.ToString()} | Message: {e.Message}\n");
-            };
+
+            var messageItems = new List<ValidationMessageItem>();
+            xmlReaderSettings.ValidationEventHandler += (sender, e) => ValidationEventHandler(sender, e, messageItems);
+
             xmlReaderSettings.Schemas = schemaSet;
             XmlReader xmlReader = XmlReader.Create(xml.CreateReader(), xmlReaderSettings);
-            while (xmlReader.Read());
-
-            //// override default (deviant) core behaviour and allow resolving
-            //schemaSet.XmlResolver = new XmlUrlResolver();
-            //// compile all schemas
-            //schemaSet.Compile();
-
-            //xml.Validate(schemaSet, (o, e) =>
-            //    {
-            //        message += ($"Severity: {e.Severity.ToString()} | Message: {e.Message}");
-            //    }
-            //);
-            return Content(message);
-
-            /*
-            ValidationEventHandler eventHandler = new ValidationEventHandler(ValidationEventHandler);
-            xml.Validate(schemaSet, eventHandler);
-            return Content("lul");
-            */
+            while (xmlReader.Read()) ;
+            return Content(ValidationMessageItem.PrintItemList(messageItems));
         }
 
-        //public static void ValidationEventHandler(object sender, ValidationEventArgs e)
-        //{
-        //    string message = "";
-        //    message += ($"Severity: {e.Severity.ToString()} | Message: {e.Message}");
-        //}
+        public void ValidationEventHandler(object sender, ValidationEventArgs e, List<ValidationMessageItem> messageItems)
+        {
+            var validationMessage = new ValidationMessageItem();
+            validationMessage.Severity = e.Severity.ToString();
+            validationMessage.Message = e.Message;
+
+            messageItems.Add(validationMessage);
+        }
+
+        public class ValidationMessageItem
+        {
+            public string Severity { get; set; }
+            public string Message { get; set; }
+            public override string ToString() => $"Severity: {Severity ?? "None"} | Message: {Message ?? "No Errors"}";
+
+            public static string PrintItemList(List<ValidationMessageItem> list)
+            {
+                if (list is null || !list.Any())
+                {
+                    return "No errors";
+                }
+                else
+                {
+                    return string.Join(Environment.NewLine, list.Select(x => x.ToString()));
+                }
+            }
+        }
+
+
+
 
         private static ADT_GEKID getNewRootObject()
         {
@@ -95,7 +100,7 @@ namespace Rki.CancerDataGenerator.Controllers
             pat.Anmerkung = "lol";
             pat.Patienten_Stammdaten = new Patienten_Stammdaten();
             pat.Patienten_Stammdaten.Patienten_Geburtsdatum = "12.07.1980";
-            //pat.Patienten_Stammdaten.Patienten_Nachname = "Doe";
+            pat.Patienten_Stammdaten.Patienten_Nachname = "Doe";
             pat.Patienten_Stammdaten.Patienten_Vornamen = "John James";
             var meld = new Meldung();
             pat.Menge_Meldung = new List<Meldung>();

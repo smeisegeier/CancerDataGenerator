@@ -4,7 +4,7 @@ using System.Xml.Serialization;
 
 namespace Rki.CancerDataGenerator.Models.ADTGEKID
 {
-    [XmlRootAttribute(Namespace = "http://www.gekid.de/namespace",IsNullable = false)]
+    [XmlRootAttribute(Namespace = Globals.XSDNAMESPACE, IsNullable = false)]
     public partial class ADT_GEKID
     {
         public List<Patient> Menge_Patient { get; set; }
