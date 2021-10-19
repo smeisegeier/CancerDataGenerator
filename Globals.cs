@@ -11,8 +11,10 @@ namespace Rki.CancerDataGenerator
 {
     public static class Globals
     {
-        public const string XSDPATHRELATIVE = "Models/ADT_GEKID_v2.2.1.xsd";
+        public const string XSDFILENAME = "ADT_GEKID_v2.2.1.xsd";
+        public const string XSDPATHRELATIVE = "Models/" + XSDFILENAME;
         public const string XSDNAMESPACE = "http://www.gekid.de/namespace";
+        public const string XSINAMESPACE = "http://www.w3.org/2001/XMLSchema-instance";
 
 
 
@@ -30,52 +32,74 @@ namespace Rki.CancerDataGenerator
         }
 
 
-        //public static List<ValidationMessageItem> ValidateXml(string xml, string xsdNamespace, string xsdPathRelative)
-        //{
-        //    XDocument doc = XDocument.Parse(xml);
-        //    XmlSchemaSet schemaSet = new XmlSchemaSet();
-        //    schemaSet.Add(xsdNamespace, xsdPathRelative);
+        /// <summary>
+        /// Validates xml string against referenced xsd. Requires xml and xsd to be in same namespace.
+        /// </summary>
+        /// <param name="xml">xml as string</param>
+        /// <param name="xsdNamespace">namespace of xml and xsd</param>
+        /// <param name="xsdPathRelative">relative path to xsd, eg "Models/schema.xsd"</param>
+        /// <returns>List of ValidationMessageItem</returns>
+        public static List<ValidationMessageItem> ValidateXml(string xml, string xsdNamespace, string xsdPathRelative)
+        {
+            // prepare xml doc and schema
+            XDocument doc = XDocument.Parse(xml);
+            XmlSchemaSet schemaSet = new XmlSchemaSet();
+            schemaSet.Add(xsdNamespace, xsdPathRelative);
 
-        //    XmlReaderSettings xmlReaderSettings = new XmlReaderSettings();
-        //    xmlReaderSettings.ValidationType = ValidationType.Schema;
-        //    xmlReaderSettings.ValidationFlags |= XmlSchemaValidationFlags.ReportValidationWarnings;
+            // prepare settings in xmlreader. this is needed to include the warnings flag
+            XmlReaderSettings xmlReaderSettings = new XmlReaderSettings();
+            xmlReaderSettings.ValidationType = ValidationType.Schema;
+            // or-include flag
+            xmlReaderSettings.ValidationFlags |= XmlSchemaValidationFlags.ReportValidationWarnings;
+            xmlReaderSettings.Schemas = schemaSet;
 
-        //    var messageItems = new List<ValidationMessageItem>();
-        //    xmlReaderSettings.ValidationEventHandler += (sender, e) => ValidationEventHandler(sender, e, messageItems);
+            var messageItems = new List<ValidationMessageItem>();
+            // handler is made anonymous, so it fits in static method
+            xmlReaderSettings.ValidationEventHandler += (sender, e) =>
+            {
+                var validationMessage = new ValidationMessageItem();
+                validationMessage.Severity = e.Severity.ToString();
+                validationMessage.Message = e.Message;
+                // local var is manipulated by handler
+                messageItems.Add(validationMessage);
+            };
 
-        //    xmlReaderSettings.Schemas = schemaSet;
-        //    XmlReader xmlReader = XmlReader.Create(doc.CreateReader(), xmlReaderSettings);
-        //    while (xmlReader.Read()) ;
-        //    return messageItems;
-        //}
+            // assemble xml reader
+            XmlReader xmlReader = XmlReader.Create(doc.CreateReader(), xmlReaderSettings);
+            // loop through all xml nodes
+            while (xmlReader.Read()) ;
+            return messageItems;
+        }
 
-        //public void ValidationEventHandler(object sender, ValidationEventArgs e, List<ValidationMessageItem> messageItems)
-        //{
-        //    var validationMessage = new ValidationMessageItem();
-        //    validationMessage.Severity = e.Severity.ToString();
-        //    validationMessage.Message = e.Message;
+        /// <summary>
+        /// Structure for Validation Messages.
+        /// </summary>
+        public struct ValidationMessageItem
+        {
+            /// <summary>
+            /// Bases upon XmlSeverity enum, but those have no "None" element 
+            /// </summary>
+            public string Severity { get; set; }
+            public string Message { get; set; }
+            public override string ToString() => $"Severity: {Severity ?? "None"} | Message: {Message ?? "No Errors"}";
 
-        //    messageItems.Add(validationMessage);
-        //}
-
-        //public class ValidationMessageItem
-        //{
-        //    public string Severity { get; set; }
-        //    public string Message { get; set; }
-        //    public override string ToString() => $"Severity: {Severity ?? "None"} | Message: {Message ?? "No Errors"}";
-
-        //    public static string PrintItemList(List<ValidationMessageItem> list)
-        //    {
-        //        if (list is null || !list.Any())
-        //        {
-        //            return "No errors";
-        //        }
-        //        else
-        //        {
-        //            return string.Join(Environment.NewLine, list.Select(x => x.ToString()));
-        //        }
-        //    }
-        //}
+            /// <summary>
+            /// Friendly display of all validation messages
+            /// </summary>
+            /// <param name="list">All items to print on screen</param>
+            /// <returns>string</returns>
+            public static string PrintItemList(List<ValidationMessageItem> list)
+            {
+                if (list is null || !list.Any())
+                {
+                    return "No errors";
+                }
+                else
+                {
+                    return string.Join(Environment.NewLine, list.Select(x => x.ToString()));
+                }
+            }
+        }
 
     }
 }

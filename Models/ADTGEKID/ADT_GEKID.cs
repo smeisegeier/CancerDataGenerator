@@ -10,11 +10,14 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         public List<Patient> Menge_Patient { get; set; }
 
         public List<Melder_Typ> Menge_Melder { get; set; }
-
-        [XmlAttribute]
-        public Schema_Version Schema_Version { get; set; }
-
         public Absender Absender { get; set; }
+
+        /* Attribute */
+        [XmlAttribute]
+        public Schema_Version Schema_Version { get; init; } = Schema_Version.Item211;
+
+        [XmlAttribute("schemaLocation", Namespace = Globals.XSINAMESPACE)]
+        public string schemaLocation { get; init; } = $"{Globals.XSDNAMESPACE} {Globals.XSDFILENAME}";
     }
 
     public enum Nebenwirkung_TypNebenwirkung_Grad
