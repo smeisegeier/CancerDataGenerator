@@ -4,7 +4,11 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
 {
     public partial class Patient
     {
-        
+        public Patient()
+        {
+            Anmerkung = "lol";
+            Patienten_Stammdaten = new Patienten_Stammdaten();
+        }
         public Patienten_Stammdaten Patienten_Stammdaten { get; set; }
 
         

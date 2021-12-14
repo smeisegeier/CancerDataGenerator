@@ -1,6 +1,5 @@
 ﻿namespace Rki.CancerDataGenerator.Models.ADTGEKID
 {
-    // TODO item vs enum
     public partial class Modul_Prostata_TypCaBefallStanze
     {
         [System.Xml.Serialization.XmlElementAttribute("Prozentzahl", typeof(string), DataType = "positiveInteger")]

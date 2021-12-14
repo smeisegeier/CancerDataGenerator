@@ -1,7 +1,21 @@
-﻿namespace Rki.CancerDataGenerator.Models.ADTGEKID
+﻿using Rki.CancerDataGenerator.Models.Dimensions;
+using System.Collections.Generic;
+
+namespace Rki.CancerDataGenerator.Models.ADTGEKID
 {
     public partial class Patienten_Stammdaten
     {
+        // ctor
+        public Patienten_Stammdaten()
+        {
+            Patienten_Geburtsdatum = "12.07.1980";
+            Patienten_Nachname = "Doe";
+            Patienten_Vornamen = "John James";
+            //TEST_tage_seit_diagnose = _NumericBase.GetRandomValue(11,65);
+            TEST_tage_seit_diagnose = (int)_NumericBase.GetNormalValue(65, 10);
+            IEnumerable<double> lol = _NumericBase.GetNormalValues(65, 10);
+        }
+
         public string KrankenversichertenNr { get; set; }
 
         
@@ -39,6 +53,7 @@
         
         public string Patienten_Geburtsdatum { get; set; }
 
+        public int TEST_tage_seit_diagnose { get; set; }
         
         [System.Xml.Serialization.XmlArrayItemAttribute("Adresse", IsNullable = false)]
         public PatientPatienten_StammdatenAdresse[] Menge_Adresse { get; set; }

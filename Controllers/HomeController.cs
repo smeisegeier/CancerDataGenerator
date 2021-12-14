@@ -49,16 +49,13 @@ namespace Rki.CancerDataGenerator.Controllers
         private static ADT_GEKID getNewRootObject()
         {
             /* bottom -> up */
+            // TODO every object has all features
+            // TODO make API
             var meld = new Meldung();
 
 
             var pat = new Patient();
-            pat.Anmerkung = "lol";
-            pat.Patienten_Stammdaten = new Patienten_Stammdaten();
-//            pat.Patienten_Stammdaten.Patienten_Geburtsdatum = "12.07.1980";
-            pat.Patienten_Stammdaten.Patienten_Geburtsdatum = "lol";
-            pat.Patienten_Stammdaten.Patienten_Nachname = "Doe";
-            pat.Patienten_Stammdaten.Patienten_Vornamen = "John James";
+            
 
             pat.Menge_Meldung = new List<Meldung>();
             pat.Menge_Meldung.Add(meld);
