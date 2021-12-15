@@ -8,12 +8,12 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         // ctor
         public Patienten_Stammdaten()
         {
-            Patienten_Geburtsdatum = "12.07.1980";
+            Patienten_Geburtsdatum = Generator.GetRandomDate(30*365).ToShortDateString();
             Patienten_Nachname = "Doe";
             Patienten_Vornamen = "John James";
             //TEST_tage_seit_diagnose = _NumericBase.GetRandomValue(11,65);
-            TEST_tage_seit_diagnose = (int)_NumericBase.GetNormalValue(65, 10);
-            IEnumerable<double> lol = _NumericBase.GetNormalValues(65, 10);
+            TEST_tage_seit_diagnose = (int)Generator.GetNormalValue(65, 10);
+            //IEnumerable<double> lol = _NumericBase.GetNormalValues(65, 10, 10);
         }
 
         public string KrankenversichertenNr { get; set; }

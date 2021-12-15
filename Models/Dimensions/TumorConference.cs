@@ -1,6 +1,6 @@
 ﻿namespace Rki.CancerDataGenerator.Models.Dimensions
 {
-    public class TumorConference : _DimensionBase
+    public class TumorConference : DimensionBase
     {
         public string tumor_conference_id { get; set; }
         public string tumor_conference_shortname { get; set; }

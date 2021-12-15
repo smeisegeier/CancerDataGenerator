@@ -1,6 +1,6 @@
 ﻿namespace Rki.CancerDataGenerator.Models.Dimensions
 {
-    public class Uicc : _DimensionBase
+    public class Uicc : DimensionBase
     {
         public string uicc_id { get; set; }
         public string uicc_name { get; set; }

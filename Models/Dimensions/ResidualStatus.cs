@@ -1,6 +1,6 @@
 ﻿namespace Rki.CancerDataGenerator.Models.Dimensions
 {
-    public class ResidualStatus : _DimensionBase
+    public class ResidualStatus : DimensionBase
     {
 
     public string residual_status_id { get; set; }

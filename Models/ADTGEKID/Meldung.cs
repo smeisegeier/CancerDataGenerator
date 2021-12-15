@@ -1,7 +1,16 @@
-﻿namespace Rki.CancerDataGenerator.Models.ADTGEKID
+﻿using Rki.CancerDataGenerator.Models.Dimensions;
+using System;
+
+namespace Rki.CancerDataGenerator.Models.ADTGEKID
 {
     public partial class Meldung
     {
+        public Meldung()
+        {
+            Meldedatum = Generator.GetRandomDate(10 * 365, new DateTime(2000,01,01)).ToShortDateString();
+            Diagnose = new PatientMeldungDiagnose();
+        }
+
         public string Meldedatum { get; set; }
 
         

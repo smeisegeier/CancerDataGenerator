@@ -1,6 +1,6 @@
 ﻿namespace Rki.CancerDataGenerator.Models.Dimensions
 {
-    public class Substance : _DimensionBase
+    public class Substance : DimensionBase
     {
 
     public string substance_id { get; set; }

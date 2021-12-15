@@ -1,6 +1,6 @@
 ﻿namespace Rki.CancerDataGenerator.Models.Dimensions
 {
-    public class DistantMetastasis : _DimensionBase
+    public class DistantMetastasis : DimensionBase
     {        
         public string distant_metastases_id { get; set; }
         public string distant_metastases_shortname { get; set; }

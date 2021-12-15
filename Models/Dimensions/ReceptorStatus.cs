@@ -1,6 +1,6 @@
 ﻿namespace Rki.CancerDataGenerator.Models.Dimensions
 {
-    public class ReceptorStatus : _DimensionBase
+    public class ReceptorStatus : DimensionBase
     {
         public string condensed_receptor_status_id { get; set; }
         public string condensed_receptor_status_shortname { get; set; }

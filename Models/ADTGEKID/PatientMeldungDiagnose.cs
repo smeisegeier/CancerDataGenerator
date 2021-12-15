@@ -1,8 +1,13 @@
-﻿namespace Rki.CancerDataGenerator.Models.ADTGEKID
-{
-    public partial class PatientMeldungDiagnose
-    {
+﻿using Rki.CancerDataGenerator.Models.Dimensions;
 
+namespace Rki.CancerDataGenerator.Models.ADTGEKID
+{
+    public partial class PatientMeldungDiagnose : AdtgekidBase
+    {
+        public PatientMeldungDiagnose()
+        {
+            Primaertumor_ICD_Code = _context.GetById<Icd>(Generator.GetNormalId(Icd.MaxId)).icd_three_digits;
+        }
         
         public string Primaertumor_ICD_Code { get; set; }
         

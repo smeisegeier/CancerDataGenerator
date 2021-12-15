@@ -1,6 +1,6 @@
 ﻿namespace Rki.CancerDataGenerator.Models.Dimensions
 {
-    public class TherapyStop : _DimensionBase
+    public class TherapyStop : DimensionBase
     {
     public string therapy_stop_id { get; set; }
     public string therapy_stop_shortname { get; set; }

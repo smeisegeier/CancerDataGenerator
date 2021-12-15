@@ -1,6 +1,6 @@
 ﻿namespace Rki.CancerDataGenerator.Models.Dimensions
 {
-    public class HormonReceptor : _DimensionBase
+    public class HormonReceptor : DimensionBase
     {
     public string receptor_status_id { get; set; }
     public string receptor_status_shortname { get; set; }

@@ -24,6 +24,7 @@ namespace Rki.CancerDataGenerator.Controllers
         {
             _logger = logger;
             _context = context;
+            AdtgekidBase._context = context;
         }
 
         public IActionResult Index() => View();

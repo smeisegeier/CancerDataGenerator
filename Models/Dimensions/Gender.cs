@@ -1,6 +1,6 @@
 ﻿namespace Rki.CancerDataGenerator.Models.Dimensions
 {
-    public class Gender : _DimensionBase
+    public class Gender : DimensionBase
     {
     public string gender_id { get; set; }
     public string gender_shortname { get; set; }

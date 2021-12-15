@@ -1,6 +1,6 @@
 ﻿namespace Rki.CancerDataGenerator.Models.Dimensions
 {
-    public class Radiotherapy : _DimensionBase
+    public class Radiotherapy : DimensionBase
     {
     public string radiotherapy_id { get; set; }
     public string radiotherapy_target_area_rough { get; set; }

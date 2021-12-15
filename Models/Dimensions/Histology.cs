@@ -1,6 +1,6 @@
 ﻿namespace Rki.CancerDataGenerator.Models.Dimensions
 {
-    public class Histology : _DimensionBase
+    public class Histology : DimensionBase
     {
     public string histology_id { get; set; }
     public string dignity_shortname { get; set; }

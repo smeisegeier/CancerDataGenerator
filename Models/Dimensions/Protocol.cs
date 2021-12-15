@@ -1,6 +1,6 @@
 ﻿namespace Rki.CancerDataGenerator.Models.Dimensions
 {
-    public class Protocol : _DimensionBase
+    public class Protocol : DimensionBase
     {
         public string protocol_id { get; set; }
         public string protocol_shortname { get; set; }

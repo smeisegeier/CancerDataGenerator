@@ -1,6 +1,6 @@
 ﻿namespace Rki.CancerDataGenerator.Models.Dimensions
 {
-    public class SystemicTherapy : _DimensionBase
+    public class SystemicTherapy : DimensionBase
     {
     public string systemic_therapy_id { get; set; }
     public string systemic_therapy_shortname { get; set; }

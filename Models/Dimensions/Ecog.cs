@@ -1,6 +1,6 @@
 ﻿namespace Rki.CancerDataGenerator.Models.Dimensions
 {
-    public class Ecog : _DimensionBase
+    public class Ecog : DimensionBase
     {
     public string ecog_id { get; set; }
     public string ecog_shortname { get; set; }

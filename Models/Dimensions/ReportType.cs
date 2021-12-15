@@ -1,6 +1,6 @@
 ﻿namespace Rki.CancerDataGenerator.Models.Dimensions
 {
-    public class ReportType : _DimensionBase
+    public class ReportType : DimensionBase
     {
     public string report_type_id { get; set; }
     public string report_type_shortname { get; set; }

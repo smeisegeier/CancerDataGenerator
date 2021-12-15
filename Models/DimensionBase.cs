@@ -9,8 +9,9 @@ namespace Rki.CancerDataGenerator.Models.Dimensions
     /// Base for Dimension classes.
     /// Naming patterns are disregarded here :o
     /// </summary>
-    public class _DimensionBase
+    public abstract class DimensionBase
     {
+        public static int MaxId { get; set; }
         public int Id { get; set; }
 
         /// <summary>
@@ -21,7 +22,7 @@ namespace Rki.CancerDataGenerator.Models.Dimensions
         /// </summary>
         /// <typeparam name="T">class type</typeparam>
         /// <returns>list of all items in json object</returns>
-        public static IEnumerable<T> ReadListFromJson<T>() where T : _DimensionBase
+        public static IEnumerable<T> ReadListFromJson<T>() where T : DimensionBase
         {
             var list = JsonConvert.DeserializeObject<List<T>>(
                 File.ReadAllText(Path.Combine("Models/Dimensions", $"{typeof(T).Name}.json")
