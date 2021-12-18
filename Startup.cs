@@ -38,7 +38,7 @@ namespace Rki.CancerDataGenerator
             {
                 app.UseDeveloperExceptionPage();
                 context.Database.EnsureCreated();
-                context.Init();
+                //context.Init();
             }
             else
             {

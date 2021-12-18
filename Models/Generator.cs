@@ -7,12 +7,10 @@ namespace Rki.CancerDataGenerator.Models.Dimensions
     public class Generator : DimensionBase
     {
         // only 1 instance per app
+        public static DAL.AdtGekidDbContext _context; 
+
         private static readonly Random _random = new Random();
         private static readonly DateTime _baseDate = new DateTime(1980, 01, 01);
-
-
-        public int MinValue { get; set; }
-        public int MaxValue { get; set; }
 
         public static int GetRandomValue(int min, int max) => _random.Next(min, max);
         public static int GetRandomValue(int delta) => _random.Next(delta * -1, delta);
@@ -32,6 +30,7 @@ namespace Rki.CancerDataGenerator.Models.Dimensions
             Normal normalDistr = new Normal(mean, stdDev, _random);
             return normalDistr.Sample();
         }
+
         public static IEnumerable<double> GetNormalValues(double mean, double stdDev, int n)
         {
             Normal normalDistr = new Normal(mean, stdDev, _random);
@@ -58,6 +57,24 @@ namespace Rki.CancerDataGenerator.Models.Dimensions
 
         public static DateTime GetRandomDate(int deltaDays, DateTime baseDate) => baseDate.AddDays(GetRandomValue(deltaDays));
         public static DateTime GetRandomDate(int deltaDays) => GetRandomDate(deltaDays, _baseDate);
+
+
+        public static T GetRandomEnumItem<T>()
+        {
+            var array = Enum.GetValues(typeof(T));
+            return (T)array.GetValue(_random.Next(array.Length));
+        }
+
+
+
+
+
+
+
+
+
+
+
 
 
         // currently not working, the enumeration is emtpy. do not use

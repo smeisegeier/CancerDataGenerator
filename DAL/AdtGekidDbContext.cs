@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Rki.CancerDataGenerator.Models.Dimensions;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Rki.CancerDataGenerator.DAL
@@ -20,7 +21,8 @@ namespace Rki.CancerDataGenerator.DAL
             modelBuilder.Entity<Grading>().HasData(DimensionBase.ReadListFromJson<Grading>());
             modelBuilder.Entity<Histology>().HasData(DimensionBase.ReadListFromJson<Histology>());
             modelBuilder.Entity<HormonReceptor>().HasData(DimensionBase.ReadListFromJson<HormonReceptor>());
-            modelBuilder.Entity<Icd>().HasData(DimensionBase.ReadListFromJson<Icd>());
+            // ICD -> only C items
+            modelBuilder.Entity<Icd>().HasData(DimensionBase.ReadListFromJson<Icd>().Where(x => x.icd_id.Substring(0, 1) == "C"));
             modelBuilder.Entity<Location>().HasData(DimensionBase.ReadListFromJson<Location>());
             modelBuilder.Entity<M>().HasData(DimensionBase.ReadListFromJson<M>());
             modelBuilder.Entity<N>().HasData(DimensionBase.ReadListFromJson<N>());
@@ -49,8 +51,8 @@ namespace Rki.CancerDataGenerator.DAL
 
         public void Init()
         {
-            Icd.MaxId = Set<Icd>().Max(m => m.Id);
-            //Gender.MaxId = Genders.Max(m => m.Id);
+            Icd.MaxId = GetAll<Icd>().Count();
+            //Gender.MaxId = Genders.Count();
         }
 
         public DbSet<DiagnosisSafety> DiagnosisSafeties { get; set; }
@@ -83,15 +85,17 @@ namespace Rki.CancerDataGenerator.DAL
         public DbSet<TumorStatusDistantMetastasis> TumorStatusDistantMetastases { get; set; }
         public DbSet<Uicc> Uiccs { get; set; }
 
-        public T GetById<T>(int id) where T : DimensionBase
-            => Set<T>().FirstOrDefault(x => x.Id == id);
+        public IEnumerable<T> GetAll<T>() where T : DimensionBase => Set<T>().OrderBy(x => x.Id);
 
-        // BUG 
+        public T GetById<T>(int id) where T : DimensionBase => Set<T>().FirstOrDefault(x => x.Id == id);
+
+        public T GetByIndex<T>(int index) where T : DimensionBase => GetAll<T>().ToList()[index];
+
+
         public T GetItemNormal<T>() where T : DimensionBase
         {
-            var prop = typeof(T).GetProperty("MaxId");
-            int maxId = (int)prop.GetValue(null);
-            return GetById<T>(Generator.GetNormalId(maxId));
+            int maxIndex = GetAll<T>().Count();
+            return GetByIndex<T>(Generator.GetNormalId(maxIndex - 1));
         }
 
 

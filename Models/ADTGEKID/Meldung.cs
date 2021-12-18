@@ -5,6 +5,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
 {
     public partial class Meldung
     {
+        // TODO access parent properties
         public Meldung()
         {
             Meldedatum = Generator.GetRandomDate(10 * 365, new DateTime(2000,01,01)).ToShortDateString();

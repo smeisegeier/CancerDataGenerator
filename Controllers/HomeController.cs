@@ -18,13 +18,14 @@ namespace Rki.CancerDataGenerator.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly AdtGekidDbContext _context;
+        private AdtGekidDbContext _context { get; }
 
         public HomeController(ILogger<HomeController> logger, AdtGekidDbContext context)
         {
             _logger = logger;
             _context = context;
             AdtgekidBase._context = context;
+            _context.Init();
         }
 
         public IActionResult Index() => View();
@@ -47,10 +48,8 @@ namespace Rki.CancerDataGenerator.Controllers
 
 
 
-        private static ADT_GEKID getNewRootObject()
+        private ADT_GEKID getNewRootObject()
         {
-            /* bottom -> up */
-            // TODO every object has all features
             // TODO make API
             var meld = new Meldung();
 

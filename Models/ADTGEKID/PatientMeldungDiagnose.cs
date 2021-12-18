@@ -1,4 +1,7 @@
 ﻿using Rki.CancerDataGenerator.Models.Dimensions;
+using System;
+using System.Linq;
+using System.Xml.Serialization;
 
 namespace Rki.CancerDataGenerator.Models.ADTGEKID
 {
@@ -6,14 +9,21 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
     {
         public PatientMeldungDiagnose()
         {
-            Primaertumor_ICD_Code = _context.GetById<Icd>(Generator.GetNormalId(Icd.MaxId)).icd_three_digits;
+            // TODO make ICD dependant on ICD-Version
+            // TODO Generator must inhere context
+            Primaertumor_ICD_Code = _context.GetItemNormal<Icd>().icd_three_digits;
+
+            Primaertumor_ICD_Version_ = Generator.GetRandomEnumItem<ICD_Version_Typ>().ToStringXmlEnum();
+            Primaertumor_Diagnosetext = "test";
         }
-        
+
         public string Primaertumor_ICD_Code { get; set; }
         
-        public ICD_Version_Typ Primaertumor_ICD_Version { get; set; }
+        // HACK find out why property not xml'ed (->PatientZuorZuordnung)
+        //public ICD_Version_Typ Primaertumor_ICD_Version { get; set; }
+        public string Primaertumor_ICD_Version_ { get; set; }
 
-        
+
         [System.Xml.Serialization.XmlIgnoreAttribute()]
         public bool Primaertumor_ICD_VersionSpecified { get; set; }
 
