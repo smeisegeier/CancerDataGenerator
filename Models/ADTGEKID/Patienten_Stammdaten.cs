@@ -3,16 +3,17 @@ using System.Collections.Generic;
 
 namespace Rki.CancerDataGenerator.Models.ADTGEKID
 {
-    public partial class Patienten_Stammdaten
+    public partial class Patienten_Stammdaten : AdtgekidBase
     {
-        // ctor
-        public Patienten_Stammdaten()
+
+        public Patienten_Stammdaten() {}
+        public Patienten_Stammdaten(IGenerator generator, AdtgekidBase parent) : base(generator, parent)
         {
-            Patienten_Geburtsdatum = Generator.GetRandomDate(30*365).ToShortDateString();
+            Patienten_Geburtsdatum = _generator.CreateRandomDate(30*365).ToShortDateString();
             Patienten_Nachname = "Doe";
             Patienten_Vornamen = "John James";
             //TEST_tage_seit_diagnose = _NumericBase.GetRandomValue(11,65);
-            TEST_tage_seit_diagnose = (int)Generator.GetNormalValue(65, 10);
+            TEST_tage_seit_diagnose = (int)_generator.CreateNormalValue(65, 10);
             //IEnumerable<double> lol = _NumericBase.GetNormalValues(65, 10, 10);
         }
 

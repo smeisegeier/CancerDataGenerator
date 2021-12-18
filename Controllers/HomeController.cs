@@ -18,14 +18,12 @@ namespace Rki.CancerDataGenerator.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private AdtGekidDbContext _context { get; }
+        private readonly IGenerator _generator;
 
-        public HomeController(ILogger<HomeController> logger, AdtGekidDbContext context)
+        public HomeController(ILogger<HomeController> logger, IGenerator generator)
         {
             _logger = logger;
-            _context = context;
-            AdtgekidBase._context = context;
-            _context.Init();
+            _generator = generator;
         }
 
         public IActionResult Index() => View();
@@ -33,7 +31,6 @@ namespace Rki.CancerDataGenerator.Controllers
         public IActionResult Details()
         {
             ADT_GEKID a = getNewRootObject();
-
             return Content(Globals.GetXmlStringFromObject(a));
         }
 
@@ -47,24 +44,8 @@ namespace Rki.CancerDataGenerator.Controllers
         }
 
 
-
-        private ADT_GEKID getNewRootObject()
-        {
-            // TODO make API
-            var meld = new Meldung();
-
-
-            var pat = new Patient();
-            
-
-            pat.Menge_Meldung = new List<Meldung>();
-            pat.Menge_Meldung.Add(meld);
-
-            var a = new ADT_GEKID();
-            a.Menge_Patient = new List<Patient>();
-            a.Menge_Patient.Add(pat);
-            return a;
-        }
+        // TODO make API
+        private ADT_GEKID getNewRootObject() => new ADT_GEKID(_generator, null);
 
         public IActionResult Privacy()
         {

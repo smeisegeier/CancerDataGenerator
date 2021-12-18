@@ -10,6 +10,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Rki.CancerDataGenerator.DAL;
 using Microsoft.EntityFrameworkCore;
+using Rki.CancerDataGenerator.Models.Dimensions;
 
 namespace Rki.CancerDataGenerator
 {
@@ -29,6 +30,7 @@ namespace Rki.CancerDataGenerator
             services.AddDbContext<AdtGekidDbContext>(options => options
                 .UseLazyLoadingProxies()
                 .UseInMemoryDatabase("CancerDataGenerator"));
+            services.AddTransient<IGenerator, Generator>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -38,7 +40,6 @@ namespace Rki.CancerDataGenerator
             {
                 app.UseDeveloperExceptionPage();
                 context.Database.EnsureCreated();
-                //context.Init();
             }
             else
             {

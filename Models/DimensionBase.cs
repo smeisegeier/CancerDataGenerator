@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace Rki.CancerDataGenerator.Models.Dimensions
 {
@@ -29,5 +30,24 @@ namespace Rki.CancerDataGenerator.Models.Dimensions
                 ));
             return list;
         }
+
+        /// <summary>
+        /// Auto increments all Id in Model objects. Overwrites.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="listWithoutId"></param>
+        /// <returns></returns>
+        public static IEnumerable<T> AutoIncAllId<T>(IEnumerable<T> listWithoutId) where T : DimensionBase
+        {
+            int i = 1;
+            listWithoutId
+                .ToList()
+                .ForEach(x =>
+                {
+                    x.Id = i++;
+                });
+            return listWithoutId;
+        }
+
     }
 }

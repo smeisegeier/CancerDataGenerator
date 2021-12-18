@@ -47,6 +47,9 @@ namespace Rki.CancerDataGenerator.DAL
             modelBuilder.Entity<TumorStatus>().HasData(DimensionBase.ReadListFromJson<TumorStatus>());
             modelBuilder.Entity<TumorStatusDistantMetastasis>().HasData(DimensionBase.ReadListFromJson<TumorStatusDistantMetastasis>());
             modelBuilder.Entity<Uicc>().HasData(DimensionBase.ReadListFromJson<Uicc>());
+
+            //modelBuilder.Entity<_Quote>().HasData(DimensionBase.AutoIncAllId<_Quote>(DimensionBase.ReadListFromJson<_Quote>().ToList()));
+            modelBuilder.Entity<_Quote>().HasData(DimensionBase.ReadListFromJson<_Quote>().AutoIncAllId());
         }
 
         public void Init()
@@ -54,6 +57,12 @@ namespace Rki.CancerDataGenerator.DAL
             Icd.MaxId = GetAll<Icd>().Count();
             //Gender.MaxId = Genders.Count();
         }
+
+        public IEnumerable<T> GetAll<T>() where T : DimensionBase => Set<T>();
+        public IEnumerable<T> GetAllOrdered<T>() where T : DimensionBase => GetAll<T>().OrderBy(x => x.Id);
+        public T GetById<T>(int id) where T : DimensionBase => Set<T>().FirstOrDefault(x => x.Id == id);
+        public T GetByIndex<T>(int index) where T : DimensionBase => GetAll<T>().ToList()[index];
+
 
         public DbSet<DiagnosisSafety> DiagnosisSafeties { get; set; }
         public DbSet<DiseaseProgression> DiseaseProgressions { get; set; }
@@ -84,20 +93,6 @@ namespace Rki.CancerDataGenerator.DAL
         public DbSet<TumorStatus> TumorStatuses { get; set; }
         public DbSet<TumorStatusDistantMetastasis> TumorStatusDistantMetastases { get; set; }
         public DbSet<Uicc> Uiccs { get; set; }
-
-        public IEnumerable<T> GetAll<T>() where T : DimensionBase => Set<T>().OrderBy(x => x.Id);
-
-        public T GetById<T>(int id) where T : DimensionBase => Set<T>().FirstOrDefault(x => x.Id == id);
-
-        public T GetByIndex<T>(int index) where T : DimensionBase => GetAll<T>().ToList()[index];
-
-
-        public T GetItemNormal<T>() where T : DimensionBase
-        {
-            int maxIndex = GetAll<T>().Count();
-            return GetByIndex<T>(Generator.GetNormalId(maxIndex - 1));
-        }
-
 
     }
 }

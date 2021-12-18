@@ -1,12 +1,23 @@
 ﻿
+using Rki.CancerDataGenerator.Models.Dimensions;
 using System.Collections.Generic;
 using System.Xml.Serialization;
 
 namespace Rki.CancerDataGenerator.Models.ADTGEKID
 {
     [XmlRootAttribute(Namespace = Globals.XSDNAMESPACE, IsNullable = false)]
-    public partial class ADT_GEKID
+    public partial class ADT_GEKID : AdtgekidBase
     {
+        public ADT_GEKID(){}
+        public ADT_GEKID(IGenerator generator, AdtgekidBase parent) : base(generator, parent)
+        {
+            Menge_Patient = new List<Patient>();
+            for (int i = 0; i < 5; i++)
+            {
+                Menge_Patient.Add(new Patient(_generator, this));
+            }
+        }
+
         public List<Patient> Menge_Patient { get; set; }
 
         public List<Melder_Typ> Menge_Melder { get; set; }
