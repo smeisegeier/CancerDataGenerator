@@ -49,7 +49,7 @@ namespace Rki.CancerDataGenerator.DAL
             modelBuilder.Entity<Uicc>().HasData(DimensionBase.ReadListFromJson<Uicc>());
 
             //modelBuilder.Entity<_Quote>().HasData(DimensionBase.AutoIncAllId<_Quote>(DimensionBase.ReadListFromJson<_Quote>().ToList()));
-            modelBuilder.Entity<_Quote>().HasData(DimensionBase.ReadListFromJson<_Quote>().AutoIncAllId());
+            modelBuilder.Entity<Quote>().HasData(DimensionBase.ReadListFromJson<Quote>().AutoIncAllId());
         }
 
         public void Init()

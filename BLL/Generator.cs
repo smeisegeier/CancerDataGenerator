@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using MathNet.Numerics.Distributions;
+using Rki.CancerDataGenerator.BLL;
 using Rki.CancerDataGenerator.DAL;
+using Rki.CancerDataGenerator.Models.ADTGEKID;
 
 namespace Rki.CancerDataGenerator.Models.Dimensions
 {
@@ -13,10 +15,13 @@ namespace Rki.CancerDataGenerator.Models.Dimensions
         private readonly Random _random = new Random();
         private readonly DateTime _baseDate = new DateTime(1980, 01, 01);
 
+        private Configuration _config { get; }
+
         public Generator(AdtGekidDbContext context)
         {
             _context = context;
             _context.Init();
+            _config = new Configuration();
         }
 
 
@@ -46,13 +51,13 @@ namespace Rki.CancerDataGenerator.Models.Dimensions
         public DateTime CreateRandomDate(int deltaDays) => CreateRandomDate(deltaDays, _baseDate);
 
 
-        public T GetRandomEnumItem<T>() where T : Enum
+        private T getRandomEnumItem<T>() where T : Enum
         {
             var array = Enum.GetValues(typeof(T));
             return (T)array.GetValue(_random.Next(array.Length));
         }
 
-        public T GetNormalDimensionItem<T>() where T : DimensionBase
+        private T getNormalDimensionItem<T>() where T : DimensionBase
         {
             int count = _context.GetAll<T>().Count();
             // have index range (0, n-1) instead of id (1,n)
@@ -61,12 +66,37 @@ namespace Rki.CancerDataGenerator.Models.Dimensions
         }
 
 
-        public T GetRandomDimensionItem<T>() where T : DimensionBase
+        private T getRandomDimensionItem<T>() where T : DimensionBase
         {
             var count = _context.GetAll<T>().Count();
             var rng = CreateRandomValue(0, count - 1);
             return _context.GetByIndex<T>(rng);
         }
+
+
+        /* specific*/
+        public Quote GetRandomDimensionItemQuote()
+        {
+            if (_random.NextDouble() < _config.ProbMissingText)
+                return null;
+            return getRandomDimensionItem<Quote>();
+        }
+
+        public Icd GetNormalDimensionItemIcd()
+        {
+            if (_random.NextDouble() < _config.ProbMissingIcd)
+                return null;
+            return getNormalDimensionItem<Icd>();
+        }
+
+        public ICD_Version_Typ GetRandomEnumItemIcdVersion()
+        {
+            if (_random.NextDouble() < _config.ProbMissingIcdVersion)
+                return ICD_Version_Typ.None;
+            return getRandomEnumItem<ICD_Version_Typ>();
+        }
+
+        public int CreateFixedValuePatientCount() => _config.PatientCount;
 
     }
 }

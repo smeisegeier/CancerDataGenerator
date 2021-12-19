@@ -1,4 +1,5 @@
-﻿using Rki.CancerDataGenerator.Models.Dimensions;
+﻿using Rki.CancerDataGenerator.BLL;
+using Rki.CancerDataGenerator.Models.Dimensions;
 
 namespace Rki.CancerDataGenerator.Models.ADTGEKID
 {

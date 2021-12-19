@@ -9,11 +9,11 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
 
         public Patient(IGenerator generator, AdtgekidBase adtgekidBase) : base(generator, adtgekidBase)
         {
-            Anmerkung = "gh";//_generator.GetRandomQuote();
+            Anmerkung = _generator.GetRandomDimensionItemQuote().quote;
             Patienten_Stammdaten = new Patienten_Stammdaten(generator, this);
 
             Menge_Meldung = new List<Meldung>();
-            for (int i = 0; i < _generator.CreateRandomValue(1, 3); i++)
+            for (int i = 0; i < _generator.CreateFixedValuePatientCount(); i++)
             {
                 Menge_Meldung.Add(new Meldung(_generator, this));
             }

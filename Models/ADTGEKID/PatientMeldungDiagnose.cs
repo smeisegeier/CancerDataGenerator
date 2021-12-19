@@ -12,11 +12,9 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         public PatientMeldungDiagnose(IGenerator generator, AdtgekidBase parent) : base(generator, parent)
         {
             // TODO make ICD dependant on ICD-Version
-            // TODO include chances to be empty / fail
-            // TODO invent configuraton object
-            Primaertumor_ICD_Code = _generator.GetNormalDimensionItem<Icd>().icd_three_digits;
-            Primaertumor_ICD_Version_ = _generator.GetRandomEnumItem<ICD_Version_Typ>().ToStringXmlEnum();
-            Primaertumor_Diagnosetext = _generator.GetRandomDimensionItem<_Quote>().quote;
+            Primaertumor_ICD_Code = _generator.GetNormalDimensionItemIcd()?.icd_three_digits;
+            Primaertumor_ICD_Version_ = _generator.GetRandomEnumItemIcdVersion().ToStringXmlEnum();
+            Primaertumor_Diagnosetext = _generator.GetRandomDimensionItemQuote()?.quote;
         }
 
         public string Primaertumor_ICD_Code { get; set; }
