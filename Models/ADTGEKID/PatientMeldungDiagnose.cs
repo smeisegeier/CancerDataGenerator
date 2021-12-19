@@ -13,6 +13,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         {
             // TODO make ICD dependant on ICD-Version
             // TODO include chances to be empty / fail
+            // TODO invent configuraton object
             Primaertumor_ICD_Code = _generator.GetNormalDimensionItem<Icd>().icd_three_digits;
             Primaertumor_ICD_Version_ = _generator.GetRandomEnumItem<ICD_Version_Typ>().ToStringXmlEnum();
             Primaertumor_Diagnosetext = _generator.GetRandomDimensionItem<_Quote>().quote;
