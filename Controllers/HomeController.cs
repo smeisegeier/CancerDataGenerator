@@ -26,6 +26,7 @@ namespace Rki.CancerDataGenerator.Controllers
             _generator = generator;
         }
 
+        //public IActionResult Index() => Redirect(nameof(Details));
         public IActionResult Index() => View();
 
         public IActionResult Details()
@@ -43,19 +44,15 @@ namespace Rki.CancerDataGenerator.Controllers
             return Content(Globals.ValidationMessageItem.PrintItemList(messages));
         }
 
-
+        // TODO fetch xml file -> validate
         // TODO make API
+
+
         private ADT_GEKID getNewRootObject() => new ADT_GEKID(_generator, null);
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
+        public IActionResult Privacy() => View();
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+        public IActionResult Error() => View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
 }

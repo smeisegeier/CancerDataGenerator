@@ -9,13 +9,12 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         public Patienten_Stammdaten() {}
         public Patienten_Stammdaten(IGenerator generator, AdtgekidBase parent) : base(generator, parent)
         {
-            Patienten_Geburtsdatum = _generator.CreateRandomDate(30*365).ToShortDateString();
-            Patienten_Nachname = "Doe";
-            Patienten_Vornamen = "John James";
-            //TEST_tage_seit_diagnose = _NumericBase.GetRandomValue(11,65);
+            Patienten_Geburtsdatum = _generator.CreateRandomDate_Meldedatum().ToShortDateString();
             TEST_tage_seit_diagnose = (int)_generator.CreateNormalValue(65, 10);
-            //IEnumerable<double> lol = _NumericBase.GetNormalValues(65, 10, 10);
         }
+
+        public int TEST_tage_seit_diagnose { get; set; }
+
 
         public string KrankenversichertenNr { get; set; }
 
@@ -54,7 +53,6 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         
         public string Patienten_Geburtsdatum { get; set; }
 
-        public int TEST_tage_seit_diagnose { get; set; }
         
         [System.Xml.Serialization.XmlArrayItemAttribute("Adresse", IsNullable = false)]
         public PatientPatienten_StammdatenAdresse[] Menge_Adresse { get; set; }

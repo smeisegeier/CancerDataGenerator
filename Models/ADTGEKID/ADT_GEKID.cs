@@ -12,7 +12,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         public ADT_GEKID(IGenerator generator, AdtgekidBase parent) : base(generator, parent)
         {
             Menge_Patient = new List<Patient>();
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < _generator.CreateFixedValuePatientCount(); i++)
             {
                 Menge_Patient.Add(new Patient(_generator, this));
             }

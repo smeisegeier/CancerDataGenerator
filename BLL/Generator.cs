@@ -4,6 +4,7 @@ using System.Linq;
 using MathNet.Numerics.Distributions;
 using Rki.CancerDataGenerator.BLL;
 using Rki.CancerDataGenerator.DAL;
+using Rki.CancerDataGenerator.Models;
 using Rki.CancerDataGenerator.Models.ADTGEKID;
 
 namespace Rki.CancerDataGenerator.Models.Dimensions
@@ -25,10 +26,10 @@ namespace Rki.CancerDataGenerator.Models.Dimensions
         }
 
 
-        public int CreateRandomValue(int min, int max) => _random.Next(min, max + 1);
-        public int CreateRandomValue(int delta) => _random.Next(delta * -1, delta);
+        private int createRandomValue(int min, int max) => _random.Next(min, max + 1);
+        private int createRandomValue(int delta) => _random.Next(delta * -1, delta);
 
-        public double CreateNormalValue(double mean, double stdDev)
+        private double createNormalValue(double mean, double stdDev)
         {
             Normal normalDistr = new Normal(mean, stdDev, _random);
             return normalDistr.Sample();
@@ -39,7 +40,7 @@ namespace Rki.CancerDataGenerator.Models.Dimensions
         {
             double mean = max / 2;    // medium value
             double stdDev = max / 6;  // assume 6sigma borders
-            int fetchedId = (int)CreateNormalValue(mean, stdDev);
+            int fetchedId = (int)createNormalValue(mean, stdDev);
             if (fetchedId < min)
                 fetchedId = min;
             if (fetchedId > max)
@@ -47,8 +48,8 @@ namespace Rki.CancerDataGenerator.Models.Dimensions
             return fetchedId;
         }
 
-        public DateTime CreateRandomDate(int deltaDays, DateTime baseDate) => baseDate.AddDays(CreateRandomValue(deltaDays));
-        public DateTime CreateRandomDate(int deltaDays) => CreateRandomDate(deltaDays, _baseDate);
+        private DateTime createRandomDate(int deltaDays, DateTime baseDate) => baseDate.AddDays(createRandomValue(deltaDays));
+        private DateTime createRandomDate(int deltaDays) => createRandomDate(deltaDays, _baseDate);
 
 
         private T getRandomEnumItem<T>() where T : Enum
@@ -69,7 +70,7 @@ namespace Rki.CancerDataGenerator.Models.Dimensions
         private T getRandomDimensionItem<T>() where T : DimensionBase
         {
             var count = _context.GetAll<T>().Count();
-            var rng = CreateRandomValue(0, count - 1);
+            var rng = createRandomValue(0, count - 1);
             return _context.GetByIndex<T>(rng);
         }
 
@@ -77,26 +78,29 @@ namespace Rki.CancerDataGenerator.Models.Dimensions
         /* specific*/
         public Quote GetRandomDimensionItemQuote()
         {
-            if (_random.NextDouble() < _config.ProbMissingText)
+            if (_random.NextDouble() < _config.Text_ProbMissing)
                 return null;
             return getRandomDimensionItem<Quote>();
         }
 
         public Icd GetNormalDimensionItemIcd()
         {
-            if (_random.NextDouble() < _config.ProbMissingIcd)
+            if (_random.NextDouble() < _config.Icd_ProbMissing)
                 return null;
             return getNormalDimensionItem<Icd>();
         }
 
         public ICD_Version_Typ GetRandomEnumItemIcdVersion()
         {
-            if (_random.NextDouble() < _config.ProbMissingIcdVersion)
+            if (_random.NextDouble() < _config.IcdVersion_ProbMissing)
                 return ICD_Version_Typ.None;
             return getRandomEnumItem<ICD_Version_Typ>();
         }
 
-        public int CreateFixedValuePatientCount() => _config.PatientCount;
+        public int CreateFixedValuePatientCount() => _config.Patient_Count;
+        public int CreateFixedValueMeldungCount() => 3;
 
+
+        public DateTime CreateRandomDate_Meldedatum() => createRandomDate(10 * 365, new DateTime(2000, 01, 01));
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Rki.CancerDataGenerator.Models;
 using Rki.CancerDataGenerator.Models.Dimensions;
 using System.Collections.Generic;
 using System.Linq;
