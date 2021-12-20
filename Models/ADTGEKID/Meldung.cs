@@ -7,13 +7,13 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
     {
         // TODO access parent properties: make Meldung count dependant on Patient
 
-        public Meldung() { }
 
         public Meldung(IGenerator generator, AdtgekidBase parent) : base(generator, parent)
         {
             Meldedatum = _generator.CreateRandomDate_Meldedatum().ToShortDateString();
             Diagnose = new PatientMeldungDiagnose(_generator, this);
         }
+        public Meldung() { }
 
         public string Meldedatum { get; set; }
 

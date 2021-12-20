@@ -14,6 +14,8 @@ namespace Rki.CancerDataGenerator.Models
             _generator = generator;
             _parent = parent;
         }
+
+        // have parameterless ctor for XmlSerializer
         public AdtgekidBase() {}
 
     }

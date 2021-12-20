@@ -1,20 +1,26 @@
 ﻿using Rki.CancerDataGenerator.Models.Dimensions;
+using System;
 using System.Collections.Generic;
+using System.Xml.Serialization;
 
 namespace Rki.CancerDataGenerator.Models.ADTGEKID
 {
     public partial class Patienten_Stammdaten : AdtgekidBase
     {
 
+        private DateTime _patientBirthdate { get;}
+        public int _PatientAgeInYears { get;}
+
         public Patienten_Stammdaten() {}
         public Patienten_Stammdaten(IGenerator generator, AdtgekidBase parent) : base(generator, parent)
         {
-            Patienten_Geburtsdatum = _generator.CreateRandomDate_Meldedatum().ToShortDateString();
-            TEST_tage_seit_diagnose = (int)_generator.CreateNormalValue(65, 10);
+            _patientBirthdate = _generator.CreateRandomDate_Geburtsdatum();
+            _PatientAgeInYears = _generator.GetYearsToPublishDate(_patientBirthdate);
+            Patienten_Geburtsdatum = _patientBirthdate.ToShortDateString();
+            TEST_Alter = _PatientAgeInYears;
         }
 
-        public int TEST_tage_seit_diagnose { get; set; }
-
+        public int TEST_Alter { get; set; }
 
         public string KrankenversichertenNr { get; set; }
 

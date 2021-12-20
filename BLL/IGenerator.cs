@@ -9,11 +9,14 @@ namespace Rki.CancerDataGenerator.Models.Dimensions
     public interface IGenerator
     {
         int CreateFixedValuePatientCount();
-        int CreateFixedValueMeldungCount();
         int CreateNormalValue(int min, int max);
         DateTime CreateRandomDate_Meldedatum();
-        Icd GetNormalDimensionItemIcd();
-        Quote GetRandomDimensionItemQuote();
-        ICD_Version_Typ GetRandomEnumItemIcdVersion();
+        Icd FetchNormalDimensionItem_Icd();
+        Quote FetchRandomDimensionItem_Quote();
+        ICD_Version_Typ FetchRandomEnumItem_IcdVersion();
+        int GetDaysToPublishDate(DateTime start);
+        int GetYearsToPublishDate(DateTime start);
+        int GetMeldungCountPerAge(int age);
+        DateTime CreateRandomDate_Geburtsdatum();
     }
 }

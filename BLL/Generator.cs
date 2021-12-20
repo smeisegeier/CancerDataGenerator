@@ -14,7 +14,6 @@ namespace Rki.CancerDataGenerator.Models.Dimensions
         private AdtGekidDbContext _context { get; }
 
         private readonly Random _random = new Random();
-        private readonly DateTime _baseDate = new DateTime(1980, 01, 01);
 
         private Configuration _config { get; }
 
@@ -49,8 +48,6 @@ namespace Rki.CancerDataGenerator.Models.Dimensions
         }
 
         private DateTime createRandomDate(int deltaDays, DateTime baseDate) => baseDate.AddDays(createRandomValue(deltaDays));
-        private DateTime createRandomDate(int deltaDays) => createRandomDate(deltaDays, _baseDate);
-
 
         private T getRandomEnumItem<T>() where T : Enum
         {
@@ -76,21 +73,21 @@ namespace Rki.CancerDataGenerator.Models.Dimensions
 
 
         /* specific*/
-        public Quote GetRandomDimensionItemQuote()
+        public Quote FetchRandomDimensionItem_Quote()
         {
             if (_random.NextDouble() < _config.Text_ProbMissing)
                 return null;
             return getRandomDimensionItem<Quote>();
         }
 
-        public Icd GetNormalDimensionItemIcd()
+        public Icd FetchNormalDimensionItem_Icd()
         {
             if (_random.NextDouble() < _config.Icd_ProbMissing)
                 return null;
             return getNormalDimensionItem<Icd>();
         }
 
-        public ICD_Version_Typ GetRandomEnumItemIcdVersion()
+        public ICD_Version_Typ FetchRandomEnumItem_IcdVersion()
         {
             if (_random.NextDouble() < _config.IcdVersion_ProbMissing)
                 return ICD_Version_Typ.None;
@@ -98,9 +95,21 @@ namespace Rki.CancerDataGenerator.Models.Dimensions
         }
 
         public int CreateFixedValuePatientCount() => _config.Patient_Count;
-        public int CreateFixedValueMeldungCount() => 3;
 
+        public DateTime CreateRandomDate_Meldedatum() => createRandomDate(10 * 365, _config.Meldedatum_BaseDate);
+        public DateTime CreateRandomDate_Geburtsdatum() => createRandomDate(40 * 365, new DateTime(1970, 01, 01));
 
-        public DateTime CreateRandomDate_Meldedatum() => createRandomDate(10 * 365, new DateTime(2000, 01, 01));
+        public int GetDaysToPublishDate(DateTime start) => (_config.PublishDate - start).Days;
+        public int GetYearsToPublishDate(DateTime start) => GetDaysToPublishDate(start) / 365;
+
+        public int GetMeldungCountPerAge(int age)
+        {
+            if (age < 30) 
+                return 1;
+            if (age < 50)
+                return 2;
+            return 3;
+        }
+
     }
 }
