@@ -1,6 +1,7 @@
-﻿using Rki.CancerDataGenerator.Models.Dimensions;
+﻿using Rki.CancerDataGenerator.BLL;
+using Rki.CancerDataGenerator.Models.Dimensions;
 
-namespace Rki.CancerDataGenerator.Models.ADTGEKID
+namespace Rki.CancerDataGenerator.Models
 {
     public abstract class AdtgekidBase
     {
@@ -13,6 +14,8 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
             _generator = generator;
             _parent = parent;
         }
+
+        // have parameterless ctor for XmlSerializer
         public AdtgekidBase() {}
 
     }

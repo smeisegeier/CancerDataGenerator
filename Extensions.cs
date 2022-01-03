@@ -1,4 +1,5 @@
-﻿using Rki.CancerDataGenerator.Models.Dimensions;
+﻿using Rki.CancerDataGenerator.Models;
+using Rki.CancerDataGenerator.Models.Dimensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,10 +20,12 @@ namespace Rki.CancerDataGenerator
         {
             var enumType = typeof(T);
             var member = enumType.GetMember(item.ToString()).FirstOrDefault();
-            if (member == null) return null;//or string.Empty, or throw exception
+            if (member == null) 
+                return null;            // or string.Empty, or throw exception
 
             var attribute = member.GetCustomAttributes(false).OfType<XmlEnumAttribute>().FirstOrDefault();
-            if (attribute == null) return null;//or string.Empty, or throw exception
+            if (attribute == null)
+                return null;            // item.ToString(); // no description available
             return attribute.Name;
         }
 

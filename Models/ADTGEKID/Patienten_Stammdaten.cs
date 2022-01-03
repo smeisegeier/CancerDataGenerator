@@ -1,4 +1,5 @@
 ﻿using Rki.CancerDataGenerator.Models.Dimensions;
+using System;
 using System.Collections.Generic;
 
 namespace Rki.CancerDataGenerator.Models.ADTGEKID
@@ -6,11 +7,16 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
     public partial class Patienten_Stammdaten : AdtgekidBase
     {
 
+        private DateTime _patientBirthdate { get;}
+        public int _PatientAgeInYears { get;}
+
         public Patienten_Stammdaten() {}
         public Patienten_Stammdaten(IGenerator generator, AdtgekidBase parent) : base(generator, parent)
         {
-            Patienten_Geburtsdatum = _generator.CreateRandomDate(30*365).ToShortDateString();
-            Patienten_Geschlecht = _generator.GetRandomEnumItem<PatientPatienten_StammdatenPatienten_Geschlecht>();
+            _patientBirthdate = _generator.CreateRandomDate_Geburtsdatum();
+            _PatientAgeInYears = _generator.GetYearsToPublishDate(_patientBirthdate);
+            Patienten_Geburtsdatum = _patientBirthdate.ToShortDateString();
+            TEST_Alter = _PatientAgeInYears;
         }
 
         public PatientPatienten_StammdatenPatienten_Geschlecht Patienten_Geschlecht { get; set; }
@@ -48,6 +54,17 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         [System.Xml.Serialization.XmlArrayItemAttribute("Patienten_Frueherer_Name", IsNullable = false)]
         public string[] Menge_Frueherer_Name { get; set; }
 
+        
+        public PatientPatienten_StammdatenPatienten_Geschlecht Patienten_Geschlecht { get; set; }
+
+        
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool Patienten_GeschlechtSpecified { get; set; }
+
+        
+        public string Patienten_Geburtsdatum { get; set; }
+
+        
         [System.Xml.Serialization.XmlArrayItemAttribute("Adresse", IsNullable = false)]
         public PatientPatienten_StammdatenAdresse[] Menge_Adresse { get; set; }  
 

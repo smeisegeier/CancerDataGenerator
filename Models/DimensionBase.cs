@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace Rki.CancerDataGenerator.Models.Dimensions
+namespace Rki.CancerDataGenerator.Models
 {
 
     /// <summary>
