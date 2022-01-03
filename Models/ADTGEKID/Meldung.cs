@@ -11,7 +11,6 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
 
         public Meldung(IGenerator generator, AdtgekidBase parent) : base(generator, parent)
         {
-            //(_parent as Patient).Anmerkung = "bö";
             Meldedatum = _generator.CreateRandomDate(10 * 365, new DateTime(2000, 01, 01)).ToShortDateString();
             Diagnose = new PatientMeldungDiagnose(_generator, this);
         }

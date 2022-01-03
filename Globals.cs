@@ -12,7 +12,7 @@ namespace Rki.CancerDataGenerator
     public static class Globals
     {
         public const string XSDFILENAME = "ADT_GEKID_v2.2.1.xsd";
-        public const string XSDPATHRELATIVE = "Models/" + XSDFILENAME;
+        public const string XSDPATHRELATIVE = "Samples/" + XSDFILENAME;
         public const string XSDNAMESPACE = "http://www.gekid.de/namespace";
         public const string XSINAMESPACE = "http://www.w3.org/2001/XMLSchema-instance";
 
@@ -92,7 +92,7 @@ namespace Rki.CancerDataGenerator
             {
                 if (list is null || !list.Any())
                 {
-                    return "No errors";
+                    return "No entries.";
                 }
                 else
                 {

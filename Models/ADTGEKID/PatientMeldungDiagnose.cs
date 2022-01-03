@@ -12,23 +12,21 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         public PatientMeldungDiagnose(IGenerator generator, AdtgekidBase parent) : base(generator, parent)
         {
             // TODO make ICD dependant on ICD-Version
-            // TODO include chances to be empty / fail
+            // TODO include errors?
             Primaertumor_ICD_Code = _generator.GetNormalDimensionItem<Icd>().icd_three_digits;
-            Primaertumor_ICD_Version_ = _generator.GetRandomEnumItem<ICD_Version_Typ>().ToStringXmlEnum();
             Primaertumor_Diagnosetext = _generator.GetRandomDimensionItem<_Quote>().quote;
+            Primaertumor_ICD_Version = _generator.GetRandomEnumItem<ICD_Version_Typ>();
         }
 
         public string Primaertumor_ICD_Code { get; set; }
         
-        // HACK find out why property not xml'ed (->PatientZuorZuordnung)
-        //public ICD_Version_Typ Primaertumor_ICD_Version { get; set; }
-        public string Primaertumor_ICD_Version_ { get; set; }
+        public ICD_Version_Typ Primaertumor_ICD_Version { get; set; }
+
+        // "Specified" annex causes bug in serializer. MUST be removed, up to now it is of no use.  
+        //[System.Xml.Serialization.XmlIgnoreAttribute()]
+        //public bool Primaertumor_ICD_VersionSpecified { get; set; }
 
 
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool Primaertumor_ICD_VersionSpecified { get; set; }
-
-        
         public string Primaertumor_Diagnosetext { get; set; }
 
         

@@ -42,6 +42,12 @@ namespace Rki.CancerDataGenerator.Models.Dimensions
             return fetchedId;
         }
 
+        /// <summary>
+        /// Picks DateTime from random spread.
+        /// </summary>
+        /// <param name="deltaDays">day range borders around basedate</param>
+        /// <param name="baseDate">eg. 1.1.1980</param>
+        /// <returns></returns>
         public DateTime CreateRandomDate(int deltaDays, DateTime baseDate) => baseDate.AddDays(CreateRandomValue(deltaDays));
         public DateTime CreateRandomDate(int deltaDays) => CreateRandomDate(deltaDays, _baseDate);
 
