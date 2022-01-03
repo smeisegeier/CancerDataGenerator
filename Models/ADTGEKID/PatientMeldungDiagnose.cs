@@ -5,16 +5,21 @@ using System.Xml.Serialization;
 
 namespace Rki.CancerDataGenerator.Models.ADTGEKID
 {
-    public partial class PatientMeldungDiagnose : AdtgekidBase
+    public class PatientMeldungDiagnose : AdtgekidBase
     {
         public PatientMeldungDiagnose(){}
 
         public PatientMeldungDiagnose(IGenerator generator, AdtgekidBase parent) : base(generator, parent)
         {
             // TODO make ICD dependant on ICD-Version
-            Primaertumor_ICD_Code = _generator.FetchNormalDimensionItem_Icd()?.icd_three_digits;
+            Primaertumor_ICD_Code = _generator.FetchNormalDimensionItem_Icd("19")?.icd_three_digits;
             Primaertumor_ICD_Version = _generator.FetchRandomEnumItem_IcdVersion();
             Primaertumor_Diagnosetext = _generator.FetchRandomDimensionItem_Quote()?.quote;
+            Primaertumor_Topographie_ICD_O_Version = _generator.getRandomEnumItem<PatientMeldungDiagnosePrimaertumor_Topographie_ICD_O_Version>();
+            Diagnosesicherung = _generator.getRandomEnumItem<PatientMeldungDiagnoseDiagnosesicherung>();
+            Seitenlokalisation = _generator.getRandomEnumItem<Seitenlokalisation_Typ>();
+            Allgemeiner_Leistungszustand = _generator.getRandomEnumItem<Allgemeiner_Leistungszustand_Typ>();
+            cTNM = new TNM_Typ(_generator, this);
         }
 
         public string Primaertumor_ICD_Code { get; set; }
@@ -30,33 +35,16 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
 
         
         public string Primaertumor_Topographie_ICD_O { get; set; }
-
         
         public PatientMeldungDiagnosePrimaertumor_Topographie_ICD_O_Version Primaertumor_Topographie_ICD_O_Version { get; set; }
-
-        
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool Primaertumor_Topographie_ICD_O_VersionSpecified { get; set; }
-
         
         public string Primaertumor_Topographie_ICD_O_Freitext { get; set; }
-
         
         public string Diagnosedatum { get; set; }
-
         
         public PatientMeldungDiagnoseDiagnosesicherung Diagnosesicherung { get; set; }
-
-        
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool DiagnosesicherungSpecified { get; set; }
-
         
         public Seitenlokalisation_Typ Seitenlokalisation { get; set; }
-
-        
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool SeitenlokalisationSpecified { get; set; }
 
         
         [System.Xml.Serialization.XmlArrayItemAttribute("Fruehere_Tumorerkrankung", IsNullable = false)]
@@ -98,8 +86,6 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         
         public Allgemeiner_Leistungszustand_Typ Allgemeiner_Leistungszustand { get; set; }
 
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool Allgemeiner_LeistungszustandSpecified { get; set; }
         
         public string Anmerkung { get; set; }
 

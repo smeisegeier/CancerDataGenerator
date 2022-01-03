@@ -22,8 +22,8 @@ namespace Rki.CancerDataGenerator.DAL
             modelBuilder.Entity<Grading>().HasData(DimensionBase.ReadListFromJson<Grading>());
             modelBuilder.Entity<Histology>().HasData(DimensionBase.ReadListFromJson<Histology>());
             modelBuilder.Entity<HormonReceptor>().HasData(DimensionBase.ReadListFromJson<HormonReceptor>());
-            // ICD -> only C items
-            modelBuilder.Entity<Icd>().HasData(DimensionBase.ReadListFromJson<Icd>().Where(x => x.icd_id.Substring(0, 1) == "C"));
+            modelBuilder.Entity<Icd>().HasData(DimensionBase.ReadListFromJson<Icd>());
+            //modelBuilder.Entity<Icd>().HasData(DimensionBase.ReadListFromJson<Icd>().Where(x => x.icd_id.Substring(0, 1) == "C"));
             modelBuilder.Entity<Location>().HasData(DimensionBase.ReadListFromJson<Location>());
             modelBuilder.Entity<M>().HasData(DimensionBase.ReadListFromJson<M>());
             modelBuilder.Entity<N>().HasData(DimensionBase.ReadListFromJson<N>());
@@ -63,7 +63,9 @@ namespace Rki.CancerDataGenerator.DAL
         public IEnumerable<T> GetAllOrdered<T>() where T : DimensionBase => GetAll<T>().OrderBy(x => x.Id);
         public T GetById<T>(int id) where T : DimensionBase => Set<T>().FirstOrDefault(x => x.Id == id);
         public T GetByIndex<T>(int index) where T : DimensionBase => GetAll<T>().ToList()[index];
+        public T GetByIndex<T>(int index, List<T> subset) where T : DimensionBase => subset[index];
 
+        public List<Icd> GetIcdSubsetByChapter(string chapter) => GetAll<Icd>().Where(x=>x.icd_chapter == chapter).ToList();
 
         public DbSet<DiagnosisSafety> DiagnosisSafeties { get; set; }
         public DbSet<DiseaseProgression> DiseaseProgressions { get; set; }

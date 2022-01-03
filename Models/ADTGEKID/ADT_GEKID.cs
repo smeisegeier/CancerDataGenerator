@@ -581,46 +581,30 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
 
     public enum PatientMeldungMeldebegruendung
     {
-
         
         I,
-
-        
+       
         A,
-
         
         D,
-
         
         W,
-
         
         V,
+
+        None
     }
 
     public enum PatientMeldungMeldeanlass
     {
-
-        
         diagnose,
-
-        
         behandlungsbeginn,
-
-        
         behandlungsende,
-
-        
         statusaenderung,
-
-        
         statusmeldung,
-
-        
         tod,
-
-        
         histologie_zytologie,
+        None
     }
 
     public enum ICD_Version_Typ
@@ -714,71 +698,41 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
 
     public enum Seitenlokalisation_Typ
     {
-
-        
         L,
-
-        
         R,
-
-        
         B,
-
-        
         M,
-
-        
         U,
-
-        
         T,
+        None
     }
 
     public enum PatientMeldungDiagnosePrimaertumor_Topographie_ICD_O_Version
     {
-
-        
         [XmlEnum("31")]
         Item31,
-
-        
         [XmlEnum("32")]
         Item32,
-
-        
         [XmlEnum("33")]
         Item33,
     }
     public enum PatientMeldungDiagnoseDiagnosesicherung
     {
-
-        
         [XmlEnum("1")]
         Item1,
-
-        
         [XmlEnum("2")]
         Item2,
-
-        
         [XmlEnum("4")]
         Item4,
-
-        
         [XmlEnum("5")]
         Item5,
-
-        
         [XmlEnum("6")]
         Item6,
-
-        
         [XmlEnum("7")]
         Item7,
-
-        
         [XmlEnum("9")]
         Item9,
+        None
     }
 
     public enum Menge_FM_TypFernmetastaseFM_Lokalisation
@@ -2170,14 +2124,10 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
     
     public enum PatientMeldungTumorkonferenzTumorkonferenz_Typ
     {
-       
         praeth,
-
-        
         postop,
-
-        
         postth,
+        None
     }
 
     public enum Schema_Version
