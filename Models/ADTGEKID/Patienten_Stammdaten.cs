@@ -18,11 +18,12 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
             Patienten_Geburtsdatum = _patientBirthdate.ToShortDateString();
             TEST_Alter = _PatientAgeInYears;
         }
+        public int TEST_Alter { get; }
 
         public PatientPatienten_StammdatenPatienten_Geschlecht Patienten_Geschlecht { get; set; }
 
         public string Patienten_Geburtsdatum { get; set; }
-
+        
         [System.Xml.Serialization.XmlAttributeAttribute()]
         public string Patient_ID { get; set; }
 

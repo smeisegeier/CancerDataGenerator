@@ -13,7 +13,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         {
             // TODO make ICD dependant on ICD-Version
             Primaertumor_ICD_Code = _generator.FetchNormalDimensionItem_Icd()?.icd_three_digits;
-            Primaertumor_ICD_Version_ = _generator.FetchRandomEnumItem_IcdVersion().ToStringXmlEnum();
+            Primaertumor_ICD_Version = _generator.FetchRandomEnumItem_IcdVersion();
             Primaertumor_Diagnosetext = _generator.FetchRandomDimensionItem_Quote()?.quote;
         }
 
