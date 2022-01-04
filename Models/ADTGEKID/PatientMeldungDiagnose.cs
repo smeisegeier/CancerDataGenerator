@@ -16,12 +16,12 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
             Primaertumor_ICD_Version = _generator.FetchRandomEnumItem_IcdVersion();
             Primaertumor_Diagnosetext = _generator.FetchRandomDimensionItem_Quote()?.quote;
             Primaertumor_Topographie_ICD_O_Version = _generator.getRandomEnumItem<PatientMeldungDiagnosePrimaertumor_Topographie_ICD_O_Version>();
-            Diagnosesicherung = _generator.getRandomEnumItem<PatientMeldungDiagnoseDiagnosesicherung>();
             Seitenlokalisation = _generator.getRandomEnumItem<Seitenlokalisation_Typ>();
             Allgemeiner_Leistungszustand = _generator.getRandomEnumItem<Allgemeiner_Leistungszustand_Typ>();
             cTNM = new TNM_Typ(_generator, this);
-            Diagnosesicherung_ = _generator.FetchRandomEnumItem_Dsich().ToStringXmlEnum();
-            
+            Diagnosesicherung = _generator.FetchRandomEnumItem_Dsich();
+            //Diagnosesicherung = _generator.getRandomEnumItem<PatientMeldungDiagnoseDiagnosesicherung>();
+
         }
 
         public string Primaertumor_ICD_Code { get; set; }

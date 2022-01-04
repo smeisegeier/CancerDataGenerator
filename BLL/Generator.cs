@@ -69,8 +69,9 @@ namespace Rki.CancerDataGenerator.Models.Dimensions
             var list = Enum.GetValues(typeof(T)).OfType<T>().ToList();          // same as: (array as T[]).ToList()
             var itemRemoving = list
                 .Where(i => i.ToString() == "None")
-                .First();                                                       // ToStringXmlEnum() would exclude "none", do not use
-            if (itemRemoving is not null)
+                .FirstOrDefault();                                              // ToStringXmlEnum() would exclude "none", do not use
+            // TODO null vs default
+            if (itemRemoving != null)
                 list.Remove(itemRemoving);
             return list[_random.Next(list.Count)];
         }
