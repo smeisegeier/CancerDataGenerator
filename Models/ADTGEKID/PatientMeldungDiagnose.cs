@@ -15,6 +15,8 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
             Primaertumor_ICD_Code = _generator.FetchNormalDimensionItem_Icd()?.icd_three_digits;
             Primaertumor_ICD_Version_ = _generator.FetchRandomEnumItem_IcdVersion().ToStringXmlEnum();
             Primaertumor_Diagnosetext = _generator.FetchRandomDimensionItem_Quote()?.quote;
+            Diagnosesicherung_ = _generator.FetchRandomEnumItem_Dsich().ToStringXmlEnum();
+            
         }
 
         public string Primaertumor_ICD_Code { get; set; }
@@ -46,10 +48,11 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         
         public string Diagnosedatum { get; set; }
 
-        
-        public PatientMeldungDiagnoseDiagnosesicherung Diagnosesicherung { get; set; }
+        // TODO! fix xmlserialzer!
+        //public PatientMeldungDiagnoseDiagnosesicherung Diagnosesicherung { get; set; }
+        public string Diagnosesicherung_ { get; set; }
 
-        
+
         [System.Xml.Serialization.XmlIgnoreAttribute()]
         public bool DiagnosesicherungSpecified { get; set; }
 

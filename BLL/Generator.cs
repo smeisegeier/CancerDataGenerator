@@ -51,8 +51,16 @@ namespace Rki.CancerDataGenerator.Models.Dimensions
 
         private T getRandomEnumItem<T>() where T : Enum
         {
-            var array = Enum.GetValues(typeof(T));
-            return (T)array.GetValue(_random.Next(array.Length));
+            //var array = Enum.GetValues(typeof(T));
+            //List<T> list = (array as T[]).ToList();
+
+            var list = Enum.GetValues(typeof(T)).OfType<T>().ToList();          // same as: (array as T[]).ToList()
+            var itemRemoving = list
+                .Where(i => i.ToString() == "None")
+                .First();                                                       // ToStringXmlEnum() would exclude "none", do not use
+            if (itemRemoving is not null)
+                list.Remove(itemRemoving);
+            return list[_random.Next(list.Count)];
         }
 
         private T getNormalDimensionItem<T>() where T : DimensionBase
@@ -92,6 +100,13 @@ namespace Rki.CancerDataGenerator.Models.Dimensions
             if (_random.NextDouble() < _config.IcdVersion_ProbMissing)
                 return ICD_Version_Typ.None;
             return getRandomEnumItem<ICD_Version_Typ>();
+        }
+
+        public PatientMeldungDiagnoseDiagnosesicherung FetchRandomEnumItem_Dsich()
+        {
+            if (_random.NextDouble() < _config.Dsich_ProbMissing)
+                return PatientMeldungDiagnoseDiagnosesicherung.None;
+            return getRandomEnumItem<PatientMeldungDiagnoseDiagnosesicherung>();
         }
 
         public int CreateFixedValuePatientCount() => _config.Patient_Count;

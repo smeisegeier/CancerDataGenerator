@@ -18,5 +18,6 @@ namespace Rki.CancerDataGenerator.Models.Dimensions
         int GetYearsToPublishDate(DateTime start);
         int GetMeldungCountPerAge(int age);
         DateTime CreateRandomDate_Geburtsdatum();
+        PatientMeldungDiagnoseDiagnosesicherung FetchRandomEnumItem_Dsich();
     }
 }

@@ -779,6 +779,8 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         
         [XmlEnum("9")]
         Item9,
+
+        None
     }
 
     public enum Menge_FM_TypFernmetastaseFM_Lokalisation
