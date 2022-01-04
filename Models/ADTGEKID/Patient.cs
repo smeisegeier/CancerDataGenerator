@@ -10,13 +10,13 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         public Patient(IGenerator generator, AdtgekidBase adtgekidBase) : base(generator, adtgekidBase)
         {
             Anmerkung = _generator.FetchRandomDimensionItem_Quote()?.quote;
-            Patienten_Stammdaten = new Patienten_Stammdaten(generator, this);
+            Patienten_Stammdaten = new Patienten_Stammdaten(_generator, this);
             _meldungCount = _generator.GetMeldungCountPerAge(Patienten_Stammdaten._PatientAgeInYears);
 
-            Menge_Meldung = new List<Meldung>();
+            Menge_Meldung = new List<PatientMeldung>();
             for (int i = 0; i < _meldungCount; i++)
             {
-                Menge_Meldung.Add(new Meldung(_generator, this));
+                Menge_Meldung.Add(new PatientMeldung(_generator, this));
             }
 
         }
@@ -27,7 +27,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
 
         
         [System.Xml.Serialization.XmlArrayItemAttribute("Meldung", IsNullable = false)]
-        public List<Meldung> Menge_Meldung { get; set; }
+        public List<PatientMeldung> Menge_Meldung { get; set; }
 
         
         public string Anmerkung { get; set; }

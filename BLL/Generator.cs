@@ -9,6 +9,13 @@ using Rki.CancerDataGenerator.Models.ADTGEKID;
 
 namespace Rki.CancerDataGenerator.Models.Dimensions
 {
+    /// <summary>
+    /// This class summarizes all items to generate random data in various distributions (random, normal)
+    /// Glossary:
+    /// - get -> 
+    /// - fetch -> fetch an existing entry following random spread
+    /// - create -> create a random entry from scratch
+    /// </summary>
     public class Generator : DimensionBase, IGenerator
     {
         private AdtGekidDbContext _context { get; }
@@ -25,7 +32,7 @@ namespace Rki.CancerDataGenerator.Models.Dimensions
         }
 
 
-        private int createRandomValue(int min, int max) => _random.Next(min, max + 1);
+        public int createRandomValue(int min, int max) => _random.Next(min, max + 1);
         private int createRandomValue(int delta) => _random.Next(delta * -1, delta);
 
         private double createNormalValue(double mean, double stdDev)
@@ -49,7 +56,12 @@ namespace Rki.CancerDataGenerator.Models.Dimensions
 
         private DateTime createRandomDate(int deltaDays, DateTime baseDate) => baseDate.AddDays(createRandomValue(deltaDays));
 
-        private T getRandomEnumItem<T>() where T : Enum
+        /// <summary>
+        /// HACK private vs public
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public T getRandomEnumItem<T>() where T : Enum
         {
             //var array = Enum.GetValues(typeof(T));
             //List<T> list = (array as T[]).ToList();
@@ -63,16 +75,18 @@ namespace Rki.CancerDataGenerator.Models.Dimensions
             return list[_random.Next(list.Count)];
         }
 
-        private T getNormalDimensionItem<T>() where T : DimensionBase
+        private T getNormalDimensionItem<T>(List<T> subset = null) where T : DimensionBase
         {
-            int count = _context.GetAll<T>().Count();
+            if (subset == null)
+                subset = _context.GetAll<T>().ToList();
+            int count = subset.Count();
             // have index range (0, n-1) instead of id (1,n)
             var rng = CreateNormalValue(0, count - 1);
-            return _context.GetByIndex<T>(rng);
+            return _context.GetByIndex(rng, subset);
         }
 
 
-        private T getRandomDimensionItem<T>() where T : DimensionBase
+        public T FetchRandomDimensionItem<T>() where T : DimensionBase
         {
             var count = _context.GetAll<T>().Count();
             var rng = createRandomValue(0, count - 1);
@@ -80,19 +94,25 @@ namespace Rki.CancerDataGenerator.Models.Dimensions
         }
 
 
+
+
+
         /* specific*/
         public Quote FetchRandomDimensionItem_Quote()
         {
             if (_random.NextDouble() < _config.Text_ProbMissing)
                 return null;
-            return getRandomDimensionItem<Quote>();
+            return FetchRandomDimensionItem<Quote>();
         }
 
-        public Icd FetchNormalDimensionItem_Icd()
+        public Icd FetchNormalDimensionItem_Icd(string chapter = "")
         {
             if (_random.NextDouble() < _config.Icd_ProbMissing)
                 return null;
-            return getNormalDimensionItem<Icd>();
+            if (chapter == "")  
+                return getNormalDimensionItem<Icd>();
+            var subset = _context.GetIcdSubsetByChapter(chapter);
+            return getNormalDimensionItem<Icd>(subset);
         }
 
         public ICD_Version_Typ FetchRandomEnumItem_IcdVersion()
@@ -108,6 +128,21 @@ namespace Rki.CancerDataGenerator.Models.Dimensions
                 return PatientMeldungDiagnoseDiagnosesicherung.None;
             return getRandomEnumItem<PatientMeldungDiagnoseDiagnosesicherung>();
         }
+
+        public PatientMeldungMeldebegruendung FetchRandomEnumItem_Meldebegruendung()
+        {
+            if (_random.NextDouble() < 0)
+                return PatientMeldungMeldebegruendung.None;
+            return getRandomEnumItem<PatientMeldungMeldebegruendung>();
+        }
+
+        public PatientMeldungMeldeanlass FetchRandomEnumItem_Meldeanlass()
+        {
+            if (_random.NextDouble() < 0)
+                return PatientMeldungMeldeanlass.None;
+            return getRandomEnumItem<PatientMeldungMeldeanlass>();
+        }
+
 
         public int CreateFixedValuePatientCount() => _config.Patient_Count;
 
@@ -125,6 +160,7 @@ namespace Rki.CancerDataGenerator.Models.Dimensions
                 return 2;
             return 3;
         }
+        // TODO make random calculations respect LINQ subsets 
 
     }
 }
