@@ -35,18 +35,18 @@ namespace Rki.CancerDataGenerator.Models.Dimensions
         public int createRandomValue(int min, int max) => _random.Next(min, max + 1);
         private int createRandomValue(int delta) => _random.Next(delta * -1, delta);
 
-        private double createNormalValue(double mean, double stdDev)
+
+        public double CreateNormalValueUponMean(double mean, double stdDev)
         {
             Normal normalDistr = new Normal(mean, stdDev, _random);
             return normalDistr.Sample();
         }
 
-
-        public int CreateNormalValue(int min, int max)
+        public int CreateNormalValueUponRange(int min, int max)
         {
             double mean = max / 2;    // medium value
             double stdDev = max / 6;  // assume 6sigma borders
-            int fetchedId = (int)createNormalValue(mean, stdDev);
+            int fetchedId = (int)CreateNormalValueUponMean(mean, stdDev);
             if (fetchedId < min)
                 fetchedId = min;
             if (fetchedId > max)
@@ -61,41 +61,65 @@ namespace Rki.CancerDataGenerator.Models.Dimensions
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
-        public T getRandomEnumItem<T>() where T : Enum
+        public T FetchRandomEnumItem<T>() where T : Enum
+        {
+            var list = fetchAllEnumItems<T>();
+            var itemRemoving = fetchNoneEnumItem(list);
+            if (itemRemoving?.ToString() == "None")
+                list.Remove(itemRemoving);
+            return list[_random.Next(list.Count)];
+        }
+
+        private IList<T> fetchAllEnumItems<T>()
         {
             //var array = Enum.GetValues(typeof(T));
             //List<T> list = (array as T[]).ToList();
 
             var list = Enum.GetValues(typeof(T)).OfType<T>().ToList();          // same as: (array as T[]).ToList()
-            var itemRemoving = list
-                .Where(i => i.ToString() == "None")
-                .FirstOrDefault();                                              // ToStringXmlEnum() would exclude "none", do not use
-            // TODO null vs default
-            if (itemRemoving != null)
-                list.Remove(itemRemoving);
-            return list[_random.Next(list.Count)];
+            return list;
         }
 
+
+        /// <summary>
+        /// Fetches the enum item "none".
+        /// </summary>
+        /// <typeparam name="T">enum</typeparam>
+        /// <returns>"none" item or default (item at index 0)</returns>
+        private T fetchNoneEnumItem<T>(IList<T> list) where T : Enum => list
+                .Where(i => i.ToString() == "None")     // ToStringXmlEnum() would exclude "none", do not use
+                .FirstOrDefault();                                         
+
+
+        /// <summary>
+        /// Fetches a Dimension item following normal distribuion
+        /// If no subset is provided, whole list will be taken 
+        /// </summary>
+        /// <typeparam name="T">dimension</typeparam>
+        /// <param name="subset">subset as list or null</param>
+        /// <returns>dimension item</returns>
         private T getNormalDimensionItem<T>(List<T> subset = null) where T : DimensionBase
         {
             if (subset == null)
                 subset = _context.GetAll<T>().ToList();
-            int count = subset.Count();
+            var count = subset.Count();
             // have index range (0, n-1) instead of id (1,n)
-            var rng = CreateNormalValue(0, count - 1);
+            var rng = CreateNormalValueUponRange(0, count - 1);
             return _context.GetByIndex(rng, subset);
         }
 
-
-        public T FetchRandomDimensionItem<T>() where T : DimensionBase
+        public T FetchRandomDimensionItem<T>(List<T> subset = null, double missingProb = 0) where T : DimensionBase
         {
-            var count = _context.GetAll<T>().Count();
+            // handle subset
+            if (subset == null)
+                subset = _context.GetAll<T>().ToList();
+            // handle missingProb
+            if (_random.NextDouble() < missingProb)
+                return null;
+
+            var count = subset.Count();
             var rng = createRandomValue(0, count - 1);
-            return _context.GetByIndex<T>(rng);
+            return _context.GetByIndex(rng, subset);
         }
-
-
-
 
 
         /* specific*/
@@ -120,28 +144,28 @@ namespace Rki.CancerDataGenerator.Models.Dimensions
         {
             if (_random.NextDouble() < _config.IcdVersion_ProbMissing)
                 return ICD_Version_Typ.None;
-            return getRandomEnumItem<ICD_Version_Typ>();
+            return FetchRandomEnumItem<ICD_Version_Typ>();
         }
 
         public PatientMeldungDiagnoseDiagnosesicherung FetchRandomEnumItem_Dsich()
         {
             if (_random.NextDouble() < _config.Dsich_ProbMissing)
                 return PatientMeldungDiagnoseDiagnosesicherung.None;
-            return getRandomEnumItem<PatientMeldungDiagnoseDiagnosesicherung>();
+            return FetchRandomEnumItem<PatientMeldungDiagnoseDiagnosesicherung>();
         }
 
         public PatientMeldungMeldebegruendung FetchRandomEnumItem_Meldebegruendung()
         {
             if (_random.NextDouble() < 0)
                 return PatientMeldungMeldebegruendung.None;
-            return getRandomEnumItem<PatientMeldungMeldebegruendung>();
+            return FetchRandomEnumItem<PatientMeldungMeldebegruendung>();
         }
 
         public PatientMeldungMeldeanlass FetchRandomEnumItem_Meldeanlass()
         {
             if (_random.NextDouble() < 0)
                 return PatientMeldungMeldeanlass.None;
-            return getRandomEnumItem<PatientMeldungMeldeanlass>();
+            return FetchRandomEnumItem<PatientMeldungMeldeanlass>();
         }
 
 
@@ -161,7 +185,5 @@ namespace Rki.CancerDataGenerator.Models.Dimensions
                 return 2;
             return 3;
         }
-        // TODO make random calculations respect LINQ subsets 
-
     }
 }

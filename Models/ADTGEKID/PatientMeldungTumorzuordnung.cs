@@ -1,5 +1,6 @@
 ﻿namespace Rki.CancerDataGenerator.Models.ADTGEKID
 {
+    // TODO TumZuordnung unclear
     public partial class PatientMeldungTumorzuordnung
     {
         

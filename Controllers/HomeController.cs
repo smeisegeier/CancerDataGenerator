@@ -32,7 +32,8 @@ namespace Rki.CancerDataGenerator.Controllers
         public IActionResult Details()
         {
             ADT_GEKID a = getNewRootObject();
-            return Content(Globals.GetXmlStringFromObject(a));
+            // also give contentType to trigger browser addons for xml view
+            return Content(Globals.GetXmlStringFromObject(a), "application/xml");
         }
 
         public IActionResult Validate()
@@ -46,7 +47,6 @@ namespace Rki.CancerDataGenerator.Controllers
 
         // TODO fetch xml file -> validate
         // TODO make API
-
 
         private ADT_GEKID getNewRootObject() => new ADT_GEKID(_generator, null);
 

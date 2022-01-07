@@ -9,7 +9,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         {
             Anmerkung = _generator.FetchRandomDimensionItem_Quote()?.quote;
             Tumorkonferenz_Datum = _generator.CreateRandomDate_Meldedatum().ToShortDateString();
-            Tumorkonferenz_Typ = _generator.getRandomEnumItem<PatientMeldungTumorkonferenzTumorkonferenz_Typ>();
+            Tumorkonferenz_Typ = _generator.FetchRandomEnumItem<PatientMeldungTumorkonferenzTumorkonferenz_Typ>();
             Tumorkonferenz_ID = Guid.NewGuid().ToString();
         }
 

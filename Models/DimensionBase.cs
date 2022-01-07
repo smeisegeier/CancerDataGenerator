@@ -9,6 +9,7 @@ namespace Rki.CancerDataGenerator.Models
     /// <summary>
     /// Base for Dimension classes.
     /// Naming patterns are disregarded here :o
+    /// SQL table data source: 
     /// </summary>
     public abstract class DimensionBase
     {

@@ -9,7 +9,7 @@ namespace Rki.CancerDataGenerator.Models.Dimensions
     public interface IGenerator
     {
         int CreateFixedValuePatientCount();
-        int CreateNormalValue(int min, int max);
+
         DateTime CreateRandomDate_Meldedatum();
 
 
@@ -19,20 +19,16 @@ namespace Rki.CancerDataGenerator.Models.Dimensions
         int GetYearsToPublishDate(DateTime start);
         int GetMeldungCountPerAge(int age);
         DateTime CreateRandomDate_Geburtsdatum();
+
+
+
+        T FetchRandomEnumItem<T>() where T : Enum;
+
         PatientMeldungDiagnoseDiagnosesicherung FetchRandomEnumItem_Dsich();
         PatientMeldungMeldebegruendung FetchRandomEnumItem_Meldebegruendung();
         PatientMeldungMeldeanlass FetchRandomEnumItem_Meldeanlass();
 
 
-        /// <summary>
-        /// Fetches RAW dimension item, no missing values considered.
-        /// Based off of index numbers, not database id.
-        /// </summary>
-        /// <typeparam name="T">registered dimension</typeparam>
-        /// <returns>dimension item</returns>
-        T FetchRandomDimensionItem<T>() where T : DimensionBase;
-
-        T getRandomEnumItem<T>() where T : Enum;
         /// <summary>
         /// 
         /// </summary>
@@ -47,5 +43,19 @@ namespace Rki.CancerDataGenerator.Models.Dimensions
         /// <param name="chapter">optional icd chapter</param>
         /// <returns>ICD code or null</returns>
         Icd FetchNormalDimensionItem_Icd(string chapter = "");
+
+
+        /// <summary>
+        /// Fetches RAW dimension item, no missing values considered.
+        /// Based off of index numbers, not database id.
+        /// </summary>
+        /// <typeparam name="T">registered dimension</typeparam>
+        /// <returns>dimension item</returns>
+        //T FetchRandomDimensionItem<T>(List<T> subset = null) where T : DimensionBase;
+
+
+        double CreateNormalValueUponMean(double mean, double stdDev);
+        int CreateNormalValueUponRange(int min, int max);
+        T FetchRandomDimensionItem<T>(List<T> subset = null, double missingProb = 0) where T : DimensionBase;
     }
 }

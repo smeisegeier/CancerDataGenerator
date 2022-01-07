@@ -16,7 +16,6 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
 
             /* Tumorkonferenz */
             Menge_Tumorkonferenz = new List<PatientMeldungTumorkonferenz>();
-
             int i = 0;
             while (i < _generator.createRandomValue(0, 2))
             {
@@ -26,7 +25,6 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
 
             /*  Verlauf*/ 
             Menge_Verlauf = new List<PatientMeldungVerlauf>();
-
             int j = 0;
             while (j < _generator.createRandomValue(0, 3))
             {
