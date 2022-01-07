@@ -6,7 +6,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
     {
         public PatientMeldungVerlaufTod(){}
 
-        public PatientMeldungVerlaufTod(IGenerator generator, AdtgekidBase parent) : base(generator, parent)
+        public PatientMeldungVerlaufTod(Generator generator, AdtgekidBase parent) : base(generator, parent)
         {
             Sterbedatum = _generator.CreateRandomDate_Geburtsdatum().ToShortDateString();
             Tod_tumorbedingt = _generator.FetchRandomEnumItem<JNU_Typ>();

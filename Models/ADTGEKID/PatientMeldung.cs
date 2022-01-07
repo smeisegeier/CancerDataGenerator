@@ -7,17 +7,17 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
     public partial class PatientMeldung : AdtgekidBase
     {
 
-        public PatientMeldung(IGenerator generator, AdtgekidBase parent) : base(generator, parent)
+        public PatientMeldung(Generator generator, AdtgekidBase parent) : base(generator, parent)
         {
             Meldedatum = _generator.CreateRandomDate_Meldedatum().ToShortDateString();
-            Meldebegruendung = _generator.FetchRandomEnumItem_Meldebegruendung();
-            Meldeanlass = _generator.FetchRandomEnumItem_Meldeanlass();
+            Meldebegruendung = _generator.FetchRandomEnumItem<PatientMeldungMeldebegruendung>();
+            Meldeanlass = _generator.FetchRandomEnumItem<PatientMeldungMeldeanlass>();
             Diagnose = new PatientMeldungDiagnose(_generator, this);
 
             /* Tumorkonferenz */
             Menge_Tumorkonferenz = new List<PatientMeldungTumorkonferenz>();
             int i = 0;
-            while (i < _generator.createRandomValue(0, 2))
+            while (i < _generator.CreateRandomValue(0, 2))
             {
                 Menge_Tumorkonferenz.Add(new PatientMeldungTumorkonferenz(_generator, this));
                 i++;
@@ -26,7 +26,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
             /*  Verlauf*/ 
             Menge_Verlauf = new List<PatientMeldungVerlauf>();
             int j = 0;
-            while (j < _generator.createRandomValue(0, 3))
+            while (j < _generator.CreateRandomValue(0, 3))
             {
                 Menge_Verlauf.Add(new PatientMeldungVerlauf(_generator, this));
                 j++;

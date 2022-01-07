@@ -5,9 +5,9 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
 {
     public partial class PatientMeldungTumorkonferenz : AdtgekidBase
     {
-        public PatientMeldungTumorkonferenz(IGenerator generator, AdtgekidBase parent) : base(generator, parent)
+        public PatientMeldungTumorkonferenz(Generator generator, AdtgekidBase parent) : base(generator, parent)
         {
-            Anmerkung = _generator.FetchRandomDimensionItem_Quote()?.quote;
+            Anmerkung = _generator.FetchRandomDimensionItem<Quote>(null, _config.Text_ProbMissing)?.quote;
             Tumorkonferenz_Datum = _generator.CreateRandomDate_Meldedatum().ToShortDateString();
             Tumorkonferenz_Typ = _generator.FetchRandomEnumItem<PatientMeldungTumorkonferenzTumorkonferenz_Typ>();
             Tumorkonferenz_ID = Guid.NewGuid().ToString();

@@ -6,7 +6,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
     public class TNM_Typ : AdtgekidBase
     {
         public TNM_Typ(){}
-        public TNM_Typ(IGenerator generator, AdtgekidBase parent) : base(generator, parent)
+        public TNM_Typ(Generator generator, AdtgekidBase parent) : base(generator, parent)
         {
             // TODO idea: create compound variable like "tnm" that dictates sub values following real world rules
             TNM_Datum = _generator.CreateRandomDate_Meldedatum().ToShortDateString();
@@ -24,7 +24,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
             TNM_V = _generator.FetchRandomEnumItem<TNM_TypTNM_V>();
             TNM_Pn = _generator.FetchRandomEnumItem<TNM_TypTNM_Pn>();
             TNM_S = _generator.FetchRandomEnumItem<TNM_TypTNM_S>();
-            TNM_ID = (_parent as PatientMeldungDiagnose).TNM_ID;
+            TNM_ID = (_caller as PatientMeldungDiagnose).TNM_ID;
         }
 
 

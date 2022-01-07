@@ -11,7 +11,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         public int _PatientAgeInYears { get;}
 
         public Patienten_Stammdaten() {}
-        public Patienten_Stammdaten(IGenerator generator, AdtgekidBase parent) : base(generator, parent)
+        public Patienten_Stammdaten(Generator generator, AdtgekidBase parent) : base(generator, parent)
         {
             _patientBirthdate = _generator.CreateRandomDate_Geburtsdatum();
             _PatientAgeInYears = _generator.GetYearsToPublishDate(_patientBirthdate);

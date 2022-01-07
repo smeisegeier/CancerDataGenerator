@@ -1,4 +1,5 @@
-﻿using Rki.CancerDataGenerator.Models.Dimensions;
+﻿using Rki.CancerDataGenerator.BLL;
+using Rki.CancerDataGenerator.Models.Dimensions;
 using System.Collections.Generic;
 
 namespace Rki.CancerDataGenerator.Models.ADTGEKID
@@ -7,9 +8,9 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
     {
         private int _meldungCount { get;}
 
-        public Patient(IGenerator generator, AdtgekidBase adtgekidBase) : base(generator, adtgekidBase)
+        public Patient(Generator generator, AdtgekidBase adtgekidBase) : base(generator, adtgekidBase)
         {
-            Anmerkung = _generator.FetchRandomDimensionItem_Quote()?.quote;
+            Anmerkung = _generator.FetchRandomDimensionItem<Quote>(null, _config.Text_ProbMissing)?.quote;
             Patienten_Stammdaten = new Patienten_Stammdaten(_generator, this);
             _meldungCount = _generator.GetMeldungCountPerAge(Patienten_Stammdaten._PatientAgeInYears);
 

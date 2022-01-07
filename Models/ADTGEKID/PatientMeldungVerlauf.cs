@@ -6,7 +6,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
     {
         public PatientMeldungVerlauf(){}
 
-        public PatientMeldungVerlauf(IGenerator generator, AdtgekidBase parent) : base(generator, parent)
+        public PatientMeldungVerlauf(Generator generator, AdtgekidBase parent) : base(generator, parent)
         {
             Tod = new PatientMeldungVerlaufTod(_generator, this);
         }

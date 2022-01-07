@@ -5,19 +5,21 @@ namespace Rki.CancerDataGenerator.Models
 {
     public abstract class AdtgekidBase
     {
-        protected IGenerator _generator { get; }
+        protected Generator _generator { get; }
 
-        protected AdtgekidBase _parent { get; }
+        protected AdtgekidBase _caller { get; }
+
+        protected Configuration _config => _generator._config;
 
         /// <summary>
         /// ctor for maintaining class integrity
         /// </summary>
         /// <param name="generator">stored _generator object</param>
-        /// <param name="parent">this</param>
-        public AdtgekidBase(IGenerator generator, AdtgekidBase parent)
+        /// <param name="caller">this</param>
+        public AdtgekidBase(Generator generator, AdtgekidBase caller)
         {
             _generator = generator;
-            _parent = parent;
+            _caller = caller;
         }
 
         // have parameterless ctor for XmlSerializer

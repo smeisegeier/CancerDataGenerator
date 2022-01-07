@@ -9,14 +9,12 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
     {
         public PatientMeldungDiagnose(){}
 
-        public PatientMeldungDiagnose(IGenerator generator, AdtgekidBase parent) : base(generator, parent)
+        public PatientMeldungDiagnose(Generator generator, AdtgekidBase parent) : base(generator, parent)
         {
             // TODO make ICD dependant on ICD-Version
             Primaertumor_ICD_Code = _generator.FetchNormalDimensionItem_Icd("19")?.icd_three_digits;
-            Primaertumor_ICD_Version = _generator.FetchRandomEnumItem_IcdVersion();
-            // HACK
-            Primaertumor_Diagnosetext = _generator.FetchRandomDimensionItem<Quote>()?.quote;
-            //Primaertumor_Diagnosetext = _generator.FetchRandomDimensionItem<Quote>(_config.Text_ProbMissing)?.quote;
+            Primaertumor_ICD_Version = _generator.FetchRandomEnumItem<ICD_Version_Typ>(_config.IcdVersion_ProbMissing);
+            Primaertumor_Diagnosetext = _generator.FetchRandomDimensionItem<Quote>(null, _config.Text_ProbMissing)?.quote;
             Primaertumor_Topographie_ICD_O_Version = _generator.FetchRandomEnumItem<PatientMeldungDiagnosePrimaertumor_Topographie_ICD_O_Version>();
             Seitenlokalisation = _generator.FetchRandomEnumItem<Seitenlokalisation_Typ>();
             Allgemeiner_Leistungszustand = _generator.FetchRandomEnumItem<Allgemeiner_Leistungszustand_Typ>();
@@ -30,7 +28,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
             /* Module */
             Modul_Mamma = new Modul_Mamma_Typ(_generator, this);
 
-            Diagnosesicherung = _generator.FetchRandomEnumItem_Dsich();
+            Diagnosesicherung = _generator.FetchRandomEnumItem<PatientMeldungDiagnoseDiagnosesicherung>(_config.Dsich_ProbMissing);
         }
 
         public string TNM_ID { get; }

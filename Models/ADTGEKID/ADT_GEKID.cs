@@ -9,7 +9,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
     public partial class ADT_GEKID : AdtgekidBase
     {
         public ADT_GEKID(){}
-        public ADT_GEKID(IGenerator generator, AdtgekidBase parent) : base(generator, parent)
+        public ADT_GEKID(Generator generator, AdtgekidBase parent) : base(generator, parent)
         {
             Menge_Patient = new List<Patient>();
             for (int i = 0; i < _generator.CreateFixedValuePatientCount(); i++)

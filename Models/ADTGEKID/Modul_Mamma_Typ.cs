@@ -6,7 +6,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
     {
         public Modul_Mamma_Typ(){}
 
-        public Modul_Mamma_Typ(IGenerator generator, AdtgekidBase parent) : base(generator, parent)
+        public Modul_Mamma_Typ(Generator generator, AdtgekidBase parent) : base(generator, parent)
         {
             Praetherapeutischer_Menopausenstatus = _generator.FetchRandomEnumItem<Modul_Mamma_TypPraetherapeutischer_Menopausenstatus>();
             HormonrezeptorStatus_Oestrogen = _generator.FetchRandomEnumItem<Hormonrezeptor_Typ>();

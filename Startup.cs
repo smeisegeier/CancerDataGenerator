@@ -30,7 +30,7 @@ namespace Rki.CancerDataGenerator
             services.AddDbContext<AdtGekidDbContext>(options => options
                 .UseLazyLoadingProxies()
                 .UseInMemoryDatabase("CancerDataGenerator"));
-            services.AddTransient<IGenerator, Generator>();
+            //services.AddTransient<IGenerator, Generator>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -16,13 +16,13 @@ namespace Rki.CancerDataGenerator.Models.Dimensions
     /// - fetch -> fetch an existing entry following random spread
     /// - create -> create a random entry from scratch
     /// </summary>
-    public class Generator : DimensionBase, IGenerator
+    public class Generator : DimensionBase      //, IGenerator
     {
         private AdtGekidDbContext _context { get; }
 
         private readonly Random _random = new Random();
 
-        private Configuration _config { get; }
+        public Configuration _config { get; }
 
         public Generator(AdtGekidDbContext context)
         {
@@ -32,9 +32,8 @@ namespace Rki.CancerDataGenerator.Models.Dimensions
         }
 
 
-        public int createRandomValue(int min, int max) => _random.Next(min, max + 1);
-        private int createRandomValue(int delta) => _random.Next(delta * -1, delta);
-
+        public int CreateRandomValue(int min, int max) => _random.Next(min, max + 1);
+        public int CreateRandomValue(int delta) => _random.Next(delta * -1, delta);
 
         public double CreateNormalValueUponMean(double mean, double stdDev)
         {
@@ -54,19 +53,23 @@ namespace Rki.CancerDataGenerator.Models.Dimensions
             return fetchedId;
         }
 
-        private DateTime createRandomDate(int deltaDays, DateTime baseDate) => baseDate.AddDays(createRandomValue(deltaDays));
+        private DateTime createRandomDate(int deltaDays, DateTime baseDate) => baseDate.AddDays(CreateRandomValue(deltaDays));
 
         /// <summary>
         /// HACK private vs public
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
-        public T FetchRandomEnumItem<T>() where T : Enum
+        public T FetchRandomEnumItem<T>(double missingProb = 0) where T : Enum
         {
             var list = fetchAllEnumItems<T>();
-            var itemRemoving = fetchNoneEnumItem(list);
-            if (itemRemoving?.ToString() == "None")
-                list.Remove(itemRemoving);
+            var itemNone = fetchNoneEnumItem(list);
+            // handle missingProb
+            if (_random.NextDouble() < missingProb)
+                return fetchNoneEnumItem(list);     // warning: if no item "none" is present, this will return enum[0]
+
+            if (itemNone?.ToString() == "None")
+                list.Remove(itemNone);
             return list[_random.Next(list.Count)];
         }
 
@@ -97,8 +100,9 @@ namespace Rki.CancerDataGenerator.Models.Dimensions
         /// <typeparam name="T">dimension</typeparam>
         /// <param name="subset">subset as list or null</param>
         /// <returns>dimension item</returns>
-        private T getNormalDimensionItem<T>(List<T> subset = null) where T : DimensionBase
+        public T FetchNormalDimensionItem<T>(List<T> subset = null) where T : DimensionBase
         {
+            // HACK this is inconsistent w/ Random
             if (subset == null)
                 subset = _context.GetAll<T>().ToList();
             var count = subset.Count();
@@ -117,57 +121,22 @@ namespace Rki.CancerDataGenerator.Models.Dimensions
                 return null;
 
             var count = subset.Count();
-            var rng = createRandomValue(0, count - 1);
+            var rng = CreateRandomValue(0, count - 1);
             return _context.GetByIndex(rng, subset);
         }
 
 
         /* specific*/
-        public Quote FetchRandomDimensionItem_Quote()
-        {
-            if (_random.NextDouble() < _config.Text_ProbMissing)
-                return null;
-            return FetchRandomDimensionItem<Quote>();
-        }
 
-        public Icd FetchNormalDimensionItem_Icd(string chapter = "")
+        public Icd FetchNormalDimensionItem_Icd(string chapter)
         {
             if (_random.NextDouble() < _config.Icd_ProbMissing)
                 return null;
             if (chapter == "")  
-                return getNormalDimensionItem<Icd>();
+                return FetchNormalDimensionItem<Icd>();
             var subset = _context.GetIcdSubsetByChapter(chapter);
-            return getNormalDimensionItem<Icd>(subset);
+            return FetchNormalDimensionItem<Icd>(subset);
         }
-
-        public ICD_Version_Typ FetchRandomEnumItem_IcdVersion()
-        {
-            if (_random.NextDouble() < _config.IcdVersion_ProbMissing)
-                return ICD_Version_Typ.None;
-            return FetchRandomEnumItem<ICD_Version_Typ>();
-        }
-
-        public PatientMeldungDiagnoseDiagnosesicherung FetchRandomEnumItem_Dsich()
-        {
-            if (_random.NextDouble() < _config.Dsich_ProbMissing)
-                return PatientMeldungDiagnoseDiagnosesicherung.None;
-            return FetchRandomEnumItem<PatientMeldungDiagnoseDiagnosesicherung>();
-        }
-
-        public PatientMeldungMeldebegruendung FetchRandomEnumItem_Meldebegruendung()
-        {
-            if (_random.NextDouble() < 0)
-                return PatientMeldungMeldebegruendung.None;
-            return FetchRandomEnumItem<PatientMeldungMeldebegruendung>();
-        }
-
-        public PatientMeldungMeldeanlass FetchRandomEnumItem_Meldeanlass()
-        {
-            if (_random.NextDouble() < 0)
-                return PatientMeldungMeldeanlass.None;
-            return FetchRandomEnumItem<PatientMeldungMeldeanlass>();
-        }
-
 
         public int CreateFixedValuePatientCount() => _config.Patient_Count;
 

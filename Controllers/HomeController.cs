@@ -18,12 +18,12 @@ namespace Rki.CancerDataGenerator.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly IGenerator _generator;
+        private readonly Generator _generator;
 
-        public HomeController(ILogger<HomeController> logger, IGenerator generator)
+        public HomeController(ILogger<HomeController> logger, AdtGekidDbContext context)
         {
             _logger = logger;
-            _generator = generator;
+            _generator = new Generator(context);
         }
 
         //public IActionResult Index() => Redirect(nameof(Details));
