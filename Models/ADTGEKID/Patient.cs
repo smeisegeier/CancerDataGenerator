@@ -1,6 +1,7 @@
 ﻿using Rki.CancerDataGenerator.BLL;
 using Rki.CancerDataGenerator.Models.Dimensions;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Rki.CancerDataGenerator.Models.ADTGEKID
 {
@@ -14,12 +15,11 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
             Patienten_Stammdaten = new Patienten_Stammdaten(_generator, this);
             _meldungCount = _generator.GetMeldungCountPerAge(Patienten_Stammdaten._PatientAgeInYears);
 
-            Menge_Meldung = new List<PatientMeldung>();
-            for (int i = 0; i < _meldungCount; i++)
-            {
-                Menge_Meldung.Add(new PatientMeldung(_generator, this));
-            }
-
+            // TODO change loops like this
+            Menge_Meldung = Enumerable
+                .Range(1, 7)
+                .Select(index => new PatientMeldung(_generator, this))
+                .ToList();
         }
 
         public Patient() { }
