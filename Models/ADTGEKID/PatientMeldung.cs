@@ -1,6 +1,7 @@
 ﻿using Rki.CancerDataGenerator.Models.Dimensions;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Rki.CancerDataGenerator.Models.ADTGEKID
 {
@@ -15,22 +16,16 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
             Diagnose = new PatientMeldungDiagnose(_generator, this);
 
             /* Tumorkonferenz */
-            Menge_Tumorkonferenz = new List<PatientMeldungTumorkonferenz>();
-            int i = 0;
-            while (i < _generator.CreateRandomValue(0, 2))
-            {
-                Menge_Tumorkonferenz.Add(new PatientMeldungTumorkonferenz(_generator, this));
-                i++;
-            }
+            Menge_Tumorkonferenz = Enumerable
+                .Range(1, 2)
+                .Select(index => new PatientMeldungTumorkonferenz(_generator, this))
+                .ToList();
 
-            /*  Verlauf*/ 
-            Menge_Verlauf = new List<PatientMeldungVerlauf>();
-            int j = 0;
-            while (j < _generator.CreateRandomValue(0, 3))
-            {
-                Menge_Verlauf.Add(new PatientMeldungVerlauf(_generator, this));
-                j++;
-            }
+            /*  Verlauf */
+            Menge_Verlauf = Enumerable
+                .Range(1, 3)
+                .Select(index => new PatientMeldungVerlauf(_generator, this))
+                .ToList();
 
             Meldung_ID = Guid.NewGuid().ToString();
         }
