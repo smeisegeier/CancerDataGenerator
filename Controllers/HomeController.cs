@@ -15,6 +15,9 @@ using System.Xml;
 
 namespace Rki.CancerDataGenerator.Controllers
 {
+
+    //[ApiController]
+    //[Route("[controller]")]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -26,9 +29,20 @@ namespace Rki.CancerDataGenerator.Controllers
             _generator = new Generator(context);
         }
 
+        // TODO fetch xml file -> validate
+        // TODO make API
+        private ADT_GEKID getNewRootObject() => new ADT_GEKID(_generator, null);
+
+
         //public IActionResult Index() => Redirect(nameof(Details));
+
+        //[HttpGet]
+        //public ADT_GEKID Get() => getNewRootObject();
+
+        [HttpGet]
         public IActionResult Index() => View();
 
+        [HttpGet]
         public IActionResult Details()
         {
             ADT_GEKID a = getNewRootObject();
@@ -36,6 +50,7 @@ namespace Rki.CancerDataGenerator.Controllers
             return Content(Globals.GetXmlStringFromObject(a), "application/xml");
         }
 
+        [HttpGet]
         public IActionResult Validate()
         {
             ADT_GEKID a = getNewRootObject();
@@ -45,14 +60,11 @@ namespace Rki.CancerDataGenerator.Controllers
             return Content(Globals.ValidationMessageItem.PrintItemList(messages));
         }
 
-        // TODO fetch xml file -> validate
-        // TODO make API
 
-        private ADT_GEKID getNewRootObject() => new ADT_GEKID(_generator, null);
-
+        [HttpGet]
         public IActionResult Privacy() => View();
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true), HttpGet]
         public IActionResult Error() => View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
 }

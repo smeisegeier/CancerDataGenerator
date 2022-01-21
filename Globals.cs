@@ -11,6 +11,7 @@ namespace Rki.CancerDataGenerator
 {
     public static class Globals
     {
+        public const string APPNAME = "CancerDataGenerator";
         public const string XSDFILENAME = "ADT_GEKID_v2.2.1.xsd";
         public const string XSDPATHRELATIVE = "Samples/" + XSDFILENAME;
         public const string XSDNAMESPACE = "http://www.gekid.de/namespace";
