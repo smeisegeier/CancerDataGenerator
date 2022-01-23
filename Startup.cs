@@ -78,7 +78,7 @@ namespace Rki.CancerDataGenerator
                });
             services.AddVersionedApiExplorer(o =>
             {
-                o.GroupNameFormat = "'v'V";
+                o.GroupNameFormat = "'v'VVV";
                 o.SubstituteApiVersionInUrl = true;
             });
 

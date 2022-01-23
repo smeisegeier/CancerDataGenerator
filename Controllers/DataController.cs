@@ -24,6 +24,7 @@ namespace Rki.CancerDataGenerator.Controllers
 {
     [ApiController]
     [ApiVersion("1")]
+    [ApiVersion("2")]
     [Route("/api/v{version:apiVersion}/[controller]")]
     public class DataController : ControllerBase
     {
@@ -35,6 +36,7 @@ namespace Rki.CancerDataGenerator.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
+        [MapToApiVersion("1")]
         [Produces("application/xml")]
         public IActionResult GetAllData()
         {
@@ -43,38 +45,20 @@ namespace Rki.CancerDataGenerator.Controllers
             return Content(Globals.GetXmlStringFromObject(a), "application/xml");
         }
 
-        ///// <summary>
-        ///// xDE
-        ///// </summary>
-        ///// <returns></returns>
-        //[HttpGet]
-        //[MapToApiVersion("2")]
-        //[Produces("application/xml")]
-        //public IActionResult GetAllDataV2() => Content("lol");
-
-    }
-
-
-
-}
-
-namespace Rki.CancerDataGenerator.Controllers.v2
-{
-    [ApiController]
-    [ApiVersion("2")]
-    [Route("/api/v{version:apiVersion}/[controller]")]
-    public class DataController : ControllerBase
-    {
-        public DataController(IWebHostEnvironment webHostEnvironment, ILogger<HomeController> logger, AdtGekidDbContext context)
-            : base(webHostEnvironment, logger, context) { }
-
         /// <summary>
         /// xDE
         /// </summary>
         /// <returns></returns>
         [HttpGet]
+        [MapToApiVersion("2")]
         [Produces("application/xml")]
-        public IActionResult GetAllDataV2() => Content("lol");
+        public IActionResult GetAllDatav2() => Content("lol");
+
     }
+
+
+
 }
+
+
 
