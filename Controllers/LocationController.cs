@@ -21,6 +21,7 @@ using System.Net.Mime;
 
 namespace Rki.CancerDataGenerator.Controllers
 {
+    // TODO doc api
 
     [ApiController]
     [ApiVersionNeutral]
@@ -79,12 +80,10 @@ namespace Rki.CancerDataGenerator.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult GetByName(string name)
         {
-            var result = _context.GetLocations(name);
+            var result = _context.GetByName<Location>(name);
             if (result is null)
                 return StatusCode(404, "item does not exist");
             return Json(result);
         }
-
-        // TODO make qry case invariant
     }
 }

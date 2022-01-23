@@ -13,8 +13,11 @@ namespace Rki.CancerDataGenerator.Models
     /// </summary>
     public abstract class DimensionBase
     {
+        // TODO needed??
         public static int MaxId { get; set; }
         public int Id { get; set; }
+
+        public string Name { get; set; }
 
         /// <summary>
         /// Fetch and deserialze classes that are given as json.
