@@ -12,12 +12,11 @@ using Rki.CancerDataGenerator.Models.ADTGEKID;
 using System.Xml.Linq;
 using System.Xml.Schema;
 using System.Xml;
+using Microsoft.AspNetCore.Hosting;
 
 namespace Rki.CancerDataGenerator.Controllers
 {
 
-    //[ApiController]
-    //[Route("[controller]")]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;

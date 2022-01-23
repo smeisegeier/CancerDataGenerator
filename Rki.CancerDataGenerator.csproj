@@ -23,6 +23,7 @@
 
   <ItemGroup>
     <Folder Include="Models\KKrModel\Snowflakes\" />
+    <Folder Include="wwwroot\files\" />
   </ItemGroup>
 
 </Project>
