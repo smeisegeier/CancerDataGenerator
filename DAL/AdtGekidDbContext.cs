@@ -66,6 +66,7 @@ namespace Rki.CancerDataGenerator.DAL
         public T GetByIndex<T>(int index, List<T> subset) where T : DimensionBase => subset[index];
 
         public List<Icd> GetIcdSubsetByChapter(string chapter) => GetAll<Icd>().Where(x=>x.icd_chapter == chapter).ToList();
+        public List<Location> GetLocations(string name) => GetAll<Location>().Where(x => x.location_state == name)?.ToList();
 
         public DbSet<DiagnosisSafety> DiagnosisSafeties { get; set; }
         public DbSet<DiseaseProgression> DiseaseProgressions { get; set; }

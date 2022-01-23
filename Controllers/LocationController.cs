@@ -23,6 +23,7 @@ namespace Rki.CancerDataGenerator.Controllers
 {
 
     [ApiController]
+    [ApiVersionNeutral]
     [Route("api/[controller]")]
     public class LocationController : ControllerBase
     {
@@ -53,20 +54,37 @@ namespace Rki.CancerDataGenerator.Controllers
             return WriteFileAsJson(_context.GetAll<Location>().ToList());
         }
 
-
         /// <summary>
         /// Get item with [id]
         /// </summary>
         /// <returns>item</returns>
-        [HttpGet("{id}")]
+        [HttpGet("{id:int}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public IActionResult Get(int id)
+        public IActionResult GetById(int id)
         {
-            var result = _context.GetById<Icd>(id);
+            var result = _context.GetById<Location>(id);
             if (result is null)
                 return StatusCode(404, "item does not exist");
             return Json(result);
         }
+
+        /// <summary>
+        /// Get item with [name]
+        /// </summary>
+        /// <returns>item</returns>
+        [HttpGet]
+        [Route("{name}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public IActionResult GetByName(string name)
+        {
+            var result = _context.GetLocations(name);
+            if (result is null)
+                return StatusCode(404, "item does not exist");
+            return Json(result);
+        }
+
+        // TODO make qry case invariant
     }
 }
