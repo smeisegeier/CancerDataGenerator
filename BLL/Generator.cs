@@ -27,7 +27,6 @@ namespace Rki.CancerDataGenerator.Models.Dimensions
         public Generator(AdtGekidDbContext context)
         {
             _context = context;
-            _context.Init();
             _config = new Configuration();
         }
 

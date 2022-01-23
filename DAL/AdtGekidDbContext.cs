@@ -53,12 +53,7 @@ namespace Rki.CancerDataGenerator.DAL
             modelBuilder.Entity<Quote>().HasData(DimensionBase.ReadListFromJson<Quote>().AutoIncAllId());
         }
 
-        public void Init()
-        {
-            Icd.MaxId = GetAll<Icd>().Count();
-            //Gender.MaxId = Genders.Count();
-        }
-
+ 
         public IEnumerable<T> GetAll<T>() where T : DimensionBase => Set<T>();
         public IEnumerable<T> GetAllOrdered<T>() where T : DimensionBase => GetAll<T>().OrderBy(x => x.Id);
         public T GetById<T>(int id) where T : DimensionBase => Set<T>().FirstOrDefault(x => x.Id == id);
