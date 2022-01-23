@@ -17,6 +17,7 @@ namespace Rki.CancerDataGenerator
         public const string XSDNAMESPACE = "http://www.gekid.de/namespace";
         public const string XSINAMESPACE = "http://www.w3.org/2001/XMLSchema-instance";
 
+        public const string ROUTESTRING = "/api/v{version:apiversion}/[controller]";
 
 
         /// <summary>

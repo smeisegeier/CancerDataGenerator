@@ -17,16 +17,23 @@ using System.Text;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Hosting;
 
+/// <summary>
+/// https://stackoverflow.com/questions/60084877/swagger-not-finding-apiversion-ed-actions
+/// </summary>
 namespace Rki.CancerDataGenerator.Controllers
 {
-
     [ApiController]
-    [Route("api/[controller]")]
+    [ApiVersion("1")]
+    [Route("/api/v{version:apiVersion}/[controller]")]
     public class DataController : ControllerBase
     {
         public DataController(IWebHostEnvironment webHostEnvironment, ILogger<HomeController> logger, AdtGekidDbContext context)
             : base(webHostEnvironment, logger, context) { }
 
+        /// <summary>
+        /// Get all
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         [Produces("application/xml")]
         public IActionResult GetAllData()
@@ -36,5 +43,38 @@ namespace Rki.CancerDataGenerator.Controllers
             return Content(Globals.GetXmlStringFromObject(a), "application/xml");
         }
 
+        ///// <summary>
+        ///// xDE
+        ///// </summary>
+        ///// <returns></returns>
+        //[HttpGet]
+        //[MapToApiVersion("2")]
+        //[Produces("application/xml")]
+        //public IActionResult GetAllDataV2() => Content("lol");
+
+    }
+
+
+
+}
+
+namespace Rki.CancerDataGenerator.Controllers.v2
+{
+    [ApiController]
+    [ApiVersion("2")]
+    [Route("/api/v{version:apiVersion}/[controller]")]
+    public class DataController : ControllerBase
+    {
+        public DataController(IWebHostEnvironment webHostEnvironment, ILogger<HomeController> logger, AdtGekidDbContext context)
+            : base(webHostEnvironment, logger, context) { }
+
+        /// <summary>
+        /// xDE
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        [Produces("application/xml")]
+        public IActionResult GetAllDataV2() => Content("lol");
     }
 }
+

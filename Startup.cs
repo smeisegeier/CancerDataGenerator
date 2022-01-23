@@ -15,6 +15,7 @@ using Microsoft.OpenApi.Models;
 using System.Reflection;
 using System.IO;
 using Microsoft.AspNetCore.Routing;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Rki.CancerDataGenerator
 {
@@ -27,7 +28,12 @@ namespace Rki.CancerDataGenerator
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
+
+        /// <summary>
+        /// API Versioning:
+        /// https://codingfreaks.de/dotnet-core-api-versioning/
+        /// </summary>
+        /// <param name="services"></param>
         public void ConfigureServices(IServiceCollection services)
         {
             services.Configure<RouteOptions>(c => c.LowercaseUrls = true); // enforce lowercase
@@ -46,13 +52,37 @@ namespace Rki.CancerDataGenerator
                     License = new OpenApiLicense() { Name = "Testlicense", Url = new Uri("https://example.com/license") },
                     Contact = new OpenApiContact() { Name = "just me", Email = "me@exampl.com" }
                 });
+                c.SwaggerDoc("v2", new OpenApiInfo
+                {
+                    Title = Globals.APPNAME,
+                    Version = "v2",
+                    Description = "API description follows",
+                    License = new OpenApiLicense() { Name = "Testlicense", Url = new Uri("https://example.com/license") },
+                    Contact = new OpenApiContact() { Name = "just me", Email = "me@exampl.com" }
+                });
                 // Set the comments path for the Swagger JSON and UI.
                 // Also note checking xml doc generation in build options
                 var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                 c.IncludeXmlComments(xmlPath);
+
+                // HACK don not use
+                //c.ResolveConflictingActions(apiDescriptions => apiDescriptions.First());
             });
-        }
+
+            services.AddApiVersioning(o =>
+               {
+                   o.ReportApiVersions = true;
+                   o.AssumeDefaultVersionWhenUnspecified = true;
+                   o.DefaultApiVersion = new ApiVersion(1, 0);
+               });
+            services.AddVersionedApiExplorer(o =>
+            {
+                o.GroupNameFormat = "'v'V";
+                o.SubstituteApiVersionInUrl = true;
+            });
+
+    }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, AdtGekidDbContext context)
@@ -63,7 +93,8 @@ namespace Rki.CancerDataGenerator
                 app.UseSwagger();
                 app.UseSwaggerUI(c =>
                 {
-                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "lol v1");
+                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "API v1");
+                    c.SwaggerEndpoint("/swagger/v2/swagger.json", "API v2");
                 });
                 context.Database.EnsureCreated();
             }
