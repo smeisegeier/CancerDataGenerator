@@ -36,7 +36,6 @@ namespace Rki.CancerDataGenerator.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        [Obsolete]
         [MapToApiVersion("1")]
         [Produces("application/xml")]
         public IActionResult GetAllData()

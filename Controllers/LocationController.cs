@@ -22,12 +22,11 @@ using System.Net.Mime;
 namespace Rki.CancerDataGenerator.Controllers
 {
 
-    [ApiVersionNeutral]
     [ApiController]
     [Route("api/[controller]")]
-    public class LocationsController : ControllerBase
+    public class LocationController : ControllerBase
     {
-        public LocationsController(IWebHostEnvironment webHostEnvironment, ILogger<HomeController> logger, AdtGekidDbContext context)
+        public LocationController(IWebHostEnvironment webHostEnvironment, ILogger<HomeController> logger, AdtGekidDbContext context)
             : base(webHostEnvironment, logger, context) { }
 
         /// <summary>
@@ -59,35 +58,15 @@ namespace Rki.CancerDataGenerator.Controllers
         /// Get item with [id]
         /// </summary>
         /// <returns>item</returns>
-        [HttpGet("{id:int}")]
+        [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public IActionResult GetById(int id)
+        public IActionResult Get(int id)
         {
-            var result = _context.GetById<Location>(id);
+            var result = _context.GetById<Icd>(id);
             if (result is null)
                 return StatusCode(404, "item does not exist");
             return Json(result);
         }
-
-        /// <summary>
-        /// Get item with [name]
-        /// </summary>
-        /// <returns>item</returns>
-        [HttpGet]
-        [Route("{name}")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public IActionResult GetByName(string name)
-        {
-            var result = _context.GetLocations(name);
-            if (result is null)
-                return StatusCode(404, "item does not exist");
-            return Json(result);
-        }
-
-        // TODO make qry case invariant
-        // TODO versions -> namespace
-
     }
 }
