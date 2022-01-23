@@ -16,27 +16,12 @@ using Microsoft.AspNetCore.Hosting;
 
 namespace Rki.CancerDataGenerator.Controllers
 {
-
-    public class HomeController : Controller
+    public class HomeController : ControllerBase
     {
-        private readonly ILogger<HomeController> _logger;
-        private readonly Generator _generator;
 
-        public HomeController(ILogger<HomeController> logger, AdtGekidDbContext context)
-        {
-            _logger = logger;
-            _generator = new Generator(context);
-        }
+        public HomeController(IWebHostEnvironment webHostEnvironment, ILogger<HomeController> logger, AdtGekidDbContext context)
+            : base(webHostEnvironment, logger, context) { }
 
-        // TODO fetch xml file -> validate
-        // TODO make API
-        private ADT_GEKID getNewRootObject() => new ADT_GEKID(_generator, null);
-
-
-        //public IActionResult Index() => Redirect(nameof(Details));
-
-        //[HttpGet]
-        //public ADT_GEKID Get() => getNewRootObject();
 
         [HttpGet]
         public IActionResult Index() => View();

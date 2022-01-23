@@ -14,6 +14,7 @@ using Rki.CancerDataGenerator.Models.Dimensions;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
 using System.IO;
+using Microsoft.AspNetCore.Routing;
 
 namespace Rki.CancerDataGenerator
 {
@@ -29,6 +30,7 @@ namespace Rki.CancerDataGenerator
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<RouteOptions>(c => c.LowercaseUrls = true); // enforce lowercase
             services.AddControllersWithViews();
             services.AddDbContext<AdtGekidDbContext>(options => options
                 .UseLazyLoadingProxies()

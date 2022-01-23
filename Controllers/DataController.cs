@@ -24,14 +24,12 @@ namespace Rki.CancerDataGenerator.Controllers
     [Route("api/[controller]")]
     public class DataController : ControllerBase
     {
-
         public DataController(IWebHostEnvironment webHostEnvironment, ILogger<HomeController> logger, AdtGekidDbContext context)
             : base(webHostEnvironment, logger, context) { }
 
-
         [HttpGet]
         [Produces("application/xml")]
-        public IActionResult Get()
+        public IActionResult GetAllData()
         {
             ADT_GEKID a = getNewRootObject();
             // also give contentType to trigger browser addons for xml view

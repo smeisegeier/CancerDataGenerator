@@ -15,7 +15,6 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
             Patienten_Stammdaten = new Patienten_Stammdaten(_generator, this);
             _meldungCount = _generator.GetMeldungCountPerAge(Patienten_Stammdaten._PatientAgeInYears);
 
-            // TODO change loops like this
             Menge_Meldung = Enumerable
                 .Range(1, 7)
                 .Select(index => new PatientMeldung(_generator, this))

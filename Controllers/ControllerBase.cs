@@ -15,10 +15,10 @@ using System.Xml;
 using Microsoft.AspNetCore.Hosting;
 using System.IO;
 using System.Web;
+using System.Net.Mime;
 
 namespace Rki.CancerDataGenerator.Controllers
 {
-    [ApiController]
     public abstract class ControllerBase : Controller
     {
 
@@ -39,5 +39,30 @@ namespace Rki.CancerDataGenerator.Controllers
 
         protected ADT_GEKID getNewRootObject() => new ADT_GEKID(_generator, null);
 
+        protected IActionResult WriteFileAsJson<T>(IList<T> list) where T : DimensionBase
+        {
+            string content = Helper.StaticHelper.ToJson(list);
+
+            if (string.IsNullOrEmpty(content))
+                return BadRequest();
+
+            string fullPath = Path.Combine(FileDirectory, "download.json");
+            System.IO.File.WriteAllText(fullPath, content);
+            return ReturnAndDeleteFile(fullPath);
+            //return File(await System.IO.File.ReadAllBytesAsync(filePath), "application/octet-stream", fileName);
+        }
+
+        protected IActionResult ReturnAndDeleteFile(string fullPath)
+        {
+            if (!System.IO.File.Exists(fullPath))
+                return BadRequest();
+
+            // read bytes
+            var bytes = System.IO.File.ReadAllBytes(fullPath);
+            // file can be deleted now
+            System.IO.File.Delete(fullPath);
+            //return file
+            return File(bytes, MediaTypeNames.Text.Plain, Path.GetFileName(fullPath));
+        }
     }
 }
