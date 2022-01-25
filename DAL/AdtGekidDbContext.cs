@@ -59,11 +59,49 @@ namespace Rki.CancerDataGenerator.DAL
         public T GetById<T>(int id) where T : DimensionBase => Set<T>().FirstOrDefault(x => x.Id == id);
         public T GetByIndex<T>(int index) where T : DimensionBase => GetAll<T>().ToList()[index];
         public T GetByIndex<T>(int index, List<T> subset) where T : DimensionBase => subset[index];
-
-
         public List<T> GetByName<T>(string name) where T : DimensionBase => GetAll<T>()
             .Where(x => x.Name.ToLower().StartsWith(name.ToLower()))?
             .ToList();
+        public int AddItem<T>(T item) where T : DimensionBase
+        {
+            Set<T>().Add(item);
+            SaveChanges();
+            return item.Id;
+        }
+        public int DeleteItem<T>(T item) where T : DimensionBase
+        {
+            var id = item.Id;
+            Set<T>().Remove(item);
+            SaveChanges();
+            return id;
+        }
+        public int DeleteItem<T>(int id) where T : DimensionBase
+        {
+            if (!ExistsItemWithId<T>(id))
+                return 0;
+            return DeleteItem(GetById<T>(id));
+        }
+
+        public int UpdateItem<T>(T item) where T : DimensionBase
+        {
+            if (!ExistsItemWithId<T>(item.Id))
+                return 0;
+
+            Entry(item).State = EntityState.Modified;
+            try
+            {
+                SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                throw;
+            }
+
+            return item.Id;
+        }
+
+
+        public bool ExistsItemWithId<T>(int id) where T : DimensionBase => Set<T>().Any(x => x.Id == id);
 
         public List<Icd> GetIcdSubsetByChapter(string chapter) => GetAll<Icd>().Where(x => x.icd_chapter == chapter).ToList();
 

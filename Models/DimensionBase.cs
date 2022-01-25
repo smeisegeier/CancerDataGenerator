@@ -17,6 +17,8 @@ namespace Rki.CancerDataGenerator.Models
 
         public string Name { get; set; }
 
+        public double Weight { get; set; }
+
         /// <summary>
         /// Fetch and deserialze classes that are given as json.
         /// Follows the convention: 
