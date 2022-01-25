@@ -100,11 +100,10 @@ namespace Rki.CancerDataGenerator.DAL
             return item.Id;
         }
 
-
         public bool ExistsItemWithId<T>(int id) where T : DimensionBase => Set<T>().Any(x => x.Id == id);
 
-        public List<Icd> GetIcdSubsetByChapter(string chapter) => GetAll<Icd>().Where(x => x.icd_chapter == chapter).ToList();
-
+        public List<Icd> GetIcdSubsetByChapter(string chapter) => 
+            GetAll<Icd>().Where(x => x.icd_chapter == chapter && x.icd_chapter != x.icd_id).ToList();
 
         public DbSet<DiagnosisSafety> DiagnosisSafeties { get; set; }
         public DbSet<DiseaseProgression> DiseaseProgressions { get; set; }
