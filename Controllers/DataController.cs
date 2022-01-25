@@ -16,12 +16,14 @@ using System.Net.Http;
 using System.Text;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Authorization;
 
 /// <summary>
 /// https://stackoverflow.com/questions/60084877/swagger-not-finding-apiversion-ed-actions
 /// </summary>
 namespace Rki.CancerDataGenerator.Controllers
 {
+    //[Authorize]
     [ApiController]
     [ApiVersion("1")]
     [ApiVersion("2")]

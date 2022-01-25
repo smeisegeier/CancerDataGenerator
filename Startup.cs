@@ -44,22 +44,55 @@ namespace Rki.CancerDataGenerator
 
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo
+
+                /* Versions */
+                var v1 = new OpenApiInfo()
                 {
                     Title = Globals.APPNAME,
                     Version = "v1",
                     Description = "API description follows",
                     License = new OpenApiLicense() { Name = "Testlicense", Url = new Uri("https://example.com/license") },
                     Contact = new OpenApiContact() { Name = "just me", Email = "me@exampl.com" }
-                });
-                c.SwaggerDoc("v2", new OpenApiInfo
+                };
+                var v2 = v1;
+                v2.Version = "v2";
+
+                /* create versioned docs*/
+                c.SwaggerDoc("v1", v1);
+                c.SwaggerDoc("v2", v2);
+
+
+                /* Authentification */
+                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                 {
-                    Title = Globals.APPNAME,
-                    Version = "v2",
-                    Description = "API description follows",
-                    License = new OpenApiLicense() { Name = "Testlicense", Url = new Uri("https://example.com/license") },
-                    Contact = new OpenApiContact() { Name = "just me", Email = "me@exampl.com" }
+                    Description = @"JWT Authorization header using the Bearer scheme. \r\n\r\n 
+                      Enter 'Bearer' [space] and then your token in the text input below.
+                      \r\n\r\nExample: 'Bearer 12345abcdef'",
+                    Name = "Authorization",
+                    In = ParameterLocation.Header,
+                    Type = SecuritySchemeType.ApiKey,
+                    Scheme = "Bearer"
                 });
+
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement()
+                {
+                    {
+                        new OpenApiSecurityScheme
+                        {
+                            Reference = new OpenApiReference
+                            {
+                                Type = ReferenceType.SecurityScheme,
+                                Id = "Bearer"
+                            },
+                            Scheme = "oauth2",
+                            Name = "Bearer",
+                            In = ParameterLocation.Header,
+                        },
+                        new List<string>()
+                    }
+                });
+
+
                 // Set the comments path for the Swagger JSON and UI.
                 // Also note checking xml doc generation in build options
                 var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
@@ -82,7 +115,7 @@ namespace Rki.CancerDataGenerator
                 o.SubstituteApiVersionInUrl = true;
             });
 
-    }
+        }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, AdtGekidDbContext context)
