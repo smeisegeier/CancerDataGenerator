@@ -43,7 +43,7 @@ namespace Rki.CancerDataGenerator.Models.Dimensions
         public int CreateNormalValueUponRange(int min, int max)
         {
             double mean = max / 2;    // medium value
-            double stdDev = max / 6;  // assume 6sigma borders
+            double stdDev = mean / 3;  // assume 3sigma borders (99,7%)
             int fetchedId = (int)CreateNormalValueUponMean(mean, stdDev);
             if (fetchedId < min)
                 fetchedId = min;
@@ -74,9 +74,6 @@ namespace Rki.CancerDataGenerator.Models.Dimensions
 
         private IList<T> fetchAllEnumItems<T>()
         {
-            //var array = Enum.GetValues(typeof(T));
-            //List<T> list = (array as T[]).ToList();
-
             var list = Enum.GetValues(typeof(T)).OfType<T>().ToList();          // same as: (array as T[]).ToList()
             return list;
         }
