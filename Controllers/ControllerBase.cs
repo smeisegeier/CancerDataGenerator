@@ -21,10 +21,10 @@ namespace Rki.CancerDataGenerator.Controllers
 {
     public abstract class ControllerBase : Controller
     {
-
+        // HACK properties are a mess. get/set, config must be improved
         protected readonly IWebHostEnvironment _webHostEnvironment;
         protected readonly ILogger<HomeController> _logger;
-        protected readonly Generator _generator;
+        protected Generator _generator { get; set; }
         protected readonly AdtGekidDbContext _context;
 
         protected string FileDirectory => Path.Combine(_webHostEnvironment.WebRootPath, "files");

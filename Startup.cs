@@ -99,8 +99,6 @@ namespace Rki.CancerDataGenerator
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                 c.IncludeXmlComments(xmlPath);
 
-                // HACK don not use
-                //c.ResolveConflictingActions(apiDescriptions => apiDescriptions.First());
             });
 
             services.AddApiVersioning(o =>

@@ -22,12 +22,12 @@ namespace Rki.CancerDataGenerator.Models.Dimensions
 
         private readonly Random _random = new Random();
 
-        public Configuration _config { get; }
+        public Configuration Config { get; set; }
 
         public Generator(AdtGekidDbContext context)
         {
             _context = context;
-            _config = new Configuration();
+            Config = new Configuration();
         }
 
 
@@ -126,7 +126,7 @@ namespace Rki.CancerDataGenerator.Models.Dimensions
 
         public Icd FetchNormalDimensionItem_Icd(string chapter)
         {
-            if (_random.NextDouble() < _config.Icd_ProbMissing)
+            if (_random.NextDouble() < Config.Icd_ProbMissing)
                 return null;
             if (chapter == "")  
                 return FetchNormalDimensionItem<Icd>();
@@ -134,12 +134,12 @@ namespace Rki.CancerDataGenerator.Models.Dimensions
             return FetchNormalDimensionItem<Icd>(subset);
         }
 
-        public int CreateFixedValuePatientCount() => _config.Patient_Count;
+        public int CreateFixedValuePatientCount() => Config.Patient_Count;
 
-        public DateTime CreateRandomDate_Meldedatum() => createRandomDate(10 * 365, _config.Meldedatum_BaseDate);
+        public DateTime CreateRandomDate_Meldedatum() => createRandomDate(10 * 365, Config.Meldedatum_BaseDate);
         public DateTime CreateRandomDate_Geburtsdatum() => createRandomDate(40 * 365, new DateTime(1970, 01, 01));
 
-        public int GetDaysToPublishDate(DateTime start) => (_config.PublishDate - start).Days;
+        public int GetDaysToPublishDate(DateTime start) => (Config.PublishDate - start).Days;
         public int GetYearsToPublishDate(DateTime start) => GetDaysToPublishDate(start) / 365;
 
         public int GetMeldungCountPerAge(int age)

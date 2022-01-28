@@ -5,6 +5,9 @@ namespace Rki.CancerDataGenerator.BLL
     public class Configuration
     {
         public DateTime PublishDate => new DateTime(2020, 01, 01);
+        
+        /// <summary>How many patients</summary>
+        /// <example>2</example>
         public int Patient_Count { get; set; } = 1;
         public int Patient_MeanAge { get; set; } = 50; 
         public double Text_ProbMissing { get; set; } = 0.9;

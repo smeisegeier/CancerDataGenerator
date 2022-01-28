@@ -151,7 +151,6 @@ namespace Rki.CancerDataGenerator.Controllers
             if (id < 1)
                 return BadRequest();
 
-            // TODO bug when id not valid
             var itemId = _context.DeleteItem<Location>(id);
             if (itemId == 0)
                 return NotFound("returned id has no value");

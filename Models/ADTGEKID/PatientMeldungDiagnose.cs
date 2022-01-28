@@ -20,7 +20,6 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
             Allgemeiner_Leistungszustand = _generator.FetchRandomEnumItem<Allgemeiner_Leistungszustand_Typ>();
 
             /* TNM */
-            // TODO how do these id work
             TNM_ID = Guid.NewGuid().ToString();
             cTNM = new TNM_Typ(_generator, this);
             pTNM = new TNM_Typ(_generator, this);

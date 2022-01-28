@@ -9,6 +9,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
     [XmlRoot(Namespace = Globals.XSDNAMESPACE, IsNullable = false)]
     public partial class ADT_GEKID : AdtgekidBase
     {
+        // TODO check if ctor logic should be in BLL. each ctor -> method w/ all config
         public ADT_GEKID() { }
         public ADT_GEKID(Generator generator, AdtgekidBase parent) : base(generator, parent)
         {

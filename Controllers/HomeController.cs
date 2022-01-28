@@ -51,6 +51,17 @@ namespace Rki.CancerDataGenerator.Controllers
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true), HttpGet]
         public IActionResult Error() => View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
 
-        // TODO create Testloop (1000 x values xDE)
+        [HttpGet]
+        public IActionResult Test()
+        {
+            string s = "";
+            for (int i = 1; i <= 1000; i++)
+            {
+                s += _generator.CreateNormalValueUponRange(1, 100) + Environment.NewLine;
+            }
+
+            return Content(s, "text/plain");
+        }
+
     }
 }
