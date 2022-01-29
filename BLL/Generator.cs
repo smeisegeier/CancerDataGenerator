@@ -20,14 +20,15 @@ namespace Rki.CancerDataGenerator.Models.Dimensions
     {
         private AdtGekidDbContext _context { get; }
 
-        private readonly Random _random = new Random();
+        private Random _random { get;}
 
-        public Configuration Config { get; set; }
+        public Configuration Configuration { get; set; }
 
         public Generator(AdtGekidDbContext context)
         {
             _context = context;
-            Config = new Configuration();
+            _random = new Random();
+            Configuration = new Configuration();
         }
 
 
@@ -39,6 +40,7 @@ namespace Rki.CancerDataGenerator.Models.Dimensions
             Normal normalDistr = new Normal(mean, stdDev, _random);
             return normalDistr.Sample();
         }
+
 
         public int CreateNormalValueUponRange(int min, int max)
         {
@@ -55,7 +57,7 @@ namespace Rki.CancerDataGenerator.Models.Dimensions
         private DateTime createRandomDate(int deltaDays, DateTime baseDate) => baseDate.AddDays(CreateRandomValue(deltaDays));
 
         /// <summary>
-        /// HACK private vs public
+        /// get random enum
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
@@ -72,7 +74,12 @@ namespace Rki.CancerDataGenerator.Models.Dimensions
             return list[_random.Next(list.Count)];
         }
 
-        private IList<T> fetchAllEnumItems<T>()
+        /// <summary>
+        /// get all enums
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        private IList<T> fetchAllEnumItems<T>() where T : Enum
         {
             var list = Enum.GetValues(typeof(T)).OfType<T>().ToList();          // same as: (array as T[]).ToList()
             return list;
@@ -126,7 +133,7 @@ namespace Rki.CancerDataGenerator.Models.Dimensions
 
         public Icd FetchNormalDimensionItem_Icd(string chapter)
         {
-            if (_random.NextDouble() < Config.Icd_ProbMissing)
+            if (_random.NextDouble() < Configuration.Icd_ProbMissing)
                 return null;
             if (chapter == "")  
                 return FetchNormalDimensionItem<Icd>();
@@ -134,12 +141,12 @@ namespace Rki.CancerDataGenerator.Models.Dimensions
             return FetchNormalDimensionItem<Icd>(subset);
         }
 
-        public int CreateFixedValuePatientCount() => Config.Patient_Count;
+        public int CreateFixedValuePatientCount() => Configuration.Patient_Count;
 
-        public DateTime CreateRandomDate_Meldedatum() => createRandomDate(10 * 365, Config.Meldedatum_BaseDate);
+        public DateTime CreateRandomDate_Meldedatum() => createRandomDate(10 * 365, Configuration.Meldedatum_BaseDate);
         public DateTime CreateRandomDate_Geburtsdatum() => createRandomDate(40 * 365, new DateTime(1970, 01, 01));
 
-        public int GetDaysToPublishDate(DateTime start) => (Config.PublishDate - start).Days;
+        public int GetDaysToPublishDate(DateTime start) => (Configuration.PublishDate - start).Days;
         public int GetYearsToPublishDate(DateTime start) => GetDaysToPublishDate(start) / 365;
 
         public int GetMeldungCountPerAge(int age)

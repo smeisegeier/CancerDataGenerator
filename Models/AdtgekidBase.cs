@@ -12,7 +12,7 @@ namespace Rki.CancerDataGenerator.Models
 
         protected AdtgekidBase _caller { get; }
 
-        protected Configuration _config => _generator.Config;
+        protected Configuration _config => _generator.Configuration;
 
         /// <summary>
         /// ctor for maintaining class integrity

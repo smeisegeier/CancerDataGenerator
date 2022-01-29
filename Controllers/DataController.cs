@@ -89,8 +89,7 @@ namespace Rki.CancerDataGenerator.Controllers
             if (configuration is null)
                 return BadRequest();
 
-            _generator.Config = configuration;
-            //return CreatedAtAction(nameof(PostItem), configuration);
+            _generator.Configuration = configuration;
             ADT_GEKID a = getNewRootObject();
             // also give contentType to trigger browser addons for xml view
             return Content(Globals.GetXmlStringFromObject(a), "application/xml");
