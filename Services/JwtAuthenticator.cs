@@ -23,6 +23,7 @@ namespace Rki.CancerDataGenerator.Services
             _config = configuration;
             Users = User.GetDefaultValues();
 
+            // test
             User.AddItemToList(ref Users,
                 new User("user3", "pass3", new string[] { "" })
                 );
@@ -41,7 +42,7 @@ namespace Rki.CancerDataGenerator.Services
                       .WithSecret(_jwtTokenPasswd)
                       .Id(currentUser.Id)
                       .IssuedAt(DateTimeOffset.UtcNow.ToUnixTimeSeconds())
-                      .ExpirationTime(DateTimeOffset.UtcNow.AddHours(1).ToUnixTimeSeconds())
+                      .ExpirationTime(DateTimeOffset.UtcNow.AddHours(2).ToUnixTimeSeconds())
                       .Issuer("dexterDSD")  // insert app url here
                       .Subject(currentUser.Username)
                       .AddClaim("roles", currentUser.Roles)

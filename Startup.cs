@@ -78,9 +78,9 @@ namespace Rki.CancerDataGenerator
                 {
                     Title = Globals.APPNAME,
                     Version = "v1",
-                    Description = "API description follows",
                     License = new OpenApiLicense() { Name = "Testlicense", Url = new Uri("https://example.com/license") },
-                    Contact = new OpenApiContact() { Name = "just me", Email = "me@exampl.com" }
+                    Contact = new OpenApiContact() { Name = "just me", Email = "me@exampl.com" },
+                    Description = @"<h1>API</h1> <b>description</b> follows or even <br> this",
                 };
                 var v2 = v1;
                 v2.Version = "v2";
@@ -92,7 +92,7 @@ namespace Rki.CancerDataGenerator
                 /* Authentification JUST SWagger */
                 c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                 {
-                    Description = "Insert just the JWT token into field",
+                    Description = "Insert the received JWT token into field, no leading 'Bearer' keyword.<br> It is valid for 2hrs.",
                     In = ParameterLocation.Header,
                     Type = SecuritySchemeType.Http,
                     BearerFormat = "JWT",

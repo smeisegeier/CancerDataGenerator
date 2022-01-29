@@ -16,24 +16,24 @@ using Microsoft.AspNetCore.Hosting;
 using System.IO;
 using System.Web;
 using System.Net.Mime;
+using Rki.CancerDataGenerator.Services;
 
 namespace Rki.CancerDataGenerator.Controllers
 {
     public abstract class ControllerBase : Controller
     {
         protected IWebHostEnvironment _webHostEnvironment { get; }
-        protected readonly ILogger<HomeController> _logger;
         protected Generator _generator { get; set; }
         protected AdtGekidDbContext _context { get; }
-
+        protected IJwtAuthenticator _jwtAuthenticator { get; }
         protected string FileDirectory => Path.Combine(_webHostEnvironment.WebRootPath, "files");
 
-        public ControllerBase(IWebHostEnvironment webHostEnvironment, ILogger<HomeController> logger, AdtGekidDbContext context)
+        public ControllerBase(IWebHostEnvironment webHostEnvironment, AdtGekidDbContext context, IJwtAuthenticator jwtAuthenticator)
         {
-            _logger = logger;
             _generator = new Generator(context);
             _context = context;
             _webHostEnvironment = webHostEnvironment;
+            _jwtAuthenticator = jwtAuthenticator;
         }
 
         protected ADT_GEKID getNewRootObject() => new ADT_GEKID(_generator, null);

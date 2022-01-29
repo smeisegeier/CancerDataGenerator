@@ -19,17 +19,23 @@ using System.IO;
 using Microsoft.AspNetCore.Hosting;
 using System.Net.Mime;
 using Microsoft.EntityFrameworkCore;
+using Rki.CancerDataGenerator.Services;
+using Microsoft.AspNetCore.Authorization;
+using static Rki.CancerDataGenerator.Services.User;
 
 namespace Rki.CancerDataGenerator.Controllers
 {
 
+    /// <summary>
+    /// All about locations. Requires login.
+    /// </summary>
     [ApiController]
-    [ApiVersion("1")]
-    [Route("/api/v{version:apiVersion}/[controller]")]
+    [Authorize]
+    [Route(Globals.ROUTESTRING)]
     public class LocationController : ControllerBase
     {
-        public LocationController(IWebHostEnvironment webHostEnvironment, ILogger<HomeController> logger, AdtGekidDbContext context)
-            : base(webHostEnvironment, logger, context) { }
+        public LocationController(IWebHostEnvironment webHostEnvironment, AdtGekidDbContext context, IJwtAuthenticator jwtAuthenticator)
+            : base(webHostEnvironment, context, jwtAuthenticator) { }
 
         /// <summary>
         /// Get all items
@@ -39,7 +45,7 @@ namespace Rki.CancerDataGenerator.Controllers
         /// </remarks>
         /// <returns>list</returns>
         [HttpGet]
-        [ProducesResponseType(typeof(byte[]), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         public List<Location> Get() => _context.GetAll<Location>().ToList();
 
 
@@ -102,7 +108,7 @@ namespace Rki.CancerDataGenerator.Controllers
 
 
         /// <summary>
-        /// Creates a location.
+        /// Creates a location. Requires ADMIN role.
         /// </summary>
         /// <remarks>
         /// Sample request (id can be left 0):
@@ -119,6 +125,7 @@ namespace Rki.CancerDataGenerator.Controllers
         /// <param name="location"></param>
         /// <returns>A newly created location</returns>
         [HttpPost]
+        [Authorize(Roles = nameof(UserRole.ADMIN))]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -135,7 +142,7 @@ namespace Rki.CancerDataGenerator.Controllers
         }
 
         /// <summary>
-        /// Deletes a location.
+        /// Deletes a location. Requires ADMIN role.
         /// </summary>
         /// <remarks>
         /// Delete it
@@ -143,6 +150,7 @@ namespace Rki.CancerDataGenerator.Controllers
         /// <param name="id"></param>
         /// <returns>204</returns>
         [HttpDelete("{id:int}")]
+        [Authorize(Roles = nameof(UserRole.ADMIN))]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]

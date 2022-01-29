@@ -15,21 +15,15 @@ using static Rki.CancerDataGenerator.Services.User;
 /// </summary>
 namespace Rki.CancerDataGenerator.Controllers
 {
-    //TODO login controller
 
     [ApiController]
     [ApiVersion("1")]
     [ApiVersion("2")]
-    [Route("/api/v{version:apiVersion}/[controller]")]
+    [Route(Globals.ROUTESTRING)]
     public class DataController : ControllerBase
     {
-        private IJwtAuthenticator _jwtAuthenticator { get; }
-        public DataController(IWebHostEnvironment webHostEnvironment, ILogger<HomeController> logger, AdtGekidDbContext context
-            , IJwtAuthenticator jwtAuthenticator)
-            : base(webHostEnvironment, logger, context)
-        {
-            _jwtAuthenticator = jwtAuthenticator;
-        }
+        public DataController(IWebHostEnvironment webHostEnvironment, AdtGekidDbContext context, IJwtAuthenticator jwtAuthenticator)
+            : base(webHostEnvironment, context, jwtAuthenticator) { }
 
         /// <summary>
         /// Get all
@@ -94,30 +88,6 @@ namespace Rki.CancerDataGenerator.Controllers
 
         }
 
-
-        /// <summary>
-        /// GET TOKEN XDE
-        /// </summary>
-        /// <param name="userCrendential"></param>
-        /// <returns>JWT bearer token</returns>
-        [HttpPost("auth")]
-        public IActionResult Authenticate([FromBody] UserCrendential userCrendential)
-        {
-            var token = _jwtAuthenticator.IsUserAuthenticated(userCrendential.Username, userCrendential.Password);
-            if (token == null)
-                return Unauthorized();
-            return Ok(token);
-        }
-
-
-        // TODO fix exception
-        [HttpGet("test")]
-        public IActionResult Test()
-        {
-            var token = Request.Headers[HeaderNames.Authorization].ToString().Replace("Bearer ", "");
-            var lol = _jwtAuthenticator.DecodeToken(token);
-            return Ok(lol.sub);
-        }
     }
 
 

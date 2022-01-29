@@ -17,14 +17,15 @@ using JWT.Algorithms;
 using JWT;
 using JWT.Serializers;
 using JWT.Builder;
+using Rki.CancerDataGenerator.Services;
 
 namespace Rki.CancerDataGenerator.Controllers
 {
     public class HomeController : ControllerBase
     {
 
-        public HomeController(IWebHostEnvironment webHostEnvironment, ILogger<HomeController> logger, AdtGekidDbContext context)
-            : base(webHostEnvironment, logger, context) { }
+        public HomeController(IWebHostEnvironment webHostEnvironment, AdtGekidDbContext context, IJwtAuthenticator jwtAuthenticator)
+            : base(webHostEnvironment, context, jwtAuthenticator) { }
 
 
         [HttpGet]
