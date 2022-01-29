@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Rki.CancerDataGenerator.DAL;
+using Rki.CancerDataGenerator.Services;
 using Microsoft.EntityFrameworkCore;
 using Rki.CancerDataGenerator.Models.Dimensions;
 using Microsoft.OpenApi.Models;
@@ -18,6 +19,8 @@ using Microsoft.AspNetCore.Routing;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using System.Security.Claims;
 
 namespace Rki.CancerDataGenerator
 {
@@ -25,10 +28,10 @@ namespace Rki.CancerDataGenerator
     {
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
+            _config = configuration;
         }
 
-        public IConfiguration Configuration { get; }
+        public IConfiguration _config { get; }
 
 
         /// <summary>
@@ -39,11 +42,32 @@ namespace Rki.CancerDataGenerator
         public void ConfigureServices(IServiceCollection services)
         {
             services.Configure<RouteOptions>(c => c.LowercaseUrls = true); // enforce lowercase
-            services.AddControllersWithViews();
+            services.AddControllersWithViews();     // light lighter option than MVC
             services.AddDbContext<AdtGekidDbContext>(options => options
                 .UseLazyLoadingProxies()
                 .UseInMemoryDatabase("CancerDataGenerator"));
 
+            /* security */
+            services.AddSingleton<IJwtAuthenticator, JwtAuthenticator>();   // add service as singleton
+            services.AddAuthentication(options =>
+                {
+                    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                })
+                .AddJwtBearer(options =>
+                {
+                    //options.RequireHttpsMetadata = false;
+                    //options.SaveToken = true;
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuerSigningKey = true,
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config.GetValue<string>("JwtTokenPw"))),
+                        ValidateAudience = false, 
+                        // if ClockSkew is not nulled, 5min delay always apply!
+                        ValidateLifetime = true, ClockSkew = TimeSpan.Zero,
+                        ValidateIssuer = true, ValidIssuers = new string[] { "dexterDSD", "rki" }
+                    };
+                });
 
             /* Swagger */
             services.AddSwaggerGen(c =>
@@ -65,16 +89,13 @@ namespace Rki.CancerDataGenerator
                 c.SwaggerDoc("v1", v1);
                 c.SwaggerDoc("v2", v2);
 
-
-                /* Authentification */
+                /* Authentification JUST SWagger */
                 c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                 {
-                    Description = @"JWT Authorization header using the Bearer scheme. \r\n\r\n 
-                      Enter 'Bearer' [space] and then your token in the text input below.
-                      \r\n\r\nExample: 'Bearer 12345abcdef'",
-                    Name = "Authorization",
+                    Description = "Insert just the JWT token into field",
                     In = ParameterLocation.Header,
-                    Type = SecuritySchemeType.ApiKey,
+                    Type = SecuritySchemeType.Http,
+                    BearerFormat = "JWT",
                     Scheme = "Bearer"
                 });
 
@@ -88,9 +109,6 @@ namespace Rki.CancerDataGenerator
                                 Type = ReferenceType.SecurityScheme,
                                 Id = "Bearer"
                             },
-                            Scheme = "oauth2",
-                            Name = "Bearer",
-                            In = ParameterLocation.Header,
                         },
                         new List<string>()
                     }
@@ -140,12 +158,12 @@ namespace Rki.CancerDataGenerator
                 app.UseHsts();
             }
 
-
-
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
             app.UseRouting();
+
+
+            app.UseAuthentication();
             app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {

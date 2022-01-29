@@ -1,45 +1,42 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Rki.CancerDataGenerator.Models;
-using Rki.CancerDataGenerator.Models.Dimensions;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+using Microsoft.Net.Http.Headers;
+using Rki.CancerDataGenerator.BLL;
 using Rki.CancerDataGenerator.DAL;
 using Rki.CancerDataGenerator.Models.ADTGEKID;
-using System.Xml.Linq;
-using System.Xml.Schema;
-using System.Xml;
-using System.Net.Http;
-using System.Text;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Authorization;
-using Rki.CancerDataGenerator.BLL;
+using Rki.CancerDataGenerator.Services;
+using static Rki.CancerDataGenerator.Services.User;
 
 /// <summary>
 /// https://stackoverflow.com/questions/60084877/swagger-not-finding-apiversion-ed-actions
 /// </summary>
 namespace Rki.CancerDataGenerator.Controllers
 {
-    //[Authorize]
+    //TODO login controller
+
     [ApiController]
     [ApiVersion("1")]
     [ApiVersion("2")]
     [Route("/api/v{version:apiVersion}/[controller]")]
     public class DataController : ControllerBase
     {
-
-        public DataController(IWebHostEnvironment webHostEnvironment, ILogger<HomeController> logger, AdtGekidDbContext context)
-            : base(webHostEnvironment, logger, context) { }
+        private IJwtAuthenticator _jwtAuthenticator { get; }
+        public DataController(IWebHostEnvironment webHostEnvironment, ILogger<HomeController> logger, AdtGekidDbContext context
+            , IJwtAuthenticator jwtAuthenticator)
+            : base(webHostEnvironment, logger, context)
+        {
+            _jwtAuthenticator = jwtAuthenticator;
+        }
 
         /// <summary>
         /// Get all
         /// </summary>
         /// <returns></returns>
         [HttpGet]
+        [Authorize(Roles = nameof(UserRole.DEV))]
         [MapToApiVersion("1")]
         [Produces("application/xml")]
         public IActionResult GetAllData()
@@ -47,6 +44,7 @@ namespace Rki.CancerDataGenerator.Controllers
             ADT_GEKID a = getNewRootObject();
             // also give contentType to trigger browser addons for xml view
             return Content(Globals.GetXmlStringFromObject(a), "application/xml");
+
         }
 
         /// <summary>
@@ -57,7 +55,6 @@ namespace Rki.CancerDataGenerator.Controllers
         [MapToApiVersion("2")]
         [Produces("application/xml")]
         public IActionResult GetAllDatav2() => Content("lol");
-
 
         /// <summary>
         /// Get synthetic data based upon the configuration you post
@@ -89,13 +86,38 @@ namespace Rki.CancerDataGenerator.Controllers
             if (configuration is null)
                 return BadRequest();
 
+
             _generator.Configuration = configuration;
             ADT_GEKID a = getNewRootObject();
             // also give contentType to trigger browser addons for xml view
             return Content(Globals.GetXmlStringFromObject(a), "application/xml");
+
         }
 
-        // TODO JWT!
+
+        /// <summary>
+        /// GET TOKEN XDE
+        /// </summary>
+        /// <param name="userCrendential"></param>
+        /// <returns>JWT bearer token</returns>
+        [HttpPost("auth")]
+        public IActionResult Authenticate([FromBody] UserCrendential userCrendential)
+        {
+            var token = _jwtAuthenticator.IsUserAuthenticated(userCrendential.Username, userCrendential.Password);
+            if (token == null)
+                return Unauthorized();
+            return Ok(token);
+        }
+
+
+        // TODO fix exception
+        [HttpGet("test")]
+        public IActionResult Test()
+        {
+            var token = Request.Headers[HeaderNames.Authorization].ToString().Replace("Bearer ", "");
+            var lol = _jwtAuthenticator.DecodeToken(token);
+            return Ok(lol.sub);
+        }
     }
 
 
