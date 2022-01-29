@@ -13,6 +13,10 @@ using System.Xml.Linq;
 using System.Xml.Schema;
 using System.Xml;
 using Microsoft.AspNetCore.Hosting;
+using JWT.Algorithms;
+using JWT;
+using JWT.Serializers;
+using JWT.Builder;
 
 namespace Rki.CancerDataGenerator.Controllers
 {
@@ -62,6 +66,21 @@ namespace Rki.CancerDataGenerator.Controllers
 
             return Content(s, "text/plain");
         }
+
+        [HttpGet]
+        public IActionResult Jwt()
+        {
+            var token = JwtBuilder.Create()
+                                  .WithAlgorithm(new HMACSHA256Algorithm()) // symmetric
+                                  .WithSecret("secret")
+                                  .AddClaim("iat", DateTimeOffset.UtcNow.ToUnixTimeSeconds())
+                                  .AddClaim("exp", DateTimeOffset.UtcNow.AddHours(1).ToUnixTimeSeconds())
+                                  .AddClaim("iss", "dexterDSD")
+                                  .AddClaim("sub", "client")
+                                  .Encode();
+            return Content(token);
+        }
+
 
     }
 }
