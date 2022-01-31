@@ -2,7 +2,7 @@
 {
     public interface IJwtAuthenticator
     {
-        JwtAuthenticator.UserJwt DecodeToken(string token);
+        JwtAuthenticator.UserJwt? DecodeToken(string token);
         string IsUserAuthenticated(string username, string passwd);
     }
 }

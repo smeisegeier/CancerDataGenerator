@@ -33,9 +33,12 @@ namespace Rki.CancerDataGenerator.Controllers
         [HttpGet("test")]
         public IActionResult Test()
         {
-            var token = Request.Headers[HeaderNames.Authorization].ToString().Replace("Bearer ", "");
-            var lol = _jwtAuthenticator.DecodeToken(token);
-            return Ok(lol.sub);
+            var token = Request.Headers[HeaderNames.Authorization].ToString()?.Replace("Bearer ", "");
+            var payload = _jwtAuthenticator.DecodeToken(token);
+            if (payload is null)
+                return BadRequest("jwt was not provided");
+
+            return Json(payload);
         }
     }
 }

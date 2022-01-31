@@ -51,8 +51,10 @@ namespace Rki.CancerDataGenerator.Services
             return token;
         }
 
-        public UserJwt DecodeToken(string token)
+        public UserJwt? DecodeToken(string token)
         {
+            if (string.IsNullOrEmpty(token))
+                return null;
             var json = JwtBuilder.Create()
                      .WithAlgorithm(new HMACSHA256Algorithm()) // symmetric
                      .WithSecret(_jwtTokenPasswd)
