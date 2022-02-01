@@ -7,12 +7,13 @@ using Rki.CancerDataGenerator.Services;
 
 namespace Rki.CancerDataGenerator.Controllers
 {
+    // TODO doc https://docs.microsoft.com/en-us/aspnet/core/web-api/advanced/analyzers?view=aspnetcore-5.0&tabs=visual-studio
 
     [ApiController]
     [Route(Globals.ROUTESTRING)]
-    public class LoginController : ControllerBase
+    public class PublicController : ControllerBase
     {
-        public LoginController(IWebHostEnvironment webHostEnvironment, AdtGekidDbContext context, IJwtAuthenticator jwtAuthenticator)
+        public PublicController(IWebHostEnvironment webHostEnvironment, AdtGekidDbContext context, IJwtAuthenticator jwtAuthenticator)
             : base(webHostEnvironment, context, jwtAuthenticator) {}
 
         /// <summary>
@@ -21,7 +22,7 @@ namespace Rki.CancerDataGenerator.Controllers
         /// <param name="userCrendential"></param>
         /// <returns>JWT bearer token</returns>
         [HttpPost()]
-        public IActionResult Authenticate([FromBody] UserCrendential userCrendential)
+        public IActionResult Login([FromBody] UserCrendential userCrendential)
         {
             var token = _jwtAuthenticator.IsUserAuthenticated(userCrendential.Username, userCrendential.Password);
             if (token == null)
@@ -30,7 +31,7 @@ namespace Rki.CancerDataGenerator.Controllers
         }
 
 
-        [HttpGet("test")]
+        [HttpGet("login/test")]
         public IActionResult Test()
         {
             var token = Request.Headers[HeaderNames.Authorization].ToString()?.Replace("Bearer ", "");

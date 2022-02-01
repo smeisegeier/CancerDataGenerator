@@ -37,41 +37,18 @@ namespace Rki.CancerDataGenerator.Controllers
         public LocationController(IWebHostEnvironment webHostEnvironment, AdtGekidDbContext context, IJwtAuthenticator jwtAuthenticator)
             : base(webHostEnvironment, context, jwtAuthenticator) { }
 
-        /// <summary>
-        /// Get all items
-        /// </summary>
-        /// <remarks>
-        /// Here is text
-        /// </remarks>
-        /// <returns>list</returns>
-        [HttpGet]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        public List<Location> Get() => _context.GetAll<Location>().ToList();
-
-
-        /// <summary>
-        /// Get all items as download
-        /// </summary>
-        /// <remarks>
-        /// DL the file
-        /// </remarks>
-        /// <returns>file</returns>
-        [HttpGet("download")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        public IActionResult GetDownload()
-        {
-            return WriteFileAsJson(_context.GetAll<Location>().ToList());
-        }
-
+ 
         /// <summary>
         /// Get item with [id]
         /// </summary>
         /// <returns>item</returns>
-        [HttpGet("{id:int}")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
+        [HttpGet("{id}")]
+        [AllowAnonymous]
+        [Produces("application/json")]
+        [ProducesResponseType(typeof(Location), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public IActionResult GetById(int id)
+        public IActionResult GetById([FromRoute] int id)
         {
             if (id < 1)
                 return BadRequest();
@@ -83,27 +60,49 @@ namespace Rki.CancerDataGenerator.Controllers
             return Json(result);
         }
 
+
         /// <summary>
-        /// Get item with [name]
+        /// Gets locations containing [name], or all locations if no name is present.
         /// </summary>
         /// <remarks>
-        /// Finds items with names beginning w/ the given string
+        ///  
+        ///     Example:
+        ///     
+        ///     /location/name=hamb?dl=false
+        ///   
+        /// 
         /// </remarks>
-        /// <returns>item</returns>
-        [HttpGet("{name}")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
+        /// <param name="name">name of resource</param>
+        /// <param name="dl">download?</param>
+        /// <returns>all resources, or these containing [name]</returns>
+        [HttpGet]
+        [AllowAnonymous]
+        [Produces("application/json", "text/plain")]
+        [ProducesResponseType(typeof(List<Location>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public IActionResult GetByName(string name)
+        public IActionResult GetByQuery(string name = null, bool dl = false)
         {
+            // single item
             if (string.IsNullOrEmpty(name))
-                return BadRequest();
+            {
+                var results = _context.GetAll<Location>().ToList();
+                if (dl == false)
+                    return Json(results);
+                else
+                    return WriteFileAsJson(results);
+            }
 
+            // all items
             var result = _context.GetByName<Location>(name);
-            if (result is null)
+            if (result is null || !result.Any())
                 return NotFound();
 
-            return Json(result);
+            if (dl == false)
+                return Json(result);
+            else
+                return WriteFileAsJson(result);
         }
 
 
@@ -167,7 +166,7 @@ namespace Rki.CancerDataGenerator.Controllers
         }
 
         /// <summary>
-        /// Modifies a location.
+        /// Modifies a location. Requires ADMIN role.
         /// </summary>
         /// <remarks>
         /// Sample request:
@@ -184,6 +183,7 @@ namespace Rki.CancerDataGenerator.Controllers
         /// <param name="location"></param>
         /// <returns>204</returns>
         [HttpPut]
+        [Authorize(Roles = nameof(UserRole.ADMIN))]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]

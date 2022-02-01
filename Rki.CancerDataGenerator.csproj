@@ -5,6 +5,7 @@
     <CopyRefAssembliesToPublishDirectory>false</CopyRefAssembliesToPublishDirectory>
     <FileVersion>0.1</FileVersion>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
+	<IncludeOpenAPIAnalyzers>true</IncludeOpenAPIAnalyzers>
   </PropertyGroup>
 
   <ItemGroup>
