@@ -31,9 +31,54 @@ namespace Rki.CancerDataGenerator.Models.Dimensions
             Configuration = new Configuration();
         }
 
+        #region private area
+        private DateTime createRandomDate(int deltaDays, DateTime baseDate) => baseDate.AddDays(CreateRandomValue(deltaDays));
 
+        /// <summary>
+        /// get all enums
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        private IList<T> fetchAllEnumItems<T>() where T : Enum
+        {
+            var list = Enum.GetValues(typeof(T)).OfType<T>().ToList();          // same as: (array as T[]).ToList()
+            return list;
+        }
+
+        /// <summary>
+        /// Fetches the enum item "none".
+        /// </summary>
+        /// <typeparam name="T">enum</typeparam>
+        /// <returns>"none" item or default (item at index 0)</returns>
+        private T fetchNoneEnumItem<T>(IList<T> list) where T : Enum => list
+                .Where(i => i.ToString() == "None")     // ToStringXmlEnum() would exclude "none", do not use
+                .FirstOrDefault();
+
+
+        #endregion
+
+        #region generics area
         public int CreateRandomValue(int min, int max) => _random.Next(min, max + 1);
         public int CreateRandomValue(int delta) => _random.Next(delta * -1, delta);
+
+        // HACK this should not be here (SOC!)
+        public int CreateFixedValuePatientCount() => Configuration.Patient_Count;
+
+        public DateTime CreateRandomDate_Meldedatum() => createRandomDate(10 * 365, Configuration.Meldedatum_BaseDate);
+        public DateTime CreateRandomDate_Geburtsdatum() => createRandomDate(40 * 365, new DateTime(1970, 01, 01));
+
+        public int GetDaysToPublishDate(DateTime start) => (Configuration.PublishDate - start).Days;
+        public int GetYearsToPublishDate(DateTime start) => GetDaysToPublishDate(start) / 365;
+
+        public int GetMeldungCountPerAge(int age)
+        {
+            if (age < 30)
+                return 1;
+            if (age < 50)
+                return 2;
+            return 3;
+        }
+
 
         public double CreateNormalValueUponMean(double mean, double stdDev)
         {
@@ -54,7 +99,7 @@ namespace Rki.CancerDataGenerator.Models.Dimensions
             return fetchedId;
         }
 
-        private DateTime createRandomDate(int deltaDays, DateTime baseDate) => baseDate.AddDays(CreateRandomValue(deltaDays));
+
 
         /// <summary>
         /// get random enum
@@ -75,28 +120,6 @@ namespace Rki.CancerDataGenerator.Models.Dimensions
         }
 
         /// <summary>
-        /// get all enums
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <returns></returns>
-        private IList<T> fetchAllEnumItems<T>() where T : Enum
-        {
-            var list = Enum.GetValues(typeof(T)).OfType<T>().ToList();          // same as: (array as T[]).ToList()
-            return list;
-        }
-
-
-        /// <summary>
-        /// Fetches the enum item "none".
-        /// </summary>
-        /// <typeparam name="T">enum</typeparam>
-        /// <returns>"none" item or default (item at index 0)</returns>
-        private T fetchNoneEnumItem<T>(IList<T> list) where T : Enum => list
-                .Where(i => i.ToString() == "None")     // ToStringXmlEnum() would exclude "none", do not use
-                .FirstOrDefault();                                         
-
-
-        /// <summary>
         /// Fetches a Dimension item following normal distribuion
         /// If no subset is provided, whole list will be taken 
         /// </summary>
@@ -114,6 +137,14 @@ namespace Rki.CancerDataGenerator.Models.Dimensions
             return _context.GetByIndex(rng, subset);
         }
 
+        /// <summary>
+        /// Fetches RAW dimension item, no missing values considered.
+        /// Based off of index numbers, not database id.
+        /// </summary>
+        /// <typeparam name="T">Type</typeparam>
+        /// <param name="subset">subset of data</param>
+        /// <param name="missingProb">probability for missing</param>
+        /// <returns>dimension item</returns>
         public T FetchRandomDimensionItem<T>(List<T> subset = null, double missingProb = 0) where T : DimensionBase
         {
             // handle subset
@@ -128,9 +159,16 @@ namespace Rki.CancerDataGenerator.Models.Dimensions
             return _context.GetByIndex(rng, subset);
         }
 
+        #endregion
 
-        /* specific*/
 
+        #region specifics area
+
+        /// <summary>
+        /// Fetch ICD code -> can be null
+        /// </summary>
+        /// <param name="chapter">optional icd chapter</param>
+        /// <returns>ICD code or null</returns>
         public Icd FetchNormalDimensionItem_Icd(string chapter)
         {
             if (_random.NextDouble() < Configuration.Icd_ProbMissing)
@@ -141,21 +179,6 @@ namespace Rki.CancerDataGenerator.Models.Dimensions
             return FetchNormalDimensionItem<Icd>(subset);
         }
 
-        public int CreateFixedValuePatientCount() => Configuration.Patient_Count;
-
-        public DateTime CreateRandomDate_Meldedatum() => createRandomDate(10 * 365, Configuration.Meldedatum_BaseDate);
-        public DateTime CreateRandomDate_Geburtsdatum() => createRandomDate(40 * 365, new DateTime(1970, 01, 01));
-
-        public int GetDaysToPublishDate(DateTime start) => (Configuration.PublishDate - start).Days;
-        public int GetYearsToPublishDate(DateTime start) => GetDaysToPublishDate(start) / 365;
-
-        public int GetMeldungCountPerAge(int age)
-        {
-            if (age < 30) 
-                return 1;
-            if (age < 50)
-                return 2;
-            return 3;
-        }
+        #endregion
     }
 }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 
 namespace Rki.CancerDataGenerator.Models.Dimensions
 {
+    [Obsolete]
     public interface IGenerator
     {
         int CreateFixedValuePatientCount();
@@ -29,33 +30,16 @@ namespace Rki.CancerDataGenerator.Models.Dimensions
         PatientMeldungMeldeanlass FetchRandomEnumItem_Meldeanlass();
 
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="min"></param>
-        /// <param name="max"></param>
-        /// <returns></returns>
         int createRandomValue(int min, int max);
 
-        /// <summary>
-        /// Fetch ICD code -> can be null
-        /// </summary>
-        /// <param name="chapter">optional icd chapter</param>
-        /// <returns>ICD code or null</returns>
+
         Icd FetchNormalDimensionItem_Icd(string chapter = "");
-
-
-        /// <summary>
-        /// Fetches RAW dimension item, no missing values considered.
-        /// Based off of index numbers, not database id.
-        /// </summary>
-        /// <typeparam name="T">registered dimension</typeparam>
-        /// <returns>dimension item</returns>
-        //T FetchRandomDimensionItem<T>(List<T> subset = null) where T : DimensionBase;
 
 
         double CreateNormalValueUponMean(double mean, double stdDev);
         int CreateNormalValueUponRange(int min, int max);
+
+
         T FetchRandomDimensionItem<T>(List<T> subset = null, double missingProb = 0) where T : DimensionBase;
     }
 }

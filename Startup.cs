@@ -42,7 +42,7 @@ namespace Rki.CancerDataGenerator
         public void ConfigureServices(IServiceCollection services)
         {
             services.Configure<RouteOptions>(c => c.LowercaseUrls = true); // enforce lowercase
-            services.AddControllersWithViews();     // light lighter option than MVC
+            services.AddControllersWithViews();     // lighter option than MVC
             services.AddDbContext<AdtGekidDbContext>(options => options
                 .UseLazyLoadingProxies()
                 .UseInMemoryDatabase("CancerDataGenerator"));
@@ -79,8 +79,8 @@ namespace Rki.CancerDataGenerator
                     Title = Globals.APPNAME,
                     Version = "v1",
                     License = new OpenApiLicense() { Name = "Testlicense", Url = new Uri("https://example.com/license") },
-                    Contact = new OpenApiContact() { Name = "just me", Email = "me@exampl.com" },
-                    Description = @"<h1>API</h1> <b>description</b> follows or even <br> this",
+                    Contact = new OpenApiContact() { Name = "creator", Email = "me@exampl.com" },
+                    Description = @"<h1>API</h1> <b>description</b> can be written using <strong>html</strong> tags.<br> <small>More to come.</small>",
                 };
                 var v2 = v1;
                 v2.Version = "v2";

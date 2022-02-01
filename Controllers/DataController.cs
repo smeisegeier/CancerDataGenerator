@@ -10,12 +10,10 @@ using Rki.CancerDataGenerator.Models.ADTGEKID;
 using Rki.CancerDataGenerator.Services;
 using static Rki.CancerDataGenerator.Services.User;
 
-/// <summary>
-/// https://stackoverflow.com/questions/60084877/swagger-not-finding-apiversion-ed-actions
-/// </summary>
+// https://stackoverflow.com/questions/60084877/swagger-not-finding-apiversion-ed-actions
+
 namespace Rki.CancerDataGenerator.Controllers
 {
-
     [ApiController]
     [ApiVersion("1")]
     [ApiVersion("2")]
@@ -26,7 +24,7 @@ namespace Rki.CancerDataGenerator.Controllers
             : base(webHostEnvironment, context, jwtAuthenticator) { }
 
         /// <summary>
-        /// Get all
+        /// Get all data as xml
         /// </summary>
         /// <returns></returns>
         [HttpGet]
@@ -51,7 +49,7 @@ namespace Rki.CancerDataGenerator.Controllers
         public IActionResult GetAllDatav2() => Content("lol");
 
         /// <summary>
-        /// Get synthetic data based upon the configuration you post
+        /// Get all data based upon the configuration you post
         /// </summary>
         /// <remarks>
         /// Sample request
@@ -85,12 +83,9 @@ namespace Rki.CancerDataGenerator.Controllers
             ADT_GEKID a = getNewRootObject();
             // also give contentType to trigger browser addons for xml view
             return Content(Globals.GetXmlStringFromObject(a), "application/xml");
-
         }
 
     }
-
-
 
 }
 
