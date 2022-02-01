@@ -2,12 +2,14 @@
 using Rki.CancerDataGenerator.Models.Dimensions;
 using System.Collections.Generic;
 using System.Linq;
+using System.Xml.Serialization;
 
 namespace Rki.CancerDataGenerator.Models.ADTGEKID
 {
     public partial class Patient : AdtgekidBase
     {
-        private int _meldungCount { get;}
+        [XmlIgnore]
+        public int _meldungCount { get; set; }
 
         public Patient(Generator generator, AdtgekidBase adtgekidBase) : base(generator, adtgekidBase)
         {

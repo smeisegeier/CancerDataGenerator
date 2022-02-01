@@ -30,7 +30,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
             Diagnosesicherung = _generator.FetchRandomEnumItem<PatientMeldungDiagnoseDiagnosesicherung>(_config.Dsich_ProbMissing);
         }
 
-        public string TNM_ID { get; }
+        public string TNM_ID { get; set; }
 
         public string Primaertumor_ICD_Code { get; set; }
         

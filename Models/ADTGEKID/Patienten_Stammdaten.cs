@@ -1,14 +1,18 @@
 ﻿using Rki.CancerDataGenerator.Models.Dimensions;
 using System;
 using System.Collections.Generic;
+using System.Xml.Serialization;
 
 namespace Rki.CancerDataGenerator.Models.ADTGEKID
 {
     public partial class Patienten_Stammdaten : AdtgekidBase
     {
         // backing fields
-        private DateTime _patientBirthdate { get;}
-        public int _PatientAgeInYears { get;}
+        [XmlIgnore]
+        public DateTime _patientBirthdate { get; set; }
+
+        [XmlIgnore]
+        public int _PatientAgeInYears { get; set; }
 
         public Patienten_Stammdaten() {}
         public Patienten_Stammdaten(Generator generator, AdtgekidBase parent) : base(generator, parent)
