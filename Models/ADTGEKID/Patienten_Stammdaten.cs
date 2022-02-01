@@ -7,7 +7,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
 {
     public partial class Patienten_Stammdaten : AdtgekidBase
     {
-        // backing fields
+        // HACK
         [XmlIgnore]
         public DateTime _patientBirthdate { get; set; }
 
@@ -15,14 +15,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         public int _PatientAgeInYears { get; set; }
 
         public Patienten_Stammdaten() {}
-        public Patienten_Stammdaten(Generator generator, AdtgekidBase parent) : base(generator, parent)
-        {
-            _patientBirthdate = _generator.CreateRandomDate_Geburtsdatum();
-            _PatientAgeInYears = _generator.GetYearsToPublishDate(_patientBirthdate);
-            Patienten_Geburtsdatum = _patientBirthdate.ToShortDateString();
-            TEST_Alter = _PatientAgeInYears;
-            Patient_ID = Guid.NewGuid().ToString();
-        }
+
         public int TEST_Alter { get; set; }
 
         public PatientPatienten_StammdatenPatienten_Geschlecht Patienten_Geschlecht { get; set; }

@@ -2,6 +2,7 @@
 using Rki.CancerDataGenerator.Models.ADTGEKID;
 using Rki.CancerDataGenerator.Models.Dimensions;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Rki.CancerDataGenerator.BLL
@@ -9,6 +10,8 @@ namespace Rki.CancerDataGenerator.BLL
     public class Modelbuilder
     {
         private Generator _generator { get; }
+
+        // TODO config handling must be improved
         private Configuration _config => _generator.Configuration;
 
         public ADT_GEKID ADT_GEKID { get; set; }
@@ -34,10 +37,10 @@ namespace Rki.CancerDataGenerator.BLL
             var obj = new Patient();
             obj.Anmerkung = _generator.FetchRandomDimensionItem<Quote>(null, _config.Text_ProbMissing)?.quote;
             obj.Patienten_Stammdaten = Create_Patienten_Stammdaten();
-            obj._meldungCount = _generator.GetMeldungCountPerAge(obj.Patienten_Stammdaten._PatientAgeInYears);
+            int _meldungCount = _generator.GetMeldungCountPerAge(obj.Patienten_Stammdaten._PatientAgeInYears);
 
             obj.Menge_Meldung = Enumerable
-                .Range(1, obj._meldungCount)
+                .Range(1, _meldungCount)
                 .Select(index => Create_PatientMeldung())
                 .ToList();
             return obj;
@@ -76,7 +79,15 @@ namespace Rki.CancerDataGenerator.BLL
             var obj = new PatientMeldungVerlaufTod();
             obj.Sterbedatum = _generator.CreateRandomDate_Geburtsdatum().ToShortDateString();
             obj.Tod_tumorbedingt = _generator.FetchRandomEnumItem<JNU_Typ>();
-            obj.Menge_Todesursache = new PatientMeldungVerlaufTodMenge_Todesursache();
+            obj.Menge_Todesursache = Create_PatientMeldungVerlaufTodMenge_Todesursache();
+            return obj;
+        }
+
+        private PatientMeldungVerlaufTodMenge_Todesursache Create_PatientMeldungVerlaufTodMenge_Todesursache()
+        {
+            var obj = new PatientMeldungVerlaufTodMenge_Todesursache();
+            obj.Todesursache_ICD = new List<string>();
+            obj.Todesursache_ICD.Add(_generator.FetchNormalDimensionItem<Icd>()?.icd_three_digits);
             return obj;
         }
 
@@ -84,7 +95,7 @@ namespace Rki.CancerDataGenerator.BLL
         {
             var obj = new PatientMeldungDiagnose();
 
-            obj.Primaertumor_ICD_Code = _generator.FetchNormalDimensionItem_Icd("19")?.icd_three_digits;
+            obj.Primaertumor_ICD_Code = _generator.FetchNormalDimensionItem_Icd("02")?.icd_three_digits;
             obj.Primaertumor_ICD_Version = _generator.FetchRandomEnumItem<ICD_Version_Typ>(_config.IcdVersion_ProbMissing);
             obj.Primaertumor_Diagnosetext = _generator.FetchRandomDimensionItem<Quote>(null, _config.Text_ProbMissing)?.quote;
             obj.Primaertumor_Topographie_ICD_O_Version = _generator.FetchRandomEnumItem<PatientMeldungDiagnosePrimaertumor_Topographie_ICD_O_Version>();

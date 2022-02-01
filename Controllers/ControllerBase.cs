@@ -36,7 +36,8 @@ namespace Rki.CancerDataGenerator.Controllers
             _jwtAuthenticator = jwtAuthenticator;
         }
 
-        protected ADT_GEKID getNewRootObject() => new ADT_GEKID(_generator, null);
+        // HACK
+        protected ADT_GEKID getNewRootObject() => null;
 
         protected IActionResult WriteFileAsJson<T>(IList<T> list) where T : DimensionBase
         {
@@ -48,7 +49,6 @@ namespace Rki.CancerDataGenerator.Controllers
             string fullPath = Path.Combine(FileDirectory, "download.json");
             System.IO.File.WriteAllText(fullPath, content);
             return ReturnAndDeleteFile(fullPath);
-            //return File(await System.IO.File.ReadAllBytesAsync(filePath), "application/octet-stream", fileName);
         }
 
         protected IActionResult ReturnAndDeleteFile(string fullPath)

@@ -6,11 +6,6 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
     {
         public PatientMeldungVerlauf(){}
 
-        public PatientMeldungVerlauf(Generator generator, AdtgekidBase parent) : base(generator, parent)
-        {
-            Tod = new PatientMeldungVerlaufTod(_generator, this);
-        }
-
         public Histologie_Typ Histologie { get; set; }
         
         public TNM_Typ TNM { get; set; }

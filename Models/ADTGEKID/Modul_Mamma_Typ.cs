@@ -6,17 +6,6 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
     {
         public Modul_Mamma_Typ(){}
 
-        public Modul_Mamma_Typ(Generator generator, AdtgekidBase parent) : base(generator, parent)
-        {
-            Praetherapeutischer_Menopausenstatus = _generator.FetchRandomEnumItem<Modul_Mamma_TypPraetherapeutischer_Menopausenstatus>();
-            HormonrezeptorStatus_Oestrogen = _generator.FetchRandomEnumItem<Hormonrezeptor_Typ>();
-            HormonrezeptorStatus_Progesteron = _generator.FetchRandomEnumItem<Hormonrezeptor_Typ>();
-            Her2neuStatus = _generator.FetchRandomEnumItem<Hormonrezeptor_Typ>();
-            PraeopDrahtmarkierung = _generator.FetchRandomEnumItem<Modul_Mamma_TypPraeopDrahtmarkierung>();
-            IntraopPraeparatkontrolle = _generator.FetchRandomEnumItem<Modul_Mamma_TypIntraopPraeparatkontrolle>();
-            TumorgroesseInvasiv = ((int)_generator.CreateNormalValueUponMean(230, 10)).ToString();
-            TumorgroesseDCIS = ((int)_generator.CreateNormalValueUponMean(120, 10)).ToString();
-        }
         public Modul_Mamma_TypPraetherapeutischer_Menopausenstatus Praetherapeutischer_Menopausenstatus { get; set; }
 
         

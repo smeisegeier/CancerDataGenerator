@@ -8,27 +8,6 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
     public partial class PatientMeldung : AdtgekidBase
     {
 
-        public PatientMeldung(Generator generator, AdtgekidBase parent) : base(generator, parent)
-        {
-            Meldedatum = _generator.CreateRandomDate_Meldedatum().ToShortDateString();
-            Meldebegruendung = _generator.FetchRandomEnumItem<PatientMeldungMeldebegruendung>();
-            Meldeanlass = _generator.FetchRandomEnumItem<PatientMeldungMeldeanlass>();
-            Diagnose = new PatientMeldungDiagnose(_generator, this);
-
-            /* Tumorkonferenz */
-            Menge_Tumorkonferenz = Enumerable
-                .Range(1, 2)
-                .Select(index => new PatientMeldungTumorkonferenz(_generator, this))
-                .ToList();
-
-            /*  Verlauf */
-            Menge_Verlauf = Enumerable
-                .Range(1, 3)
-                .Select(index => new PatientMeldungVerlauf(_generator, this))
-                .ToList();
-
-            Meldung_ID = Guid.NewGuid().ToString();
-        }
         public PatientMeldung() { }
 
         public string Meldedatum { get; set; }

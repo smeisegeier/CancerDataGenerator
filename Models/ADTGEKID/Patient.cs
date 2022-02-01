@@ -8,20 +8,6 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
 {
     public partial class Patient : AdtgekidBase
     {
-        [XmlIgnore]
-        public int _meldungCount { get; set; }
-
-        public Patient(Generator generator, AdtgekidBase adtgekidBase) : base(generator, adtgekidBase)
-        {
-            Anmerkung = _generator.FetchRandomDimensionItem<Quote>(null, _config.Text_ProbMissing)?.quote;
-            Patienten_Stammdaten = new Patienten_Stammdaten(_generator, this);
-            _meldungCount = _generator.GetMeldungCountPerAge(Patienten_Stammdaten._PatientAgeInYears);
-
-            Menge_Meldung = Enumerable
-                .Range(1, 7)
-                .Select(index => new PatientMeldung(_generator, this))
-                .ToList();
-        }
 
         public Patient() { }
 
