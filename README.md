@@ -1,11 +1,38 @@
 # Rki.CancerDataGenerator
 Generator for German Clinical Cancer Data<br>
-# Documentation
+## Documentation
 swagger.authentification.jwt.code analyzer
 
-## packages
+### packages
+Required: (targetNET = 5.0)
+```xml
+  <ItemGroup>
+    <PackageReference Include="JWT" Version="8.9.0" />
+    <PackageReference Include="MathNet.Numerics" Version="4.15.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.13" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="5.0.9" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="5.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer" Version="5.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="5.0.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="5.0.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.11">
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+  </ItemGroup>
+ 
+  <PropertyGroup>
+    <IncludeOpenAPIAnalyzers>true</IncludeOpenAPIAnalyzers>
+  </PropertyGroup>
+  
+```
+- note the `IncludeOpenAPIAnalyzers` element
+- when inluded, VS will give advice on each build upon common misconceptions in api construction 
 
-## Configuring services
+[API Versioning](#api-versioning)
+
+### Configuring services
 Startup.cs
 ```csharp
 /* security */
@@ -51,7 +78,8 @@ appsettings.json:
   - LifeSpan: ClockSkew problem *must* be adressed to avoid minimum of 5min lifespan of jwt
 
 
-## Configure swagger
+### Configure swagger
+#### API Versioning
 Startup.cs
 ```csharp  
             /* Swagger */
@@ -73,7 +101,44 @@ Startup.cs
                 /* create versioned docs*/
                 c.SwaggerDoc("v1", v1);
                 c.SwaggerDoc("v2", v2);
+                
+                ...
+            });
+            
+            services.AddApiVersioning(o =>
+               {
+                   o.ReportApiVersions = true;
+                   o.AssumeDefaultVersionWhenUnspecified = true;
+                   o.DefaultApiVersion = new ApiVersion(1, 0);
+               });
+            services.AddVersionedApiExplorer(o =>
+            {
+                o.GroupNameFormat = "'v'VVV";
+                o.SubstituteApiVersionInUrl = true;
+            });
+```
+ - create a version template for recurring use (title, description)
+ - each version gets inc number (format can be v1.5 too) and a version doc that can be selected in dropdown
+ - API Versioniong must be enabled to have easy version access in controllers
+   - assume version 1 when unspecified to avoid error
+   - report api version to have clearer response in http header (ref)
+   - set api pattern and allow substitution in URL
+   - now this can be weaved into routing templates of controller
 
+PublicController.cs
+```csharp  
+[ApiController]
+    [Route(Globals.ROUTESTRING)]
+    public class PublicController : ControllerBase
+    {
+    
+    ...
+    
+    public const string ROUTESTRING = "/api/v{version:apiVersion}/[controller]";
+```
+#### Configure swagger authentification
+Startup.cs
+```csharp  
                 /* Authentification JUST SWagger */
                 c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                 {
@@ -98,18 +163,28 @@ Startup.cs
                         new List<string>()
                     }
                 });
-
-
-                // Set the comments path for the Swagger JSON and UI.
-                // Also note checking xml doc generation in build options
-                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
-                c.IncludeXmlComments(xmlPath);
-
-            });
 ```
+ - security definition is set to bearer behaviour
+   - give description to user
+   - get parameter from header, not query (question: cookies?)
+   - schmeme must be set to http, contrary to apiKey
+ - security definition must match security definition
+   - with this setting, the "bearer" prefix must not be typed by the user
+   
+authenticate button in swagger
+![grafik](https://user-images.githubusercontent.com/71837538/152181710-8fcac866-3884-4741-a6d9-833ce0482482.png)
 
-
+#### Configure autodoc
+Startup.cs
+```csharp  
+// Set the comments path for the Swagger JSON and UI.
+// Also note checking xml doc generation in build options
+var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+c.IncludeXmlComments(xmlPath);
+```
+ - this enables the generation of xml doc out of the inline code comments prefixed by /// 
+ - document is found in assembly output folder
 
 
 [![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=smeisegeier&repo=VsCode)](https://github.com/anuraghazra/github-readme-stats)
