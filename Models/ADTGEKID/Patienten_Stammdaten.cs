@@ -7,7 +7,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
 {
     public partial class Patienten_Stammdaten : AdtgekidBase
     {
-        // HACK
+        // HACK move this 
         [XmlIgnore]
         public DateTime _patientBirthdate { get; set; }
 

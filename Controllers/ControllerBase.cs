@@ -36,8 +36,6 @@ namespace Rki.CancerDataGenerator.Controllers
             _jwtAuthenticator = jwtAuthenticator;
         }
 
-        // HACK
-        protected ADT_GEKID getNewRootObject() => null;
 
         protected IActionResult WriteFileAsJson<T>(IList<T> list) where T : DimensionBase
         {

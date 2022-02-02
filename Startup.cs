@@ -34,11 +34,6 @@ namespace Rki.CancerDataGenerator
         public IConfiguration _config { get; }
 
 
-        /// <summary>
-        /// API Versioning:
-        /// https://codingfreaks.de/dotnet-core-api-versioning/
-        /// </summary>
-        /// <param name="services"></param>
         public void ConfigureServices(IServiceCollection services)
         {
             services.Configure<RouteOptions>(c => c.LowercaseUrls = true); // enforce lowercase

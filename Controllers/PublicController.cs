@@ -8,8 +8,6 @@ using Rki.CancerDataGenerator.Services;
 
 namespace Rki.CancerDataGenerator.Controllers
 {
-    // TODO doc https://docs.microsoft.com/en-us/aspnet/core/web-api/advanced/analyzers?view=aspnetcore-5.0&tabs=visual-studio
-
     [ApiController]
     [Route(Globals.ROUTESTRING)]
     public class PublicController : ControllerBase
