@@ -144,6 +144,13 @@ appsettings.json:
   - provide values to check against - if Validation = true
   - LifeSpan: ClockSkew problem *must* be adressed to avoid minimum of 5min lifespan of jwt
 
+Also, dont forget to activate middleware in startup.cs (keep order)
+```csharp  
+app.UseAuthentication();
+app.UseAuthorization();
+app.UseEndpoints(endpoints => 
+...
+```
 
 ### Configure swagger
 #### API Versioning
