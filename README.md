@@ -1,7 +1,74 @@
 # Rki.CancerDataGenerator
 Generator for German Clinical Cancer Data<br>
 ## Documentation
-swagger.authentification.jwt.code analyzer
+swagger.authentification.jwt.manage user secrets
+
+### JwtAuthenticator service
+JwtAuthenticator.cs
+```csharp
+        public string IsUserAuthenticated(string username, string passwd)
+        {
+            if (!Users.Any(x => x.Username == username && x.Password == passwd))
+            {
+                return null;
+            }
+
+            var currentUser = Users.Where(x => x.Username == username).First();
+            var token = JwtBuilder.Create()
+                      .WithAlgorithm(new HMACSHA256Algorithm()) // symmetric
+                      .WithSecret(_jwtTokenPasswd)
+                      .Id(currentUser.Id)
+                      .IssuedAt(DateTimeOffset.UtcNow.ToUnixTimeSeconds())
+                      .ExpirationTime(DateTimeOffset.UtcNow.AddHours(2).ToUnixTimeSeconds())
+                      .Issuer("dexterDSD")  // insert app url here
+                      .Subject(currentUser.Username)
+                      .AddClaim("roles", currentUser.Roles)
+                      .Encode();
+            return token;
+        }
+        
+        ...
+        
+            public UserJwt? DecodeToken(string token)
+            {
+                if (string.IsNullOrEmpty(token))
+                    return null;
+                var json = JwtBuilder.Create()
+                         .WithAlgorithm(new HMACSHA256Algorithm()) // symmetric
+                         .WithSecret(_jwtTokenPasswd)
+                         .MustVerifySignature()
+                         .Decode(token);
+                var userJwt = Helper.StaticHelper.FromJson<UserJwt>(json);
+                return userJwt;
+            }
+
+            public struct UserJwt
+            {
+                // must match claims
+                public string jti { get; set; }
+                public string iat { get; set; }
+                public string exp { get; set; }
+                public string iss { get; set; }
+                public string sub { get; set; }
+                public string[] roles { get; set; }
+            }        
+        
+```
+- service source -> https://github.com/jwt-dotnet/jwt
+- service is called from controller upon receiving a username / passwd for **authetnification**
+  - if there is no match -> null
+  - if username is ok, construct a new jwt, adjust expiration and sign with secret (encrypting must match setting in startup)
+  - roles can be assigned as text, they are recognized in the controller when receiving the token to authorize
+- token **decoding** is optional
+  - uses a *struct* for decoding, composed off of the claims that are assigned to the token
+  - UserJwt class makes the token manageable, if needed
+- the service is registered as singleton in startup (interface required) 
+
+
+### manage user secrets
+see here https://dev.azure.com/dexterRki/SeroObs/_workitems/edit/142
+
+
 
 ### packages
 Required: (targetNET = 5.0)
@@ -27,7 +94,7 @@ Required: (targetNET = 5.0)
   </PropertyGroup>
   
 ```
-- note the `IncludeOpenAPIAnalyzers` element
+- note the `IncludeOpenAPIAnalyzers` element -> https://docs.microsoft.com/en-us/aspnet/core/web-api/advanced/analyzers?view=aspnetcore-5.0&tabs=visual-studio
 - when inluded, VS will give advice on each build upon common misconceptions in api construction 
 
 [API Versioning](#api-versioning)
@@ -57,7 +124,7 @@ Startup.cs
                     };
                 });
 ```
-- Register own JwtAuthenticator as singleton service including Interface (ref)
+- Register own JwtAuthenticator as singleton service including Interface [details here](#jwtauthenticator-service)
 - Add Authenticator service with jwt Options
 - TokenValidationParameters define how jwt are processed
 - IssuerSigningKey
@@ -117,6 +184,7 @@ Startup.cs
                 o.SubstituteApiVersionInUrl = true;
             });
 ```
+ - see https://codingfreaks.de/dotnet-core-api-versioning/
  - create a version template for recurring use (title, description)
  - each version gets inc number (format can be v1.5 too) and a version doc that can be selected in dropdown
  - API Versioniong must be enabled to have easy version access in controllers
