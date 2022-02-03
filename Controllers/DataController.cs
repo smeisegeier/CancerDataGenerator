@@ -20,8 +20,6 @@ namespace Rki.CancerDataGenerator.Controllers
     [Route(Globals.ROUTESTRING)]
     public class DataController : ControllerBase
     {
-        public ADT_GEKID ADT_GEKID => new Modelbuilder(_generator).ADT_GEKID;
-
         public DataController(IWebHostEnvironment webHostEnvironment, AdtGekidDbContext context, IJwtAuthenticator jwtAuthenticator)
             : base(webHostEnvironment, context, jwtAuthenticator) { }
 
@@ -36,7 +34,7 @@ namespace Rki.CancerDataGenerator.Controllers
         {
             //ADT_GEKID a = getNewRootObject();
             // also give contentType to trigger browser addons for xml view
-            return Content(Globals.GetXmlStringFromObject(ADT_GEKID), "application/xml");
+            return Content(Globals.GetXmlStringFromObject(_adtgekid), "application/xml");
 
         }
 
@@ -83,7 +81,7 @@ namespace Rki.CancerDataGenerator.Controllers
             _generator.Configuration = configuration;
             //ADT_GEKID a = getNewRootObject();
             // also give contentType to trigger browser addons for xml view
-            return Content(Globals.GetXmlStringFromObject(ADT_GEKID), "application/xml");
+            return Content(Globals.GetXmlStringFromObject(_adtgekid), "application/xml");
         }
 
     }

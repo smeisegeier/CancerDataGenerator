@@ -2,6 +2,9 @@
 
 namespace Rki.CancerDataGenerator.BLL
 {
+    /// <summary>
+    /// May only reside within a Generator
+    /// </summary>
     public class Configuration
     {
         public DateTime PublishDate => new DateTime(2020, 01, 01);
@@ -36,6 +39,9 @@ namespace Rki.CancerDataGenerator.BLL
 
         /// <summary>DayRange</summary>
         /// <example>3650</example>
-        public int Meldedatum_DaysRange { get; set; } = 10 * 365; 
+        public int Meldedatum_DaysRange { get; set; } = 10 * 365;
+
+        public int GetDaysToPublishDate(DateTime start) => (PublishDate - start).Days;
+        public int GetYearsToPublishDate(DateTime start) => GetDaysToPublishDate(start) / 365;
     }
 }

@@ -11,6 +11,7 @@ namespace Rki.CancerDataGenerator.Models.Dimensions
 {
     /// <summary>
     /// This class summarizes all items to generate random data in various distributions (random, normal)
+    /// Requires context
     /// Glossary:
     /// - get -> 
     /// - fetch -> fetch an existing entry following random spread
@@ -61,14 +62,8 @@ namespace Rki.CancerDataGenerator.Models.Dimensions
         public int CreateRandomValue(int min, int max) => _random.Next(min, max + 1);
         public int CreateRandomValue(int delta) => _random.Next(delta * -1, delta);
 
-        // HACK this should not be here (SOC!)
-        public int CreateFixedValuePatientCount() => Configuration.Patient_Count;
-
         public DateTime CreateRandomDate_Meldedatum() => createRandomDate(10 * 365, Configuration.Meldedatum_BaseDate);
         public DateTime CreateRandomDate_Geburtsdatum() => createRandomDate(40 * 365, new DateTime(1970, 01, 01));
-
-        public int GetDaysToPublishDate(DateTime start) => (Configuration.PublishDate - start).Days;
-        public int GetYearsToPublishDate(DateTime start) => GetDaysToPublishDate(start) / 365;
 
         public int GetMeldungCountPerAge(int age)
         {

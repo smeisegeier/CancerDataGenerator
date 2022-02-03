@@ -11,7 +11,6 @@ namespace Rki.CancerDataGenerator.BLL
     {
         private Generator _generator { get; }
 
-        // TODO config handling must be improved
         private Configuration _config => _generator.Configuration;
 
         public ADT_GEKID ADT_GEKID { get; set; }
@@ -26,7 +25,7 @@ namespace Rki.CancerDataGenerator.BLL
         {
             var obj = new ADT_GEKID();
             obj.Menge_Patient = Enumerable
-                .Range(1, _generator.CreateFixedValuePatientCount())
+                .Range(1, _config.Patient_Count)
                 .Select(index => Create_Patient())
                 .ToList();
             return obj;
@@ -37,7 +36,8 @@ namespace Rki.CancerDataGenerator.BLL
             var obj = new Patient();
             obj.Anmerkung = _generator.FetchRandomDimensionItem<Quote>(null, _config.Text_ProbMissing)?.quote;
             obj.Patienten_Stammdaten = Create_Patienten_Stammdaten();
-            int _meldungCount = _generator.GetMeldungCountPerAge(obj.Patienten_Stammdaten._PatientAgeInYears);
+            // HACK replace /w a function
+            int _meldungCount = _generator.GetMeldungCountPerAge(obj.Patienten_Stammdaten.TEST_Alter);
 
             obj.Menge_Meldung = Enumerable
                 .Range(1, _meldungCount)
@@ -153,10 +153,11 @@ namespace Rki.CancerDataGenerator.BLL
         public Patienten_Stammdaten Create_Patienten_Stammdaten()
         {
             var obj = new Patienten_Stammdaten();
-            obj._patientBirthdate = _generator.CreateRandomDate_Geburtsdatum();
-            obj._PatientAgeInYears = _generator.GetYearsToPublishDate(obj._patientBirthdate);
-            obj.Patienten_Geburtsdatum = obj._patientBirthdate.ToShortDateString();
-            obj.TEST_Alter = obj._PatientAgeInYears;
+            var patientBirthdate = _generator.CreateRandomDate_Geburtsdatum();
+            var patientAgeInYears = _config.GetYearsToPublishDate(patientBirthdate);
+
+            obj.Patienten_Geburtsdatum = patientBirthdate.ToShortDateString();
+            obj.TEST_Alter = patientAgeInYears;
             obj.Patient_ID = Guid.NewGuid().ToString();
             return obj;
         }
