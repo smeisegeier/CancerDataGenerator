@@ -1,4 +1,4 @@
-# CancerDataGenerator (draft)
+# CancerDataGenerator (<sub><sup>DRAFT</sup></sub>)
 Generator for German Clinical Cancer Data<br>
 ## Goal
 - produce synthetic cancer data according to official data schemes for transmission
