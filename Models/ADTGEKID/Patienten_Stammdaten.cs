@@ -13,7 +13,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
 
         public PatientPatienten_StammdatenPatienten_Geschlecht Patienten_Geschlecht { get; set; }
 
-
+        [XmlElement(DataType = "date")]
         public DateTime Patienten_Geburtsdatum { get; set; }
 
 

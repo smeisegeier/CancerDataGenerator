@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Xml.Serialization;
 
 namespace Rki.CancerDataGenerator.Models.ADTGEKID
 {
@@ -10,6 +11,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
 
         public PatientMeldung() { }
 
+        [XmlElement(DataType = "date")] 
         public DateTime Meldedatum { get; set; }
 
         public PatientMeldungMeldebegruendung Meldebegruendung { get; set; }
