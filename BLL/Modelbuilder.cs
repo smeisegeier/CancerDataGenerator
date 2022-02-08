@@ -36,8 +36,7 @@ namespace Rki.CancerDataGenerator.BLL
             var obj = new Patient();
             obj.Anmerkung = _generator.FetchRandomDimensionItem<Quote>(null, _config.Text_ProbMissing)?.quote;
             obj.Patienten_Stammdaten = Create_Patienten_Stammdaten();
-            // HACK replace /w a function
-            int _meldungCount = _generator.GetMeldungCountPerAge(obj.Patienten_Stammdaten.TEST_Alter);
+            int _meldungCount = _generator.GetMeldungCountPerAge(_config.GetTimeToPublishDateInYears(obj.Patienten_Stammdaten.Patienten_Geburtsdatum));
 
             obj.Menge_Meldung = Enumerable
                 .Range(1, _meldungCount)
@@ -50,7 +49,7 @@ namespace Rki.CancerDataGenerator.BLL
         {
             var obj = new PatientMeldung();
 
-            obj.Meldedatum = _generator.CreateRandomDate_Meldedatum().ToShortDateString();
+            obj.Meldedatum = _generator.CreateRandomDate_Meldedatum();
             obj.Meldebegruendung = _generator.FetchRandomEnumItem<PatientMeldungMeldebegruendung>();
             obj.Meldeanlass = _generator.FetchRandomEnumItem<PatientMeldungMeldeanlass>();
             obj.Diagnose = Create_PatientMeldungDiagnose();
@@ -153,11 +152,7 @@ namespace Rki.CancerDataGenerator.BLL
         public Patienten_Stammdaten Create_Patienten_Stammdaten()
         {
             var obj = new Patienten_Stammdaten();
-            var patientBirthdate = _generator.CreateRandomDate_Geburtsdatum();
-            var patientAgeInYears = _config.GetYearsToPublishDate(patientBirthdate);
-
-            obj.Patienten_Geburtsdatum = patientBirthdate.ToShortDateString();
-            obj.TEST_Alter = patientAgeInYears;
+            obj.Patienten_Geburtsdatum  = _generator.CreateRandomDate_Geburtsdatum();
             obj.Patient_ID = Guid.NewGuid().ToString();
             return obj;
         }

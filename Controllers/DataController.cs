@@ -1,16 +1,11 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Hosting;
+﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using Microsoft.Net.Http.Headers;
 using Rki.CancerDataGenerator.BLL;
 using Rki.CancerDataGenerator.DAL;
-using Rki.CancerDataGenerator.Models.ADTGEKID;
 using Rki.CancerDataGenerator.Services;
-using static Rki.CancerDataGenerator.Services.User;
+using Rki.CancerDataGenerator.Helper;
 
-// https://stackoverflow.com/questions/60084877/swagger-not-finding-apiversion-ed-actions
 
 namespace Rki.CancerDataGenerator.Controllers
 {
@@ -34,7 +29,7 @@ namespace Rki.CancerDataGenerator.Controllers
         {
             //ADT_GEKID a = getNewRootObject();
             // also give contentType to trigger browser addons for xml view
-            return Content(Globals.GetXmlStringFromObject(_adtgekid), "application/xml");
+            return Content(StaticHelper.GetXmlStringFromObject(_adtgekid), "application/xml");
 
         }
 
@@ -79,9 +74,8 @@ namespace Rki.CancerDataGenerator.Controllers
 
 
             _generator.Configuration = configuration;
-            //ADT_GEKID a = getNewRootObject();
             // also give contentType to trigger browser addons for xml view
-            return Content(Globals.GetXmlStringFromObject(_adtgekid), "application/xml");
+            return Content(StaticHelper.GetXmlStringFromObject(_adtgekid), "application/xml");
         }
 
     }

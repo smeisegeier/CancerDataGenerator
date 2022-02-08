@@ -18,6 +18,7 @@ using JWT;
 using JWT.Serializers;
 using JWT.Builder;
 using Rki.CancerDataGenerator.Services;
+using Rki.CancerDataGenerator.Helper;
 
 namespace Rki.CancerDataGenerator.Controllers
 {
@@ -34,19 +35,17 @@ namespace Rki.CancerDataGenerator.Controllers
         [HttpGet]
         public IActionResult Details()
         {
-            ADT_GEKID a = null;
             // also give contentType to trigger browser addons for xml view
-            return Content(Globals.GetXmlStringFromObject(a), "application/xml");
+            return Content(StaticHelper.GetXmlStringFromObject(_adtgekid), "application/xml");
         }
 
         [HttpGet]
         public IActionResult Validate()
         {
-            ADT_GEKID a = null;
-            var xml = Globals.GetXmlStringFromObject(a);
-            var messages = Globals.ValidateXml(xml, Globals.XSDNAMESPACE, Globals.XSDPATHRELATIVE);
+            var xml = StaticHelper.GetXmlStringFromObject(_adtgekid);
+            var messages = StaticHelper.ValidateXml(xml, Globals.XSDNAMESPACE, Globals.XSDPATHRELATIVE);
 
-            return Content(Globals.ValidationMessageItem.PrintItemList(messages));
+            return Content(StaticHelper.ValidationMessageItem.PrintItemList(messages));
         }
 
 

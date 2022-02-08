@@ -1,10 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace Rki.CancerDataGenerator.Models.ADTGEKID
 {
     public partial class Histologie_Typ
     {
-        public string Tumor_Histologiedatum { get; set; }
+        public DateTime Tumor_Histologiedatum { get; set; }
 
         
         public string Histologie_EinsendeNr { get; set; }
@@ -50,18 +51,5 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         [System.Xml.Serialization.XmlAttributeAttribute()]
         public string Histologie_ID { get; set; }
 
-
-        public static Histologie_Typ GetItem()
-        {
-            var a = new Histologie_Typ();
-            a.Grading = Histologie_TypGrading.B;
-            a.GradingSpecified = true;
-            a.Histologie_EinsendeNr = "1e";
-            a.Histologie_ID = "1";
-            a.LK_befallen = "xde";
-            a.LK_untersucht = "ka";
-            a.Morphologie_Code = "MORPH";
-            return a;
-        }
     }
 }

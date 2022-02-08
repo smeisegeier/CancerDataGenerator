@@ -10,7 +10,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
 
         public PatientMeldung() { }
 
-        public string Meldedatum { get; set; }
+        public DateTime Meldedatum { get; set; }
 
         public PatientMeldungMeldebegruendung Meldebegruendung { get; set; }
 

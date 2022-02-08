@@ -41,7 +41,7 @@ namespace Rki.CancerDataGenerator.BLL
         /// <example>3650</example>
         public int Meldedatum_DaysRange { get; set; } = 10 * 365;
 
-        public int GetDaysToPublishDate(DateTime start) => (PublishDate - start).Days;
-        public int GetYearsToPublishDate(DateTime start) => GetDaysToPublishDate(start) / 365;
+        public int GetTimeToPublishDateInDays(DateTime start) => (PublishDate - start).Days;
+        public int GetTimeToPublishDateInYears(DateTime start) => GetTimeToPublishDateInDays(start) / 365;
     }
 }
