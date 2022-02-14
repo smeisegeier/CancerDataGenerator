@@ -18,7 +18,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
 
         /* Attribute */
         [XmlAttribute]
-        public Schema_Version Schema_Version { get; init; } = Schema_Version.Item211;
+        public Schema_Version Schema_Version { get; init; } = Schema_Version.Item300RKI;
 
         [XmlAttribute("schemaLocation", Namespace = Globals.XSINAMESPACE)]
         public string schemaLocation { get; init; } = $"{Globals.XSDNAMESPACE} {Globals.XSDFILENAME}";
@@ -2153,8 +2153,14 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         [XmlEnum("2.2.0")]
         Item220,
 
-
         [XmlEnum("2.2.1")]
-        Item221
+        Item221,
+
+        [XmlEnum("3.0.0")]
+        Item300,
+
+        [XmlEnum("3.0.0-RKI")]
+        Item300RKI
+
     }
 }
