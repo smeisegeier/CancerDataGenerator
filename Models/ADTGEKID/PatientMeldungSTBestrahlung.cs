@@ -23,15 +23,6 @@
 
         
         public PatientMeldungSTBestrahlungST_Applikationsart ST_Applikationsart { get; set; }
-
         
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool ST_ApplikationsartSpecified { get; set; }
-
-        
-        public Strahlendosis_Typ ST_Gesamtdosis { get; set; }
-
-        
-        public Strahlendosis_Typ ST_Einzeldosis { get; set; }
     }
 }

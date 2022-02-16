@@ -37,10 +37,6 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         public List<PatientMeldungVerlauf> Menge_Verlauf { get; set; }
 
 
-        [System.Xml.Serialization.XmlArrayItemAttribute("Tumorkonferenz", IsNullable = false)]
-        public List<PatientMeldungTumorkonferenz> Menge_Tumorkonferenz { get; set; }
-
-
         [System.Xml.Serialization.XmlArrayItemAttribute("Zusatzitem", IsNullable = false)]
         public PatientMeldungZusatzitem[] Menge_Zusatzitem { get; set; }
 
@@ -51,10 +47,5 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         [System.Xml.Serialization.XmlAttributeAttribute()]
         public string Meldung_ID { get; set; }
 
-        /*
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string Melder_ID { get; set; }
-
-        */
     }
 }

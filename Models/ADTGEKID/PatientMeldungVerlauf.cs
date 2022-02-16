@@ -26,13 +26,10 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         [System.Xml.Serialization.XmlArrayItemAttribute("Fernmetastase", IsNullable = false)]
         public Menge_FM_TypFernmetastase[] Menge_FM { get; set; }
 
-        public Allgemeiner_Leistungszustand_Typ Allgemeiner_Leistungszustand { get; set; }
 
         public Modul_Prostata_Typ Modul_Prostata { get; set; }
 
         public Modul_Malignes_Melanom_Typ Modul_Malignes_Melanom { get; set; }
-
-        public Modul_Allgemein_Typ Modul_Allgemein { get; set; }
 
         public PatientMeldungVerlaufTod Tod { get; set; }
 

@@ -99,7 +99,6 @@ namespace Rki.CancerDataGenerator.BLL
             obj.Primaertumor_Diagnosetext = _generator.FetchRandomDimensionItem<Quote>(null, _config.Text_ProbMissing)?.quote;
             obj.Primaertumor_Topographie_ICD_O_Version = _generator.FetchRandomEnumItem<PatientMeldungDiagnosePrimaertumor_Topographie_ICD_O_Version>();
             obj.Seitenlokalisation = _generator.FetchRandomEnumItem<Seitenlokalisation_Typ>();
-            obj.Allgemeiner_Leistungszustand = _generator.FetchRandomEnumItem<Allgemeiner_Leistungszustand_Typ>();
 
             /* TNM */
             obj.TNM_ID = Guid.NewGuid().ToString();
@@ -121,8 +120,6 @@ namespace Rki.CancerDataGenerator.BLL
             obj.HormonrezeptorStatus_Oestrogen = _generator.FetchRandomEnumItem<Hormonrezeptor_Typ>();
             obj.HormonrezeptorStatus_Progesteron = _generator.FetchRandomEnumItem<Hormonrezeptor_Typ>();
             obj.Her2neuStatus = _generator.FetchRandomEnumItem<Hormonrezeptor_Typ>();
-            obj.PraeopDrahtmarkierung = _generator.FetchRandomEnumItem<Modul_Mamma_TypPraeopDrahtmarkierung>();
-            obj.IntraopPraeparatkontrolle = _generator.FetchRandomEnumItem<Modul_Mamma_TypIntraopPraeparatkontrolle>();
             obj.TumorgroesseInvasiv = ((int)_generator.CreateNormalValueUponMean(230, 10)).ToString();
             obj.TumorgroesseDCIS = ((int)_generator.CreateNormalValueUponMean(120, 10)).ToString();
             return obj;

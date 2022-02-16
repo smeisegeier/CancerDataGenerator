@@ -36,10 +36,6 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         public Seitenlokalisation_Typ Seitenlokalisation { get; set; }
 
         
-        [System.Xml.Serialization.XmlArrayItemAttribute("Fruehere_Tumorerkrankung", IsNullable = false)]
-        public PatientMeldungDiagnoseFruehere_Tumorerkrankung[] Menge_Fruehere_Tumorerkrankung { get; set; }
-
-        
         [System.Xml.Serialization.XmlArrayItemAttribute("Histologie", IsNullable = false)]
         public Histologie_Typ[] Menge_Histologie { get; set; }
 
@@ -68,12 +64,6 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
 
         
         public Modul_Malignes_Melanom_Typ Modul_Malignes_Melanom { get; set; }
-
-        
-        public Modul_Allgemein_Typ Modul_Allgemein { get; set; }
-
-        
-        public Allgemeiner_Leistungszustand_Typ Allgemeiner_Leistungszustand { get; set; }
 
         
         public string Anmerkung { get; set; }

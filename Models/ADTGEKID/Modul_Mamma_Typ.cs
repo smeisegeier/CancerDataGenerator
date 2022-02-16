@@ -16,16 +16,8 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
 
         
         public Hormonrezeptor_Typ Her2neuStatus { get; set; }
-
-        
-        public Modul_Mamma_TypPraeopDrahtmarkierung PraeopDrahtmarkierung { get; set; }
-
-       
-        public Modul_Mamma_TypIntraopPraeparatkontrolle IntraopPraeparatkontrolle { get; set; }
-
         
         public string TumorgroesseInvasiv { get; set; }
-
        
         public string TumorgroesseDCIS { get; set; }
     }

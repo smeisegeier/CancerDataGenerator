@@ -46,13 +46,6 @@
         public Residualstatus_Typ Residualstatus { get; set; }
 
         
-        [System.Xml.Serialization.XmlArrayItemAttribute("SYST_Nebenwirkung", IsNullable = false)]
-        public Nebenwirkung_Typ[] Menge_Nebenwirkung { get; set; }
-
-        
-        public Modul_Allgemein_Typ Modul_Allgemein { get; set; }
-
-        
         public string Anmerkung { get; set; }
 
         
