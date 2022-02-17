@@ -28,7 +28,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\KKrModel_DEPR\Snowflakes\" />
     <Folder Include="wwwroot\files\" />
   </ItemGroup>
 
