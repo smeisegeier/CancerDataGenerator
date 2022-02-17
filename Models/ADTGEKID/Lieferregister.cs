@@ -1,18 +1,20 @@
-﻿namespace Rki.CancerDataGenerator.Models.ADTGEKID
+﻿using System.Xml.Serialization;
+
+namespace Rki.CancerDataGenerator.Models.ADTGEKID
 {
     public partial class Lieferregister
     {
        
 
-        [System.Xml.Serialization.XmlAttributeAttribute()]
+        [XmlAttribute]
         public string Register_ID { get; set; }
 
 
-        [System.Xml.Serialization.XmlAttributeAttribute()]
+        [XmlAttribute]
         public string Software_ID { get; set; }
 
 
-        [System.Xml.Serialization.XmlAttributeAttribute()]
+        [XmlAttribute]
         public string Installations_ID { get; set; }
     }
 }

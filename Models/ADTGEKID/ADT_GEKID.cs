@@ -7,15 +7,17 @@ using System.Xml.Serialization;
 namespace Rki.CancerDataGenerator.Models.ADTGEKID
 {
     [XmlRoot(Namespace = Globals.XSDNAMESPACE, IsNullable = false)]
-    public partial class ADT_GEKID : AdtgekidBase
+    public class ADT_GEKID : AdtgekidBase
     {
         public ADT_GEKID() { }
 
         public List<Patient> Menge_Patient { get; set; }
 
-        public Lieferregister Absender { get; set; }
+        public Lieferregister Lieferregister { get; set; }
 
-        /* Attribute */
+        public Datum_Typ Lieferdatum { get; set; }
+
+
         [XmlAttribute]
         public Schema_Version Schema_Version { get; init; } = Schema_Version.Item300RKI;
 
@@ -40,6 +42,12 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
     {
         N,
         U
+    }
+
+    public enum Datumsgenauigkeit_Typ
+    {
+        E,
+        T
     }
 
     public enum JNU_Typ

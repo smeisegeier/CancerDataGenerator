@@ -14,7 +14,6 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         
         public Hormonrezeptor_Typ HormonrezeptorStatus_Progesteron { get; set; }
 
-        
         public Hormonrezeptor_Typ Her2neuStatus { get; set; }
         
         public string TumorgroesseInvasiv { get; set; }

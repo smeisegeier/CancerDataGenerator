@@ -28,6 +28,8 @@ namespace Rki.CancerDataGenerator.BLL
                 .Range(1, _config.Patient_Count)
                 .Select(index => Create_Patient())
                 .ToList();
+            obj.Lieferregister = Create_Lieferregister();
+            obj.Lieferdatum = new Datum_Typ(_generator.CreateRandomDate_Meldedatum(), Datumsgenauigkeit_Typ.E);
             return obj;
         }
 
@@ -36,7 +38,7 @@ namespace Rki.CancerDataGenerator.BLL
             var obj = new Patient();
             //obj.Anmerkung = _generator.FetchRandomDimensionItem<Quote>(null, _config.Text_ProbMissing)?.quote;
             obj.Patienten_Stammdaten = Create_Patienten_Stammdaten();
-            int _meldungCount = _generator.GetMeldungCountPerAge(_config.GetTimeToPublishDateInYears(obj.Patienten_Stammdaten.Patienten_Geburtsdatum));
+            int _meldungCount = 1; //_generator.GetMeldungCountPerAge(_config.GetTimeToPublishDateInYears(obj.Patienten_Stammdaten.Patienten_Geburtsdatum));
 
             obj.Menge_Meldung = Enumerable
                 .Range(1, _meldungCount)
@@ -45,13 +47,10 @@ namespace Rki.CancerDataGenerator.BLL
             return obj;
         }
 
-        private PatientMeldung Create_PatientMeldung()
+        private Tumor Create_PatientMeldung()
         {
-            var obj = new PatientMeldung();
+            var obj = new Tumor();
 
-            obj.Meldedatum = _generator.CreateRandomDate_Meldedatum();
-            obj.Meldebegruendung = _generator.FetchRandomEnumItem<PatientMeldungMeldebegruendung>();
-            obj.Meldeanlass = _generator.FetchRandomEnumItem<PatientMeldungMeldeanlass>();
             obj.Diagnose = Create_PatientMeldungDiagnose();
 
             /*  Verlauf */
@@ -60,7 +59,7 @@ namespace Rki.CancerDataGenerator.BLL
                 .Select(index => Create_PatientMeldungVerlauf())
                 .ToList();
 
-            obj.Meldung_ID = Guid.NewGuid().ToString();
+            obj.Tumor_ID = Guid.NewGuid().ToString();
 
 
             return obj;
@@ -147,8 +146,17 @@ namespace Rki.CancerDataGenerator.BLL
         public Patienten_Stammdaten Create_Patienten_Stammdaten()
         {
             var obj = new Patienten_Stammdaten();
-            obj.Patienten_Geburtsdatum  = _generator.CreateRandomDate_Geburtsdatum();
+            obj.Patienten_Geburtsdatum  = new Datum_Typ(_generator.CreateRandomDate_Geburtsdatum(), Datumsgenauigkeit_Typ.T);
             obj.Patient_ID = Guid.NewGuid().ToString();
+            // TODO create Random GKZ
+            obj.Inzidenzort = "00114";
+            return obj;
+        }
+
+        public Lieferregister Create_Lieferregister()
+        {
+            var obj = new Lieferregister();
+            obj.Register_ID = Guid.NewGuid().ToString();
             return obj;
         }
     }

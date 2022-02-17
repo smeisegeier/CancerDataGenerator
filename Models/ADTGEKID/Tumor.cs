@@ -6,17 +6,12 @@ using System.Xml.Serialization;
 
 namespace Rki.CancerDataGenerator.Models.ADTGEKID
 {
-    public partial class PatientMeldung : AdtgekidBase
+    public partial class Tumor : AdtgekidBase
     {
 
-        public PatientMeldung() { }
+        public Tumor() { }
 
-        [XmlElement(DataType = "date")] 
-        public DateTime Meldedatum { get; set; }
 
-        public PatientMeldungMeldebegruendung Meldebegruendung { get; set; }
-
-        public PatientMeldungMeldeanlass Meldeanlass { get; set; }
 
         public PatientMeldungDiagnose Diagnose { get; set; }
 
@@ -42,7 +37,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
 
 
         [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string Meldung_ID { get; set; }
+        public string Tumor_ID { get; set; }
 
     }
 }

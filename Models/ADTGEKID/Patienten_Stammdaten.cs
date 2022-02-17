@@ -7,7 +7,7 @@ using System.Xml.Serialization;
 
 namespace Rki.CancerDataGenerator.Models.ADTGEKID
 {
-    public partial class Patienten_Stammdaten : AdtgekidBase
+    public class Patienten_Stammdaten : AdtgekidBase
     {
 
         public Patienten_Stammdaten() { }
@@ -15,18 +15,18 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
 
         public PatientPatienten_StammdatenPatienten_Geschlecht Patienten_Geschlecht { get; set; }
 
-        [XmlElement(DataType = "date")]
-        public DateTime Patienten_Geburtsdatum { get; set; }
+        public Datum_Typ Patienten_Geburtsdatum { get; set; }
 
 
+        // TODO needs refinement
         private string _Inzidenzort;
         public string Inzidenzort
         {
             get { return _Inzidenzort; }
-            set { _Inzidenzort = Helper.StaticHelper.CheckIfSchemaElementMatchesRegex(value, @"\d{6}"); }
+            set { _Inzidenzort = Helper.StaticHelper.CheckIfSchemaElementMatchesRegex(value, @"\d{5}"); }
         }
 
-        [System.Xml.Serialization.XmlAttributeAttribute()]
+        [XmlAttribute()]
         public string Patient_ID { get; set; }
 
 

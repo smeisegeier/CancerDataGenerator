@@ -30,7 +30,7 @@ namespace Rki.CancerDataGenerator.Controllers
 
 
         [HttpGet]
-        public IActionResult Index() => View();
+        public IActionResult Index() => RedirectToAction(nameof(Details));
 
         [HttpGet]
         public IActionResult Details()
