@@ -34,7 +34,7 @@ namespace Rki.CancerDataGenerator.BLL
         private Patient Create_Patient()
         {
             var obj = new Patient();
-            obj.Anmerkung = _generator.FetchRandomDimensionItem<Quote>(null, _config.Text_ProbMissing)?.quote;
+            //obj.Anmerkung = _generator.FetchRandomDimensionItem<Quote>(null, _config.Text_ProbMissing)?.quote;
             obj.Patienten_Stammdaten = Create_Patienten_Stammdaten();
             int _meldungCount = _generator.GetMeldungCountPerAge(_config.GetTimeToPublishDateInYears(obj.Patienten_Stammdaten.Patienten_Geburtsdatum));
 
@@ -101,9 +101,8 @@ namespace Rki.CancerDataGenerator.BLL
             obj.Seitenlokalisation = _generator.FetchRandomEnumItem<Seitenlokalisation_Typ>();
 
             /* TNM */
-            obj.TNM_ID = Guid.NewGuid().ToString();
-            obj.cTNM = Create_TNM_Typ(obj.TNM_ID);
-            obj.pTNM = Create_TNM_Typ(obj.TNM_ID);
+            obj.cTNM = Create_TNM_Typ();
+            obj.pTNM = Create_TNM_Typ();
 
             /* Module */
             obj.Modul_Mamma = Create_Modul_Mamma_Typ();
@@ -125,7 +124,7 @@ namespace Rki.CancerDataGenerator.BLL
             return obj;
         }
 
-        private TNM_Typ Create_TNM_Typ(string tnm_id)
+        private TNM_Typ Create_TNM_Typ()
         {
             var obj = new TNM_Typ();
             obj.TNM_Datum = _generator.CreateRandomDate_Meldedatum().ToShortDateString();
@@ -142,7 +141,6 @@ namespace Rki.CancerDataGenerator.BLL
             obj.TNM_V = _generator.FetchRandomEnumItem<TNM_TypTNM_V>();
             obj.TNM_Pn = _generator.FetchRandomEnumItem<TNM_TypTNM_Pn>();
             obj.TNM_S = _generator.FetchRandomEnumItem<TNM_TypTNM_S>();
-            obj.TNM_ID = tnm_id;
             return obj;
         }
 

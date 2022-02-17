@@ -18,9 +18,6 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
 
         public PatientMeldungMeldeanlass Meldeanlass { get; set; }
 
-
-        public PatientMeldungTumorzuordnung Tumorzuordnung { get; set; }
-
         public PatientMeldungDiagnose Diagnose { get; set; }
 
         [System.Xml.Serialization.XmlArrayItemAttribute("OP", IsNullable = false)]

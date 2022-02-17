@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Schema;
@@ -31,6 +32,17 @@ namespace Rki.CancerDataGenerator.Helper
             StringWriter sw = new StringWriter();
             xmlSerializer.Serialize(sw, model);
             return sw.ToString();
+        }
+
+
+        public static string CheckIfSchemaElementMatchesRegex(string value, string regex)
+        {
+            if (!new Regex(regex).IsMatch(value))
+            {
+                // what to do if mismatch?
+                throw new ArgumentException("Regex mismatch");
+            }
+            return value;
         }
 
 

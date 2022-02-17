@@ -7,9 +7,5 @@
 
         
         public Menge_FM_TypFernmetastaseFM_Lokalisation FM_Lokalisation { get; set; }
-
-        
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool FM_LokalisationSpecified { get; set; }
     }
 }

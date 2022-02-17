@@ -7,9 +7,6 @@
         public PatientMeldungOPOP_Intention OP_Intention { get; set; }
 
         
-        public string OP_Datum { get; set; }
-
-        
         [System.Xml.Serialization.XmlArrayItemAttribute("OP_OPS", IsNullable = false)]
         public string[] Menge_OPS { get; set; }
 

@@ -38,8 +38,5 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         public TNM_TypTNM_Pn TNM_Pn { get; set; }
 
         public TNM_TypTNM_S TNM_S { get; set; }
-
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string TNM_ID { get; set; }
     }
 }

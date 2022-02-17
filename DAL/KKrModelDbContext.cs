@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Rki.CancerDataGenerator.Models.KKrModel;
+using Rki.CancerDataGenerator.Models.KKrModel_DEPR;
 
 #nullable disable
 

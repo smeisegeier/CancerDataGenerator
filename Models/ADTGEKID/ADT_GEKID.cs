@@ -35,6 +35,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         RX,
     }
 
+    // TODO how to create this type?
     public enum Datum_NU_TypNU
     {
         N,

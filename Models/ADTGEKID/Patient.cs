@@ -16,8 +16,5 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         
         [System.Xml.Serialization.XmlArrayItemAttribute("Meldung", IsNullable = false)]
         public List<PatientMeldung> Menge_Meldung { get; set; }
-
-        
-        public string Anmerkung { get; set; }
     }
 }

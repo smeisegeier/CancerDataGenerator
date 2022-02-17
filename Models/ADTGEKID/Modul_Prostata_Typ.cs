@@ -7,9 +7,6 @@
         [System.Xml.Serialization.XmlElementAttribute(DataType = "date")]
         public System.DateTime DatumStanzen { get; set; }
 
-        [System.Xml.Serialization.XmlElementAttribute(DataType = "nonNegativeInteger")]
-        public string AnzahlStanzen { get; set; }
-
         public decimal PSA { get; set; }
     }
 }

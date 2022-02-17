@@ -15,11 +15,6 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         
         public ICD_Version_Typ Primaertumor_ICD_Version { get; set; }
 
-        // "Specified" annex causes bug in serializer. MUST be removed, up to now it is of no use.  
-        //[System.Xml.Serialization.XmlIgnoreAttribute()]
-        //public bool Primaertumor_ICD_VersionSpecified { get; set; }
-
-
         public string Primaertumor_Diagnosetext { get; set; }
 
         
