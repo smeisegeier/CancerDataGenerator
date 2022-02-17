@@ -2,16 +2,16 @@
 
 namespace Rki.CancerDataGenerator.Models.ADTGEKID
 {
-    public class PatientMeldungVerlauf : AdtgekidBase
+    public class Verlauf : AdtgekidBase
     {
-        public PatientMeldungVerlauf(){}
+        public Verlauf(){}
 
         public Histologie_Typ Histologie { get; set; }
         
         public TNM_Typ TNM { get; set; }
         
         [System.Xml.Serialization.XmlArrayItemAttribute("Weitere_Klassifikation", IsNullable = false)]
-        public Menge_Weitere_Klassifikation_TypWeitere_Klassifikation[] Menge_Weitere_Klassifikation { get; set; }
+        public Weitere_Klassifikation_Typ[] Menge_Weitere_Klassifikation { get; set; }
         
         public string Untersuchungsdatum_Verlauf { get; set; }
 
@@ -31,7 +31,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
 
         public Modul_Malignes_Melanom_Typ Modul_Malignes_Melanom { get; set; }
 
-        public PatientMeldungVerlaufTod Tod { get; set; }
+        public VerlaufTod Tod { get; set; }
 
         public string Anmerkung { get; set; }
 

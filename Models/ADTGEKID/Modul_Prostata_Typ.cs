@@ -4,8 +4,7 @@
     {
         public Modul_Prostata_TypGleasonScore GleasonScore { get; set; }
 
-        [System.Xml.Serialization.XmlElementAttribute(DataType = "date")]
-        public System.DateTime DatumStanzen { get; set; }
+        public Datum_Typ DatumStanzen { get; set; }
 
         public decimal PSA { get; set; }
     }

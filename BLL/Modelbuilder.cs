@@ -33,6 +33,13 @@ namespace Rki.CancerDataGenerator.BLL
             return obj;
         }
 
+        public Lieferregister Create_Lieferregister()
+        {
+            var obj = new Lieferregister();
+            obj.Register_ID = ISO3199_2.DE_TH;
+            return obj;
+        }
+
         private Patient Create_Patient()
         {
             var obj = new Patient();
@@ -40,18 +47,29 @@ namespace Rki.CancerDataGenerator.BLL
             obj.Patienten_Stammdaten = Create_Patienten_Stammdaten();
             int _meldungCount = 1; //_generator.GetMeldungCountPerAge(_config.GetTimeToPublishDateInYears(obj.Patienten_Stammdaten.Patienten_Geburtsdatum));
 
-            obj.Menge_Meldung = Enumerable
+            obj.Menge_Tumor = Enumerable
                 .Range(1, _meldungCount)
-                .Select(index => Create_PatientMeldung())
+                .Select(index => Create_Tumor())
                 .ToList();
             return obj;
         }
 
-        private Tumor Create_PatientMeldung()
+        public Patienten_Stammdaten Create_Patienten_Stammdaten()
+        {
+            var obj = new Patienten_Stammdaten();
+            obj.Geburtsdatum  = new Datum_Typ(_generator.CreateRandomDate_Geburtsdatum(), Datumsgenauigkeit_Typ.T);
+            obj.Patient_ID = Guid.NewGuid().ToString();
+            // TODO create Random GKZ
+            obj.Inzidenzort = "00114";
+            return obj;
+        }
+
+
+        private Tumor Create_Tumor()
         {
             var obj = new Tumor();
 
-            obj.Diagnose = Create_PatientMeldungDiagnose();
+            obj.Primärdiagnose = Create_Diagnose();
 
             /*  Verlauf */
             obj.Menge_Verlauf = Enumerable
@@ -60,39 +78,37 @@ namespace Rki.CancerDataGenerator.BLL
                 .ToList();
 
             obj.Tumor_ID = Guid.NewGuid().ToString();
-
-
             return obj;
         }
 
-        private PatientMeldungVerlauf Create_PatientMeldungVerlauf()
+        private Verlauf Create_PatientMeldungVerlauf()
         {
-            var obj = new PatientMeldungVerlauf();
+            var obj = new Verlauf();
             obj.Tod = Create_PatientMeldungVerlaufTod();
             return obj;
         }
 
-        private PatientMeldungVerlaufTod Create_PatientMeldungVerlaufTod()
+        private VerlaufTod Create_PatientMeldungVerlaufTod()
         {
-            var obj = new PatientMeldungVerlaufTod();
+            var obj = new VerlaufTod();
             obj.Sterbedatum = _generator.CreateRandomDate_Geburtsdatum().ToShortDateString();
             obj.Tod_tumorbedingt = _generator.FetchRandomEnumItem<JNU_Typ>();
             obj.Menge_Todesursache = Create_PatientMeldungVerlaufTodMenge_Todesursache();
             return obj;
         }
 
-        private PatientMeldungVerlaufTodMenge_Todesursache Create_PatientMeldungVerlaufTodMenge_Todesursache()
+        private VerlaufTodMenge_Todesursache Create_PatientMeldungVerlaufTodMenge_Todesursache()
         {
-            var obj = new PatientMeldungVerlaufTodMenge_Todesursache();
+            var obj = new VerlaufTodMenge_Todesursache();
             obj.Todesursache_ICD = new List<string>();
             obj.Todesursache_ICD.Add(_generator.FetchNormalDimensionItem<Icd>()?.icd_three_digits);
             return obj;
         }
 
-        private PatientMeldungDiagnose Create_PatientMeldungDiagnose()
+        private Diagnose Create_Diagnose()
         {
-            var obj = new PatientMeldungDiagnose();
-
+            var obj = new Diagnose();
+            obj.Diagnosedatum = new Datum_Typ(_generator.CreateRandomDate_Meldedatum(), Datumsgenauigkeit_Typ.T);
             obj.Primaertumor_ICD_Code = _generator.FetchNormalDimensionItem_Icd("02")?.icd_three_digits;
             obj.Primaertumor_ICD_Version = _generator.FetchRandomEnumItem<ICD_Version_Typ>(_config.IcdVersion_ProbMissing);
             obj.Primaertumor_Diagnosetext = _generator.FetchRandomDimensionItem<Quote>(null, _config.Text_ProbMissing)?.quote;
@@ -105,9 +121,31 @@ namespace Rki.CancerDataGenerator.BLL
 
             /* Module */
             obj.Modul_Mamma = Create_Modul_Mamma_Typ();
+            obj.Modul_Darm = Create_Modul_Darm_Typ();
+            obj.Modul_Prostata = Create_Modul_Prostata_Typ();
 
             obj.Diagnosesicherung = _generator.FetchRandomEnumItem<PatientMeldungDiagnoseDiagnosesicherung>(_config.Dsich_ProbMissing);
 
+            return obj;
+        }
+
+        private Modul_Prostata_Typ Create_Modul_Prostata_Typ()
+        {
+            var obj = new Modul_Prostata_Typ();
+            obj.PSA = _generator.CreateRandomValue(1, 100);
+            obj.DatumStanzen = new Datum_Typ(_generator.CreateRandomDate_Meldedatum(),Datumsgenauigkeit_Typ.T);
+            obj.GleasonScore = new Modul_Prostata_TypGleasonScore();
+            // TODO wtf
+            obj.GleasonScore.GleasonGradPrimaer = Modul_Prostata_TypGleasonScoreGleasonGradPrimaer.Item1;
+            obj.GleasonScore.GleasonGradSekundaer = Modul_Prostata_TypGleasonScoreGleasonGradSekundaer.Item2;
+            obj.GleasonScore.GleasonScoreErgebnis = Modul_Prostata_TypGleasonScoreGleasonScoreErgebnis.Item10;
+            return obj;
+        }
+
+        private Modul_Darm_Typ Create_Modul_Darm_Typ()
+        {
+            var obj = new Modul_Darm_Typ();
+            obj.RASMutation = _generator.FetchRandomEnumItem<Modul_Darm_TypRASMutation>();
             return obj;
         }
 
@@ -143,21 +181,5 @@ namespace Rki.CancerDataGenerator.BLL
             return obj;
         }
 
-        public Patienten_Stammdaten Create_Patienten_Stammdaten()
-        {
-            var obj = new Patienten_Stammdaten();
-            obj.Patienten_Geburtsdatum  = new Datum_Typ(_generator.CreateRandomDate_Geburtsdatum(), Datumsgenauigkeit_Typ.T);
-            obj.Patient_ID = Guid.NewGuid().ToString();
-            // TODO create Random GKZ
-            obj.Inzidenzort = "00114";
-            return obj;
-        }
-
-        public Lieferregister Create_Lieferregister()
-        {
-            var obj = new Lieferregister();
-            obj.Register_ID = Guid.NewGuid().ToString();
-            return obj;
-        }
     }
 }

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace Rki.CancerDataGenerator.Models.ADTGEKID
 {
-    public class PatientMeldungVerlaufTodMenge_Todesursache : AdtgekidBase
+    public class VerlaufTodMenge_Todesursache : AdtgekidBase
     {
-        public PatientMeldungVerlaufTodMenge_Todesursache(){}
+        public VerlaufTodMenge_Todesursache(){}
 
         // if this decoration is missing, output has <string> elements :o
         [System.Xml.Serialization.XmlElementAttribute(nameof(Todesursache_ICD))]

@@ -1,6 +1,6 @@
 ﻿namespace Rki.CancerDataGenerator.Models.ADTGEKID
 {
-    public partial class PatientMeldungOP
+    public partial class OP
     {
 
         

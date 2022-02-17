@@ -1,6 +1,6 @@
 ﻿namespace Rki.CancerDataGenerator.Models.ADTGEKID
 {
-    public partial class Menge_Weitere_Klassifikation_TypWeitere_Klassifikation
+    public partial class Weitere_Klassifikation_Typ
     {
 
         

@@ -13,24 +13,24 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
 
 
 
-        public PatientMeldungDiagnose Diagnose { get; set; }
+        public Diagnose Primärdiagnose { get; set; }
 
         [System.Xml.Serialization.XmlArrayItemAttribute("OP", IsNullable = false)]
-        public PatientMeldungOP[] Menge_OP { get; set; }
+        public OP[] Menge_OP { get; set; }
 
         [System.Xml.Serialization.XmlArrayItemAttribute("ST", IsNullable = false)]
-        public PatientMeldungST[] Menge_ST { get; set; }
+        public ST[] Menge_ST { get; set; }
 
         [System.Xml.Serialization.XmlArrayItemAttribute("SYST", IsNullable = false)]
-        public PatientMeldungSYST[] Menge_SYST { get; set; }
+        public SYST[] Menge_SYST { get; set; }
 
 
         [System.Xml.Serialization.XmlArrayItemAttribute("Verlauf", IsNullable = false)]
-        public List<PatientMeldungVerlauf> Menge_Verlauf { get; set; }
+        public List<Verlauf> Menge_Verlauf { get; set; }
 
 
         [System.Xml.Serialization.XmlArrayItemAttribute("Zusatzitem", IsNullable = false)]
-        public PatientMeldungZusatzitem[] Menge_Zusatzitem { get; set; }
+        public Zusatzitem[] Menge_Zusatzitem { get; set; }
 
 
         public string Anmerkung { get; set; }

@@ -13,9 +13,9 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         public Patienten_Stammdaten() { }
 
 
-        public PatientPatienten_StammdatenPatienten_Geschlecht Patienten_Geschlecht { get; set; }
+        public PatientPatienten_StammdatenPatienten_Geschlecht Geschlecht { get; set; }
 
-        public Datum_Typ Patienten_Geburtsdatum { get; set; }
+        public Datum_Typ Geburtsdatum { get; set; }
 
 
         // TODO needs refinement

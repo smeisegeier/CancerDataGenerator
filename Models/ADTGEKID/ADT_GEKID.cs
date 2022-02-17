@@ -25,6 +25,34 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         public string schemaLocation { get; init; } = $"{Globals.XSDNAMESPACE} {Globals.XSDFILENAME}";
     }
 
+    public enum ISO3199_2
+    {
+        [XmlEnum("DE-BY")]
+        DE_BY,
+        [XmlEnum("DE-BW")]
+        DE_BW,
+        [XmlEnum("DE-BE")]
+        DE_BE,
+        [XmlEnum("DE-TH")]
+        DE_TH,
+        [XmlEnum("DE-SH")]
+        DE_SH,
+        [XmlEnum("DE-SL")]
+        DE_SL,
+        [XmlEnum("DE-HB")]
+        DE_HB,
+        [XmlEnum("DE-NW")]
+        DE_NW,
+        [XmlEnum("DE-NI")]
+        DE_NI,
+        [XmlEnum("DE-BB")]
+        DE_BB,
+        [XmlEnum("DE-ST")]
+        DE_ST,
+        [XmlEnum("DE-RP")]
+        DE_RP
+    }
+
     public enum R_Typ
     {
         R0,

@@ -5,11 +5,11 @@ using System.Xml.Serialization;
 
 namespace Rki.CancerDataGenerator.Models.ADTGEKID
 {
-    public class PatientMeldungDiagnose : AdtgekidBase
+    public class Diagnose : AdtgekidBase
     {
-        public PatientMeldungDiagnose(){}
+        public Diagnose(){}
 
-        public string TNM_ID { get; set; }
+        public Datum_Typ Diagnosedatum { get; set; }
 
         public string Primaertumor_ICD_Code { get; set; }
         
@@ -24,18 +24,17 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         
         public string Primaertumor_Topographie_ICD_O_Freitext { get; set; }
         
-        public string Diagnosedatum { get; set; }
-        
+       
         public PatientMeldungDiagnoseDiagnosesicherung Diagnosesicherung { get; set; }
         
         public Seitenlokalisation_Typ Seitenlokalisation { get; set; }
 
         
-        [System.Xml.Serialization.XmlArrayItemAttribute("Histologie", IsNullable = false)]
+        [XmlArrayItem("Histologie", IsNullable = false)]
         public Histologie_Typ[] Menge_Histologie { get; set; }
 
         
-        [System.Xml.Serialization.XmlArrayItemAttribute("Fernmetastase", IsNullable = false)]
+        [XmlArrayItem("Fernmetastase", IsNullable = false)]
         public Menge_FM_TypFernmetastase[] Menge_FM { get; set; }
 
         
@@ -45,8 +44,8 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         public TNM_Typ pTNM { get; set; }
 
         
-        [System.Xml.Serialization.XmlArrayItemAttribute("Weitere_Klassifikation", IsNullable = false)]
-        public Menge_Weitere_Klassifikation_TypWeitere_Klassifikation[] Menge_Weitere_Klassifikation { get; set; }
+        [XmlArrayItem("Weitere_Klassifikation", IsNullable = false)]
+        public Weitere_Klassifikation_Typ[] Menge_Weitere_Klassifikation { get; set; }
 
         
         public Modul_Mamma_Typ Modul_Mamma { get; set; }
@@ -64,7 +63,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         public string Anmerkung { get; set; }
 
         
-        [System.Xml.Serialization.XmlAttributeAttribute()]
+        [XmlAttribute()]
         public string Tumor_ID { get; set; }
     }
 }
