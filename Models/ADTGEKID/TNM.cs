@@ -3,12 +3,10 @@ using System;
 
 namespace Rki.CancerDataGenerator.Models.ADTGEKID
 {
-    public class TNM_Typ : AdtgekidBase
+    public class TNM : AdtgekidBase
     {
-        public TNM_Typ(){}
+        public TNM(){}
 
-        public string TNM_Datum { get; set; }
-        
         public TNM_TypTNM_Version TNM_Version { get; set; }
         
         public TNM_TypTNM_y_Symbol TNM_y_Symbol { get; set; }
@@ -38,5 +36,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         public TNM_TypTNM_Pn TNM_Pn { get; set; }
 
         public TNM_TypTNM_S TNM_S { get; set; }
+
+        public TNM_TypUICC_Stadium UICC_Stadium { get; set; }
     }
 }

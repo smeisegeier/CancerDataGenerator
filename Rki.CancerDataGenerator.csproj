@@ -9,6 +9,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Samples\ADT_GEKID_v3_0_0_2_RKI.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="JWT" Version="8.9.0" />
     <PackageReference Include="MathNet.Numerics" Version="4.15.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.1" />

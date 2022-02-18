@@ -15,7 +15,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
 
         public Lieferregister Lieferregister { get; set; }
 
-        public Datum_Typ Lieferdatum { get; set; }
+        public Datum Lieferdatum { get; set; }
 
 
         [XmlAttribute]
@@ -85,7 +85,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         U
     }
 
-    public enum Modul_Prostata_TypGleasonScoreGleasonGradPrimaer
+    public enum GleasonScore_Typ
     {
 
         [XmlEnum("1")]
@@ -107,25 +107,9 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         [XmlEnum("5")]
         Item5,
     }
-    public enum Modul_Prostata_TypGleasonScoreGleasonGradSekundaer
-    {
-        [XmlEnum("1")]
-        Item1,
 
-        [XmlEnum("2")]
-        Item2,
 
-        [XmlEnum("3")]
-        Item3,
-
-        [XmlEnum("4")]
-        Item4,
-
-        [XmlEnum("5")]
-        Item5,
-    }
-
-    public enum Modul_Prostata_TypGleasonScoreGleasonScoreErgebnis
+    public enum GleasonScoreErgebnis_Typ
     {
 
 
@@ -191,7 +175,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
     public enum Modul_Mamma_TypPraetherapeutischer_Menopausenstatus
     {
 
-
+        //TODO 
         [XmlEnum("1")]
         Item1,
 
@@ -412,7 +396,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         T,
     }
 
-    public enum PatientPatienten_StammdatenPatienten_Geschlecht
+    public enum Geschlecht_Typ
     {
 
 
@@ -583,6 +567,122 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         Item9,
         None
     }
+
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.gekid.de/namespace")]
+    public enum TNM_TypUICC_Stadium
+    {
+
+        /// <remarks/>
+        okk,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("0")]
+        Item0,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("0a")]
+        Item0a,
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("0is")]
+        Item0is,
+
+        /// <remarks/>
+        I,
+
+        /// <remarks/>
+        IA,
+
+        /// <remarks/>
+        IA1,
+
+        /// <remarks/>
+        IA2,
+
+        /// <remarks/>
+        IA3,
+
+        /// <remarks/>
+        IB,
+
+        /// <remarks/>
+        IB1,
+
+        /// <remarks/>
+        IB2,
+
+        /// <remarks/>
+        IC,
+
+        /// <remarks/>
+        II,
+
+        /// <remarks/>
+        IIA,
+
+        /// <remarks/>
+        IIA1,
+
+        /// <remarks/>
+        IIA2,
+
+        /// <remarks/>
+        IIB,
+
+        /// <remarks/>
+        IIC,
+
+        /// <remarks/>
+        III,
+
+        /// <remarks/>
+        IIIA,
+
+        /// <remarks/>
+        IIIA1,
+
+        /// <remarks/>
+        IIIA2,
+
+        /// <remarks/>
+        IIIB,
+
+        /// <remarks/>
+        IIIC,
+
+        /// <remarks/>
+        IIIC1,
+
+        /// <remarks/>
+        IIIC2,
+
+        /// <remarks/>
+        IIID,
+
+        /// <remarks/>
+        IS,
+
+        /// <remarks/>
+        IV,
+
+        /// <remarks/>
+        IVA,
+
+        /// <remarks/>
+        IVA1,
+
+        /// <remarks/>
+        IVA2,
+
+        /// <remarks/>
+        IVB,
+
+        /// <remarks/>
+        IVC,
+    }
+
 
     public enum Menge_FM_TypFernmetastaseFM_Lokalisation
     {

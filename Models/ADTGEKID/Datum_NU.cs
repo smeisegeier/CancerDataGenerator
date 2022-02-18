@@ -1,6 +1,9 @@
-﻿namespace Rki.CancerDataGenerator.Models.ADTGEKID
+﻿using System;
+
+namespace Rki.CancerDataGenerator.Models.ADTGEKID
 {
-    public class Datum_NU_Typ
+    [Obsolete]
+    public class Datum_NU
     {
         [System.Xml.Serialization.XmlElement("Datum", typeof(System.DateTime), DataType = "date")]
         [System.Xml.Serialization.XmlElementAttribute("NU", typeof(Datum_NU_TypNU))]

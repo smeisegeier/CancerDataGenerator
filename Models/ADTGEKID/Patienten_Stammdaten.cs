@@ -13,9 +13,9 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         public Patienten_Stammdaten() { }
 
 
-        public PatientPatienten_StammdatenPatienten_Geschlecht Geschlecht { get; set; }
+        public Geschlecht_Typ Geschlecht { get; set; }
 
-        public Datum_Typ Geburtsdatum { get; set; }
+        public Datum Geburtsdatum { get; set; }
 
 
         // TODO needs refinement
@@ -25,6 +25,8 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
             get { return _Inzidenzort; }
             set { _Inzidenzort = Helper.StaticHelper.CheckIfSchemaElementMatchesRegex(value, @"\d{5}"); }
         }
+
+        public Tod Tod { get; set; }
 
         [XmlAttribute()]
         public string Patient_ID { get; set; }

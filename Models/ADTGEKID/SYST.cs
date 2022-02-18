@@ -18,7 +18,7 @@
         
         public PatientMeldungSYSTSYST_Ende_Grund SYST_Ende_Grund { get; set; }
         
-        public Residualstatus_Typ Residualstatus { get; set; }
+        public Residualstatus Residualstatus { get; set; }
 
         public string Anmerkung { get; set; }
 

@@ -2,16 +2,17 @@
 
 namespace Rki.CancerDataGenerator.Models.ADTGEKID
 {
+    // TODO Verlauf sill not clear
     public class Verlauf : AdtgekidBase
     {
         public Verlauf(){}
 
-        public Histologie_Typ Histologie { get; set; }
+        public Histologie Histologie { get; set; }
         
-        public TNM_Typ TNM { get; set; }
+        public TNM TNM { get; set; }
         
-        [System.Xml.Serialization.XmlArrayItemAttribute("Weitere_Klassifikation", IsNullable = false)]
-        public Weitere_Klassifikation_Typ[] Menge_Weitere_Klassifikation { get; set; }
+        [System.Xml.Serialization.XmlArrayItem("Weitere_Klassifikation", IsNullable = false)]
+        public Weitere_Klassifikation[] Menge_Weitere_Klassifikation { get; set; }
         
         public string Untersuchungsdatum_Verlauf { get; set; }
 
@@ -23,19 +24,18 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
 
         public PatientMeldungVerlaufVerlauf_Tumorstatus_Fernmetastasen Verlauf_Tumorstatus_Fernmetastasen { get; set; }
 
-        [System.Xml.Serialization.XmlArrayItemAttribute("Fernmetastase", IsNullable = false)]
-        public Menge_FM_TypFernmetastase[] Menge_FM { get; set; }
+        [System.Xml.Serialization.XmlArrayItem("Fernmetastase", IsNullable = false)]
+        public Fernmetastase[] Menge_FM { get; set; }
 
 
-        public Modul_Prostata_Typ Modul_Prostata { get; set; }
+        public Modul_Prostata Modul_Prostata { get; set; }
 
-        public Modul_Malignes_Melanom_Typ Modul_Malignes_Melanom { get; set; }
+        public Modul_Malignes_Melanom Modul_Malignes_Melanom { get; set; }
 
-        public VerlaufTod Tod { get; set; }
+        public Tod Tod { get; set; }
 
-        public string Anmerkung { get; set; }
 
-        [System.Xml.Serialization.XmlAttributeAttribute()]
+        [System.Xml.Serialization.XmlAttribute()]
         public string Verlauf_ID { get; set; }
     }
 }

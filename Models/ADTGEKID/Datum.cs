@@ -3,13 +3,13 @@ using System.Xml.Serialization;
 
 namespace Rki.CancerDataGenerator.Models.ADTGEKID
 {
-    public class Datum_Typ
+    public class Datum
     {
-        public Datum_Typ(){}
+        public Datum(){}
 
-        public Datum_Typ(DateTime date, Datumsgenauigkeit_Typ type)
+        public Datum(DateTime date, Datumsgenauigkeit_Typ type)
         {
-            Datum = date;
+            Value = date;
             Datumsgenauigkeit = type.ToString();
         }
 
@@ -18,7 +18,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
 
 
         [XmlText(DataType = "date")]
-        public DateTime Datum { get; set; } 
+        public DateTime Value { get; set; } 
 
     }
 }

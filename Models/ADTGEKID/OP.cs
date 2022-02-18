@@ -14,23 +14,23 @@
         public PatientMeldungOPOP_OPS_Version OP_OPS_Version { get; set; }
 
         
-        public Histologie_Typ Histologie { get; set; }
+        public Histologie Histologie { get; set; }
 
         
-        public TNM_Typ TNM { get; set; }
+        public TNM TNM { get; set; }
 
         
-        public Residualstatus_Typ Residualstatus { get; set; }
+        public Residualstatus Residualstatus { get; set; }
 
         
-        public Modul_Mamma_Typ Modul_Mamma { get; set; }
+        public Modul_Mamma Modul_Mamma { get; set; }
         
-        public Modul_Darm_Typ Modul_Darm { get; set; }
+        public Modul_Darm Modul_Darm { get; set; }
         
-        public Modul_Prostata_Typ Modul_Prostata { get; set; }
+        public Modul_Prostata Modul_Prostata { get; set; }
 
         
-        public Modul_Malignes_Melanom_Typ Modul_Malignes_Melanom { get; set; }
+        public Modul_Malignes_Melanom Modul_Malignes_Melanom { get; set; }
 
       
         [System.Xml.Serialization.XmlAttributeAttribute()]

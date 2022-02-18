@@ -1,6 +1,6 @@
 ﻿namespace Rki.CancerDataGenerator.Models.ADTGEKID
 {
-    public partial class STBestrahlung
+    public partial class Bestrahlung
     {
         
         public PatientMeldungSTBestrahlungST_Zielgebiet ST_Zielgebiet { get; set; }

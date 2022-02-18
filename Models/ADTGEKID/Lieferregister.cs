@@ -2,9 +2,8 @@
 
 namespace Rki.CancerDataGenerator.Models.ADTGEKID
 {
-    public partial class Lieferregister
+    public class Lieferregister
     {
-       
 
         [XmlAttribute]
         public ISO3199_2 Register_ID { get; set; }

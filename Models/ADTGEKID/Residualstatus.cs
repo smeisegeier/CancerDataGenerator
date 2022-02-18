@@ -1,6 +1,6 @@
 ﻿namespace Rki.CancerDataGenerator.Models.ADTGEKID
 {
-    public partial class Residualstatus_Typ
+    public partial class Residualstatus
     {
         public R_Typ Lokale_Beurteilung_Residualstatus { get; set; }
         public bool Lokale_Beurteilung_ResidualstatusSpecified { get; set; }
