@@ -36,7 +36,7 @@ namespace Rki.CancerDataGenerator.BLL
         public Lieferregister Create_Lieferregister()
         {
             var obj = new Lieferregister();
-            obj.Register_ID = ISO3199_2.DE_TH;
+            obj.Register_ID = _generator.FetchRandomEnumItem<ISO3199_2_Typ>();
             return obj;
         }
 
@@ -61,14 +61,31 @@ namespace Rki.CancerDataGenerator.BLL
             obj.Patient_ID = Guid.NewGuid().ToString();
             // TODO create Random GKZ
             obj.Inzidenzort = "00114";
+            if (_generator.CreateRandomBool())
+                obj.Tod = Create_Tod();
             return obj;
         }
 
+        private Tod Create_Tod()
+        {
+            var obj = new Tod();
+            obj.Sterbedatum = new Datum(_generator.CreateRandomDate_Meldedatum(), Datumsgenauigkeit_Typ.T);
+            obj.Anzahl_Tage_Diagnose_Tod = _generator.CreateRandomValue(1, Globals.MAXANZTAGEZWISCHENEREIGNISSE);
+            obj.Todesursache = Create_Todesursache();
+            return obj;
+        }
+
+        private Todesursache Create_Todesursache()
+        {
+            var obj = new Todesursache();
+            obj.Todesursache_ICD = _generator.FetchNormalDimensionItem<Icd>().icd_three_digits;
+            obj.Todesursache_ICD_Version = ICD_Version_Typ.Item102018GM;
+            return obj;
+        }
 
         private Tumor Create_Tumor()
         {
             var obj = new Tumor();
-
             obj.Primärdiagnose = Create_Diagnose();
 
             /*  Verlauf */
@@ -84,24 +101,6 @@ namespace Rki.CancerDataGenerator.BLL
         private Verlauf Create_PatientMeldungVerlauf()
         {
             var obj = new Verlauf();
-            obj.Tod = Create_PatientMeldungVerlaufTod();
-            return obj;
-        }
-
-        private Tod Create_PatientMeldungVerlaufTod()
-        {
-            var obj = new Tod();
-            //obj.Sterbedatum = _generator.CreateRandomDate_Geburtsdatum().ToShortDateString();
-            //obj.Tod_tumorbedingt = _generator.FetchRandomEnumItem<JNU_Typ>();
-            obj.Todesursache = Create_PatientMeldungVerlaufTodMenge_Todesursache();
-            return obj;
-        }
-
-        private Todesursache Create_PatientMeldungVerlaufTodMenge_Todesursache()
-        {
-            var obj = new Todesursache();
-            obj.Todesursache_ICD = new List<string>();
-            obj.Todesursache_ICD.Add(_generator.FetchNormalDimensionItem<Icd>()?.icd_three_digits);
             return obj;
         }
 
@@ -113,7 +112,7 @@ namespace Rki.CancerDataGenerator.BLL
             obj.Primaertumor_ICD_Version = _generator.FetchRandomEnumItem<ICD_Version_Typ>(_config.IcdVersion_ProbMissing);
             obj.Primaertumor_Topographie_ICD_O_Version = _generator.FetchRandomEnumItem<PatientMeldungDiagnosePrimaertumor_Topographie_ICD_O_Version>();
             obj.Seitenlokalisation = _generator.FetchRandomEnumItem<Seitenlokalisation_Typ>();
-
+            obj.Histologie = Create_Histologie();
             /* TNM */
             obj.cTNM = Create_TNM_Typ();
             obj.pTNM = Create_TNM_Typ();
@@ -124,7 +123,16 @@ namespace Rki.CancerDataGenerator.BLL
             obj.Modul_Prostata = Create_Modul_Prostata_Typ();
 
             obj.Diagnosesicherung = _generator.FetchRandomEnumItem<PatientMeldungDiagnoseDiagnosesicherung>(_config.Dsich_ProbMissing);
+            obj.Seitenlokalisation = _generator.FetchRandomEnumItem<Seitenlokalisation_Typ>(0.2);
+            return obj;
+        }
 
+        private Histologie Create_Histologie()
+        {
+            var obj = new Histologie();
+            obj.Grading = _generator.FetchRandomEnumItem<Grading_Typ>(0.1);
+            obj.Morphologie_Code = _generator.FetchNormalDimensionItem<Histology>().histology_shortname;
+            obj.Morphologie_ICD_O_Version = _generator.FetchRandomEnumItem<Morphologie_ICD_O_Version_Typ>();
             return obj;
         }
 
@@ -134,10 +142,9 @@ namespace Rki.CancerDataGenerator.BLL
             obj.PSA = _generator.CreateRandomValue(1, 100);
             obj.DatumStanzen = new Datum(_generator.CreateRandomDate_Meldedatum(),Datumsgenauigkeit_Typ.T);
             obj.GleasonScore = new GleasonScore();
-            // TODO wtf
-            obj.GleasonScore.GleasonGradPrimaer = GleasonScore_Typ.Item1;
-            obj.GleasonScore.GleasonGradSekundaer = GleasonScore_Typ.Item2;
-            obj.GleasonScore.GleasonScoreErgebnis = GleasonScoreErgebnis_Typ.Item10;
+            obj.GleasonScore.GleasonGradPrimaer = _generator.FetchRandomEnumItem<GleasonScore_Typ>();
+            obj.GleasonScore.GleasonGradSekundaer = _generator.FetchRandomEnumItem<GleasonScore_Typ>();
+            obj.GleasonScore.GleasonScoreErgebnis = _generator.FetchRandomEnumItem<GleasonScoreErgebnis_Typ>();
             return obj;
         }
 
@@ -178,6 +185,5 @@ namespace Rki.CancerDataGenerator.BLL
             obj.TNM_S = _generator.FetchRandomEnumItem<TNM_TypTNM_S>();
             return obj;
         }
-
     }
 }

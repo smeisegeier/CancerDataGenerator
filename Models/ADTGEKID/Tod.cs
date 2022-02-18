@@ -4,10 +4,10 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
 {
     public partial class Tod : AdtgekidBase
     {
-        public Tod(){}
-
         public Datum Sterbedatum { get; set; }
 
         public Todesursache Todesursache { get; set; }
+
+        public int Anzahl_Tage_Diagnose_Tod { get; set; }
     }
 }

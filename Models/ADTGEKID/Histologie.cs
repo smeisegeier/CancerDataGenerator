@@ -6,18 +6,17 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
 {
     public class Histologie
     {
-
         [RegularExpression(@"\d\d\d\d/\d")]
         public string Morphologie_Code { get; set; }
 
-        public Histologie_TypMorphologie_ICD_O_Version Morphologie_ICD_O_Version { get; set; }
+        public Morphologie_ICD_O_Version_Typ Morphologie_ICD_O_Version { get; set; }
 
-        public Histologie_TypGrading Grading { get; set; }
+        public Grading_Typ Grading { get; set; }
 
-        [XmlElement(DataType = "nonNegativeInteger")]
-        public string LK_untersucht { get; set; }
+        [Range(1,Int32.MaxValue)]
+        public int LK_untersucht { get; set; }
 
-        [XmlElement(DataType = "nonNegativeInteger")]
-        public string LK_befallen { get; set; }
+        [Range(1, Int32.MaxValue)]
+        public int LK_befallen { get; set; }
     }
 }

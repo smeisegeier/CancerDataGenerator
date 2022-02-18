@@ -6,7 +6,7 @@ using System.Xml.Serialization;
 
 namespace Rki.CancerDataGenerator.Models.ADTGEKID
 {
-    public partial class Patient : AdtgekidBase
+    public class Patient : AdtgekidBase
     {
 
         public Patient() { }

@@ -61,6 +61,14 @@ namespace Rki.CancerDataGenerator.Models.Dimensions
         #region generics area
         public int CreateRandomValue(int min, int max) => _random.Next(min, max + 1);
         public int CreateRandomValue(int delta) => _random.Next(delta * -1, delta);
+        public bool CreateRandomBool() 
+        {
+            var rng = _random.Next(1,100);
+            if (rng <= 50)
+                return false;
+            return true;
+        }
+
 
         public DateTime CreateRandomDate_Meldedatum() => createRandomDate(10 * 365, Configuration.Meldedatum_BaseDate);
         public DateTime CreateRandomDate_Geburtsdatum() => createRandomDate(40 * 365, new DateTime(1970, 01, 01));

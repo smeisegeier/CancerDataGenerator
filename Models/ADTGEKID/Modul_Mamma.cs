@@ -2,7 +2,7 @@
 
 namespace Rki.CancerDataGenerator.Models.ADTGEKID
 {
-    public partial class Modul_Mamma : AdtgekidBase
+    public class Modul_Mamma : AdtgekidBase
     {
         public Modul_Mamma(){}
 

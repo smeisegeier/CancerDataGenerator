@@ -25,7 +25,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         public string schemaLocation { get; init; } = $"{Globals.XSDNAMESPACE} {Globals.XSDFILENAME}";
     }
 
-    public enum ISO3199_2
+    public enum ISO3199_2_Typ
     {
         [XmlEnum("DE-BY")]
         DE_BY,
@@ -65,7 +65,6 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         RX,
     }
 
-    // TODO how to create this type?
     public enum Datum_NU_TypNU
     {
         N,
@@ -106,6 +105,8 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
 
         [XmlEnum("5")]
         Item5,
+
+        None
     }
 
 
@@ -155,21 +156,17 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
 
         [XmlEnum("10")]
         Item10,
+        None
     }
 
 
     public enum Modul_Darm_TypRASMutation
     {
-
         W,
-
         M,
-
-
         U,
-
-
         N,
+        None
     }
 
     public enum Modul_Mamma_TypPraetherapeutischer_Menopausenstatus
@@ -332,7 +329,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         S3,
     }
 
-    public enum Histologie_TypMorphologie_ICD_O_Version
+    public enum Morphologie_ICD_O_Version_Typ
     {
 
 
@@ -351,7 +348,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         bb,
     }
 
-    public enum Histologie_TypGrading
+    public enum Grading_Typ
     {
 
 

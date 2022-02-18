@@ -19,6 +19,7 @@ namespace Rki.CancerDataGenerator
 
         public const string ROUTESTRING = "/api/v{version:apiVersion}/[controller]";
 
-
+        public const int MAXANZTAGEZWISCHENEREIGNISSE = 10 * 365;
+ 
     }
 }

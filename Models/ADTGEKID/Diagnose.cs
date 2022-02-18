@@ -8,7 +8,6 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
 {
     public class Diagnose : AdtgekidBase
     {
-        public Diagnose(){ }
 
         public Datum Diagnosedatum { get; set; }
 

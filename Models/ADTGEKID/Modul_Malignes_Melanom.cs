@@ -2,7 +2,7 @@
 
 namespace Rki.CancerDataGenerator.Models.ADTGEKID
 {
-    public partial class Modul_Malignes_Melanom
+    public class Modul_Malignes_Melanom
     {
         // TODO 0.1 - 99
         [Range(1,99)]

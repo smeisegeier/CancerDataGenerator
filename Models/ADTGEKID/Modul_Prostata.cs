@@ -1,6 +1,6 @@
 ﻿namespace Rki.CancerDataGenerator.Models.ADTGEKID
 {
-    public partial class Modul_Prostata
+    public class Modul_Prostata
     {
         public GleasonScore GleasonScore { get; set; }
 

@@ -6,7 +6,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
     {
 
         [XmlAttribute]
-        public ISO3199_2 Register_ID { get; set; }
+        public ISO3199_2_Typ Register_ID { get; set; }
 
 
         [XmlAttribute]

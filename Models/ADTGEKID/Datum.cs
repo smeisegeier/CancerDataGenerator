@@ -7,6 +7,11 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
     {
         public Datum(){}
 
+        /// <summary>
+        /// Creates a xsd Datum_Typ object
+        /// </summary>
+        /// <param name="date">DateTime</param>
+        /// <param name="type">T | E</param>
         public Datum(DateTime date, Datumsgenauigkeit_Typ type)
         {
             Value = date;

@@ -18,13 +18,8 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         public Datum Geburtsdatum { get; set; }
 
 
-        // TODO needs refinement
-        private string _Inzidenzort;
-        public string Inzidenzort
-        {
-            get { return _Inzidenzort; }
-            set { _Inzidenzort = Helper.StaticHelper.CheckIfSchemaElementMatchesRegex(value, @"\d{5}"); }
-        }
+        [RegularExpression(@"\d{5}")]
+        public string Inzidenzort { get; set; }
 
         public Tod Tod { get; set; }
 

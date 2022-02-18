@@ -1,6 +1,6 @@
 ﻿namespace Rki.CancerDataGenerator.Models.ADTGEKID
 {
-    public partial class ST
+    public class ST
     {
         
         public PatientMeldungSTST_Intention ST_Intention { get; set; }

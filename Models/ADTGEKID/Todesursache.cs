@@ -7,9 +7,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
     {
         public Todesursache(){}
 
-        // if this decoration is missing, output has <string> elements :o
-        [System.Xml.Serialization.XmlElement(nameof(Todesursache_ICD))]
-        public List<string> Todesursache_ICD { get; set; }
+        public string Todesursache_ICD { get; set; }
 
         public ICD_Version_Typ Todesursache_ICD_Version { get; set; }
     }
