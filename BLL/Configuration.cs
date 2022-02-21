@@ -11,23 +11,23 @@ namespace Rki.CancerDataGenerator.BLL
         
         /// <summary>How many patients</summary>
         /// <example>2</example>
-        public int Patient_Count { get; set; } = 1;
+        public int Patient_Count { get; set; } = 3;
 
         /// <summary>Mean age</summary>
         /// <example>50</example>
         public int Patient_MeanAge { get; set; } = 50;
 
         /// <summary>Prob missing</summary>
-        /// <example>0.9</example>
-        public double Text_ProbMissing { get; set; } = 0.9;
+        /// <example>0.3</example>
+        public double Text_ProbMissing { get; set; } = 0.0;
 
         /// <summary>Prob missing IcdVersion</summary>
         /// <example>0.1</example>
-        public double IcdVersion_ProbMissing { get; set; } = 0.1;
+        public double IcdVersion_ProbMissing { get; set; } = 0.0;
 
         /// <summary>Prob missing Icd</summary>
         /// <example>0.1</example>
-        public double Icd_ProbMissing { get; set; } = 0.1;
+        public double Icd_ProbMissing { get; set; } = 0.0;
 
         /// <summary>Prob missing DSICH</summary>
         /// <example>0.2</example>

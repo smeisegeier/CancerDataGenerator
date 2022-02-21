@@ -1,39 +1,23 @@
-﻿namespace Rki.CancerDataGenerator.Models.ADTGEKID
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Rki.CancerDataGenerator.Models.ADTGEKID
 {
     public class OP
     {
 
-        
-        public PatientMeldungOPOP_Intention OP_Intention { get; set; }
+        public OP_Intention_Typ OP_Intention { get; set; }
 
-        
-        [System.Xml.Serialization.XmlArrayItemAttribute("OP_OPS", IsNullable = false)]
+       
+        [System.Xml.Serialization.XmlArrayItem("OPS", IsNullable = false)]
         public string[] Menge_OPS { get; set; }
-
-        
-        public PatientMeldungOPOP_OPS_Version OP_OPS_Version { get; set; }
-
-        
-        public Histologie Histologie { get; set; }
-
-        
-        public TNM TNM { get; set; }
-
         
         public Residualstatus Residualstatus { get; set; }
 
-        
-        public Modul_Mamma Modul_Mamma { get; set; }
-        
-        public Modul_Darm Modul_Darm { get; set; }
-        
-        public Modul_Prostata Modul_Prostata { get; set; }
+        [Range(0, Globals.MAXANZTAGEZWISCHENEREIGNISSE)]
+        public int Anzahl_Tage_Diagnose_OP { get; set; }
 
-        
-        public Modul_Malignes_Melanom Modul_Malignes_Melanom { get; set; }
+        [Range(0, Globals.MAXANZTAGEZWISCHENEREIGNISSE)]
+        public int Anzahl_Tage_OP_Dauer { get; set; }
 
-      
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string OP_ID { get; set; }
     }
 }

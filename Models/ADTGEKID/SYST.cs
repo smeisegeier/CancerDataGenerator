@@ -1,28 +1,24 @@
-﻿namespace Rki.CancerDataGenerator.Models.ADTGEKID
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Rki.CancerDataGenerator.Models.ADTGEKID
 {
     public class SYST
     {
-        public PatientMeldungSYSTSYST_Intention SYST_Intention { get; set; }
+        public SYST_Intention_Typ Intention { get; set; }
 
-        public PatientMeldungSYSTSYST_Stellung_OP SYST_Stellung_OP { get; set; }
+        public SYST_Stellung_OP_Typ Stellung_OP { get; set; }
         
-        [System.Xml.Serialization.XmlArrayItemAttribute("SYST_Therapieart", IsNullable = false)]
-        public PatientMeldungSYSTSYST_Therapieart[] Menge_Therapieart { get; set; }
+        public SYST_Therapieart_Typ Therapieart { get; set; }
 
-        public string SYST_Therapieart_Anmerkung { get; set; }
-
-        public string SYST_Protokoll { get; set; }
+        public string Protokoll { get; set; }
        
-        [System.Xml.Serialization.XmlArrayItemAttribute("SYST_Substanz", IsNullable = false)]
-        public string[] Menge_Substanz { get; set; }
-        
-        public PatientMeldungSYSTSYST_Ende_Grund SYST_Ende_Grund { get; set; }
+        [System.Xml.Serialization.XmlArrayItem("Substanz", IsNullable = false)]
+        public Substanz[] Menge_Substanz { get; set; }
         
         public Residualstatus Residualstatus { get; set; }
 
-        public string Anmerkung { get; set; }
+        [Range(0, Globals.MAXANZTAGEZWISCHENEREIGNISSE)]
+        public int Anzahl_Tage_Diagnose_Beginn_SYST { get; set; }
 
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string SYST_ID { get; set; }
     }
 }

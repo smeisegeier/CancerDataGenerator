@@ -1,5 +1,6 @@
 ﻿using Rki.CancerDataGenerator.Models.Dimensions;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Xml.Serialization;
@@ -29,8 +30,8 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         
         public Histologie Histologie { get; set; }
 
-        [XmlArrayItem("Fernmetastase", IsNullable = false)]
-        public Fernmetastase[] Menge_FM { get; set; }
+        //[XmlArrayItem("Fernmetastase", IsNullable = false)]
+        public List<Fernmetastase> Menge_FM { get; set; }
 
         
         public TNM cTNM { get; set; }

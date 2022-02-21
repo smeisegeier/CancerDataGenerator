@@ -1,13 +1,17 @@
-﻿namespace Rki.CancerDataGenerator.Models.ADTGEKID
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Rki.CancerDataGenerator.Models.ADTGEKID
 {
     public partial class Bestrahlung
     {
-        
-        public PatientMeldungSTBestrahlungST_Zielgebiet ST_Zielgebiet { get; set; }
 
-        public PatientMeldungSTBestrahlungST_Seite_Zielgebiet ST_Seite_Zielgebiet { get; set; }
+        public Applikationsart Applikationsart { get; set; }
+        //public Bestrahlung_Applikationsart_Typ Applikationsart { get; set; }
 
-        public PatientMeldungSTBestrahlungST_Applikationsart ST_Applikationsart { get; set; }
-        
+        [Range(0, Globals.MAXANZTAGEZWISCHENEREIGNISSE)]
+        public int Anzahl_Tage_Diagnose_ST { get; set; }
+
+        [Range(0, Globals.MAXANZTAGEZWISCHENEREIGNISSE)]
+        public int Anzahl_Tage_ST_Dauer { get; set; }
     }
 }

@@ -33,7 +33,7 @@ namespace Rki.CancerDataGenerator.Models.Dimensions
         }
 
         #region private area
-        private DateTime createRandomDate(int deltaDays, DateTime baseDate) => baseDate.AddDays(CreateRandomValue(deltaDays));
+        private DateTime createRandomDate(int deltaDays, DateTime baseDate) => baseDate.AddDays(CreateRandomValueInt(deltaDays));
 
         /// <summary>
         /// get all enums
@@ -59,8 +59,9 @@ namespace Rki.CancerDataGenerator.Models.Dimensions
         #endregion
 
         #region generics area
-        public int CreateRandomValue(int min, int max) => _random.Next(min, max + 1);
-        public int CreateRandomValue(int delta) => _random.Next(delta * -1, delta);
+        public int CreateRandomValueInt(int min, int max) => _random.Next(min, max + 1);
+        public int CreateRandomValueInt(int delta) => _random.Next(delta * -1, delta);
+        public double CreateRandomValueDouble(double min, double max) => min + (_random.NextDouble() * (max - min));
         public bool CreateRandomBool() 
         {
             var rng = _random.Next(1,100);
@@ -158,7 +159,7 @@ namespace Rki.CancerDataGenerator.Models.Dimensions
                 return null;
 
             var count = subset.Count();
-            var rng = CreateRandomValue(0, count - 1);
+            var rng = CreateRandomValueInt(0, count - 1);
             return _context.GetByIndex(rng, subset);
         }
 
@@ -166,6 +167,8 @@ namespace Rki.CancerDataGenerator.Models.Dimensions
 
 
         #region specifics area
+        public string CreateRandomValue_Inzidenzort() => CreateNormalValueUponRange(0, 99999).ToString("00000");
+
 
         /// <summary>
         /// Fetch ICD code -> can be null
@@ -180,6 +183,13 @@ namespace Rki.CancerDataGenerator.Models.Dimensions
                 return FetchNormalDimensionItem<Icd>();
             var subset = _context.GetIcdSubsetByChapter(chapter);
             return FetchNormalDimensionItem<Icd>(subset);
+        }
+
+        public string FetchNormalDimensionItem_QuoteString()//(double probMissing = _config.Text_ProbMissing)
+        {
+            if (_random.NextDouble() < Configuration.Text_ProbMissing)
+                return null;
+            return FetchNormalDimensionItem<Quote>(null)?.quote;
         }
 
         #endregion

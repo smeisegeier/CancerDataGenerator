@@ -721,7 +721,8 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         GEN,
     }
 
-    public enum PatientMeldungOPOP_Intention
+    // TODO add none item to all
+    public enum OP_Intention_Typ
     {
 
 
@@ -743,7 +744,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         X,
     }
 
-    public enum PatientMeldungOPOP_OPS_Version
+    public enum OPS_Version_Typ
     {
 
 
@@ -823,23 +824,15 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         Item2022,
     }
 
-    public enum PatientMeldungSTST_Intention
+    public enum ST_Intention_Typ
     {
-
-
         K,
-
-
         P,
-
-
         S,
-
-
         X,
     }
 
-    public enum PatientMeldungSTST_Stellung_OP
+    public enum ST_Stellung_OP_Typ
     {
 
 
@@ -858,14 +851,10 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         S,
     }
 
-    public enum PatientMeldungSTBestrahlungST_Zielgebiet
+    public enum Bestrahlung_Zielgebiet_Typ
     {
-
-
         [XmlEnum("1.")]
         Item1,
-
-
         [XmlEnum("1.1.")]
         Item11,
 
@@ -1462,71 +1451,71 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         Item82,
     }
 
-    public enum PatientMeldungSTBestrahlungST_Seite_Zielgebiet
+    public enum Bestrahlung_Seite_Zielgebiet_Typ
     {
-
-
         L,
-
-
         R,
-
-
         B,
-
-
         M,
-
-
         U,
+        T
     }
 
-    public enum PatientMeldungSTBestrahlungST_Applikationsart
+    public enum Bestrahlung_Applikationsart_Typ_Radiochemo
     {
+        RCJ,
+        RCN
+    }
 
+    public enum Bestrahlung_Applikationsart_Typ_Stereotaktisch
+    {
+        ST
+    }
 
-        P,
+    public enum Bestrahlung_Applikationsart_Typ_Atemgetriggert
+    {
+        [XmlEnum("4D")]
+        item4D
+    }
 
-
-        PRCJ,
-
-
-        PRCN,
-
-
-        K,
-
-
-        KHDR,
-
-
-        KPDR,
-
-
-        KLDR,
-
-
+    public enum Bestrahlung_Applikationsart_Typ_Interstitiell_endokavitaer
+    {
         I,
+        K
+    }
 
+    public enum Bestrahlung_Applikationsart_Typ_Rate_Type
+    {
+        HDR,
+        LDR,
+        PDR
+    }
 
+    public enum Bestrahlung_Applikationsart_Metabolisch_Typ
+    {
+        SIRT,
+        PRRT,
+        PSMA,
+        RJT,
+        RIT
+    }
+
+    public enum Bestrahlung_Applikationsart_Typ
+    {
+        P,
+        PRCJ,
+        PRCN,
+        K,
+        KHDR,
+        KPDR,
+        KLDR,
+        I,
         IHDR,
-
-
         IPDR,
-
-
         ILDR,
-
-
         M,
-
-
         MSIRT,
-
-
         MPRRT,
-
-
         S,
     }
 
@@ -1552,7 +1541,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         U,
     }
 
-    public enum PatientMeldungSYSTSYST_Intention
+    public enum SYST_Intention_Typ
     {
 
         K,
@@ -1567,7 +1556,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         X,
     }
 
-    public enum PatientMeldungSYSTSYST_Stellung_OP
+    public enum SYST_Stellung_OP_Typ
     {
 
 
@@ -1586,7 +1575,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         S,
     }
 
-    public enum PatientMeldungSYSTSYST_Therapieart
+    public enum SYST_Therapieart_Typ
     {
 
 
