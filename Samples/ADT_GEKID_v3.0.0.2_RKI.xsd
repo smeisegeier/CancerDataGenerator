@@ -2,7 +2,7 @@
 <!-- edited with XMLSpy v2021 rel. 3 (x64) (http://www.altova.com) by MeisegeierS_virtual (Robert Koch-Institut) -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.gekid.de/namespace" xmlns:tns="http://www.gekid.de/namespace" targetNamespace="http://www.gekid.de/namespace" elementFormDefault="qualified" attributeFormDefault="unqualified" version="3.0.0.2_RKI">
 	<xs:complexType name="Lieferregister_Typ">
-		<xs:attribute name="Register_ID" type="ISO3166-2_Typ" use="required"/>
+		<xs:attribute name="Register_ID" type="ISO3166_2_Typ" use="required"/>
 		<xs:attribute name="Software_ID" type="Freitext255_Typ" use="optional"/>
 		<xs:attribute name="Software_Version" type="Freitext255_Typ"/>
 		<xs:attribute name="Installations_ID" type="Freitext255_Typ" use="optional"/>
@@ -57,14 +57,13 @@
 																		</xs:sequence>
 																	</xs:complexType>
 																</xs:element>
-																<xs:element name="Menge_Folgeereignisse" minOccurs="0">
+																<xs:element name="Menge_Folgeereignis" minOccurs="0">
 																	<xs:complexType>
 																		<xs:sequence>
 																			<xs:element name="Folgeereignis" type="Verlauf_Typ" maxOccurs="unbounded"/>
 																		</xs:sequence>
 																	</xs:complexType>
 																</xs:element>
-																<xs:element name="Tod" type="Tod_Typ" minOccurs="0"/>
 																<xs:element name="DCN" type="JNU_Typ"/>
 															</xs:sequence>
 															<xs:attribute name="Tumor_ID" type="FreitextID_Typ" use="required"/>
@@ -629,7 +628,7 @@
 			</xs:enumeration>
 		</xs:restriction>
 	</xs:simpleType>
-	<xs:simpleType name="ISO3166-2_Typ">
+	<xs:simpleType name="ISO3166_2_Typ">
 		<xs:annotation>
 			<xs:documentation>
 				Bundeslandcodes nach ISO3166-2
@@ -1132,6 +1131,7 @@
 			</xs:element>
 			<xs:element name="Geburtsdatum" type="Datum_Monat_genau_Typ"/>
 			<xs:element name="Inzidenzort" type="Zahl_5stellig_Typ"/>
+			<xs:element name="Tod" type="Tod_Typ" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:simpleType name="R_Typ">
