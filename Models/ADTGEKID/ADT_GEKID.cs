@@ -853,6 +853,9 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
 
     public enum Bestrahlung_Zielgebiet_Typ
     {
+        [XmlEnum(Name = "")]
+        Default = 0,
+
         [XmlEnum("1.")]
         Item1,
         [XmlEnum("1.1.")]

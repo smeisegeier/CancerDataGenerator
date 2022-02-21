@@ -202,11 +202,11 @@ namespace Rki.CancerDataGenerator.BLL
             if (_generator.CreateRandomBool())
             {
                 obj.CodeVersion2021 = item;
-                obj.CodeVersion2014 = null;
+                obj.CodeVersion2014 = Bestrahlung_Zielgebiet_Typ.Default;
             } 
             else
             {
-                obj.CodeVersion2021 = null;
+                obj.CodeVersion2021 = Bestrahlung_Zielgebiet_Typ.Default;
                 obj.CodeVersion2014 = item;
             }
             return obj;
