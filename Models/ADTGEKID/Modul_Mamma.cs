@@ -6,7 +6,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
     {
         public Modul_Mamma(){}
 
-        public Modul_Mamma_TypPraetherapeutischer_Menopausenstatus Praetherapeutischer_Menopausenstatus { get; set; }
+        public Praetherapeutischer_Menopausenstatus_Typ Praetherapeutischer_Menopausenstatus { get; set; }
 
         public Hormonrezeptor_Typ HormonrezeptorStatus_Oestrogen { get; set; }
 

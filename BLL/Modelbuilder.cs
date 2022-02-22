@@ -307,7 +307,7 @@ namespace Rki.CancerDataGenerator.BLL
         {
             var obj = new Modul_Malignes_Melanom();
             obj.LDH = _generator.CreateRandomValueInt(1, 10000);
-            obj.Tumordicke = _generator.CreateRandomValueDouble(0, 99);
+            obj.Tumordicke = _generator.CreateRandomValueDouble(0.1, 99);
             return obj;
         }
 
@@ -356,14 +356,14 @@ namespace Rki.CancerDataGenerator.BLL
         private Modul_Darm Create_Modul_Darm_Typ()
         {
             var obj = new Modul_Darm();
-            obj.RASMutation = _generator.FetchRandomEnumItem<Modul_Darm_TypRASMutation>();
+            obj.RASMutation = _generator.FetchRandomEnumItem<RASMutation_Typ>();
             return obj;
         }
 
         private Modul_Mamma Create_Modul_Mamma_Typ()
         {
             var obj = new Modul_Mamma();
-            obj.Praetherapeutischer_Menopausenstatus = _generator.FetchRandomEnumItem<Modul_Mamma_TypPraetherapeutischer_Menopausenstatus>();
+            obj.Praetherapeutischer_Menopausenstatus = _generator.FetchRandomEnumItem<Praetherapeutischer_Menopausenstatus_Typ>();
             obj.HormonrezeptorStatus_Oestrogen = _generator.FetchRandomEnumItem<Hormonrezeptor_Typ>();
             obj.HormonrezeptorStatus_Progesteron = _generator.FetchRandomEnumItem<Hormonrezeptor_Typ>();
             obj.Her2neuStatus = _generator.FetchRandomEnumItem<Hormonrezeptor_Typ>();
@@ -375,7 +375,7 @@ namespace Rki.CancerDataGenerator.BLL
         private TNM Create_TNM_Typ()
         {
             var obj = new TNM();
-            obj.TNM_Version = TNM_TypTNM_Version.Item7;
+            obj.TNM_Version = TNM_Version_Typ.Item7;
             obj.TNM_y_Symbol = TNM_TypTNM_y_Symbol.y;
             obj.TNM_a_Symbol = TNM_TypTNM_a_Symbol.a;
             obj.TNM_T = _generator.FetchRandomDimensionItem<T>()?.tnm_t_id;

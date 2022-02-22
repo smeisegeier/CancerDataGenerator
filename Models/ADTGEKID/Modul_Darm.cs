@@ -2,7 +2,7 @@
 {
     public class Modul_Darm
     {
-        public Modul_Darm_TypRASMutation RASMutation { get; set; }
+        public RASMutation_Typ RASMutation { get; set; }
 
     }
 }

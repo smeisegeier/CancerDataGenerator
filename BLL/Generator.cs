@@ -61,7 +61,8 @@ namespace Rki.CancerDataGenerator.Models.Dimensions
         #region generics area
         public int CreateRandomValueInt(int min, int max) => _random.Next(min, max + 1);
         public int CreateRandomValueInt(int delta) => _random.Next(delta * -1, delta);
-        public double CreateRandomValueDouble(double min, double max) => min + (_random.NextDouble() * (max - min));
+        public double CreateRandomValueDouble(double min, double max, int fractionDigits = 1) 
+            => Math.Round(min + (_random.NextDouble() * (max - min)), 1);
         public bool CreateRandomBool() 
         {
             var rng = _random.Next(1,100);

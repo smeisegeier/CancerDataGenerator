@@ -6,7 +6,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
     public class TNM : AdtgekidBase
     {
 
-        public TNM_TypTNM_Version TNM_Version { get; set; }
+        public TNM_Version_Typ TNM_Version { get; set; }
         
         public TNM_TypTNM_y_Symbol TNM_y_Symbol { get; set; }
         

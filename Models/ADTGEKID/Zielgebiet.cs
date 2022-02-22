@@ -5,7 +5,6 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
 {
     public class Zielgebiet
     {
-        // TODO bug nullable? try xmlchoice
         [DefaultValue(Bestrahlung_Zielgebiet_Typ.Default)]
         public Bestrahlung_Zielgebiet_Typ CodeVersion2021 { get; set; }
 
