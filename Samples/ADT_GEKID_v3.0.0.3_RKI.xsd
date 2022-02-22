@@ -88,6 +88,7 @@
 								<xs:documentation>Erste Version beruhend auf Basisdatensatz 2021</xs:documentation>
 							</xs:annotation>
 						</xs:enumeration>
+						<xs:enumeration value="3.0.0-RKI"/>
 					</xs:restriction>
 				</xs:simpleType>
 			</xs:attribute>

@@ -36,6 +36,6 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
 
         public TNM_TypTNM_S TNM_S { get; set; }
 
-        public TNM_TypUICC_Stadium UICC_Stadium { get; set; }
+        public UICC_Stadium_Typ UICC_Stadium { get; set; }
     }
 }

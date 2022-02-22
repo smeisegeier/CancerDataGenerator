@@ -1,11 +1,11 @@
 ﻿using Rki.CancerDataGenerator.Models.Dimensions;
+using System.Xml.Serialization;
 
 namespace Rki.CancerDataGenerator.Models.ADTGEKID
 {
     // TODO Verlauf sill not clear
     public class Verlauf : AdtgekidBase
     {
-        public Verlauf(){}
 
         public Histologie Histologie { get; set; }
         
@@ -16,13 +16,13 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         
         public string Untersuchungsdatum_Verlauf { get; set; }
 
-        public PatientMeldungVerlaufGesamtbeurteilung_Tumorstatus Gesamtbeurteilung_Tumorstatus { get; set; }
+        public Gesamtbeurteilung_Tumorstatus_Typ Gesamtbeurteilung_Tumorstatus { get; set; }
 
-        public PatientMeldungVerlaufVerlauf_Lokaler_Tumorstatus Verlauf_Lokaler_Tumorstatus { get; set; }
+        public Verlauf_Lokaler_Tumorstatus_Typ Verlauf_Lokaler_Tumorstatus { get; set; }
 
-        public PatientMeldungVerlaufVerlauf_Tumorstatus_Lymphknoten Verlauf_Tumorstatus_Lymphknoten { get; set; }
+        public Verlauf_Tumorstatus_Lymphknoten_Typ Verlauf_Tumorstatus_Lymphknoten { get; set; }
 
-        public PatientMeldungVerlaufVerlauf_Tumorstatus_Fernmetastasen Verlauf_Tumorstatus_Fernmetastasen { get; set; }
+        public Verlauf_Tumorstatus_Fernmetastasen_Typ Verlauf_Tumorstatus_Fernmetastasen { get; set; }
 
         [System.Xml.Serialization.XmlArrayItem("Fernmetastase", IsNullable = false)]
         public Fernmetastase[] Menge_FM { get; set; }

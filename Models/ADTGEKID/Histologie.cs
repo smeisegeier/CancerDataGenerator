@@ -7,6 +7,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
 {
     public class Histologie
     {
+        // TODO array vs list
         // TODO diff to schema
         public List<Morphologie> Menge_Morphologie { get; set; }
 

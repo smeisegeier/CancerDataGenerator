@@ -19,6 +19,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
 
         public SYST[] Menge_SYST { get; set; }
 
+        [XmlArrayItem("Folgeereignis")]
         public List<Verlauf> Menge_Folgeereignis { get; set; }
 
         public JNU_Typ DCN { get; set; }

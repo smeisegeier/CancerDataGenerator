@@ -5,6 +5,6 @@
 
         public Datum FM_Diagnosedatum { get; set; }
 
-        public Menge_FM_TypFernmetastaseFM_Lokalisation FM_Lokalisation { get; set; }
+        public FM_Lokalisation_Typ FM_Lokalisation { get; set; }
     }
 }

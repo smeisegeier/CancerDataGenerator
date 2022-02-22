@@ -12,9 +12,10 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         public Patient() { }
 
         public Patienten_Stammdaten Patienten_Stammdaten { get; set; }
-
-        
-        [System.Xml.Serialization.XmlArrayItemAttribute("Meldung", IsNullable = false)]
+       
         public List<Tumor> Menge_Tumor { get; set; }
+
+        [XmlAttribute]
+        public string Patient_ID { get; set; }
     }
 }

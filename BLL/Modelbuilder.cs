@@ -50,6 +50,7 @@ namespace Rki.CancerDataGenerator.BLL
                 .Range(1, _meldungCount)
                 .Select(index => Create_Tumor())
                 .ToList();
+            obj.Patient_ID = Guid.NewGuid().ToString();
             return obj;
         }
 
@@ -144,7 +145,7 @@ namespace Rki.CancerDataGenerator.BLL
             else
             {
                 obj.ATC = new ATC();
-                obj.ATC.Code = "Substanz";
+                obj.ATC.Code = _generator.FetchNormalDimensionItem<Substance>().atc_level_5;
                 obj.ATC.Version = "2019";
             }
             return obj;
@@ -314,7 +315,7 @@ namespace Rki.CancerDataGenerator.BLL
         private Fernmetastase create_FM()
         {
             var obj = new Fernmetastase();
-            obj.FM_Lokalisation = _generator.FetchRandomEnumItem<Menge_FM_TypFernmetastaseFM_Lokalisation>();
+            obj.FM_Lokalisation = _generator.FetchRandomEnumItem<FM_Lokalisation_Typ>();
             obj.FM_Diagnosedatum = new Datum(_generator.CreateRandomDate_Meldedatum(), Datumsgenauigkeit_Typ.T);
             return obj;
         }

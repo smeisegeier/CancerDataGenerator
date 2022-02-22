@@ -7,10 +7,9 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
     [XmlRoot(Namespace = Globals.XSDNAMESPACE, IsNullable = false)]
     public class ADT_GEKID : AdtgekidBase
     {
-        public ADT_GEKID() { }
-        public List<Patient> Menge_Patient { get; set; }
         public Lieferregister Lieferregister { get; set; }
         public Datum Lieferdatum { get; set; }
+        public List<Patient> Menge_Patient { get; set; }
         [XmlAttribute]
         public Schema_Version Schema_Version { get; init; } = Schema_Version.Item300RKI;
         [XmlAttribute("schemaLocation", Namespace = Globals.XSINAMESPACE)]
@@ -238,26 +237,6 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         S,
         U,
     }
-    public enum PatientMeldungMeldebegruendung
-    {
-        I,
-        A,
-        D,
-        W,
-        V,
-        None
-    }
-    public enum PatientMeldungMeldeanlass
-    {
-        diagnose,
-        behandlungsbeginn,
-        behandlungsende,
-        statusaenderung,
-        statusmeldung,
-        tod,
-        histologie_zytologie,
-        None
-    }
     public enum ICD_Version_Typ
     {
         [XmlEnum("10 2004 GM")]
@@ -341,17 +320,14 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         Item9,
         None
     }
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
-    [System.SerializableAttribute()]
-    [XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.gekid.de/namespace")]
-    public enum TNM_TypUICC_Stadium
+    public enum UICC_Stadium_Typ
     {
         okk,
-        [System.Xml.Serialization.XmlEnumAttribute("0")]
+        [XmlEnum("0")]
         Item0,
-        [System.Xml.Serialization.XmlEnumAttribute("0a")]
+        [XmlEnum("0a")]
         Item0a,
-        [System.Xml.Serialization.XmlEnumAttribute("0is")]
+        [XmlEnum("0is")]
         Item0is,
         I,
         IA,
@@ -385,7 +361,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         IVB,
         IVC,
     }
-    public enum Menge_FM_TypFernmetastaseFM_Lokalisation
+    public enum FM_Lokalisation_Typ
     {
         PUL,
         OSS,
@@ -831,15 +807,6 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         MPRRT,
         S,
     }
-    public enum PatientMeldungSTST_Ende_Grund
-    {
-        A,
-        E,
-        V,
-        P,
-        S,
-        U,
-    }
     public enum SYST_Intention_Typ
     {
         K,
@@ -860,23 +827,19 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         CH,
         HO,
         IM,
-        KM,
-        WS,
-        AS,
         ZS,
+        CI,
+        CZ,
+        CIZ,
+        IZ,
+        SZ,
+        AS,
+        WS,
+        WW,
         SO,
+        None
     }
-    public enum PatientMeldungSYSTSYST_Ende_Grund
-    {
-        A,
-        E,
-        V,
-        R,
-        P,
-        S,
-        U,
-    }
-    public enum PatientMeldungVerlaufGesamtbeurteilung_Tumorstatus
+    public enum Gesamtbeurteilung_Tumorstatus_Typ
     {
         V,
         T,
@@ -888,7 +851,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         U,
         X,
     }
-    public enum PatientMeldungVerlaufVerlauf_Lokaler_Tumorstatus
+    public enum Verlauf_Lokaler_Tumorstatus_Typ
     {
         K,
         T,
@@ -899,7 +862,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         U,
         X,
     }
-    public enum PatientMeldungVerlaufVerlauf_Tumorstatus_Lymphknoten
+    public enum Verlauf_Tumorstatus_Lymphknoten_Typ
     {
         K,
         T,
@@ -910,7 +873,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         U,
         X,
     }
-    public enum PatientMeldungVerlaufVerlauf_Tumorstatus_Fernmetastasen
+    public enum Verlauf_Tumorstatus_Fernmetastasen_Typ
     {
         K,
         M,
