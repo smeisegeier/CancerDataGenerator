@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Rki.CancerDataGenerator.BLL;
 using Rki.CancerDataGenerator.DAL;
 using Rki.CancerDataGenerator.Services;
-using Rki.CancerDataGenerator.Helper;
+using Rki.CancerDataGenerator.StaticHelper;
 
 
 namespace Rki.CancerDataGenerator.Controllers
@@ -29,7 +29,7 @@ namespace Rki.CancerDataGenerator.Controllers
         {
             //ADT_GEKID a = getNewRootObject();
             // also give contentType to trigger browser addons for xml view
-            return Content(StaticHelper.GetXmlStringFromObject(_adtgekid), "application/xml");
+            return base.Content(StaticHelper.Xml.GetXmlStringFromObject(_adtgekid), "application/xml");
 
         }
 
@@ -75,7 +75,7 @@ namespace Rki.CancerDataGenerator.Controllers
 
             _generator.Configuration = configuration;
             // also give contentType to trigger browser addons for xml view
-            return Content(StaticHelper.GetXmlStringFromObject(_adtgekid), "application/xml");
+            return base.Content(StaticHelper.Xml.GetXmlStringFromObject(_adtgekid), "application/xml");
         }
 
     }

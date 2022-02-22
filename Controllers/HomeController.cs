@@ -18,7 +18,9 @@ using JWT;
 using JWT.Serializers;
 using JWT.Builder;
 using Rki.CancerDataGenerator.Services;
-using Rki.CancerDataGenerator.Helper;
+using Rki.CancerDataGenerator.StaticHelper;
+using PgpCore;
+using System.IO;
 
 namespace Rki.CancerDataGenerator.Controllers
 {
@@ -36,16 +38,16 @@ namespace Rki.CancerDataGenerator.Controllers
         public IActionResult Details()
         {
             // also give contentType to trigger browser addons for xml view
-            return Content(StaticHelper.GetXmlStringFromObject(_adtgekid), "application/xml");
+            return base.Content(StaticHelper.Xml.GetXmlStringFromObject(_adtgekid), "application/xml");
         }
 
         [HttpGet]
         public IActionResult Validate()
         {
-            var xml = StaticHelper.GetXmlStringFromObject(_adtgekid);
-            var messages = StaticHelper.ValidateXml(xml, Globals.XSDNAMESPACE, Globals.XSDPATHRELATIVE);
+            var xml = StaticHelper.Xml.GetXmlStringFromObject(_adtgekid);
+            var messages = StaticHelper.Xml.ValidateXml(xml, Globals.XSDNAMESPACE, Globals.XSDPATHRELATIVE);
 
-            return Content(StaticHelper.ValidationMessageItem.PrintItemList(messages));
+            return base.Content(StaticHelper.Xml.ValidationMessageItem.PrintItemList(messages));
         }
 
 
@@ -81,6 +83,14 @@ namespace Rki.CancerDataGenerator.Controllers
             return Content(token);
         }
 
+        [HttpGet]
+        public IActionResult DetailsCrypted()
+        {
+            return Content(Encryption.EncryptString(Xml.GetXmlStringFromObject(_adtgekid), Globals.PUBLICKEY));
+        }
 
+        [HttpGet]
+        public IActionResult DetailsSigned() => 
+            Content(Encryption.SignString("hi there"));
     }
 }

@@ -9,9 +9,9 @@ using System.Xml.Linq;
 using System.Xml.Schema;
 using System.Xml.Serialization;
 
-namespace Rki.CancerDataGenerator.Helper
+namespace Rki.CancerDataGenerator.StaticHelper
 {
-    public static class StaticHelper
+    public static class Xml
     {
         /// <summary>
         /// Exports a class to a formatted json string.

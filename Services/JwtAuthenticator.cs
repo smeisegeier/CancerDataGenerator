@@ -60,7 +60,7 @@ namespace Rki.CancerDataGenerator.Services
                      .WithSecret(_jwtTokenPasswd)
                      .MustVerifySignature()
                      .Decode(token);
-            var userJwt = Helper.StaticHelper.FromJson<UserJwt>(json);
+            var userJwt = StaticHelper.Xml.FromJson<UserJwt>(json);
             return userJwt;
         }
 

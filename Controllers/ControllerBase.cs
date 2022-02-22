@@ -45,7 +45,7 @@ namespace Rki.CancerDataGenerator.Controllers
 
         protected IActionResult WriteFileAsJson<T>(IList<T> list) where T : DimensionBase
         {
-            string content = Helper.StaticHelper.ToJson(list);
+            string content = StaticHelper.Xml.ToJson(list);
 
             if (string.IsNullOrEmpty(content))
                 return BadRequest();
