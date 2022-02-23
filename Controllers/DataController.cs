@@ -78,6 +78,27 @@ namespace Rki.CancerDataGenerator.Controllers
             return base.Content(StaticHelper.Xml.GetXmlStringFromObject(_adtgekid), "application/xml");
         }
 
+        /// <summary>
+        /// Test to encrypt POST data
+        /// </summary>
+        /// <param name="input">string must be enclosed w/ ""</param>
+        /// <returns>encrypted input</returns>
+        [HttpPost("submit")]
+        [Consumes("application/json")]
+        [Produces("plain/text")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public IActionResult SubmitEncrypted([FromBody] string input)
+        {
+            if (input is null)
+                return BadRequest();
+            string result = Encryption.EncryptString(input, Globals.PUBLICKEY);
+            // also give contentType to trigger browser addons for xml view
+            return Content(result);
+        }
+
+
     }
 
 }
