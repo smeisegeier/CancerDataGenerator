@@ -105,7 +105,7 @@ namespace Rki.CancerDataGenerator.Models.Dimensions
         }
 
 
-
+        // TODO needs testing
         /// <summary>
         /// get random enum
         /// </summary>
@@ -114,13 +114,14 @@ namespace Rki.CancerDataGenerator.Models.Dimensions
         public T FetchRandomEnumItem<T>(double missingProb = 0) where T : Enum
         {
             var list = fetchAllEnumItems<T>();
-            var itemNone = fetchNoneEnumItem(list);
+            //var itemNone = fetchNoneEnumItem(list);
             // handle missingProb
             if (_random.NextDouble() < missingProb)
-                return fetchNoneEnumItem(list);     // warning: if no item "none" is present, this will return enum[0]
+                return list.FirstOrDefault();
+                //return fetchNoneEnumItem(list);     // warning: if no item "none" is present, this will return enum[0]
 
-            if (itemNone?.ToString() == "None")
-                list.Remove(itemNone);
+            if (list.FirstOrDefault().ToString() == "Default")
+                list.Remove(list.FirstOrDefault());
             return list[_random.Next(list.Count)];
         }
 
@@ -197,15 +198,20 @@ namespace Rki.CancerDataGenerator.Models.Dimensions
             return FetchNormalDimensionItem<Histology>(subset).histology_id.Replace(".","/");
         }
 
-
+        /// <summary>
+        /// Gets first n chars from a quote
+        /// </summary>
+        /// <param name="maxLength">ge 3</param>
+        /// <returns></returns>
         public string FetchNormalDimensionItem_QuoteString(int maxLength)//(double probMissing = _config.Text_ProbMissing)
         {
             const string appendix = " ..";
+            maxLength -= appendix.Length;
 
             if (_random.NextDouble() < Configuration.Text_ProbMissing)
                 return null;
             var result = FetchNormalDimensionItem<Quote>(null)?.quote;
-            if (result.Length + appendix.Length <= maxLength)
+            if (result.Length <= maxLength)
                 return result;
             return result.Substring(0, maxLength) + appendix;
         }

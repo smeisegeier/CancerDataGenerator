@@ -22,6 +22,8 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
     }
     public enum ISO3199_2_Typ
     {
+        [XmlEnum(Name = "")]
+        Default = 0,
         [XmlEnum("DE-BY")]
         DE_BY,
         [XmlEnum("DE-BW")]
@@ -57,6 +59,8 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
     }
     public enum R_Typ
     {
+        [XmlEnum(Name = "")]
+        Default = 0,
         R0,
         R1,
         [XmlEnum("R1(is)")]
@@ -88,8 +92,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         [XmlEnum("4")]
         Item4,
         [XmlEnum("5")]
-        Item5,
-        None
+        Item5
     }
     public enum GleasonScoreErgebnis_Typ
     {
@@ -114,8 +117,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         [XmlEnum("9")]
         Item9,
         [XmlEnum("10")]
-        Item10,
-        None
+        Item10
     }
     public enum RASMutation_Typ
     {
@@ -123,7 +125,6 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         M,
         U,
         N,
-        None
     }
     public enum Praetherapeutischer_Menopausenstatus_Typ
     {
@@ -286,7 +287,6 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         Item102022GM,
         [XmlEnum("Sonstige")]
         Sonstige,
-        None
     }
     public enum Seitenlokalisation_Typ
     {
@@ -296,7 +296,6 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         M,
         U,
         T,
-        None
     }
     public enum Topographie_ICD_O_Version_Typ
     {
@@ -323,7 +322,6 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         Item7,
         [XmlEnum("9")]
         Item9,
-        None
     }
     public enum UICC_Stadium_Typ
     {
@@ -381,9 +379,10 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         OTH,
         GEN,
     }
-    // TODO how to deal with NONE items?
     public enum OP_Intention_Typ
     {
+        [XmlEnum(Name = "")]
+        Default = 0,
         K,
         P,
         D,
@@ -441,6 +440,8 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
     }
     public enum ST_Stellung_OP_Typ
     {
+        [XmlEnum(Name = "")]
+        Default = 0,
         O,
         A,
         N,
@@ -1350,7 +1351,6 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         WS,
         WW,
         SO,
-        None
     }
     public enum Gesamtbeurteilung_Tumorstatus_Typ
     {
