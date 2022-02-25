@@ -10,7 +10,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         
         public SYST_Therapieart_Typ Therapieart { get; set; }
 
-        public string Protokoll { get; set; }
+        public Protokoll Protokoll { get; set; }
        
         [System.Xml.Serialization.XmlArrayItem("Substanz", IsNullable = false)]
         public Substanz[] Menge_Substanz { get; set; }

@@ -38,16 +38,16 @@ namespace Rki.CancerDataGenerator.Controllers
         public IActionResult Details()
         {
             // also give contentType to trigger browser addons for xml view
-            return base.Content(StaticHelper.Xml.GetXmlStringFromObject(_adtgekid), "application/xml");
+            return base.Content(Xml.GetXmlStringFromObject(_adtgekid), "application/xml");
         }
 
         [HttpGet]
         public IActionResult Validate()
         {
-            var xml = StaticHelper.Xml.GetXmlStringFromObject(_adtgekid);
-            var messages = StaticHelper.Xml.ValidateXml(xml, Globals.XSDNAMESPACE, Globals.XSDPATHRELATIVE);
+            var xml = Xml.GetXmlStringFromObject(_adtgekid);
+            var messages = Xml.ValidateXml(xml, Globals.XSDNAMESPACE, Globals.XSDPATHRELATIVE);
 
-            return base.Content(StaticHelper.Xml.ValidationMessageItem.PrintItemList(messages));
+            return base.Content(Xml.ValidationMessageItem.PrintItemList(messages));
         }
 
 

@@ -70,16 +70,19 @@ namespace Rki.CancerDataGenerator.BLL
         {
             var obj = new Tod();
             obj.Sterbedatum = new Datum(_generator.CreateRandomDate_Meldedatum(), Datumsgenauigkeit_Typ.T);
-            obj.Anzahl_Tage_Diagnose_Tod = _generator.CreateRandomValueInt(1, Globals.MAXANZTAGEZWISCHENEREIGNISSE);
-            obj.Todesursache = Create_Todesursache();
+            obj.Grundleiden = create_Todesursache();
+            obj.Menge_Weitere_Todesursachen = Enumerable
+                .Range(1, 3)
+                .Select(index => create_Todesursache())
+                .ToList();
             return obj;
         }
 
-        private Todesursache Create_Todesursache()
+        private Allgemein_ICD create_Todesursache()
         {
-            var obj = new Todesursache();
-            obj.Todesursache_ICD = _generator.FetchNormalDimensionItem<Icd>().icd_four_digits;
-            obj.Todesursache_ICD_Version = ICD_Version_Typ.Item102018GM;
+            var obj = new Allgemein_ICD();
+            obj.Code = _generator.FetchNormalDimensionItem<Icd>().icd_four_digits;
+            obj.Version = ICD_Version_Typ.Item102018GM;
             return obj;
         }
 
@@ -124,11 +127,27 @@ namespace Rki.CancerDataGenerator.BLL
             obj.Anzahl_Tage_Diagnose_SYST = _generator.CreateRandomValueInt(1, Globals.MAXANZTAGEZWISCHENEREIGNISSE);
             obj.Stellung_OP = _generator.FetchRandomEnumItem<SYST_Stellung_OP_Typ>();
             obj.Therapieart = _generator.FetchRandomEnumItem<SYST_Therapieart_Typ>();
-            obj.Protokoll = _generator.FetchNormalDimensionItem_QuoteString(255);
+            obj.Protokoll = create_Protokoll(); ;
             obj.Menge_Substanz = Enumerable
                 .Range(1, _generator.CreateRandomValueInt(1, 3))
                 .Select(index => create_Substanz())
                 .ToArray();
+            return obj;
+        }
+
+        private Protokoll create_Protokoll()
+        {
+            var obj = new Protokoll();
+            if (_generator.CreateRandomBool())
+            {
+                obj.Bezeichnung = _generator.FetchNormalDimensionItem_QuoteString(30);
+            }
+            else
+            {
+                obj.Chemotherapie_Protokoll = new ();
+                obj.Chemotherapie_Protokoll.Code = _generator.FetchNormalDimensionItem<Protocol>().protocol_shortname;
+                obj.Chemotherapie_Protokoll.Version = _generator.CreateNormalValueUponRange(2008,2022).ToString();
+            }
             return obj;
         }
 
@@ -308,6 +327,7 @@ namespace Rki.CancerDataGenerator.BLL
             obj.Seitenlokalisation = _generator.FetchRandomEnumItem<Seitenlokalisation_Typ>(0.2);
 
             obj.DCN = _generator.FetchRandomEnumItem<JNU_Typ>();
+            obj.Anzahl_Tage_Diagnose_Tod = _generator.CreateRandomValueInt(1, Globals.MAXANZTAGEZWISCHENEREIGNISSE);
             return obj;
         }
 

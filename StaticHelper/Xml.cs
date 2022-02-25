@@ -74,6 +74,7 @@ namespace Rki.CancerDataGenerator.StaticHelper
                 var validationMessage = new ValidationMessageItem();
                 validationMessage.Severity = e.Severity.ToString();
                 validationMessage.Message = e.Message;
+                validationMessage.Exception = e.Exception.ToString();
                 // local var is manipulated by handler
                 messageItems.Add(validationMessage);
             };
@@ -95,7 +96,8 @@ namespace Rki.CancerDataGenerator.StaticHelper
             /// </summary>
             public string Severity { get; set; }
             public string Message { get; set; }
-            public override string ToString() => $"Severity: {Severity ?? "None"} | Message: {Message ?? "No Errors"}";
+            public string Exception { get; set; }
+            public override string ToString() => $"Severity: {Severity ?? "None"} | Message: {Message ?? "No Errors"}";// | Exception {Exception ?? "None"}";
 
             /// <summary>
             /// Friendly display of all validation messages

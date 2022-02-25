@@ -52,5 +52,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
 
         public JNU_Typ DCN { get; set; }
 
+        public int Anzahl_Tage_Diagnose_Tod { get; set; }
+
     }
 }

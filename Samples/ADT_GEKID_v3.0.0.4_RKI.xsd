@@ -95,7 +95,6 @@
 		<xs:sequence>
 			<xs:element name="Code" type="ICD_Code_Typ"/>
 			<xs:element name="Version" type="ICD_Version_Typ"/>
-			<xs:element name="IstGrundleiden" type="JN_Typ"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:simpleType name="datatypeCtrimmed">
@@ -1659,7 +1658,7 @@
 					</xs:restriction>
 				</xs:simpleType>
 			</xs:element>
-			<xs:element name="Protokoll" type="Freitext255E_Typ" minOccurs="0"/>
+			<xs:element name="Protokoll" type="Protokoll_Typ" minOccurs="0"/>
 			<xs:element name="Menge_Substanz" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>
@@ -2138,7 +2137,8 @@
 					</xs:complexContent>
 				</xs:complexType>
 			</xs:element>
-			<xs:element name="Menge_Todesursache" minOccurs="0">
+			<xs:element name="Grundleiden" type="Allgemein_ICD_Typ" minOccurs="0"/>
+			<xs:element name="Menge_Weitere_Todesursachen" minOccurs="0">
 				<xs:complexType>
 					<xs:sequence>
 						<xs:element name="Todesursache_ICD" type="Allgemein_ICD_Typ" maxOccurs="unbounded"/>
@@ -3754,6 +3754,19 @@
 								</xs:restriction>
 							</xs:simpleType>
 						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="Protokoll_Typ">
+		<xs:choice maxOccurs="unbounded">
+			<xs:element name="Bezeichnung" type="Freitext255_Typ"/>
+			<xs:element name="Chemotherapie_Protokoll">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Code"/>
+						<xs:element name="Version"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>

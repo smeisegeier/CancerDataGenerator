@@ -1,4 +1,6 @@
 ﻿using Rki.CancerDataGenerator.Models.Dimensions;
+using System.Collections.Generic;
+using System.Xml.Serialization;
 
 namespace Rki.CancerDataGenerator.Models.ADTGEKID
 {
@@ -6,10 +8,10 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
     {
         public Datum Sterbedatum { get; set; }
 
-        //public List<Todesursache> Menge_Todesursache { get; set; }
+        [XmlArrayItem("Todesursache_ICD")]
+        public List<Allgemein_ICD> Menge_Weitere_Todesursachen { get; set; }
 
-        public Todesursache Todesursache { get; set; }
+        public Allgemein_ICD Grundleiden { get; set; }
 
-        public int Anzahl_Tage_Diagnose_Tod { get; set; }
     }
 }
