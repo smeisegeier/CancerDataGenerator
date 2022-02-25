@@ -14,7 +14,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         [System.Xml.Serialization.XmlArrayItem("Weitere_Klassifikation", IsNullable = false)]
         public Weitere_Klassifikation[] Menge_Weitere_Klassifikation { get; set; }
         
-        public string Untersuchungsdatum_Verlauf { get; set; }
+        public Datum Untersuchungsdatum_Verlauf { get; set; }
 
         public Gesamtbeurteilung_Tumorstatus_Typ Gesamtbeurteilung_Tumorstatus { get; set; }
 

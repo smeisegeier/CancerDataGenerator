@@ -11,7 +11,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         [XmlAttribute()]
         public string Tumor_ID { get; set; }
 
-        public Diagnose Primärdiagnose { get; set; }
+        public Diagnose Primaerdiagnose { get; set; }
 
         public List<OP> Menge_OP { get; set; }
 
@@ -21,8 +21,6 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
 
         [XmlArrayItem("Folgeereignis")]
         public List<Verlauf> Menge_Folgeereignis { get; set; }
-
-        public JNU_Typ DCN { get; set; }
 
     }
 }

@@ -15,10 +15,9 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         [System.Xml.Serialization.XmlArrayItem("Substanz", IsNullable = false)]
         public Substanz[] Menge_Substanz { get; set; }
         
-        public Residualstatus Residualstatus { get; set; }
 
         [Range(0, Globals.MAXANZTAGEZWISCHENEREIGNISSE)]
-        public int Anzahl_Tage_Diagnose_Beginn_SYST { get; set; }
+        public int Anzahl_Tage_Diagnose_SYST { get; set; }
 
     }
 }

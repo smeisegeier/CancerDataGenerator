@@ -25,7 +25,5 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
 
         [XmlAttribute()]
         public string Patient_ID { get; set; }
-
-
     }
 }

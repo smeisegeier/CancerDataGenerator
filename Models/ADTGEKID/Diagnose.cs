@@ -10,20 +10,15 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
     public class Diagnose : AdtgekidBase
     {
 
-        public Datum Diagnosedatum { get; set; }
+        public Datum Datum { get; set; }
 
-        [RegularExpression(@"[CD]\d\d(\.\d(\d) ?) ?|M72.4")]
-        public string Primaertumor_ICD_Code { get; set; }
-        
-        public ICD_Version_Typ Primaertumor_ICD_Version { get; set; }
 
-        [RegularExpression(@"C\d\d\.\d(\d)?")]
-        public string Primaertumor_Topographie_ICD_O { get; set; }
-        
-        public PatientMeldungDiagnosePrimaertumor_Topographie_ICD_O_Version Primaertumor_Topographie_ICD_O_Version { get; set; }
-        
-       
-        public PatientMeldungDiagnoseDiagnosesicherung Diagnosesicherung { get; set; }
+        public Tumor_ICD Primaertumor_ICD { get; set; }
+
+        public Topographie_ICD Primaertumor_Topographie_ICD_O { get; set; }
+
+
+        public Diagnosesicherung_Typ Diagnosesicherung { get; set; }
         
         public Seitenlokalisation_Typ Seitenlokalisation { get; set; }
 
@@ -55,5 +50,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         
         public Modul_Malignes_Melanom Modul_Malignes_Melanom { get; set; }
 
-     }
+        public JNU_Typ DCN { get; set; }
+
+    }
 }

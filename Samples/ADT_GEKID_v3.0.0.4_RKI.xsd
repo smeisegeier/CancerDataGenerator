@@ -2,15 +2,12 @@
 <!-- edited with XMLSpy v2021 rel. 3 (x64) (http://www.altova.com) by MeisegeierS_virtual (Robert Koch-Institut) -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.gekid.de/namespace" xmlns:tns="http://www.gekid.de/namespace" targetNamespace="http://www.gekid.de/namespace" elementFormDefault="qualified" attributeFormDefault="unqualified" version="3.0.0.2_RKI">
 	<xs:complexType name="Lieferregister_Typ">
-		<xs:attribute name="Register_ID" type="ISO3166_2_Typ" use="required"/>
+		<xs:attribute name="Bundesland_ID" type="ISO3166_2_Typ" use="required"/>
 		<xs:attribute name="Software_ID" type="Freitext255_Typ" use="optional"/>
 		<xs:attribute name="Software_Version" type="Freitext255_Typ"/>
 		<xs:attribute name="Installations_ID" type="Freitext255_Typ" use="optional"/>
 	</xs:complexType>
 	<xs:element name="ADT_GEKID">
-		<xs:annotation>
-			<xs:documentation>Root element</xs:documentation>
-		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element name="Lieferregister" type="Lieferregister_Typ"/>
@@ -26,16 +23,9 @@
 											<xs:complexType>
 												<xs:sequence>
 													<xs:element name="Tumor" maxOccurs="unbounded">
-														<xs:annotation>
-															<xs:documentation>Meldung ist fallbasiert</xs:documentation>
-														</xs:annotation>
 														<xs:complexType>
 															<xs:sequence>
-																<xs:element name="Primärdiagnose" type="Diagnose_Typ">
-																	<xs:annotation>
-																		<xs:documentation>best-of für Primärdiagnose</xs:documentation>
-																	</xs:annotation>
-																</xs:element>
+																<xs:element name="Primaerdiagnose" type="Diagnose_Typ"/>
 																<xs:element name="Menge_OP" minOccurs="0">
 																	<xs:complexType>
 																		<xs:sequence>
@@ -60,11 +50,10 @@
 																<xs:element name="Menge_Folgeereignis" minOccurs="0">
 																	<xs:complexType>
 																		<xs:sequence>
-																			<xs:element name="Folgeereignis" type="Verlauf_Typ" maxOccurs="unbounded"/>
+																			<xs:element name="Folgeereignis" type="Folgeereignis_Typ" maxOccurs="unbounded"/>
 																		</xs:sequence>
 																	</xs:complexType>
 																</xs:element>
-																<xs:element name="DCN" type="JNU_Typ"/>
 															</xs:sequence>
 															<xs:attribute name="Tumor_ID" type="FreitextID_Typ" use="required"/>
 														</xs:complexType>
@@ -106,30 +95,9 @@
 		<xs:sequence>
 			<xs:element name="Code" type="ICD_Code_Typ"/>
 			<xs:element name="Version" type="ICD_Version_Typ"/>
+			<xs:element name="IstGrundleiden" type="JN_Typ"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:simpleType name="AnlassGleasonScore_Typ">
-		<xs:annotation>
-			<xs:documentation>Anlass der Bestimmung des Scores OP oder Stanze</xs:documentation>
-		</xs:annotation>
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="O">
-				<xs:annotation>
-					<xs:documentation>Op</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="S">
-				<xs:annotation>
-					<xs:documentation>Stanze</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="U">
-				<xs:annotation>
-					<xs:documentation>Unbekannt</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-		</xs:restriction>
-	</xs:simpleType>
 	<xs:simpleType name="datatypeCtrimmed">
 		<xs:annotation>
 			<xs:documentation>Ergänzung: kein Whitespace am Anfang oder Ende.  Der Datentyp C wurde für alle normativen Schriftzeichen der DIN SPEC entworfen. Er ist somit die technische Umsetzung der Schnittstellenvereinbarung Alle nach DIN SPEC 91379 normativen Schriftzeichen. Texte mit griechischen oder kyrillischen Buchstaben oder mit erweiterten (nicht-normativen) Nicht-Buchstaben sind unzulässig. </xs:documentation>
@@ -213,9 +181,9 @@
 		</xs:simpleContent>
 	</xs:complexType>
 	<xs:complexType name="Diagnose_Typ">
-		<xs:sequence>
-			<xs:element name="Diagnosedatum" type="Datum_Monat_genau_Typ"/>
-			<xs:element name="Primärtumor_ICD" type="Tumor_ICD_Typ"/>
+		<xs:all>
+			<xs:element name="Datum" type="Datum_Monat_genau_Typ"/>
+			<xs:element name="Primaertumor_ICD" type="Tumor_ICD_Typ"/>
 			<xs:element name="Primaertumor_Topographie_ICD_O" type="Topographie_ICD_O_Typ" minOccurs="0"/>
 			<xs:element name="Diagnosesicherung" minOccurs="0">
 				<xs:annotation>
@@ -278,15 +246,11 @@
 			<xs:element name="Modul_Darm" type="Modul_Darm_Typ" minOccurs="0"/>
 			<xs:element name="Modul_Prostata" type="Modul_Prostata_Typ" minOccurs="0"/>
 			<xs:element name="Modul_Malignes_Melanom" type="Modul_Malignes_Melanom_Typ" minOccurs="0"/>
-			<xs:element name="Seitenlokalisation" type="Seitenlokalisation_Typ" minOccurs="0"/>
-		</xs:sequence>
+			<xs:element name="Seitenlokalisation" type="Seitenlokalisation_Typ"/>
+			<xs:element name="DCN" type="JNU_Typ"/>
+			<xs:element name="Anzahl_Tage_Diagnose_Tod" type="Abstand_Ereignisse_Tage_Typ" minOccurs="0"/>
+		</xs:all>
 	</xs:complexType>
-	<xs:simpleType name="Freitext1000_Typ">
-		<xs:restriction base="datatypeCtrimmed">
-			<xs:minLength value="1"/>
-			<xs:maxLength value="1000"/>
-		</xs:restriction>
-	</xs:simpleType>
 	<xs:simpleType name="Freitext255_Typ">
 		<xs:restriction base="datatypeCtrimmed">
 			<xs:minLength value="1"/>
@@ -372,7 +336,13 @@
 	</xs:complexType>
 	<xs:complexType name="Histologie_Typ">
 		<xs:sequence>
-			<xs:element name="Morphologie_ICD_O" type="Morphologie_ICD_O_Typ" minOccurs="0" maxOccurs="5"/>
+			<xs:element name="Menge_Morphologie" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Morphologie_ICD_O" type="Morphologie_ICD_O_Typ" maxOccurs="5"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
 			<xs:element name="Grading">
 				<xs:annotation>
 					<xs:documentation>
@@ -866,7 +836,7 @@
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="Modul_Malignes_Melanom_Typ">
-		<xs:sequence>
+		<xs:all>
 			<xs:element name="Tumordicke" type="Tumordicke_Typ" minOccurs="0"/>
 			<xs:element name="LDH" minOccurs="0">
 				<xs:annotation>
@@ -885,13 +855,13 @@
 					</xs:restriction>
 				</xs:simpleType>
 			</xs:element>
-		</xs:sequence>
+		</xs:all>
 	</xs:complexType>
 	<xs:complexType name="Modul_Mamma_Typ">
 		<xs:annotation>
 			<xs:documentation>Der Einschluss der vollständigen Module Mamma und Darm, sowie Allgemein in verschiedenen Abschnitten des Datensatzes ist nicht so zu verstehen, dass an allen Stellen alle Felder zu befüllen sind, vielmehr soll die Möglichkeit eröffnet werden, z. B. im Element "Diagnose" alle Informationen zu übermitteln, ohne für einige Modul-Felder eine im Übrigen leere OP anlegen zu müssen, oder umgekehrt.</xs:documentation>
 		</xs:annotation>
-		<xs:sequence>
+		<xs:all>
 			<xs:element name="Praetherapeutischer_Menopausenstatus" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>
@@ -957,10 +927,10 @@
 			</xs:element>
 			<xs:element name="TumorgroesseInvasiv" type="Zahl_3stellig_Typ" minOccurs="0"/>
 			<xs:element name="TumorgroesseDCIS" type="Zahl_3stellig_Typ" minOccurs="0"/>
-		</xs:sequence>
+		</xs:all>
 	</xs:complexType>
 	<xs:complexType name="Modul_Prostata_Typ">
-		<xs:sequence>
+		<xs:all>
 			<xs:element name="GleasonScore" type="GleasonScore_Typ" minOccurs="0"/>
 			<xs:element name="DatumStanzen" type="Datum_Monat_genau_Typ" minOccurs="0">
 				<xs:annotation>
@@ -983,7 +953,7 @@
 					</xs:restriction>
 				</xs:simpleType>
 			</xs:element>
-		</xs:sequence>
+		</xs:all>
 	</xs:complexType>
 	<xs:complexType name="Morphologie_ICD_O_Typ">
 		<xs:sequence>
@@ -1023,7 +993,25 @@
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="OP_Typ">
-		<xs:sequence>
+		<xs:all>
+			<xs:element name="Datum">
+				<xs:complexType>
+					<xs:attribute name="Datumsgenauigkeit" use="required">
+						<xs:simpleType>
+							<xs:annotation>
+								<xs:documentation>siehe Dokumentation zu Datum_Tag_oder_Monat_oder_Jahr_oder_nicht_genau_Typ</xs:documentation>
+							</xs:annotation>
+							<xs:restriction base="xs:string">
+								<xs:enumeration value="T">
+									<xs:annotation>
+										<xs:documentation>Tag geschätzt (entspricht monatsgenau)</xs:documentation>
+									</xs:annotation>
+								</xs:enumeration>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:attribute>
+				</xs:complexType>
+			</xs:element>
 			<xs:element name="Intention">
 				<xs:annotation>
 					<xs:documentation>
@@ -1089,15 +1077,14 @@
 			</xs:element>
 			<xs:element name="Residualstatus" type="Residualstatus_Typ" minOccurs="0"/>
 			<xs:element name="Anzahl_Tage_Diagnose_OP" type="Abstand_Ereignisse_Tage_Typ"/>
-			<xs:element name="Anzahl_Tage_OP_Dauer" type="Abstand_Ereignisse_Tage_Typ"/>
-		</xs:sequence>
+		</xs:all>
 		<xs:attribute name="OP_ID" type="FreitextID_Typ" use="optional"/>
 	</xs:complexType>
 	<xs:complexType name="Patienten_Stammdaten_Melder_Typ">
 		<xs:annotation>
 			<xs:documentation>Typ zur Verwendung in Meldungen, im RüD wird ein abweichender Typ mit Menge_Adresse verwendet werden</xs:documentation>
 		</xs:annotation>
-		<xs:sequence>
+		<xs:all>
 			<xs:element name="Geschlecht">
 				<xs:annotation>
 					<xs:documentation>
@@ -1133,7 +1120,7 @@
 			<xs:element name="Geburtsdatum" type="Datum_Monat_genau_Typ"/>
 			<xs:element name="Inzidenzort" type="Zahl_5stellig_Typ"/>
 			<xs:element name="Tod" type="Tod_Typ" minOccurs="0"/>
-		</xs:sequence>
+		</xs:all>
 	</xs:complexType>
 	<xs:simpleType name="R_Typ">
 		<xs:annotation>
@@ -1289,7 +1276,7 @@
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:complexType name="ST_Typ">
-		<xs:sequence>
+		<xs:all>
 			<xs:element name="Intention">
 				<xs:annotation>
 					<xs:documentation>
@@ -1377,13 +1364,13 @@
 					<xs:sequence>
 						<xs:element name="Bestrahlung" maxOccurs="unbounded">
 							<xs:complexType>
-								<xs:sequence>
+								<xs:all>
 									<xs:element name="Applikationsart">
 										<xs:complexType>
 											<xs:choice>
 												<xs:element name="Perkutan">
 													<xs:complexType>
-														<xs:sequence>
+														<xs:all>
 															<xs:element name="Radiochemo" minOccurs="0">
 																<xs:simpleType>
 																	<xs:restriction base="xs:string">
@@ -1424,12 +1411,12 @@
 															</xs:element>
 															<xs:element name="Zielgebiet" type="Zielgebiet_Typ"/>
 															<xs:element name="Seite_Zielgebiet" type="Seite_Zielgebiet_Typ"/>
-														</xs:sequence>
+														</xs:all>
 													</xs:complexType>
 												</xs:element>
 												<xs:element name="Kontakt">
 													<xs:complexType>
-														<xs:sequence>
+														<xs:all>
 															<xs:element name="Interstitiell_endokavitaer">
 																<xs:simpleType>
 																	<xs:restriction base="xs:string">
@@ -1469,12 +1456,12 @@
 															</xs:element>
 															<xs:element name="Zielgebiet" type="Zielgebiet_Typ"/>
 															<xs:element name="Seite_Zielgebiet" type="Seite_Zielgebiet_Typ"/>
-														</xs:sequence>
+														</xs:all>
 													</xs:complexType>
 												</xs:element>
 												<xs:element name="Metabolisch">
 													<xs:complexType>
-														<xs:sequence>
+														<xs:all>
 															<xs:element name="Metabolisch_Typ">
 																<xs:simpleType>
 																	<xs:restriction base="xs:string">
@@ -1508,15 +1495,15 @@
 															</xs:element>
 															<xs:element name="Zielgebiet" type="Zielgebiet_Typ" minOccurs="0"/>
 															<xs:element name="Seite_Zielgebiet" type="Seite_Zielgebiet_Typ" minOccurs="0"/>
-														</xs:sequence>
+														</xs:all>
 													</xs:complexType>
 												</xs:element>
 												<xs:element name="Sonstige">
 													<xs:complexType>
-														<xs:sequence>
+														<xs:all>
 															<xs:element name="Zielgebiet" type="Zielgebiet_Typ" minOccurs="0"/>
 															<xs:element name="Seite_Zielgebiet" type="Seite_Zielgebiet_Typ" minOccurs="0"/>
-														</xs:sequence>
+														</xs:all>
 													</xs:complexType>
 												</xs:element>
 											</xs:choice>
@@ -1524,17 +1511,17 @@
 									</xs:element>
 									<xs:element name="Anzahl_Tage_Diagnose_ST" type="Abstand_Ereignisse_Tage_Typ" minOccurs="0"/>
 									<xs:element name="Anzahl_Tage_ST_Dauer" type="Abstand_Ereignisse_Tage_Typ" minOccurs="0"/>
-								</xs:sequence>
+								</xs:all>
 							</xs:complexType>
 						</xs:element>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
-		</xs:sequence>
+		</xs:all>
 		<xs:attribute name="ST_ID" type="FreitextID_Typ" use="optional"/>
 	</xs:complexType>
 	<xs:complexType name="SYST_Typ">
-		<xs:sequence>
+		<xs:all>
 			<xs:element name="Intention">
 				<xs:annotation>
 					<xs:documentation>Gibt an, mit welcher Intention die systemische Therapie geplant wurde.</xs:documentation>
@@ -1683,42 +1670,16 @@
 				</xs:annotation>
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="Substanz">
-							<xs:complexType>
-								<xs:choice maxOccurs="unbounded">
-									<xs:element name="Bezeichnung" type="Freitext255E_Typ"/>
-									<xs:element name="ATC">
-										<xs:complexType>
-											<xs:sequence>
-												<xs:element name="Code">
-													<xs:simpleType>
-														<xs:restriction base="xs:string">
-															<xs:pattern value="[A-Z]\d\d[A-Z][A-Z]\d\d"/>
-														</xs:restriction>
-													</xs:simpleType>
-												</xs:element>
-												<xs:element name="Version">
-													<xs:simpleType>
-														<xs:restriction base="xs:string">
-															<xs:pattern value="200[4-9]|20[12]\d"/>
-														</xs:restriction>
-													</xs:simpleType>
-												</xs:element>
-											</xs:sequence>
-										</xs:complexType>
-									</xs:element>
-								</xs:choice>
-							</xs:complexType>
-						</xs:element>
+						<xs:element name="Substanz" type="Substanz_Typ"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
-			<xs:element name="Anzahl_Tage_Diagnose_Beginn_SYST" type="Abstand_Ereignisse_Tage_Typ"/>
-		</xs:sequence>
+			<xs:element name="Anzahl_Tage_Diagnose_SYST" type="Abstand_Ereignisse_Tage_Typ"/>
+		</xs:all>
 		<xs:attribute name="SYST_ID" type="FreitextID_Typ" use="optional"/>
 	</xs:complexType>
 	<xs:complexType name="TNM_Typ">
-		<xs:sequence>
+		<xs:all>
 			<xs:element name="Version" minOccurs="0">
 				<xs:simpleType>
 					<xs:restriction base="xs:string">
@@ -2166,10 +2127,10 @@
 					</xs:restriction>
 				</xs:simpleType>
 			</xs:element>
-		</xs:sequence>
+		</xs:all>
 	</xs:complexType>
 	<xs:complexType name="Tod_Typ">
-		<xs:sequence>
+		<xs:all>
 			<xs:element name="Sterbedatum">
 				<xs:complexType>
 					<xs:complexContent>
@@ -2177,9 +2138,14 @@
 					</xs:complexContent>
 				</xs:complexType>
 			</xs:element>
-			<xs:element name="Anzahl_Tage_Diagnose_Tod" type="Abstand_Ereignisse_Tage_Typ"/>
-			<xs:element name="Todesursache_ICD" type="Allgemein_ICD_Typ" minOccurs="0"/>
-		</xs:sequence>
+			<xs:element name="Menge_Todesursache" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Todesursache_ICD" type="Allgemein_ICD_Typ" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:all>
 	</xs:complexType>
 	<xs:complexType name="Topographie_ICD_O_Typ">
 		<xs:sequence>
@@ -2235,11 +2201,8 @@
 			<xs:maxInclusive value="99.0"/>
 		</xs:restriction>
 	</xs:simpleType>
-	<xs:complexType name="Verlauf_Typ">
-		<xs:sequence>
-			<xs:element name="Topographie_ICD_O" type="Topographie_ICD_O_Typ" minOccurs="0"/>
-			<xs:element name="Seitenlokalisation" type="Seitenlokalisation_Typ" minOccurs="0"/>
-			<xs:element name="Histologie" type="Histologie_Typ" minOccurs="0"/>
+	<xs:complexType name="Folgeereignis_Typ">
+		<xs:all>
 			<xs:element name="TNM" type="TNM_Typ" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation/>
@@ -2474,8 +2437,7 @@
 				</xs:simpleType>
 			</xs:element>
 			<xs:element name="Menge_FM" type="Menge_FM_Typ" minOccurs="0"/>
-		</xs:sequence>
-		<xs:attribute name="Verlauf_ID" type="FreitextID_Typ" use="optional"/>
+		</xs:all>
 	</xs:complexType>
 	<xs:simpleType name="Zahl_3stellig_Typ">
 		<xs:restriction base="xs:string">
@@ -2487,7 +2449,7 @@
 			<xs:documentation>Abstand zwischen Ereignissen, max. 365 Tage</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:int">
-			<xs:minInclusive value="1"/>
+			<xs:minInclusive value="0"/>
 			<xs:maxInclusive value="36500"/>
 		</xs:restriction>
 	</xs:simpleType>
@@ -3772,4 +3734,29 @@
 	<xs:annotation>
 		<xs:documentation>Automatisiert erstellt am 16.11.2018 um 6:21 Uhr aus der Spezifikation file:/C:/Users/rico/Documents/arbeit/KoSIT/string.latin/06_SVN/src/din%20spec%2091379/din-spec.xml.</xs:documentation>
 	</xs:annotation>
+	<xs:complexType name="Substanz_Typ">
+		<xs:choice maxOccurs="unbounded">
+			<xs:element name="Bezeichnung" type="Freitext255E_Typ"/>
+			<xs:element name="ATC">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Code">
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:pattern value="[A-Z]\d\d[A-Z][A-Z]\d\d"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<xs:element name="Version">
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:pattern value="200[4-9]|20[12]\d"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:choice>
+	</xs:complexType>
 </xs:schema>

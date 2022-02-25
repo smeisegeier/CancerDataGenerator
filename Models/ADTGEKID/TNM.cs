@@ -6,35 +6,35 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
     public class TNM : AdtgekidBase
     {
 
-        public TNM_Version_Typ TNM_Version { get; set; }
+        public TNM_Version_Typ Version { get; set; }
         
-        public TNM_TypTNM_y_Symbol TNM_y_Symbol { get; set; }
+        public TNM_TypTNM_y_Symbol y_Symbol { get; set; }
         
-        public TNM_TypTNM_r_Symbol TNM_r_Symbol { get; set; }
+        public TNM_TypTNM_r_Symbol r_Symbol { get; set; }
 
-        public TNM_TypTNM_a_Symbol TNM_a_Symbol { get; set; }
+        public TNM_TypTNM_a_Symbol a_Symbol { get; set; }
         
-        public TNM_TypTNM_c_p_u_Praefix_T TNM_c_p_u_Praefix_T { get; set; }
+        public TNM_TypTNM_c_p_u_Praefix_T c_p_u_Praefix_T { get; set; }
 
-        public string TNM_T { get; set; }
+        public string T { get; set; }
         
-        public string TNM_m_Symbol { get; set; }
+        public string m_Symbol { get; set; }
         
-        public TNM_TypTNM_c_p_u_Praefix_N TNM_c_p_u_Praefix_N { get; set; }
+        public TNM_TypTNM_c_p_u_Praefix_N c_p_u_Praefix_N { get; set; }
 
-        public string TNM_N { get; set; }
+        public string N { get; set; }
 
-        public TNM_TypTNM_c_p_u_Praefix_M TNM_c_p_u_Praefix_M { get; set; }
+        public TNM_TypTNM_c_p_u_Praefix_M c_p_u_Praefix_M { get; set; }
         
-        public string TNM_M { get; set; }
+        public string M { get; set; }
 
-        public TNM_TypTNM_L TNM_L { get; set; }
+        public TNM_TypTNM_L L { get; set; }
         
-        public TNM_TypTNM_V TNM_V { get; set; }
+        public TNM_TypTNM_V V { get; set; }
        
-        public TNM_TypTNM_Pn TNM_Pn { get; set; }
+        public TNM_TypTNM_Pn Pn { get; set; }
 
-        public TNM_TypTNM_S TNM_S { get; set; }
+        public TNM_TypTNM_S S { get; set; }
 
         public UICC_Stadium_Typ UICC_Stadium { get; set; }
     }

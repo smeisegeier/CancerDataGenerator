@@ -182,15 +182,32 @@ namespace Rki.CancerDataGenerator.Models.Dimensions
                 return null;
             if (chapter == "")  
                 return FetchNormalDimensionItem<Icd>();
-            var subset = _context.GetIcdSubsetByChapter(chapter);
+            // filter out ranges
+            var subset = _context.GetIcdSubsetByChapter(chapter).Where(x=> x.icd_three_digits.Length == 3).ToList();
             return FetchNormalDimensionItem<Icd>(subset);
         }
 
-        public string FetchNormalDimensionItem_QuoteString()//(double probMissing = _config.Text_ProbMissing)
+        public string FetchNormalDimensionItem_HistologySlashDignity()
         {
+            // get all with a dot
+            var subset = _context
+                .GetAll<Histology>()
+                .Where(x => x.histology_id.Contains("."))
+                .ToList();
+            return FetchNormalDimensionItem<Histology>(subset).histology_id.Replace(".","/");
+        }
+
+
+        public string FetchNormalDimensionItem_QuoteString(int maxLength)//(double probMissing = _config.Text_ProbMissing)
+        {
+            const string appendix = " ..";
+
             if (_random.NextDouble() < Configuration.Text_ProbMissing)
                 return null;
-            return FetchNormalDimensionItem<Quote>(null)?.quote;
+            var result = FetchNormalDimensionItem<Quote>(null)?.quote;
+            if (result.Length + appendix.Length <= maxLength)
+                return result;
+            return result.Substring(0, maxLength) + appendix;
         }
 
         #endregion

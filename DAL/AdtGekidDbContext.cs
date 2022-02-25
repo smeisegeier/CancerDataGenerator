@@ -27,7 +27,7 @@ namespace Rki.CancerDataGenerator.DAL
             modelBuilder.Entity<Location>().HasData(DimensionBase.ReadListFromJson<Location>());
             modelBuilder.Entity<M>().HasData(DimensionBase.ReadListFromJson<M>());
             modelBuilder.Entity<N>().HasData(DimensionBase.ReadListFromJson<N>());
-            modelBuilder.Entity<Op>().HasData(DimensionBase.ReadListFromJson<Op>());
+            modelBuilder.Entity<Ops>().HasData(DimensionBase.ReadListFromJson<Ops>());
             modelBuilder.Entity<OpIntention>().HasData(DimensionBase.ReadListFromJson<OpIntention>());
             modelBuilder.Entity<Protocol>().HasData(DimensionBase.ReadListFromJson<Protocol>());
             modelBuilder.Entity<Radiotherapy>().HasData(DimensionBase.ReadListFromJson<Radiotherapy>());
@@ -116,7 +116,7 @@ namespace Rki.CancerDataGenerator.DAL
         public DbSet<Icd> Icds { get; set; }
         public DbSet<Location> Locations { get; set; }
         public DbSet<M> Ms { get; set; }
-        public DbSet<Op> Ops { get; set; }
+        public DbSet<Ops> Ops { get; set; }
         public DbSet<OpIntention> OpIntentions { get; set; }
         public DbSet<Protocol> Protocols { get; set; }
         public DbSet<Radiotherapy> Radiotherapies { get; set; }
