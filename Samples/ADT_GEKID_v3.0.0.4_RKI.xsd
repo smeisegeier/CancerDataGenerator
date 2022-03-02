@@ -86,7 +86,7 @@
 			<xs:selector xpath="tns:Menge_Patient/tns:Patient"/>
 			<xs:field xpath="@Patient_ID"/>
 		</xs:unique>
-		<xs:unique name="ID_Tumorfall">
+		<xs:unique name="ID_Tumor">
 			<xs:selector xpath="tns:Menge_Patient/tns:Patient/tns:Menge_Tumor/tns:Tumor"/>
 			<xs:field xpath="@Tumor_ID"/>
 		</xs:unique>
@@ -115,7 +115,7 @@
 	</xs:simpleType>
 	<xs:complexType name="Datum_NU_Typ">
 		<xs:choice>
-			<xs:element name="Datum" type="Datum_Monat_genau_Typ"/>
+			<xs:element name="Datum" type="Datum_Monat_oder_Jahr_genau_Typ"/>
 			<xs:element name="NU">
 				<xs:simpleType>
 					<xs:restriction base="xs:string">
@@ -159,7 +159,12 @@
 			</xs:extension>
 		</xs:simpleContent>
 	</xs:complexType>
-	<xs:complexType name="Datum_Monat_genau_Typ">
+	<xs:complexType name="Datum_Monat_oder_Jahr_genau_Typ">
+		<xs:annotation>
+			<xs:documentation>E - exakt (entspricht taggenau)
+T - Tag geschätzt (entspricht monatsgenau)
+M - Monat geschätzt (entspricht jahrgenau)</xs:documentation>
+		</xs:annotation>
 		<xs:simpleContent>
 			<xs:extension base="Zulaessiger_Datumsbereich_Typ">
 				<xs:attribute name="Datumsgenauigkeit" use="required">
@@ -173,6 +178,7 @@
 									<xs:documentation>Tag geschätzt (entspricht monatsgenau)</xs:documentation>
 								</xs:annotation>
 							</xs:enumeration>
+							<xs:enumeration value="M"/>
 						</xs:restriction>
 					</xs:simpleType>
 				</xs:attribute>
@@ -181,7 +187,7 @@
 	</xs:complexType>
 	<xs:complexType name="Diagnose_Typ">
 		<xs:all>
-			<xs:element name="Datum" type="Datum_Monat_genau_Typ"/>
+			<xs:element name="Datum" type="Datum_Monat_oder_Jahr_genau_Typ"/>
 			<xs:element name="Primaertumor_ICD" type="Tumor_ICD_Typ"/>
 			<xs:element name="Primaertumor_Topographie_ICD_O" type="Topographie_ICD_O_Typ" minOccurs="0"/>
 			<xs:element name="Diagnosesicherung" minOccurs="0">
@@ -246,8 +252,12 @@
 			<xs:element name="Modul_Prostata" type="Modul_Prostata_Typ" minOccurs="0"/>
 			<xs:element name="Modul_Malignes_Melanom" type="Modul_Malignes_Melanom_Typ" minOccurs="0"/>
 			<xs:element name="Seitenlokalisation" type="Seitenlokalisation_Typ"/>
-			<xs:element name="DCN" type="JNU_Typ"/>
-			<xs:element name="Anzahl_Tage_Diagnose_Tod" type="Abstand_Ereignisse_Tage_Typ" minOccurs="0"/>
+			<xs:element name="DCI" type="DCI_Typ"/>
+			<xs:element name="Anzahl_Tage_Diagnose_Tod" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="Abstand_Ereignisse_Tage_Typ"/>
+				</xs:simpleType>
+			</xs:element>
 		</xs:all>
 	</xs:complexType>
 	<xs:simpleType name="Freitext255_Typ">
@@ -338,7 +348,7 @@
 			<xs:element name="Menge_Morphologie" minOccurs="0">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="Morphologie_ICD_O" type="Morphologie_ICD_O_Typ" maxOccurs="5"/>
+						<xs:element name="Morphologie" type="Morphologie_ICD_O_oder_Bluebook_Typ"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
@@ -725,7 +735,6 @@
 			<xs:element name="Fernmetastase" maxOccurs="unbounded">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="Diagnosedatum" type="Datum_Monat_genau_Typ"/>
 						<xs:element name="Lokalisation">
 							<xs:annotation>
 								<xs:documentation>
@@ -924,20 +933,21 @@
 					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="TumorgroesseInvasiv" type="Zahl_3stellig_Typ" minOccurs="0"/>
-			<xs:element name="TumorgroesseDCIS" type="Zahl_3stellig_Typ" minOccurs="0"/>
+			<xs:element name="TumorgroesseInvasiv" type="Zahl_3stellig_Typ" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Angabe in Millimetern</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="TumorgroesseDCIS" type="Zahl_3stellig_Typ" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Angabe in Millimetern</xs:documentation>
+				</xs:annotation>
+			</xs:element>
 		</xs:all>
 	</xs:complexType>
 	<xs:complexType name="Modul_Prostata_Typ">
 		<xs:all>
 			<xs:element name="GleasonScore" type="GleasonScore_Typ" minOccurs="0"/>
-			<xs:element name="DatumStanzen" type="Datum_Monat_genau_Typ" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation>
-						Datum der Entnahme der Stanzen
-					</xs:documentation>
-				</xs:annotation>
-			</xs:element>
 			<xs:element name="PSA" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>
@@ -993,24 +1003,7 @@
 	</xs:complexType>
 	<xs:complexType name="OP_Typ">
 		<xs:all>
-			<xs:element name="Datum">
-				<xs:complexType>
-					<xs:attribute name="Datumsgenauigkeit" use="required">
-						<xs:simpleType>
-							<xs:annotation>
-								<xs:documentation>siehe Dokumentation zu Datum_Tag_oder_Monat_oder_Jahr_oder_nicht_genau_Typ</xs:documentation>
-							</xs:annotation>
-							<xs:restriction base="xs:string">
-								<xs:enumeration value="T">
-									<xs:annotation>
-										<xs:documentation>Tag geschätzt (entspricht monatsgenau)</xs:documentation>
-									</xs:annotation>
-								</xs:enumeration>
-							</xs:restriction>
-						</xs:simpleType>
-					</xs:attribute>
-				</xs:complexType>
-			</xs:element>
+			<xs:element name="Datum" type="Datum_Monat_oder_Jahr_genau_Typ"/>
 			<xs:element name="Intention">
 				<xs:annotation>
 					<xs:documentation>
@@ -1075,7 +1068,7 @@
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="Residualstatus" type="Residualstatus_Typ" minOccurs="0"/>
-			<xs:element name="Anzahl_Tage_Diagnose_OP" type="Abstand_Ereignisse_Tage_Typ"/>
+			<xs:element name="Anzahl_Tage_Diagnose_OP" type="Abstand_Ereignisse_Tage_Typ" minOccurs="0"/>
 		</xs:all>
 		<xs:attribute name="OP_ID" type="FreitextID_Typ" use="optional"/>
 	</xs:complexType>
@@ -1116,7 +1109,7 @@
 					</xs:restriction>
 				</xs:simpleType>
 			</xs:element>
-			<xs:element name="Geburtsdatum" type="Datum_Monat_genau_Typ"/>
+			<xs:element name="Geburtsdatum" type="Datum_Monat_oder_Jahr_genau_Typ"/>
 			<xs:element name="Inzidenzort" type="Zahl_5stellig_Typ"/>
 			<xs:element name="Tod" type="Tod_Typ" minOccurs="0"/>
 		</xs:all>
@@ -1276,6 +1269,7 @@
 	</xs:simpleType>
 	<xs:complexType name="ST_Typ">
 		<xs:all>
+			<xs:element name="Datum" type="Datum_Monat_oder_Jahr_genau_Typ"/>
 			<xs:element name="Intention">
 				<xs:annotation>
 					<xs:documentation>
@@ -1521,6 +1515,7 @@
 	</xs:complexType>
 	<xs:complexType name="SYST_Typ">
 		<xs:all>
+			<xs:element name="Datum" type="Datum_Monat_oder_Jahr_genau_Typ"/>
 			<xs:element name="Intention">
 				<xs:annotation>
 					<xs:documentation>Gibt an, mit welcher Intention die systemische Therapie geplant wurde.</xs:documentation>
@@ -1673,7 +1668,7 @@
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
-			<xs:element name="Anzahl_Tage_Diagnose_SYST" type="Abstand_Ereignisse_Tage_Typ"/>
+			<xs:element name="Anzahl_Tage_Diagnose_SYST" type="Abstand_Ereignisse_Tage_Typ" minOccurs="0"/>
 		</xs:all>
 		<xs:attribute name="SYST_ID" type="FreitextID_Typ" use="optional"/>
 	</xs:complexType>
@@ -2130,12 +2125,10 @@
 	</xs:complexType>
 	<xs:complexType name="Tod_Typ">
 		<xs:all>
-			<xs:element name="Sterbedatum">
-				<xs:complexType>
-					<xs:complexContent>
-						<xs:extension base="Datum_Monat_genau_Typ"/>
-					</xs:complexContent>
-				</xs:complexType>
+			<xs:element name="Sterbedatum" type="Datum_Monat_oder_Jahr_genau_Typ" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Unbekanntes Datum ist zulässig</xs:documentation>
+				</xs:annotation>
 			</xs:element>
 			<xs:element name="Grundleiden" type="Allgemein_ICD_Typ" minOccurs="0"/>
 			<xs:element name="Menge_Weitere_Todesursachen" minOccurs="0">
@@ -2209,7 +2202,7 @@
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="Menge_Weitere_Klassifikation" type="Menge_Weitere_Klassifikation_Typ" minOccurs="0"/>
-			<xs:element name="Untersuchungsdatum_Verlauf" type="Datum_Monat_genau_Typ"/>
+			<xs:element name="Untersuchungsdatum_Verlauf" type="Datum_Monat_oder_Jahr_genau_Typ"/>
 			<xs:element name="Gesamtbeurteilung_Tumorstatus">
 				<xs:annotation>
 					<xs:documentation>
@@ -2446,12 +2439,9 @@
 	</xs:simpleType>
 	<xs:simpleType name="Abstand_Ereignisse_Tage_Typ">
 		<xs:annotation>
-			<xs:documentation>Abstand zwischen Ereignissen, max. 365 Tage</xs:documentation>
+			<xs:documentation>Abstand zwischen Ereignissen</xs:documentation>
 		</xs:annotation>
-		<xs:restriction base="xs:int">
-			<xs:minInclusive value="0"/>
-			<xs:maxInclusive value="36500"/>
-		</xs:restriction>
+		<xs:restriction base="xs:nonNegativeInteger"/>
 	</xs:simpleType>
 	<xs:simpleType name="Zahl_5stellig_Typ">
 		<xs:annotation>
@@ -3760,9 +3750,9 @@
 		</xs:choice>
 	</xs:complexType>
 	<xs:complexType name="Protokoll_Typ">
-		<xs:choice maxOccurs="unbounded">
+		<xs:choice>
 			<xs:element name="Bezeichnung" type="Freitext255_Typ"/>
-			<xs:element name="Chemotherapie_Protokoll">
+			<xs:element name="Protokollschluessel">
 				<xs:complexType>
 					<xs:sequence>
 						<xs:element name="Code"/>
@@ -3770,6 +3760,31 @@
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
+		</xs:choice>
+	</xs:complexType>
+	<xs:simpleType name="DCI_Typ">
+		<xs:annotation>
+			<xs:documentation>O - DCO
+N - DCN
+X - keines</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="O"/>
+			<xs:enumeration value="N"/>
+			<xs:enumeration value="X"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="Morphologie_ICD_O_oder_Bluebook_Typ">
+		<xs:choice>
+			<xs:element name="Morphologie_Bluebook">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Code" type="Freitext30_Typ"/>
+						<xs:element name="Version" type="Freitext30_Typ"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Morphologie_ICD_O" type="Morphologie_ICD_O_Typ"/>
 		</xs:choice>
 	</xs:complexType>
 </xs:schema>
