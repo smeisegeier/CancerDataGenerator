@@ -1,6 +1,6 @@
 ﻿namespace Rki.CancerDataGenerator.Models.ADTGEKID
 {
-    public class Chemotherapie_Protokoll
+    public class Protokollschluessel
     {
         public string Code { get; set; }
         public string Version { get; set; }

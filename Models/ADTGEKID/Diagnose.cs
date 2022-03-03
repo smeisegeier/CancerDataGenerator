@@ -50,7 +50,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         
         public Modul_Malignes_Melanom Modul_Malignes_Melanom { get; set; }
 
-        public JNU_Typ DCN { get; set; }
+        public DCI_Typ DCI { get; set; }
 
         public int Anzahl_Tage_Diagnose_Tod { get; set; }
 

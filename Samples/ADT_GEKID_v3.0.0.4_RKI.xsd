@@ -345,13 +345,7 @@ M - Monat geschätzt (entspricht jahrgenau)</xs:documentation>
 	</xs:complexType>
 	<xs:complexType name="Histologie_Typ">
 		<xs:sequence>
-			<xs:element name="Menge_Morphologie" minOccurs="0">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element name="Morphologie" type="Morphologie_ICD_O_oder_Bluebook_Typ"/>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
+			<xs:element name="Morphologie" type="Morphologie_ICD_O_oder_Bluebook_Typ"/>
 			<xs:element name="Grading">
 				<xs:annotation>
 					<xs:documentation>

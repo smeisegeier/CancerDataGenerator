@@ -20,6 +20,12 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         [XmlAttribute("schemaLocation", Namespace = Globals.XSINAMESPACE)]
         public string schemaLocation { get; init; } = $"{Globals.XSDNAMESPACE} {Globals.XSDFILENAME}";
     }
+    public enum DCI_Typ
+    {
+        N,
+        O,
+        X
+    }
     public enum ISO3199_2_Typ
     {
         [XmlEnum(Name = "")]

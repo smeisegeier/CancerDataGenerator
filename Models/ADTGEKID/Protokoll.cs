@@ -4,6 +4,6 @@
     {
         public string Bezeichnung { get; set; }
 
-        public Chemotherapie_Protokoll Chemotherapie_Protokoll { get; set; }
+        public Protokollschluessel Protokollschluessel { get; set; }
     }
 }

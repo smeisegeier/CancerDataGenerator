@@ -123,6 +123,7 @@ namespace Rki.CancerDataGenerator.BLL
         private SYST create_SYST()
         {
             var obj = new SYST();
+            obj.Datum = new Datum(_generator.CreateRandomDate_Meldedatum(), Datumsgenauigkeit_Typ.T);
             obj.Intention = _generator.FetchRandomEnumItem<SYST_Intention_Typ>();
             obj.Anzahl_Tage_Diagnose_SYST = _generator.CreateRandomValueInt(1, Globals.MAXANZTAGEZWISCHENEREIGNISSE);
             obj.Stellung_OP = _generator.FetchRandomEnumItem<SYST_Stellung_OP_Typ>();
@@ -144,9 +145,9 @@ namespace Rki.CancerDataGenerator.BLL
             }
             else
             {
-                obj.Chemotherapie_Protokoll = new ();
-                obj.Chemotherapie_Protokoll.Code = _generator.FetchNormalDimensionItem<Protocol>().protocol_shortname;
-                obj.Chemotherapie_Protokoll.Version = _generator.CreateNormalValueUponRange(2008,2022).ToString();
+                obj.Protokollschluessel = new ();
+                obj.Protokollschluessel.Code = _generator.FetchNormalDimensionItem<Protocol>().protocol_shortname;
+                obj.Protokollschluessel.Version = _generator.CreateNormalValueUponRange(2008,2022).ToString();
             }
             return obj;
         }
@@ -170,6 +171,7 @@ namespace Rki.CancerDataGenerator.BLL
         private ST create_ST()
         {
             var obj = new ST();
+            obj.Datum = new Datum(_generator.CreateRandomDate_Meldedatum(), Datumsgenauigkeit_Typ.T);
             obj.Intention = _generator.FetchRandomEnumItem<ST_Intention_Typ>();
             obj.Stellung_OP = _generator.FetchRandomEnumItem<ST_Stellung_OP_Typ>();
             obj.Menge_Bestrahlung = Enumerable
@@ -326,7 +328,7 @@ namespace Rki.CancerDataGenerator.BLL
             obj.Diagnosesicherung = _generator.FetchRandomEnumItem<Diagnosesicherung_Typ>(_config.Dsich_ProbMissing);
             obj.Seitenlokalisation = _generator.FetchRandomEnumItem<Seitenlokalisation_Typ>(0.2);
 
-            obj.DCN = _generator.FetchRandomEnumItem<JNU_Typ>();
+            obj.DCI = _generator.FetchRandomEnumItem<DCI_Typ>();
             obj.Anzahl_Tage_Diagnose_Tod = _generator.CreateRandomValueInt(1, Globals.MAXANZTAGEZWISCHENEREIGNISSE);
             return obj;
         }
@@ -343,17 +345,13 @@ namespace Rki.CancerDataGenerator.BLL
         {
             var obj = new Fernmetastase();
             obj.Lokalisation = _generator.FetchRandomEnumItem<FM_Lokalisation_Typ>();
-            obj.Diagnosedatum = new Datum(_generator.CreateRandomDate_Meldedatum(), Datumsgenauigkeit_Typ.T);
             return obj;
         }
 
         private Histologie Create_Histologie()
         {
             var obj = new Histologie();
-            obj.Menge_Morphologie = Enumerable
-                .Range(1, 5)
-                .Select(index => create_Morphologie())
-                .ToList();
+            obj.Morphologie = create_Morphologie();
 
             obj.Grading = _generator.FetchRandomEnumItem<Grading_Typ>(0.1);
             obj.LK_untersucht = _generator.CreateRandomValueInt(0, 10);
@@ -361,7 +359,23 @@ namespace Rki.CancerDataGenerator.BLL
             return obj;
         }
 
-        private Morphologie_ICD_O create_Morphologie()
+        private Morphologie create_Morphologie()
+        {
+            var obj = new Morphologie();
+            if (_generator.CreateRandomBool())
+            {
+                obj.Morphologie_Bluebook = new Morphologie_Bluebook();
+                obj.Morphologie_Bluebook.Code = _generator.FetchNormalDimensionItem_QuoteString(5);
+                obj.Morphologie_Bluebook.Version = _generator.CreateRandomValueInt(1, 10).ToString();
+            }
+            else
+            {
+                obj.Morphologie_ICD_O = create_Morphologie_ICD_O();
+            }
+            return obj;
+        }
+
+        private Morphologie_ICD_O create_Morphologie_ICD_O()
         {
             var obj = new Morphologie_ICD_O();
             obj.Code = _generator.FetchNormalDimensionItem_HistologySlashDignity();
@@ -373,7 +387,6 @@ namespace Rki.CancerDataGenerator.BLL
         {
             var obj = new Modul_Prostata();
             obj.PSA = _generator.CreateRandomValueInt(1, 100);
-            obj.DatumStanzen = new Datum(_generator.CreateRandomDate_Meldedatum(),Datumsgenauigkeit_Typ.T);
             obj.GleasonScore = new GleasonScore();
             obj.GleasonScore.GradPrimaer = _generator.FetchRandomEnumItem<GleasonScore_Typ>();
             obj.GleasonScore.GradSekundaer = _generator.FetchRandomEnumItem<GleasonScore_Typ>();
