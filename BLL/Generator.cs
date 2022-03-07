@@ -73,6 +73,9 @@ namespace Rki.CancerDataGenerator.Models.Dimensions
 
 
         public DateTime CreateRandomDate_Meldedatum() => createRandomDate(10 * 365, Configuration.Meldedatum_BaseDate);
+        
+        public DateTime CreateRandomDate_Lieferdatum() => createRandomDate(1 * 365, new DateTime(2021,01,01));
+
         public DateTime CreateRandomDate_Geburtsdatum() => createRandomDate(40 * 365, new DateTime(1970, 01, 01));
 
         public int GetMeldungCountPerAge(int age)

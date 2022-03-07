@@ -11,7 +11,7 @@ namespace Rki.CancerDataGenerator.BLL
         
         /// <summary>How many patients</summary>
         /// <example>2</example>
-        public int Patient_Count { get; set; } = 1;
+        public int Patient_Count { get; set; } = 3;
 
         /// <summary>Mean age</summary>
         /// <example>50</example>

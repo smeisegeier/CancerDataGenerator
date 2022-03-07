@@ -29,7 +29,7 @@ namespace Rki.CancerDataGenerator.BLL
                 .Select(index => Create_Patient())
                 .ToList();
             obj.Lieferregister = Create_Lieferregister();
-            obj.Lieferdatum = new Datum(_generator.CreateRandomDate_Meldedatum(), Datumsgenauigkeit_Typ.E);
+            obj.Lieferdatum = new Datum(_generator.CreateRandomDate_Lieferdatum(), Datumsgenauigkeit_Typ.E);
             return obj;
         }
 
@@ -58,7 +58,6 @@ namespace Rki.CancerDataGenerator.BLL
         {
             var obj = new Patienten_Stammdaten();
             obj.Geburtsdatum  = new Datum(_generator.CreateRandomDate_Geburtsdatum(), Datumsgenauigkeit_Typ.T);
-            obj.Patient_ID = Guid.NewGuid().ToString();
             obj.Inzidenzort = _generator.CreateRandomValue_Inzidenzort();
             // HACK 
             if (true) //(_generator.CreateRandomBool())
