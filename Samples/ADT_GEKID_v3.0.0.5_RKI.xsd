@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- edited with XMLSpy v2021 rel. 3 (x64) (http://www.altova.com) by MeisegeierS_virtual (Robert Koch-Institut) -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.gekid.de/namespace" xmlns:tns="http://www.gekid.de/namespace" targetNamespace="http://www.gekid.de/namespace" elementFormDefault="qualified" attributeFormDefault="unqualified" version="3.0.0.2_RKI">
-	<xs:complexType name="Lieferregister_Typ">
-		<xs:attribute name="Bundesland_ID" type="ISO3166_2_Typ" use="required"/>
-		<xs:attribute name="Software_ID" type="Freitext255_Typ" use="optional"/>
-		<xs:attribute name="Software_Version" type="Freitext255_Typ"/>
-		<xs:attribute name="Installations_ID" type="Freitext255_Typ" use="optional"/>
+	<xs:simpleType name="Abstand_Ereignisse_Tage_Typ">
+		<xs:annotation>
+			<xs:documentation>Abstand zwischen Ereignissen</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:nonNegativeInteger"/>
+	</xs:simpleType>
+	<xs:complexType name="Abstand_U_Typ">
+		<xs:choice>
+			<xs:element name="Anzahl_Tage" type="xs:nonNegativeInteger"/>
+			<xs:element name="U" type="U_Typ"/>
+		</xs:choice>
 	</xs:complexType>
 	<xs:element name="ADT_GEKID">
 		<xs:complexType>
@@ -113,25 +119,36 @@
 			<xs:pattern value="([&#9;-&#10;]|&#13;|[ -~]|[ -¬]|[®-ž]|[Ƈ-ƈ]|Ə|ƒ|Ɨ|[Ơ-ơ]|[Ư-ư]|Ʒ|[Ǎ-ǜ]|[Ǟ-ǟ]|[Ǣ-ǰ]|[Ǵ-ǵ]|[Ǹ-ǿ]|[Ȓ-ȓ]|[Ș-ț]|[Ȟ-ȟ]|[ȧ-ȳ]|ə|ɨ|ʒ|ʰ|ʳ|[ʹ-ʺ]|[ʾ-ʿ]|ˆ|ˈ|ˌ|˜|ˢ|Ά|[Έ-Ί]|Ό|[Ύ-Ρ]|[Σ-ώ]|Ѝ|[А-Ъ]|Ь|[Ю-ъ]|ь|[ю-я]|ѝ|ᵈ|ᵗ|[Ḃ-ḃ]|[Ḇ-ḇ]|[Ḋ-ḑ]|[Ḝ-ḫ]|[ḯ-ḷ]|[Ḻ-ḻ]|[Ṁ-ṉ]|[Ṓ-ṛ]|[Ṟ-ṣ]|[Ṫ-ṯ]|[Ẁ-ẇ]|[Ẍ-ẗ]|ẞ|[Ạ-ỹ]|[‘-‚]|[“-„]|[†-‡]|…|‰|[‹-›]|⁰|[⁴-⁹]|[ⁿ-₉]|€|™|∞|[≤-≥]|A̋|C(̀|̄|̆|̈|̕|̣|̦|̨̆)|D̂|F(̀|̄)|G̀|H(̄|̦|̱)|J(́|̌)|K(̀|̂|̄|̇|̕|̛|̦|͟H|͟h)|L(̂|̥|̥̄|̦)|M(̀|̂|̆|̐)|N(̂|̄|̆|̦)|P(̀|̄|̕|̣)|R(̆|̥|̥̄)|S(̀|̄|̛̄|̱)|T(̀|̄|̈|̕|̛)|U̇|Z(̀|̄|̆|̈|̧)|a̋|c(̀|̄|̆|̈|̕|̣|̦|̨̆)|d̂|f(̀|̄)|g̀|h(̄|̦)|j́|k(̀|̂|̄|̇|̕|̛|̦|͟h)|l(̂|̥|̥̄|̦)|m(̀|̂|̆|̐)|n(̂|̄|̆|̦)|p(̀|̄|̕|̣)|r(̆|̥|̥̄)|s(̀|̄|̛̄|̱)|t(̀|̄|̕|̛)|u̇|z(̀|̄|̆|̈|̧)|Ç̆|Û̄|ç̆|û̄|ÿ́|Č(̕|̣)|č(̕|̣)|Ī́|ī́|Ž(̦|̧)|ž(̦|̧)|Ḳ̄|ḳ̄|Ṣ̄|ṣ̄|Ṭ̄|ṭ̄|Ạ̈|ạ̈|Ọ̈|ọ̈|Ụ(̄|̈)|ụ(̄|̈))*"/>
 		</xs:restriction>
 	</xs:simpleType>
+	<xs:complexType name="Datum_Monat_oder_Jahr_genau_Typ">
+		<xs:annotation>
+			<xs:documentation>E - exakt (entspricht taggenau)
+T - Tag geschätzt (entspricht monatsgenau)
+M - Monat geschätzt (entspricht jahrgenau)</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="Zulaessiger_Datumsbereich_Typ">
+				<xs:attribute name="Datumsgenauigkeit" use="required">
+					<xs:simpleType>
+						<xs:annotation>
+							<xs:documentation>siehe Dokumentation zu Datum_Tag_oder_Monat_oder_Jahr_oder_nicht_genau_Typ</xs:documentation>
+						</xs:annotation>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="T">
+								<xs:annotation>
+									<xs:documentation>Tag geschätzt (entspricht monatsgenau)</xs:documentation>
+								</xs:annotation>
+							</xs:enumeration>
+							<xs:enumeration value="M"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
 	<xs:complexType name="Datum_NU_Typ">
 		<xs:choice>
 			<xs:element name="Datum" type="Datum_Monat_oder_Jahr_genau_Typ"/>
-			<xs:element name="NU">
-				<xs:simpleType>
-					<xs:restriction base="xs:string">
-						<xs:enumeration value="N">
-							<xs:annotation>
-								<xs:documentation>Nein</xs:documentation>
-							</xs:annotation>
-						</xs:enumeration>
-						<xs:enumeration value="U">
-							<xs:annotation>
-								<xs:documentation>Unbekannt</xs:documentation>
-							</xs:annotation>
-						</xs:enumeration>
-					</xs:restriction>
-				</xs:simpleType>
-			</xs:element>
+			<xs:element name="NU" type="NU_Typ"/>
 		</xs:choice>
 	</xs:complexType>
 	<xs:complexType name="Datum_Tag_genau_Typ">
@@ -159,35 +176,28 @@
 			</xs:extension>
 		</xs:simpleContent>
 	</xs:complexType>
-	<xs:complexType name="Datum_Monat_oder_Jahr_genau_Typ">
-		<xs:annotation>
-			<xs:documentation>E - exakt (entspricht taggenau)
-T - Tag geschätzt (entspricht monatsgenau)
-M - Monat geschätzt (entspricht jahrgenau)</xs:documentation>
-		</xs:annotation>
-		<xs:simpleContent>
-			<xs:extension base="Zulaessiger_Datumsbereich_Typ">
-				<xs:attribute name="Datumsgenauigkeit" use="required">
-					<xs:simpleType>
-						<xs:annotation>
-							<xs:documentation>siehe Dokumentation zu Datum_Tag_oder_Monat_oder_Jahr_oder_nicht_genau_Typ</xs:documentation>
-						</xs:annotation>
-						<xs:restriction base="xs:string">
-							<xs:enumeration value="T">
-								<xs:annotation>
-									<xs:documentation>Tag geschätzt (entspricht monatsgenau)</xs:documentation>
-								</xs:annotation>
-							</xs:enumeration>
-							<xs:enumeration value="M"/>
-						</xs:restriction>
-					</xs:simpleType>
-				</xs:attribute>
-			</xs:extension>
-		</xs:simpleContent>
+	<xs:complexType name="Dauer_NU_Typ">
+		<xs:choice>
+			<xs:element name="Anzahl_Tage" type="xs:negativeInteger"/>
+			<xs:element name="NU" type="NU_Typ"/>
+		</xs:choice>
 	</xs:complexType>
+	<xs:simpleType name="DCI_Typ">
+		<xs:annotation>
+			<xs:documentation>O - DCO
+N - DCN
+X - keines</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="O"/>
+			<xs:enumeration value="N"/>
+			<xs:enumeration value="X"/>
+		</xs:restriction>
+	</xs:simpleType>
 	<xs:complexType name="Diagnose_Typ">
 		<xs:all>
 			<xs:element name="Datum" type="Datum_Monat_oder_Jahr_genau_Typ"/>
+			<xs:element name="Inzidenzort" type="Zahl_5stellig_Typ"/>
 			<xs:element name="Primaertumor_ICD" type="Tumor_ICD_Typ"/>
 			<xs:element name="Primaertumor_Topographie_ICD_O" type="Topographie_ICD_O_Typ" minOccurs="0"/>
 			<xs:element name="Diagnosesicherung" minOccurs="0">
@@ -258,6 +268,244 @@ M - Monat geschätzt (entspricht jahrgenau)</xs:documentation>
 					<xs:restriction base="Abstand_Ereignisse_Tage_Typ"/>
 				</xs:simpleType>
 			</xs:element>
+		</xs:all>
+	</xs:complexType>
+	<xs:complexType name="Folgeereignis_Typ">
+		<xs:all>
+			<xs:element name="TNM" type="TNM_Typ" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation/>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Menge_Weitere_Klassifikation" type="Menge_Weitere_Klassifikation_Typ" minOccurs="0"/>
+			<xs:element name="Untersuchungsdatum_Verlauf" type="Datum_Monat_oder_Jahr_genau_Typ"/>
+			<xs:element name="Gesamtbeurteilung_Tumorstatus">
+				<xs:annotation>
+					<xs:documentation>
+						Gesamtbeurteilung der Erkrankung unter Berücksichtigung aller Manifestationen.  
+						Hinweise: 
+						P = Progression (Fortschreiten der Erkrankung)
+						Y = Rezidiv, jedes Wiederauftreten der Erkrankung bei vorheriger kompletter klinischer Tumorfreiheit (biochemisches Rezidiv, Lokalrezidiv und/oder Metastasierung)
+					</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="V">
+							<xs:annotation>
+								<xs:documentation>Vollremission (complete remission, CR)</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="T">
+							<xs:annotation>
+								<xs:documentation>Teilremission (partial remission, PR)</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="K">
+							<xs:annotation>
+								<xs:documentation>keine Änderung (no change, NC) = stable disease</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="P">
+							<xs:annotation>
+								<xs:documentation>Progression</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="D">
+							<xs:annotation>
+								<xs:documentation>divergentes Geschehen</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="B">
+							<xs:annotation>
+								<xs:documentation>klinische Besserung des Zustandes, Kriterien für Teilremission jedoch nicht erfüllt (minimal response, MR)</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="R">
+							<xs:annotation>
+								<xs:documentation>Vollremission mit residualen Auffälligkeiten (CRr)</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="Y">
+							<xs:annotation>
+								<xs:documentation>Rezidiv</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="U">
+							<xs:annotation>
+								<xs:documentation>Beurteilung unmöglich</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="X">
+							<xs:annotation>
+								<xs:documentation>fehlende Angaben</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="Verlauf_Lokaler_Tumorstatus" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						Beurteilung der Situation im Primärtumorbereich
+						Hinweis:
+						T = Tumorreste (Residualtumor), unbekannt, ob Progress oder No Change (auch für noch nicht therapierte Primärtumoren zu verwenden)
+					</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="K">
+							<xs:annotation>
+								<xs:documentation>kein Tumor nachweisbar</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="T">
+							<xs:annotation>
+								<xs:documentation>Tumorreste (Residualtumor)</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="P">
+							<xs:annotation>
+								<xs:documentation>Tumorreste (Residualtumor) Progress</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="N">
+							<xs:annotation>
+								<xs:documentation>Tumorreste (Residualtumor) No Change</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="R">
+							<xs:annotation>
+								<xs:documentation>Lokalrezidiv</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="F">
+							<xs:annotation>
+								<xs:documentation>fraglicher Befund</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="U">
+							<xs:annotation>
+								<xs:documentation>unbekannt</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="X">
+							<xs:annotation>
+								<xs:documentation>fehlende Angabe</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="Verlauf_Tumorstatus_Lymphknoten" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						Beurteilung der Situation im Bereich der regionären Lymphknoten  
+						Hinweis:
+						T = bekannter Lymphknotenbefall Residuen, unbekannt, ob Progress oder No Change
+					</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="K">
+							<xs:annotation>
+								<xs:documentation>kein Lymphknotenbefall nachweisbar</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="T">
+							<xs:annotation>
+								<xs:documentation>bekannter Lymphknotenbefall Residuen</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="P">
+							<xs:annotation>
+								<xs:documentation>bekannter Lymphknotenbefall Progress</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="N">
+							<xs:annotation>
+								<xs:documentation>bekannter Lymphknotenbefall No Change</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="R">
+							<xs:annotation>
+								<xs:documentation>neu aufgetretenes Lymphknotenrezidiv</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="F">
+							<xs:annotation>
+								<xs:documentation>fraglicher Befund</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="U">
+							<xs:annotation>
+								<xs:documentation>unbekannt</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="X">
+							<xs:annotation>
+								<xs:documentation>fehlende Angabe</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="Verlauf_Tumorstatus_Fernmetastasen" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						Beurteilung der Situation im Bereich der Fernmetastasen  
+						Hinweis:
+						R= Neu aufgetretene Fernmetastase(n) bzw. Metastasenrezidivbeschriebt eine Situation, in der zuvor Metastatsenfreiheit bestanden hat 
+						oder durch Therapie erreicht wurde.Neue Metastasen auch unter "Fernmetastasen" mit Lokalisation und Datum übermitteln.
+						P= Wenn zu bestehenden Fernmetastasen neue hinzukommen. Bei einem klinisch divergenten Geschehen, ist die prognostisch ungünstigere Ausprägung zu übermitteln.
+						Neue Metastasen auch unter "Fernmetastasen" mit Lokalisation und Datum übermitteln.
+					</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="K">
+							<xs:annotation>
+								<xs:documentation>keine Fernmetastasen nachweisbar</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="T">
+							<xs:annotation>
+								<xs:documentation>Fernmetastasenl Residuen</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="P">
+							<xs:annotation>
+								<xs:documentation>Fernmetastasen Progress</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="N">
+							<xs:annotation>
+								<xs:documentation>Fernmetastasen No Change</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="R">
+							<xs:annotation>
+								<xs:documentation>neu aufgetretene Fernmetastase(n) bzw. Metastasenrezidiv</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="F">
+							<xs:annotation>
+								<xs:documentation>fraglicher Befund</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="U">
+							<xs:annotation>
+								<xs:documentation>unbekannt</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="X">
+							<xs:annotation>
+								<xs:documentation>fehlende Angabe</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="Menge_FM" type="Menge_FM_Typ" minOccurs="0"/>
 		</xs:all>
 	</xs:complexType>
 	<xs:simpleType name="Freitext255_Typ">
@@ -724,6 +972,12 @@ M - Monat geschätzt (entspricht jahrgenau)</xs:documentation>
 			</xs:enumeration>
 		</xs:restriction>
 	</xs:simpleType>
+	<xs:complexType name="Lieferregister_Typ">
+		<xs:attribute name="Bundesland_ID" type="ISO3166_2_Typ" use="required"/>
+		<xs:attribute name="Software_ID" type="Freitext255_Typ" use="optional"/>
+		<xs:attribute name="Software_Version" type="Freitext255_Typ"/>
+		<xs:attribute name="Installations_ID" type="Freitext255_Typ" use="optional"/>
+	</xs:complexType>
 	<xs:complexType name="Menge_FM_Typ">
 		<xs:sequence>
 			<xs:element name="Fernmetastase" maxOccurs="unbounded">
@@ -958,6 +1212,19 @@ M - Monat geschätzt (entspricht jahrgenau)</xs:documentation>
 			</xs:element>
 		</xs:all>
 	</xs:complexType>
+	<xs:complexType name="Morphologie_ICD_O_oder_Bluebook_Typ">
+		<xs:choice>
+			<xs:element name="Morphologie_Bluebook">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Code" type="Freitext30_Typ"/>
+						<xs:element name="Version" type="Freitext30_Typ"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Morphologie_ICD_O" type="Morphologie_ICD_O_Typ"/>
+		</xs:choice>
+	</xs:complexType>
 	<xs:complexType name="Morphologie_ICD_O_Typ">
 		<xs:sequence>
 			<xs:element name="Code">
@@ -995,6 +1262,24 @@ M - Monat geschätzt (entspricht jahrgenau)</xs:documentation>
 			</xs:element>
 		</xs:sequence>
 	</xs:complexType>
+	<xs:simpleType name="NU_Typ">
+		<xs:annotation>
+			<xs:documentation>N = Nein
+U = Unbekannt</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="N">
+				<xs:annotation>
+					<xs:documentation>Nein</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="U">
+				<xs:annotation>
+					<xs:documentation>Unbekannt</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
 	<xs:complexType name="OP_Typ">
 		<xs:all>
 			<xs:element name="Datum" type="Datum_Monat_oder_Jahr_genau_Typ"/>
@@ -1104,9 +1389,21 @@ M - Monat geschätzt (entspricht jahrgenau)</xs:documentation>
 				</xs:simpleType>
 			</xs:element>
 			<xs:element name="Geburtsdatum" type="Datum_Monat_oder_Jahr_genau_Typ"/>
-			<xs:element name="Inzidenzort" type="Zahl_5stellig_Typ"/>
 			<xs:element name="Tod" type="Tod_Typ" minOccurs="0"/>
 		</xs:all>
+	</xs:complexType>
+	<xs:complexType name="Protokoll_Typ">
+		<xs:choice>
+			<xs:element name="Bezeichnung" type="Freitext255_Typ"/>
+			<xs:element name="Protokollschluessel">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Code"/>
+						<xs:element name="Version"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:choice>
 	</xs:complexType>
 	<xs:simpleType name="R_Typ">
 		<xs:annotation>
@@ -1263,7 +1560,6 @@ M - Monat geschätzt (entspricht jahrgenau)</xs:documentation>
 	</xs:simpleType>
 	<xs:complexType name="ST_Typ">
 		<xs:all>
-			<xs:element name="Datum" type="Datum_Monat_oder_Jahr_genau_Typ"/>
 			<xs:element name="Intention">
 				<xs:annotation>
 					<xs:documentation>
@@ -1352,6 +1648,7 @@ M - Monat geschätzt (entspricht jahrgenau)</xs:documentation>
 						<xs:element name="Bestrahlung" maxOccurs="unbounded">
 							<xs:complexType>
 								<xs:all>
+									<xs:element name="Datum" type="Datum_Monat_oder_Jahr_genau_Typ"/>
 									<xs:element name="Applikationsart">
 										<xs:complexType>
 											<xs:choice>
@@ -1506,6 +1803,31 @@ M - Monat geschätzt (entspricht jahrgenau)</xs:documentation>
 			</xs:element>
 		</xs:all>
 		<xs:attribute name="ST_ID" type="FreitextID_Typ" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="Substanz_Typ">
+		<xs:choice maxOccurs="unbounded">
+			<xs:element name="Bezeichnung" type="Freitext255E_Typ"/>
+			<xs:element name="ATC">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Code">
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:pattern value="[A-Z]\d\d[A-Z][A-Z]\d\d"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<xs:element name="Version">
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:pattern value="200[4-9]|20[12]\d"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:choice>
 	</xs:complexType>
 	<xs:complexType name="SYST_Typ">
 		<xs:all>
@@ -1663,6 +1985,7 @@ M - Monat geschätzt (entspricht jahrgenau)</xs:documentation>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="Anzahl_Tage_Diagnose_SYST" type="Abstand_Ereignisse_Tage_Typ" minOccurs="0"/>
+			<xs:element name="Anzahl_Tage_SYST_Dauer" minOccurs="0"/>
 		</xs:all>
 		<xs:attribute name="SYST_ID" type="FreitextID_Typ" use="optional"/>
 	</xs:complexType>
@@ -2188,254 +2511,23 @@ M - Monat geschätzt (entspricht jahrgenau)</xs:documentation>
 			<xs:maxInclusive value="99.0"/>
 		</xs:restriction>
 	</xs:simpleType>
-	<xs:complexType name="Folgeereignis_Typ">
-		<xs:all>
-			<xs:element name="TNM" type="TNM_Typ" minOccurs="0">
+	<xs:simpleType name="U_Typ">
+		<xs:annotation>
+			<xs:documentation>N = Nein
+U = Unbekannt</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="U">
 				<xs:annotation>
-					<xs:documentation/>
+					<xs:documentation>Unbekannt</xs:documentation>
 				</xs:annotation>
-			</xs:element>
-			<xs:element name="Menge_Weitere_Klassifikation" type="Menge_Weitere_Klassifikation_Typ" minOccurs="0"/>
-			<xs:element name="Untersuchungsdatum_Verlauf" type="Datum_Monat_oder_Jahr_genau_Typ"/>
-			<xs:element name="Gesamtbeurteilung_Tumorstatus">
-				<xs:annotation>
-					<xs:documentation>
-						Gesamtbeurteilung der Erkrankung unter Berücksichtigung aller Manifestationen.  
-						Hinweise: 
-						P = Progression (Fortschreiten der Erkrankung)
-						Y = Rezidiv, jedes Wiederauftreten der Erkrankung bei vorheriger kompletter klinischer Tumorfreiheit (biochemisches Rezidiv, Lokalrezidiv und/oder Metastasierung)
-					</xs:documentation>
-				</xs:annotation>
-				<xs:simpleType>
-					<xs:restriction base="xs:string">
-						<xs:enumeration value="V">
-							<xs:annotation>
-								<xs:documentation>Vollremission (complete remission, CR)</xs:documentation>
-							</xs:annotation>
-						</xs:enumeration>
-						<xs:enumeration value="T">
-							<xs:annotation>
-								<xs:documentation>Teilremission (partial remission, PR)</xs:documentation>
-							</xs:annotation>
-						</xs:enumeration>
-						<xs:enumeration value="K">
-							<xs:annotation>
-								<xs:documentation>keine Änderung (no change, NC) = stable disease</xs:documentation>
-							</xs:annotation>
-						</xs:enumeration>
-						<xs:enumeration value="P">
-							<xs:annotation>
-								<xs:documentation>Progression</xs:documentation>
-							</xs:annotation>
-						</xs:enumeration>
-						<xs:enumeration value="D">
-							<xs:annotation>
-								<xs:documentation>divergentes Geschehen</xs:documentation>
-							</xs:annotation>
-						</xs:enumeration>
-						<xs:enumeration value="B">
-							<xs:annotation>
-								<xs:documentation>klinische Besserung des Zustandes, Kriterien für Teilremission jedoch nicht erfüllt (minimal response, MR)</xs:documentation>
-							</xs:annotation>
-						</xs:enumeration>
-						<xs:enumeration value="R">
-							<xs:annotation>
-								<xs:documentation>Vollremission mit residualen Auffälligkeiten (CRr)</xs:documentation>
-							</xs:annotation>
-						</xs:enumeration>
-						<xs:enumeration value="Y">
-							<xs:annotation>
-								<xs:documentation>Rezidiv</xs:documentation>
-							</xs:annotation>
-						</xs:enumeration>
-						<xs:enumeration value="U">
-							<xs:annotation>
-								<xs:documentation>Beurteilung unmöglich</xs:documentation>
-							</xs:annotation>
-						</xs:enumeration>
-						<xs:enumeration value="X">
-							<xs:annotation>
-								<xs:documentation>fehlende Angaben</xs:documentation>
-							</xs:annotation>
-						</xs:enumeration>
-					</xs:restriction>
-				</xs:simpleType>
-			</xs:element>
-			<xs:element name="Verlauf_Lokaler_Tumorstatus" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation>
-						Beurteilung der Situation im Primärtumorbereich
-						Hinweis:
-						T = Tumorreste (Residualtumor), unbekannt, ob Progress oder No Change (auch für noch nicht therapierte Primärtumoren zu verwenden)
-					</xs:documentation>
-				</xs:annotation>
-				<xs:simpleType>
-					<xs:restriction base="xs:string">
-						<xs:enumeration value="K">
-							<xs:annotation>
-								<xs:documentation>kein Tumor nachweisbar</xs:documentation>
-							</xs:annotation>
-						</xs:enumeration>
-						<xs:enumeration value="T">
-							<xs:annotation>
-								<xs:documentation>Tumorreste (Residualtumor)</xs:documentation>
-							</xs:annotation>
-						</xs:enumeration>
-						<xs:enumeration value="P">
-							<xs:annotation>
-								<xs:documentation>Tumorreste (Residualtumor) Progress</xs:documentation>
-							</xs:annotation>
-						</xs:enumeration>
-						<xs:enumeration value="N">
-							<xs:annotation>
-								<xs:documentation>Tumorreste (Residualtumor) No Change</xs:documentation>
-							</xs:annotation>
-						</xs:enumeration>
-						<xs:enumeration value="R">
-							<xs:annotation>
-								<xs:documentation>Lokalrezidiv</xs:documentation>
-							</xs:annotation>
-						</xs:enumeration>
-						<xs:enumeration value="F">
-							<xs:annotation>
-								<xs:documentation>fraglicher Befund</xs:documentation>
-							</xs:annotation>
-						</xs:enumeration>
-						<xs:enumeration value="U">
-							<xs:annotation>
-								<xs:documentation>unbekannt</xs:documentation>
-							</xs:annotation>
-						</xs:enumeration>
-						<xs:enumeration value="X">
-							<xs:annotation>
-								<xs:documentation>fehlende Angabe</xs:documentation>
-							</xs:annotation>
-						</xs:enumeration>
-					</xs:restriction>
-				</xs:simpleType>
-			</xs:element>
-			<xs:element name="Verlauf_Tumorstatus_Lymphknoten" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation>
-						Beurteilung der Situation im Bereich der regionären Lymphknoten  
-						Hinweis:
-						T = bekannter Lymphknotenbefall Residuen, unbekannt, ob Progress oder No Change
-					</xs:documentation>
-				</xs:annotation>
-				<xs:simpleType>
-					<xs:restriction base="xs:string">
-						<xs:enumeration value="K">
-							<xs:annotation>
-								<xs:documentation>kein Lymphknotenbefall nachweisbar</xs:documentation>
-							</xs:annotation>
-						</xs:enumeration>
-						<xs:enumeration value="T">
-							<xs:annotation>
-								<xs:documentation>bekannter Lymphknotenbefall Residuen</xs:documentation>
-							</xs:annotation>
-						</xs:enumeration>
-						<xs:enumeration value="P">
-							<xs:annotation>
-								<xs:documentation>bekannter Lymphknotenbefall Progress</xs:documentation>
-							</xs:annotation>
-						</xs:enumeration>
-						<xs:enumeration value="N">
-							<xs:annotation>
-								<xs:documentation>bekannter Lymphknotenbefall No Change</xs:documentation>
-							</xs:annotation>
-						</xs:enumeration>
-						<xs:enumeration value="R">
-							<xs:annotation>
-								<xs:documentation>neu aufgetretenes Lymphknotenrezidiv</xs:documentation>
-							</xs:annotation>
-						</xs:enumeration>
-						<xs:enumeration value="F">
-							<xs:annotation>
-								<xs:documentation>fraglicher Befund</xs:documentation>
-							</xs:annotation>
-						</xs:enumeration>
-						<xs:enumeration value="U">
-							<xs:annotation>
-								<xs:documentation>unbekannt</xs:documentation>
-							</xs:annotation>
-						</xs:enumeration>
-						<xs:enumeration value="X">
-							<xs:annotation>
-								<xs:documentation>fehlende Angabe</xs:documentation>
-							</xs:annotation>
-						</xs:enumeration>
-					</xs:restriction>
-				</xs:simpleType>
-			</xs:element>
-			<xs:element name="Verlauf_Tumorstatus_Fernmetastasen" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation>
-						Beurteilung der Situation im Bereich der Fernmetastasen  
-						Hinweis:
-						R= Neu aufgetretene Fernmetastase(n) bzw. Metastasenrezidivbeschriebt eine Situation, in der zuvor Metastatsenfreiheit bestanden hat 
-						oder durch Therapie erreicht wurde.Neue Metastasen auch unter "Fernmetastasen" mit Lokalisation und Datum übermitteln.
-						P= Wenn zu bestehenden Fernmetastasen neue hinzukommen. Bei einem klinisch divergenten Geschehen, ist die prognostisch ungünstigere Ausprägung zu übermitteln.
-						Neue Metastasen auch unter "Fernmetastasen" mit Lokalisation und Datum übermitteln.
-					</xs:documentation>
-				</xs:annotation>
-				<xs:simpleType>
-					<xs:restriction base="xs:string">
-						<xs:enumeration value="K">
-							<xs:annotation>
-								<xs:documentation>keine Fernmetastasen nachweisbar</xs:documentation>
-							</xs:annotation>
-						</xs:enumeration>
-						<xs:enumeration value="T">
-							<xs:annotation>
-								<xs:documentation>Fernmetastasenl Residuen</xs:documentation>
-							</xs:annotation>
-						</xs:enumeration>
-						<xs:enumeration value="P">
-							<xs:annotation>
-								<xs:documentation>Fernmetastasen Progress</xs:documentation>
-							</xs:annotation>
-						</xs:enumeration>
-						<xs:enumeration value="N">
-							<xs:annotation>
-								<xs:documentation>Fernmetastasen No Change</xs:documentation>
-							</xs:annotation>
-						</xs:enumeration>
-						<xs:enumeration value="R">
-							<xs:annotation>
-								<xs:documentation>neu aufgetretene Fernmetastase(n) bzw. Metastasenrezidiv</xs:documentation>
-							</xs:annotation>
-						</xs:enumeration>
-						<xs:enumeration value="F">
-							<xs:annotation>
-								<xs:documentation>fraglicher Befund</xs:documentation>
-							</xs:annotation>
-						</xs:enumeration>
-						<xs:enumeration value="U">
-							<xs:annotation>
-								<xs:documentation>unbekannt</xs:documentation>
-							</xs:annotation>
-						</xs:enumeration>
-						<xs:enumeration value="X">
-							<xs:annotation>
-								<xs:documentation>fehlende Angabe</xs:documentation>
-							</xs:annotation>
-						</xs:enumeration>
-					</xs:restriction>
-				</xs:simpleType>
-			</xs:element>
-			<xs:element name="Menge_FM" type="Menge_FM_Typ" minOccurs="0"/>
-		</xs:all>
-	</xs:complexType>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
 	<xs:simpleType name="Zahl_3stellig_Typ">
 		<xs:restriction base="xs:string">
 			<xs:pattern value="\d(\d)?(\d)?|U"/>
 		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="Abstand_Ereignisse_Tage_Typ">
-		<xs:annotation>
-			<xs:documentation>Abstand zwischen Ereignissen</xs:documentation>
-		</xs:annotation>
-		<xs:restriction base="xs:nonNegativeInteger"/>
 	</xs:simpleType>
 	<xs:simpleType name="Zahl_5stellig_Typ">
 		<xs:annotation>
@@ -3718,67 +3810,4 @@ M - Monat geschätzt (entspricht jahrgenau)</xs:documentation>
 	<xs:annotation>
 		<xs:documentation>Automatisiert erstellt am 16.11.2018 um 6:21 Uhr aus der Spezifikation file:/C:/Users/rico/Documents/arbeit/KoSIT/string.latin/06_SVN/src/din%20spec%2091379/din-spec.xml.</xs:documentation>
 	</xs:annotation>
-	<xs:complexType name="Substanz_Typ">
-		<xs:choice maxOccurs="unbounded">
-			<xs:element name="Bezeichnung" type="Freitext255E_Typ"/>
-			<xs:element name="ATC">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element name="Code">
-							<xs:simpleType>
-								<xs:restriction base="xs:string">
-									<xs:pattern value="[A-Z]\d\d[A-Z][A-Z]\d\d"/>
-								</xs:restriction>
-							</xs:simpleType>
-						</xs:element>
-						<xs:element name="Version">
-							<xs:simpleType>
-								<xs:restriction base="xs:string">
-									<xs:pattern value="200[4-9]|20[12]\d"/>
-								</xs:restriction>
-							</xs:simpleType>
-						</xs:element>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-		</xs:choice>
-	</xs:complexType>
-	<xs:complexType name="Protokoll_Typ">
-		<xs:choice>
-			<xs:element name="Bezeichnung" type="Freitext255_Typ"/>
-			<xs:element name="Protokollschluessel">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element name="Code"/>
-						<xs:element name="Version"/>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-		</xs:choice>
-	</xs:complexType>
-	<xs:simpleType name="DCI_Typ">
-		<xs:annotation>
-			<xs:documentation>O - DCO
-N - DCN
-X - keines</xs:documentation>
-		</xs:annotation>
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="O"/>
-			<xs:enumeration value="N"/>
-			<xs:enumeration value="X"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:complexType name="Morphologie_ICD_O_oder_Bluebook_Typ">
-		<xs:choice>
-			<xs:element name="Morphologie_Bluebook">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element name="Code" type="Freitext30_Typ"/>
-						<xs:element name="Version" type="Freitext30_Typ"/>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="Morphologie_ICD_O" type="Morphologie_ICD_O_Typ"/>
-		</xs:choice>
-	</xs:complexType>
 </xs:schema>
