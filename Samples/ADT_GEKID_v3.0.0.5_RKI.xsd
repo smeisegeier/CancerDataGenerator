@@ -1396,6 +1396,9 @@ U = Unbekannt</xs:documentation>
 		<xs:choice>
 			<xs:element name="Bezeichnung" type="Freitext255_Typ"/>
 			<xs:element name="Protokollschluessel">
+				<xs:annotation>
+					<xs:documentation>https://confluence.kk-n.de/display/UMK/Protokolle</xs:documentation>
+				</xs:annotation>
 				<xs:complexType>
 					<xs:sequence>
 						<xs:element name="Code"/>
