@@ -127,7 +127,7 @@ namespace Rki.CancerDataGenerator.BLL
             obj.Anzahl_Tage_Diagnose_SYST = _generator.CreateRandomValueInt(1, Globals.MAXANZTAGEZWISCHENEREIGNISSE);
             obj.Stellung_OP = _generator.FetchRandomEnumItem<SYST_Stellung_OP_Typ>();
             obj.Therapieart = _generator.FetchRandomEnumItem<SYST_Therapieart_Typ>();
-            obj.Protokoll = create_Protokoll(); ;
+            obj.Protokoll = create_Protokoll();
             obj.Menge_Substanz = Enumerable
                 .Range(1, _generator.CreateRandomValueInt(1, 3))
                 .Select(index => create_Substanz())
