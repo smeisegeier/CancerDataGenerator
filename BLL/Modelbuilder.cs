@@ -328,6 +328,7 @@ namespace Rki.CancerDataGenerator.BLL
 
             obj.DCI = _generator.FetchRandomEnumItem<DCI_Typ>();
             obj.Anzahl_Tage_Diagnose_Tod = create_Dauer(Globals.MAXANZTAGEZWISCHENEREIGNISSE);
+            obj.Inzidenzort = _generator.CreateRandomValue_Inzidenzort();
             return obj;
         }
 

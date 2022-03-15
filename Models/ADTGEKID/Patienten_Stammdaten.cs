@@ -13,9 +13,6 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
 
         public Datum Geburtsdatum { get; set; }
 
-        [RegularExpression(@"\d{5}")]
-        public string Inzidenzort { get; set; }
-
         public Tod Tod { get; set; }
 
         [XmlAttribute()]
