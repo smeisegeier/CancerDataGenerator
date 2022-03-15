@@ -81,7 +81,9 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
     public enum Datumsgenauigkeit_Typ
     {
         E,
-        T
+        T,
+        M,
+        V
     }
     public enum JNU_Typ
     {

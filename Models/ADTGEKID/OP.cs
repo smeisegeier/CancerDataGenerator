@@ -16,7 +16,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         public Residualstatus Residualstatus { get; set; }
 
         [Range(0, Globals.MAXANZTAGEZWISCHENEREIGNISSE)]
-        public int Anzahl_Tage_Diagnose_OP { get; set; }
+        public Dauer Anzahl_Tage_Diagnose_OP { get; set; }
 
     }
 }

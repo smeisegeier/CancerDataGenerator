@@ -58,7 +58,6 @@ namespace Rki.CancerDataGenerator.BLL
         {
             var obj = new Patienten_Stammdaten();
             obj.Geburtsdatum  = new Datum(_generator.CreateRandomDate_Geburtsdatum(), Datumsgenauigkeit_Typ.T);
-            obj.Inzidenzort = _generator.CreateRandomValue_Inzidenzort();
             // HACK 
             if (true) //(_generator.CreateRandomBool())
                 obj.Tod = Create_Tod();
@@ -88,11 +87,11 @@ namespace Rki.CancerDataGenerator.BLL
         private Tumor Create_Tumor()
         {
             var obj = new Tumor();
-            obj.Primaerdiagnose = Create_Diagnose();
+            obj.Primaerdiagnose = create_Diagnose();
 
             /* OP */
             obj.Menge_OP = Enumerable
-                .Range(1, _generator.CreateRandomValueInt(1,3))
+                .Range(1, _generator.CreateRandomValueInt(1, 3))
                 .Select(index => create_OP())
                 .ToList();
 
@@ -124,7 +123,7 @@ namespace Rki.CancerDataGenerator.BLL
             var obj = new SYST();
             obj.Datum = new Datum(_generator.CreateRandomDate_Meldedatum(), Datumsgenauigkeit_Typ.T);
             obj.Intention = _generator.FetchRandomEnumItem<SYST_Intention_Typ>();
-            obj.Anzahl_Tage_Diagnose_SYST = _generator.CreateRandomValueInt(1, Globals.MAXANZTAGEZWISCHENEREIGNISSE);
+            obj.Anzahl_Tage_Diagnose_SYST = create_Dauer(Globals.MAXANZTAGEZWISCHENEREIGNISSE);
             obj.Stellung_OP = _generator.FetchRandomEnumItem<SYST_Stellung_OP_Typ>();
             obj.Therapieart = _generator.FetchRandomEnumItem<SYST_Therapieart_Typ>();
             obj.Protokoll = create_Protokoll();
@@ -144,9 +143,9 @@ namespace Rki.CancerDataGenerator.BLL
             }
             else
             {
-                obj.Protokollschluessel = new ();
+                obj.Protokollschluessel = new();
                 obj.Protokollschluessel.Code = _generator.FetchNormalDimensionItem<Protocol>().protocol_shortname;
-                obj.Protokollschluessel.Version = _generator.CreateNormalValueUponRange(2008,2022).ToString();
+                obj.Protokollschluessel.Version = _generator.CreateNormalValueUponRange(2008, 2022).ToString();
             }
             return obj;
         }
@@ -183,8 +182,8 @@ namespace Rki.CancerDataGenerator.BLL
         private Bestrahlung create_Bestrahlung()
         {
             var obj = new Bestrahlung();
-            obj.Anzahl_Tage_Diagnose_ST =  _generator.CreateRandomValueInt(1, Globals.MAXANZTAGEZWISCHENEREIGNISSE);
-            obj.Anzahl_Tage_ST_Dauer = _generator.CreateRandomValueInt(1, Globals.MAXANZTAGEZWISCHENEREIGNISSE);
+            obj.Anzahl_Tage_Diagnose_ST = create_Dauer(Globals.MAXANZTAGEZWISCHENEREIGNISSE);
+            obj.Anzahl_Tage_ST_Dauer = create_Dauer(Globals.MAXANZTAGEZWISCHENEREIGNISSE);
             obj.Applikationsart = create_Applikationsart();
             return obj;
         }
@@ -192,7 +191,7 @@ namespace Rki.CancerDataGenerator.BLL
         private Applikationsart create_Applikationsart()
         {
             var obj = new Applikationsart();
-            switch (_generator.CreateRandomValueInt(1,4))
+            switch (_generator.CreateRandomValueInt(1, 4))
             {
                 case 1: obj.Perkutan = create_Perkutan(); break;
                 case 2: obj.Kontakt = create_Kontakt(); break;
@@ -201,7 +200,7 @@ namespace Rki.CancerDataGenerator.BLL
                 default:
                     break;
             }
-            return obj;            
+            return obj;
         }
 
         private Sonstige create_Sonstige()
@@ -219,7 +218,7 @@ namespace Rki.CancerDataGenerator.BLL
             {
                 obj.CodeVersion2021 = _generator.FetchRandomEnumItem<Bestrahlung_Zielgebiet_2021_Typ>();
                 obj.CodeVersion2014 = Bestrahlung_Zielgebiet_2014_Typ.Default;
-            } 
+            }
             else
             {
                 obj.CodeVersion2021 = Bestrahlung_Zielgebiet_2021_Typ.Default;
@@ -230,7 +229,7 @@ namespace Rki.CancerDataGenerator.BLL
 
         private Metabolisch create_Metabolisch()
         {
-            var obj = new Metabolisch ();
+            var obj = new Metabolisch();
             obj.Zielgebiet = ceate_Zielgebiet();
             obj.Seite_Zielgebiet = _generator.FetchRandomEnumItem<Bestrahlung_Seite_Zielgebiet_Typ>();
             obj.Metabolisch_Typ = _generator.FetchRandomEnumItem<Bestrahlung_Applikationsart_Metabolisch_Typ>();
@@ -276,7 +275,7 @@ namespace Rki.CancerDataGenerator.BLL
                 .Range(1, _generator.CreateRandomValueInt(1, 5))
                 .Select(index => create_OPS())
                 .ToList();
-            obj.Anzahl_Tage_Diagnose_OP =  _generator.CreateRandomValueInt(1, Globals.MAXANZTAGEZWISCHENEREIGNISSE);
+            obj.Anzahl_Tage_Diagnose_OP = create_Dauer(Globals.MAXANZTAGEZWISCHENEREIGNISSE);
             return obj;
         }
 
@@ -295,7 +294,7 @@ namespace Rki.CancerDataGenerator.BLL
             return obj;
         }
 
-        private Diagnose Create_Diagnose()
+        private Diagnose create_Diagnose()
         {
             var obj = new Diagnose();
             obj.Datum = new Datum(_generator.CreateRandomDate_Meldedatum(), Datumsgenauigkeit_Typ.T);
@@ -328,8 +327,37 @@ namespace Rki.CancerDataGenerator.BLL
             obj.Seitenlokalisation = _generator.FetchRandomEnumItem<Seitenlokalisation_Typ>(0.2);
 
             obj.DCI = _generator.FetchRandomEnumItem<DCI_Typ>();
-            obj.Anzahl_Tage_Diagnose_Tod = _generator.CreateRandomValueInt(1, Globals.MAXANZTAGEZWISCHENEREIGNISSE);
+            obj.Anzahl_Tage_Diagnose_Tod = create_Dauer(Globals.MAXANZTAGEZWISCHENEREIGNISSE);
             return obj;
+        }
+
+        private Dauer_DEPR create_Dauer_DEPR(int tage)
+        {
+            if (_generator.CreateRandomBool())
+            {
+                return new Dauer_DEPR(_generator.CreateRandomValueInt(1, tage));
+            }
+            else
+            {
+                return new Dauer_DEPR(JNU_Typ.U);
+            }
+        }
+
+        /// <summary>
+        /// creates a Dauer object including JNU attribute by tossing a coin
+        /// </summary>
+        /// <param name="tage">Anzahl in Tagen</param>
+        /// <returns>Dauer</returns>
+        private Dauer create_Dauer(int tage)
+        {
+            if (_generator.CreateRandomBool())
+            {
+                return new Dauer(_generator.CreateRandomValueInt(1, tage), JNU_Typ.J);
+            }
+            else
+            {
+                return new Dauer(0, JNU_Typ.U);
+            }
         }
 
         private Modul_Malignes_Melanom create_Malignes_Melanom()

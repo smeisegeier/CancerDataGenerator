@@ -9,9 +9,9 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         //public Bestrahlung_Applikationsart_Typ Applikationsart { get; set; }
 
         [Range(0, Globals.MAXANZTAGEZWISCHENEREIGNISSE)]
-        public int Anzahl_Tage_Diagnose_ST { get; set; }
+        public Dauer Anzahl_Tage_Diagnose_ST { get; set; }
 
         [Range(0, Globals.MAXANZTAGEZWISCHENEREIGNISSE)]
-        public int Anzahl_Tage_ST_Dauer { get; set; }
+        public Dauer Anzahl_Tage_ST_Dauer { get; set; }
     }
 }

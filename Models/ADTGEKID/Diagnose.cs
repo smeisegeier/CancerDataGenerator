@@ -52,7 +52,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
 
         public DCI_Typ DCI { get; set; }
 
-        public int Anzahl_Tage_Diagnose_Tod { get; set; }
+        public Dauer Anzahl_Tage_Diagnose_Tod { get; set; }
 
     }
 }

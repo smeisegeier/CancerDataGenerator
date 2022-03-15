@@ -1,30 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- edited with XMLSpy v2021 rel. 3 (x64) (http://www.altova.com) by MeisegeierS_virtual (Robert Koch-Institut) -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.gekid.de/namespace" xmlns:tns="http://www.gekid.de/namespace" targetNamespace="http://www.gekid.de/namespace" elementFormDefault="qualified" attributeFormDefault="unqualified" version="3.0.0.2_RKI">
-	<xs:complexType name="Abstand_Ereignisse_oder_NU_Typ">
+	<xs:complexType name="Abstand_Ereignisse_Typ">
 		<xs:annotation>
 			<xs:documentation>Abstand in Tagen oder N oder U. N ist zu verwenden, wenn Ereignis noch nicht abgeschlossen.</xs:documentation>
 		</xs:annotation>
-		<xs:choice>
-			<xs:element name="Anzahl_Tage" type="Abstand_Ereignisse_Typ"/>
-			<xs:element name="NU" type="NU_Typ"/>
-		</xs:choice>
+		<xs:simpleContent>
+			<xs:extension base="xs:nonNegativeInteger">
+				<xs:attribute name="JNU" use="required">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="J">
+								<xs:annotation>
+									<xs:documentation>Ja, Wert ist gültig</xs:documentation>
+								</xs:annotation>
+							</xs:enumeration>
+							<xs:enumeration value="N">
+								<xs:annotation>
+									<xs:documentation>Nein, kein Wert anwendbar</xs:documentation>
+								</xs:annotation>
+							</xs:enumeration>
+							<xs:enumeration value="U">
+								<xs:annotation>
+									<xs:documentation>Unbekannt</xs:documentation>
+								</xs:annotation>
+							</xs:enumeration>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+			</xs:extension>
+		</xs:simpleContent>
 	</xs:complexType>
-	<xs:complexType name="Abstand_Ereignisse_oder_U_Typ_DEPR">
-		<xs:annotation>
-			<xs:documentation>Abstand in Tagen oder U</xs:documentation>
-		</xs:annotation>
-		<xs:choice>
-			<xs:element name="Anzahl_Tage" type="Abstand_Ereignisse_Typ"/>
-			<xs:element name="U" type="U_Typ"/>
-		</xs:choice>
-	</xs:complexType>
-	<xs:simpleType name="Abstand_Ereignisse_Typ">
-		<xs:annotation>
-			<xs:documentation>Abstand zwischen Ereignissen</xs:documentation>
-		</xs:annotation>
-		<xs:restriction base="xs:nonNegativeInteger"/>
-	</xs:simpleType>
 	<xs:element name="ADT_GEKID">
 		<xs:complexType>
 			<xs:sequence>
@@ -303,7 +309,7 @@ X - keines</xs:documentation>
 			<xs:element name="Modul_Malignes_Melanom" type="Modul_Malignes_Melanom_Typ" minOccurs="0"/>
 			<xs:element name="Seitenlokalisation" type="Seitenlokalisation_Typ"/>
 			<xs:element name="DCI" type="DCI_Typ"/>
-			<xs:element name="Anzahl_Tage_Diagnose_Tod" type="Abstand_Ereignisse_oder_NU_Typ"/>
+			<xs:element name="Anzahl_Tage_Diagnose_Tod" type="Abstand_Ereignisse_Typ"/>
 		</xs:all>
 	</xs:complexType>
 	<xs:complexType name="Folgeereignis_Typ">
@@ -1383,7 +1389,7 @@ U = Unbekannt</xs:documentation>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="Residualstatus" type="Residualstatus_Typ" minOccurs="0"/>
-			<xs:element name="Anzahl_Tage_Diagnose_OP" type="Abstand_Ereignisse_oder_NU_Typ"/>
+			<xs:element name="Anzahl_Tage_Diagnose_OP" type="Abstand_Ereignisse_Typ"/>
 		</xs:all>
 		<xs:attribute name="OP_ID" type="FreitextID_Typ" use="optional"/>
 	</xs:complexType>
@@ -1829,8 +1835,8 @@ U = Unbekannt</xs:documentation>
 											</xs:choice>
 										</xs:complexType>
 									</xs:element>
-									<xs:element name="Anzahl_Tage_Diagnose_ST" type="Abstand_Ereignisse_oder_NU_Typ"/>
-									<xs:element name="Anzahl_Tage_ST_Dauer" type="Abstand_Ereignisse_oder_NU_Typ"/>
+									<xs:element name="Anzahl_Tage_Diagnose_ST" type="Abstand_Ereignisse_Typ"/>
+									<xs:element name="Anzahl_Tage_ST_Dauer" type="Abstand_Ereignisse_Typ"/>
 								</xs:all>
 							</xs:complexType>
 						</xs:element>
@@ -2020,8 +2026,8 @@ U = Unbekannt</xs:documentation>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
-			<xs:element name="Anzahl_Tage_Diagnose_SYST" type="Abstand_Ereignisse_oder_NU_Typ"/>
-			<xs:element name="Anzahl_Tage_SYST_Dauer" type="Abstand_Ereignisse_oder_NU_Typ"/>
+			<xs:element name="Anzahl_Tage_Diagnose_SYST" type="Abstand_Ereignisse_Typ"/>
+			<xs:element name="Anzahl_Tage_SYST_Dauer" type="Abstand_Ereignisse_Typ"/>
 		</xs:all>
 		<xs:attribute name="SYST_ID" type="FreitextID_Typ" use="optional"/>
 	</xs:complexType>
