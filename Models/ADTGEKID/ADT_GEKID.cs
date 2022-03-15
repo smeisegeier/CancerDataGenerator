@@ -28,6 +28,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
     }
     public enum ISO3199_2_Typ
     {
+        // TODO remove default, no choice
         [XmlEnum(Name = "")]
         Default = 0,
         [XmlEnum("DE-BY")]
@@ -65,6 +66,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
     }
     public enum R_Typ
     {
+        // TODO choice?
         [XmlEnum(Name = "")]
         Default = 0,
         R0,
@@ -220,6 +222,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         Item32,
         [XmlEnum("33")]
         Item33,
+        // TODO what is bb
         bb,
     }
     public enum Grading_Typ
@@ -247,7 +250,7 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         M,
         W,
         S,
-        U,
+        X,
     }
     public enum ICD_Version_Typ
     {

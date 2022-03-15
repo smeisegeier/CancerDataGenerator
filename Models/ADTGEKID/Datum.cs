@@ -3,6 +3,7 @@ using System.Xml.Serialization;
 
 namespace Rki.CancerDataGenerator.Models.ADTGEKID
 {
+    // TODO prepare type Zeitpunkt
     public class Datum
     {
         public Datum(){}

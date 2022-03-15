@@ -9,14 +9,9 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
 {
     public class Patienten_Stammdaten : AdtgekidBase
     {
-
-        public Patienten_Stammdaten() { }
-
-
         public Geschlecht_Typ Geschlecht { get; set; }
 
         public Datum Geburtsdatum { get; set; }
-
 
         [RegularExpression(@"\d{5}")]
         public string Inzidenzort { get; set; }
