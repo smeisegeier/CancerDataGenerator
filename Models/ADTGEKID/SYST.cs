@@ -21,5 +21,8 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
         [Range(0, Globals.MAXANZTAGEZWISCHENEREIGNISSE)]
         public Dauer Anzahl_Tage_Diagnose_SYST { get; set; }
 
+        public Dauer Anzahl_Tage_SYST_Dauer { get; set; }
+        
+
     }
 }

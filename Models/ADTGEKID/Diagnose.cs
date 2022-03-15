@@ -54,5 +54,9 @@ namespace Rki.CancerDataGenerator.Models.ADTGEKID
 
         public Dauer Anzahl_Tage_Diagnose_Tod { get; set; }
 
+        [RegularExpression(@"\d{5}")]
+        public string Inzidenzort { get; set; }
+
+
     }
 }

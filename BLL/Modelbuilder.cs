@@ -67,6 +67,7 @@ namespace Rki.CancerDataGenerator.BLL
         private Tod Create_Tod()
         {
             var obj = new Tod();
+            Datumsgenauigkeit_Typ lol = _generator.CreateRandomBool() ? Datumsgenauigkeit_Typ.T : Datumsgenauigkeit_Typ.V;
             obj.Sterbedatum = new Datum(_generator.CreateRandomDate_Meldedatum(), Datumsgenauigkeit_Typ.T);
             obj.Grundleiden = create_Todesursache();
             obj.Menge_Weitere_Todesursachen = Enumerable
@@ -124,6 +125,7 @@ namespace Rki.CancerDataGenerator.BLL
             obj.Datum = new Datum(_generator.CreateRandomDate_Meldedatum(), Datumsgenauigkeit_Typ.T);
             obj.Intention = _generator.FetchRandomEnumItem<SYST_Intention_Typ>();
             obj.Anzahl_Tage_Diagnose_SYST = create_Dauer(Globals.MAXANZTAGEZWISCHENEREIGNISSE);
+            obj.Anzahl_Tage_SYST_Dauer = create_Dauer(100);
             obj.Stellung_OP = _generator.FetchRandomEnumItem<SYST_Stellung_OP_Typ>();
             obj.Therapieart = _generator.FetchRandomEnumItem<SYST_Therapieart_Typ>();
             obj.Protokoll = create_Protokoll();
@@ -169,7 +171,6 @@ namespace Rki.CancerDataGenerator.BLL
         private ST create_ST()
         {
             var obj = new ST();
-            obj.Datum = new Datum(_generator.CreateRandomDate_Meldedatum(), Datumsgenauigkeit_Typ.T);
             obj.Intention = _generator.FetchRandomEnumItem<ST_Intention_Typ>();
             obj.Stellung_OP = _generator.FetchRandomEnumItem<ST_Stellung_OP_Typ>();
             obj.Menge_Bestrahlung = Enumerable
@@ -182,6 +183,7 @@ namespace Rki.CancerDataGenerator.BLL
         private Bestrahlung create_Bestrahlung()
         {
             var obj = new Bestrahlung();
+            obj.Datum = new Datum(_generator.CreateRandomDate_Meldedatum(), Datumsgenauigkeit_Typ.T);
             obj.Anzahl_Tage_Diagnose_ST = create_Dauer(Globals.MAXANZTAGEZWISCHENEREIGNISSE);
             obj.Anzahl_Tage_ST_Dauer = create_Dauer(Globals.MAXANZTAGEZWISCHENEREIGNISSE);
             obj.Applikationsart = create_Applikationsart();
