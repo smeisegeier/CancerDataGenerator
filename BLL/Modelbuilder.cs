@@ -23,7 +23,6 @@ namespace Rki.CancerDataGenerator.BLL
         private ADT_GEKID Create_AdtGekid()
         {
             var obj = new ADT_GEKID();
-            // TODO xsd -> model!
             obj.Menge_Patient = Enumerable
                 .Range(1, _config.Patient_Count)
                 .Select(index => Create_Patient())
