@@ -7,6 +7,7 @@ using JWT.Algorithms;
 using JWT.Builder;
 using Rki.CancerDataGenerator.Services;
 using Rki.CancerDataGenerator.StaticHelper;
+using System.IO;
 
 namespace Rki.CancerDataGenerator.Controllers
 {
@@ -33,8 +34,9 @@ namespace Rki.CancerDataGenerator.Controllers
         [HttpGet]
         public IActionResult Validate()
         {
+            var xsdPath = Path.Combine(Globals.AppDir, Rki.CancerDataModel.Globals.XSDPATHRELATIVE);
             var xml = Xml.GetXmlStringFromObject(_adtgekid);
-            var messages = Xml.ValidateXml(xml, Globals.XSDNAMESPACE, Globals.XSDPATHRELATIVE);
+            var messages = Xml.ValidateXml(xml,Rki.CancerDataModel.Globals.XSDNAMESPACE, xsdPath);
 
             return base.Content(Xml.ValidationMessageItem.PrintItemList(messages));
         }

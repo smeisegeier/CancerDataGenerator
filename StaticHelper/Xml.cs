@@ -53,12 +53,12 @@ namespace Rki.CancerDataGenerator.StaticHelper
         /// <param name="xsdNamespace">namespace of xml and xsd</param>
         /// <param name="xsdPathRelative">relative path to xsd, eg "Models/schema.xsd"</param>
         /// <returns>List of ValidationMessageItem</returns>
-        public static List<ValidationMessageItem> ValidateXml(string xml, string xsdNamespace, string xsdPathRelative)
+        public static List<ValidationMessageItem> ValidateXml(string xml, string xsdNamespace, string xsdPath)
         {
             // prepare xml doc and schema
             XDocument doc = XDocument.Parse(xml);
             XmlSchemaSet schemaSet = new XmlSchemaSet();
-            schemaSet.Add(xsdNamespace, xsdPathRelative);
+            schemaSet.Add(xsdNamespace, xsdPath);
 
             // prepare settings in xmlreader. this is needed to include the warnings flag
             XmlReaderSettings xmlReaderSettings = new XmlReaderSettings();

@@ -24,7 +24,6 @@ namespace Rki.CancerDataGenerator.BLL
         {
             var obj = new ADT_GEKID();
             // TODO xsd -> model!
-            obj.schemaLocation = $"{Globals.XSDNAMESPACE} {Globals.XSDFILENAME}";
             obj.Menge_Patient = Enumerable
                 .Range(1, _config.Patient_Count)
                 .Select(index => Create_Patient())
