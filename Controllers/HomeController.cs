@@ -12,13 +12,16 @@ namespace Rki.CancerDataGenerator.Controllers
 {
     public class HomeController : ControllerBase
     {
-
         public HomeController(IWebHostEnvironment webHostEnvironment, AdtGekidDbContext context, IJwtAuthenticator jwtAuthenticator)
             : base(webHostEnvironment, context, jwtAuthenticator) { }
 
-
         [HttpGet]
-        public IActionResult Index() => View(); //RedirectToAction(nameof(Details));
+        public IActionResult Index()
+        {
+            if (Globals.PROJECTVERSION != CancerDataModel.Globals.PROJECTVERSION)
+                throw new Exception("Model and Generator have different versions.");
+            return View(); //RedirectToAction(nameof(Details));
+        }
 
         [HttpGet]
         public IActionResult Details()

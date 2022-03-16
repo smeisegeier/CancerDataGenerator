@@ -11,16 +11,17 @@ namespace Rki.CancerDataGenerator
 {
     public static class Globals
     {
+        public const string PROJECTVERSION = "3.0.0.5.1";
         public const string APPNAME = "CancerDataGenerator";
         public const string XSDFILENAME = "ADT_GEKID_v3.0.0.5_RKI.xsd";
         public const string XSDPATHRELATIVE = "Samples/" + XSDFILENAME;
         public const string XSDNAMESPACE = "http://www.gekid.de/namespace";
-        public const string XSINAMESPACE = "http://www.w3.org/2001/XMLSchema-instance";
 
         public const string ROUTESTRING = "/api/v{version:apiVersion}/[controller]";
 
         public const int MAXANZTAGEZWISCHENEREIGNISSE = 1 * 365;
 
+        // TODO replace
         public const string PUBLICKEY = @"
 -----BEGIN PGP PUBLIC KEY BLOCK-----
 Version: GnuPG v2

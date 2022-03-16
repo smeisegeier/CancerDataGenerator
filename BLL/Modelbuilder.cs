@@ -23,6 +23,8 @@ namespace Rki.CancerDataGenerator.BLL
         private ADT_GEKID Create_AdtGekid()
         {
             var obj = new ADT_GEKID();
+            // TODO xsd -> model!
+            obj.schemaLocation = $"{Globals.XSDNAMESPACE} {Globals.XSDFILENAME}";
             obj.Menge_Patient = Enumerable
                 .Range(1, _config.Patient_Count)
                 .Select(index => Create_Patient())
@@ -57,7 +59,7 @@ namespace Rki.CancerDataGenerator.BLL
         {
             var obj = new Patienten_Stammdaten();
             obj.Geburtsdatum  = new Datum(_generator.CreateRandomDate_Geburtsdatum(), Datumsgenauigkeit_Typ.T);
-            // HACK 
+            // HACK always generate element, no coin toss
             if (true) //(_generator.CreateRandomBool())
                 obj.Tod = Create_Tod();
             return obj;

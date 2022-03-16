@@ -18,7 +18,6 @@ namespace Rki.CancerDataGenerator.StaticHelper
         /// <returns>list of all items in json object</returns>
         public static IEnumerable<T> ReadListFromJson<T>() where T : DimensionBase
         {
-            // TODO bug pathname
             var list = JsonConvert.DeserializeObject<List<T>>(
                 File.ReadAllText(Path.Combine("Assets/Dimensions", $"{typeof(T).Name}.json")
                 ));
