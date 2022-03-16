@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using Rki.CancerDataGenerator.DAL;
 using Rki.CancerDataGenerator.Services;
 using Microsoft.EntityFrameworkCore;
-using Rki.CancerDataGenerator.Models.Dimensions;
+using Rki.CancerDataModel.Models.Dimensions;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
 using System.IO;

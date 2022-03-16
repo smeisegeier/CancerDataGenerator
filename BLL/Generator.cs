@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using MathNet.Numerics.Distributions;
-using Rki.CancerDataGenerator.BLL;
 using Rki.CancerDataGenerator.DAL;
-using Rki.CancerDataGenerator.Models;
-using Rki.CancerDataGenerator.Models.ADTGEKID;
+using Rki.CancerDataModel.Models.Dimensions;
+using Rki.CancerDataModel.Models;
 
-namespace Rki.CancerDataGenerator.Models.Dimensions
+namespace Rki.CancerDataGenerator.BLL
 {
     /// <summary>
     /// This class summarizes all items to generate random data in various distributions (random, normal)
@@ -17,7 +16,7 @@ namespace Rki.CancerDataGenerator.Models.Dimensions
     /// - fetch -> fetch an existing entry following random spread
     /// - create -> create a random entry from scratch
     /// </summary>
-    public class Generator : DimensionBase      //, IGenerator
+    public class Generator       //, IGenerator
     {
         private AdtGekidDbContext _context { get; }
 
@@ -198,7 +197,7 @@ namespace Rki.CancerDataGenerator.Models.Dimensions
                 .GetAll<Histology>()
                 .Where(x => x.histology_id.Contains("."))
                 .ToList();
-            return FetchNormalDimensionItem<Histology>(subset).histology_id.Replace(".","/");
+            return FetchNormalDimensionItem(subset).histology_id.Replace(".","/");
         }
 
         /// <summary>

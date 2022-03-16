@@ -10,7 +10,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Rki.CancerDataModel", "..\Rki.CancerDataModel\Rki.CancerDataModel.shproj", "{A3592C9D-4608-4BCB-9E4C-BCAFE21E3900}"
+EndProject
 Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		..\Rki.CancerDataModel\Rki.CancerDataModel.projitems*{49c16080-df34-47d5-bf4d-f4fbcf3a0fe7}*SharedItemsImports = 5
+		..\Rki.CancerDataModel\Rki.CancerDataModel.projitems*{a3592c9d-4608-4bcb-9e4c-bcafe21e3900}*SharedItemsImports = 13
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU

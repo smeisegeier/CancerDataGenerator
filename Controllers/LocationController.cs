@@ -1,14 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Rki.CancerDataGenerator.Models;
-using Rki.CancerDataGenerator.Models.Dimensions;
+using Rki.CancerDataModel.Models.Dimensions;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Rki.CancerDataGenerator.DAL;
-using Rki.CancerDataGenerator.Models.ADTGEKID;
+using Rki.CancerDataModel.Models.ADTGEKID;
 using System.Xml.Linq;
 using System.Xml.Schema;
 using System.Xml;

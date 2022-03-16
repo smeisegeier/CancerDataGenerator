@@ -1,24 +1,13 @@
 ﻿using Newtonsoft.Json;
+using Rki.CancerDataModel.Models;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace Rki.CancerDataGenerator.Models
+namespace Rki.CancerDataGenerator.StaticHelper
 {
-
-    /// <summary>
-    /// Base for Dimension classes.
-    /// Naming patterns are disregarded here :o
-    /// SQL table data source: 
-    /// </summary>
-    public abstract class DimensionBase
+    public class Json
     {
-        public int Id { get; set; }
-
-        public string Name { get; set; }
-
-        public double Weight { get; set; }
-
         /// <summary>
         /// Fetch and deserialze classes that are given as json.
         /// Follows the convention: 
@@ -29,6 +18,7 @@ namespace Rki.CancerDataGenerator.Models
         /// <returns>list of all items in json object</returns>
         public static IEnumerable<T> ReadListFromJson<T>() where T : DimensionBase
         {
+            // TODO bug pathname
             var list = JsonConvert.DeserializeObject<List<T>>(
                 File.ReadAllText(Path.Combine("Models/Dimensions", $"{typeof(T).Name}.json")
                 ));
@@ -52,6 +42,5 @@ namespace Rki.CancerDataGenerator.Models
                 });
             return listWithoutId;
         }
-
     }
 }

@@ -6,6 +6,17 @@
     <FileVersion>0.1</FileVersion>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
 	<IncludeOpenAPIAnalyzers>true</IncludeOpenAPIAnalyzers>
+	<WarningsNotAsErrors></WarningsNotAsErrors>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <NoWarn>1701;1702:1591</NoWarn>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <NoWarn>1701;1702:1591</NoWarn>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
   </PropertyGroup>
 
   <ItemGroup>
@@ -35,5 +46,7 @@
   <ItemGroup>
     <Folder Include="wwwroot\files\" />
   </ItemGroup>
+
+  <Import Project="..\Rki.CancerDataModel\Rki.CancerDataModel.projitems" Label="Shared" />
 
 </Project>

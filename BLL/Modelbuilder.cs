@@ -1,6 +1,5 @@
-﻿using Rki.CancerDataGenerator.Models;
-using Rki.CancerDataGenerator.Models.ADTGEKID;
-using Rki.CancerDataGenerator.Models.Dimensions;
+﻿using Rki.CancerDataModel.Models.ADTGEKID;
+using Rki.CancerDataModel.Models.Dimensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;

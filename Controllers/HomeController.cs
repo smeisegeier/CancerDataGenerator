@@ -1,26 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using Rki.CancerDataGenerator.Models;
-using Rki.CancerDataGenerator.Models.Dimensions;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 using Rki.CancerDataGenerator.DAL;
-using Rki.CancerDataGenerator.Models.ADTGEKID;
-using System.Xml.Linq;
-using System.Xml.Schema;
-using System.Xml;
 using Microsoft.AspNetCore.Hosting;
 using JWT.Algorithms;
-using JWT;
-using JWT.Serializers;
 using JWT.Builder;
 using Rki.CancerDataGenerator.Services;
 using Rki.CancerDataGenerator.StaticHelper;
-using PgpCore;
-using System.IO;
 
 namespace Rki.CancerDataGenerator.Controllers
 {
@@ -54,8 +40,8 @@ namespace Rki.CancerDataGenerator.Controllers
         [HttpGet]
         public IActionResult Privacy() => View();
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true), HttpGet]
-        public IActionResult Error() => View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        //[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true), HttpGet]
+        //public IActionResult Error() => View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
 
         [HttpGet]
         public IActionResult Test()
