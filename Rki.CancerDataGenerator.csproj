@@ -47,6 +47,6 @@
     <Folder Include="wwwroot\files\" />
   </ItemGroup>
 
-  <Import Project="..\Rki.CancerDataModel\Rki.CancerDataModel.projitems" Label="Shared" />
+  <Import Project="C:\Users\MeisegeierS\source\repos\smeisegeier\Rki.CancerDataModel\Rki.CancerDataModel.projitems" Label="Shared" />
 
 </Project>

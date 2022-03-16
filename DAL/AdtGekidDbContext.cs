@@ -3,6 +3,7 @@ using Rki.CancerDataModel.Models;
 using Rki.CancerDataModel.Models.Dimensions;
 using System.Collections.Generic;
 using System.Linq;
+using Rki.CancerDataGenerator.StaticHelper;
 
 namespace Rki.CancerDataGenerator.DAL
 {
@@ -14,43 +15,43 @@ namespace Rki.CancerDataGenerator.DAL
         {
             //modelBuilder.HasDefaultSchema("seroops");
             /* seed db*/
-            modelBuilder.Entity<DiagnosisSafety>().HasData(DimensionBase.ReadListFromJson<DiagnosisSafety>());
-            modelBuilder.Entity<DiseaseProgression>().HasData(DimensionBase.ReadListFromJson<DiseaseProgression>());
-            modelBuilder.Entity<DistantMetastasis>().HasData(DimensionBase.ReadListFromJson<DistantMetastasis>());
-            modelBuilder.Entity<Ecog>().HasData(DimensionBase.ReadListFromJson<Ecog>());
-            modelBuilder.Entity<Gender>().HasData(DimensionBase.ReadListFromJson<Gender>());
-            modelBuilder.Entity<Grading>().HasData(DimensionBase.ReadListFromJson<Grading>());
-            modelBuilder.Entity<Histology>().HasData(DimensionBase.ReadListFromJson<Histology>());
-            modelBuilder.Entity<HormonReceptor>().HasData(DimensionBase.ReadListFromJson<HormonReceptor>());
-            modelBuilder.Entity<Icd>().HasData(DimensionBase.ReadListFromJson<Icd>());
-            //modelBuilder.Entity<Icd>().HasData(DimensionBase.ReadListFromJson<Icd>().Where(x => x.icd_id.Substring(0, 1) == "C"));
-            modelBuilder.Entity<Location>().HasData(DimensionBase.ReadListFromJson<Location>());
-            modelBuilder.Entity<M>().HasData(DimensionBase.ReadListFromJson<M>());
-            modelBuilder.Entity<N>().HasData(DimensionBase.ReadListFromJson<N>());
-            modelBuilder.Entity<Ops>().HasData(DimensionBase.ReadListFromJson<Ops>());
-            modelBuilder.Entity<OpIntention>().HasData(DimensionBase.ReadListFromJson<OpIntention>());
-            modelBuilder.Entity<Protocol>().HasData(DimensionBase.ReadListFromJson<Protocol>());
-            modelBuilder.Entity<Radiotherapy>().HasData(DimensionBase.ReadListFromJson<Radiotherapy>());
-            modelBuilder.Entity<ReceptorStatus>().HasData(DimensionBase.ReadListFromJson<ReceptorStatus>());
-            modelBuilder.Entity<ReportType>().HasData(DimensionBase.ReadListFromJson<ReportType>());
-            modelBuilder.Entity<ResidualStatus>().HasData(DimensionBase.ReadListFromJson<ResidualStatus>());
-            modelBuilder.Entity<Side>().HasData(DimensionBase.ReadListFromJson<Side>());
-            modelBuilder.Entity<Substance>().HasData(DimensionBase.ReadListFromJson<Substance>());
-            modelBuilder.Entity<SystemicTherapy>().HasData(DimensionBase.ReadListFromJson<SystemicTherapy>());
-            modelBuilder.Entity<T>().HasData(DimensionBase.ReadListFromJson<T>());
-            modelBuilder.Entity<TherapyDuration>().HasData(DimensionBase.ReadListFromJson<TherapyDuration>());
-            modelBuilder.Entity<TherapyIntention>().HasData(DimensionBase.ReadListFromJson<TherapyIntention>());
-            modelBuilder.Entity<TherapyLine>().HasData(DimensionBase.ReadListFromJson<TherapyLine>());
-            modelBuilder.Entity<TherapyRelation>().HasData(DimensionBase.ReadListFromJson<TherapyRelation>());
-            modelBuilder.Entity<TherapyStop>().HasData(DimensionBase.ReadListFromJson<TherapyStop>());
-            modelBuilder.Entity<TherapyTime>().HasData(DimensionBase.ReadListFromJson<TherapyTime>());
-            modelBuilder.Entity<TumorConference>().HasData(DimensionBase.ReadListFromJson<TumorConference>());
-            modelBuilder.Entity<TumorStatus>().HasData(DimensionBase.ReadListFromJson<TumorStatus>());
-            modelBuilder.Entity<TumorStatusDistantMetastasis>().HasData(DimensionBase.ReadListFromJson<TumorStatusDistantMetastasis>());
-            modelBuilder.Entity<Uicc>().HasData(DimensionBase.ReadListFromJson<Uicc>());
+            modelBuilder.Entity<DiagnosisSafety>().HasData(Json.ReadListFromJson<DiagnosisSafety>());
+            modelBuilder.Entity<DiseaseProgression>().HasData(Json.ReadListFromJson<DiseaseProgression>());
+            modelBuilder.Entity<DistantMetastasis>().HasData(Json.ReadListFromJson<DistantMetastasis>());
+            modelBuilder.Entity<Ecog>().HasData(Json.ReadListFromJson<Ecog>());
+            modelBuilder.Entity<Gender>().HasData(Json.ReadListFromJson<Gender>());
+            modelBuilder.Entity<Grading>().HasData(Json.ReadListFromJson<Grading>());
+            modelBuilder.Entity<Histology>().HasData(Json.ReadListFromJson<Histology>());
+            modelBuilder.Entity<HormonReceptor>().HasData(Json.ReadListFromJson<HormonReceptor>());
+            modelBuilder.Entity<Icd>().HasData(Json.ReadListFromJson<Icd>());
+            //modelBuilder.Entity<Icd>().HasData(Json.ReadListFromJson<Icd>().Where(x => x.icd_id.Substring(0, 1) == "C"));
+            modelBuilder.Entity<Location>().HasData(Json.ReadListFromJson<Location>());
+            modelBuilder.Entity<M>().HasData(Json.ReadListFromJson<M>());
+            modelBuilder.Entity<N>().HasData(Json.ReadListFromJson<N>());
+            modelBuilder.Entity<Ops>().HasData(Json.ReadListFromJson<Ops>());
+            modelBuilder.Entity<OpIntention>().HasData(Json.ReadListFromJson<OpIntention>());
+            modelBuilder.Entity<Protocol>().HasData(Json.ReadListFromJson<Protocol>());
+            modelBuilder.Entity<Radiotherapy>().HasData(Json.ReadListFromJson<Radiotherapy>());
+            modelBuilder.Entity<ReceptorStatus>().HasData(Json.ReadListFromJson<ReceptorStatus>());
+            modelBuilder.Entity<ReportType>().HasData(Json.ReadListFromJson<ReportType>());
+            modelBuilder.Entity<ResidualStatus>().HasData(Json.ReadListFromJson<ResidualStatus>());
+            modelBuilder.Entity<Side>().HasData(Json.ReadListFromJson<Side>());
+            modelBuilder.Entity<Substance>().HasData(Json.ReadListFromJson<Substance>());
+            modelBuilder.Entity<SystemicTherapy>().HasData(Json.ReadListFromJson<SystemicTherapy>());
+            modelBuilder.Entity<T>().HasData(Json.ReadListFromJson<T>());
+            modelBuilder.Entity<TherapyDuration>().HasData(Json.ReadListFromJson<TherapyDuration>());
+            modelBuilder.Entity<TherapyIntention>().HasData(Json.ReadListFromJson<TherapyIntention>());
+            modelBuilder.Entity<TherapyLine>().HasData(Json.ReadListFromJson<TherapyLine>());
+            modelBuilder.Entity<TherapyRelation>().HasData(Json.ReadListFromJson<TherapyRelation>());
+            modelBuilder.Entity<TherapyStop>().HasData(Json.ReadListFromJson<TherapyStop>());
+            modelBuilder.Entity<TherapyTime>().HasData(Json.ReadListFromJson<TherapyTime>());
+            modelBuilder.Entity<TumorConference>().HasData(Json.ReadListFromJson<TumorConference>());
+            modelBuilder.Entity<TumorStatus>().HasData(Json.ReadListFromJson<TumorStatus>());
+            modelBuilder.Entity<TumorStatusDistantMetastasis>().HasData(Json.ReadListFromJson<TumorStatusDistantMetastasis>());
+            modelBuilder.Entity<Uicc>().HasData(Json.ReadListFromJson<Uicc>());
 
-            //modelBuilder.Entity<_Quote>().HasData(DimensionBase.AutoIncAllId<_Quote>(DimensionBase.ReadListFromJson<_Quote>().ToList()));
-            modelBuilder.Entity<Quote>().HasData(DimensionBase.ReadListFromJson<Quote>().AutoIncAllId());
+            //modelBuilder.Entity<_Quote>().HasData(DimensionBase.AutoIncAllId<_Quote>(Json.ReadListFromJson<_Quote>().ToList()));
+            modelBuilder.Entity<Quote>().HasData(Json.ReadListFromJson<Quote>().AutoIncAllId());
         }
 
  

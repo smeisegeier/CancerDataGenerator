@@ -20,7 +20,7 @@ namespace Rki.CancerDataGenerator.StaticHelper
         {
             // TODO bug pathname
             var list = JsonConvert.DeserializeObject<List<T>>(
-                File.ReadAllText(Path.Combine("Models/Dimensions", $"{typeof(T).Name}.json")
+                File.ReadAllText(Path.Combine("Assets/Dimensions", $"{typeof(T).Name}.json")
                 ));
             return list;
         }

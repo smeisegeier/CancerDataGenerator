@@ -1,5 +1,5 @@
 ﻿using Rki.CancerDataModel.Models;
-using Rki.CancerDataModel.Models.Dimensions;
+using Rki.CancerDataGenerator.StaticHelper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,7 +30,7 @@ namespace Rki.CancerDataGenerator
         }
 
         public static IEnumerable<T> AutoIncAllId<T>(this IEnumerable<T> listWithoutId) where T : DimensionBase
-            => DimensionBase.AutoIncAllId<T>(listWithoutId);
+            => Json.AutoIncAllId<T>(listWithoutId);
 
     }
 }
