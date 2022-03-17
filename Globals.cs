@@ -12,7 +12,7 @@ namespace Rki.CancerDataGenerator
 {
     public static class Globals
     {
-        public const string PROJECTVERSION = "3.0.0.5.1";
+        public const string PROJECTVERSION = "3.0.0.5.2";
         public const string APPNAME = "CancerDataGenerator";
 
         public const string ROUTESTRING = "/api/v{version:apiVersion}/[controller]";

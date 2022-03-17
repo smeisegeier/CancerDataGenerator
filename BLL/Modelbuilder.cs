@@ -111,7 +111,7 @@ namespace Rki.CancerDataGenerator.BLL
             /*  Verlauf */
             obj.Menge_Folgeereignis = Enumerable
                 .Range(1, 3)
-                .Select(index => Create_PatientMeldungVerlauf())
+                .Select(index => create_Folgeereignis())
                 .ToList();
 
             obj.Tumor_ID = Guid.NewGuid().ToString();
@@ -287,11 +287,31 @@ namespace Rki.CancerDataGenerator.BLL
             return obj;
         }
 
-        private Verlauf Create_PatientMeldungVerlauf()
+        private Folgeereignis create_Folgeereignis()
         {
-            var obj = new Verlauf();
+            var obj = new Folgeereignis();
+            obj.TNM = create_TNM();
+            obj.Menge_Weitere_Klassifikation = Enumerable
+                .Range(1, _generator.CreateRandomValueInt(1,3))
+                .Select(index => create_Weitere_Klassifikation())
+                .ToArray();
             obj.Untersuchungsdatum_Verlauf = new Datum(_generator.CreateRandomDate_Meldedatum(), Datumsgenauigkeit_Typ.T);
             obj.Gesamtbeurteilung_Tumorstatus = _generator.FetchRandomEnumItem<Gesamtbeurteilung_Tumorstatus_Typ>();
+            obj.Verlauf_Lokaler_Tumorstatus = _generator.FetchRandomEnumItem<Verlauf_Lokaler_Tumorstatus_Typ>();
+            obj.Verlauf_Tumorstatus_Lymphknoten = _generator.FetchRandomEnumItem<Verlauf_Tumorstatus_Lymphknoten_Typ>();
+            obj.Verlauf_Tumorstatus_Fernmetastasen = _generator.FetchRandomEnumItem<Verlauf_Tumorstatus_Fernmetastasen_Typ>();
+            obj.Menge_FM = Enumerable
+                .Range(1, _generator.CreateRandomValueInt(1, 3))
+                .Select(index => create_FM())
+                .ToArray();
+            return obj;
+        }
+
+        private Weitere_Klassifikation create_Weitere_Klassifikation()
+        {
+            var obj = new Weitere_Klassifikation();
+            obj.Name = _generator.FetchNormalDimensionItem_QuoteString(255);
+            obj.Stadium = _generator.FetchNormalDimensionItem_QuoteString(30);
             return obj;
         }
 
@@ -315,8 +335,8 @@ namespace Rki.CancerDataGenerator.BLL
 
 
             /* TNM */
-            obj.cTNM = Create_TNM_Typ();
-            obj.pTNM = Create_TNM_Typ();
+            obj.cTNM = create_TNM();
+            obj.pTNM = create_TNM();
 
             /* Module */
             obj.Modul_Mamma = Create_Modul_Mamma_Typ();
@@ -442,7 +462,7 @@ namespace Rki.CancerDataGenerator.BLL
             return obj;
         }
 
-        private TNM Create_TNM_Typ()
+        private TNM create_TNM()
         {
             var obj = new TNM();
             obj.Version = TNM_Version_Typ.Item7;

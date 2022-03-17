@@ -107,7 +107,7 @@ namespace Rki.CancerDataGenerator.BLL
         }
 
 
-        // TODO needs testing
+        // TODO needs testing, missing enum should maybe not be implemented
         /// <summary>
         /// get random enum
         /// </summary>
