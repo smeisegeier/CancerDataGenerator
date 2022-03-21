@@ -353,18 +353,6 @@ namespace Rki.CancerDataGenerator.BLL
             return obj;
         }
 
-        private Dauer_DEPR create_Dauer_DEPR(int tage)
-        {
-            if (_generator.CreateRandomBool())
-            {
-                return new Dauer_DEPR(_generator.CreateRandomValueInt(1, tage));
-            }
-            else
-            {
-                return new Dauer_DEPR(JNU_Typ.U);
-            }
-        }
-
         /// <summary>
         /// creates a Dauer object including JNU attribute by tossing a coin
         /// </summary>

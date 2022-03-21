@@ -12,6 +12,7 @@ namespace Rki.CancerDataGenerator
 {
     public static class Globals
     {
+        // TODO const vs static getter
         public const string PROJECTVERSION = "3.0.0.5.2";
         public const string APPNAME = "CancerDataGenerator";
 
@@ -19,11 +20,11 @@ namespace Rki.CancerDataGenerator
 
         public const int MAXANZTAGEZWISCHENEREIGNISSE = 1 * 365;
 
-        public static string AppDir = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
+        public static string AppDir => Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
 
 
-        // TODO replace
-        public const string PUBLICKEY = @"
+        // TODO replace public key
+        public static string PUBLICKEY => @"
 -----BEGIN PGP PUBLIC KEY BLOCK-----
 Version: GnuPG v2
 
